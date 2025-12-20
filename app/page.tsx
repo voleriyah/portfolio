@@ -3,33 +3,28 @@
 import Image from 'next/image';
 import ExpertiseBlock from '@/components/ExpertiseBlock';
 import AnimatedContainerLine from '@/components/AnimatedContainerLine';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useRef } from 'react';
 
 export default function Home() {
   const expertiseSectionRef = useRef(null);
-  const isExpertiseSectionInView = useInView(expertiseSectionRef, { once: true, amount: 0.1 });
-  const expertiseGridRef = useRef(null);
-  const helpSectionWrapperRef = useRef(null);
-  const isHelpSectionWrapperInView = useInView(helpSectionWrapperRef, { once: true, amount: 0.1 });
-  const helpSectionRef = useRef(null);
 
   return (
     <main className="min-h-screen bg-cream">
       {/* Hero Section - Height based on content, positioned below header */}
       <section 
-        className="w-full bg-dark-bg flex items-end md:items-center justify-center relative"
+        className="w-full bg-dark-bg flex items-end md:items-center justify-center relative h-[100dvh] pb-[env(safe-area-inset-bottom)]"
       >
-        <div className="max-w-[1692px] w-full mx-auto relative">
-          <div className="w-full flex items-end md:items-center justify-center md:justify-end">
+        <div className="max-w-[1692px] w-full mx-auto relative h-full flex flex-col">
+          <div className="w-full flex flex-col md:flex-row items-end md:items-center justify-center md:justify-end flex-1">
           <div 
-            className="flex flex-col justify-end md:justify-center items-center flex-shrink-0 w-full"
+            className="flex flex-col justify-end md:justify-center items-center flex-shrink-0 w-full md:w-auto h-full"
             style={{
               display: 'flex',
               // Responsive width: 100% on small screens (iPhone SE 320px, iPhone SE 375px), scales to 1053px at 1920px
               width: 'clamp(320px, 100%, 1053px)',
-              // Mobile: auto height, scales on larger screens
-              height: 'auto',
+              // Mobile: full height to fill available space, scales on larger screens
+              height: '100%',
               minHeight: 'auto',
               flexDirection: 'column',
               alignItems: 'center',
@@ -38,7 +33,7 @@ export default function Home() {
             }}
           >
             {/* Mobile Photo Gallery - Above title, no overlap */}
-            <div className="block md:hidden relative w-full mb-8" style={{ minHeight: '360px' }}>
+            <div className="block md:hidden relative w-full flex-1" style={{ minWidth: '290px' }}>
               {/* Photo 1 - Top-left */}
               <Image
                 src="/images/avatar1.png"
@@ -66,8 +61,8 @@ export default function Home() {
                   top: '50%',
                   left: '50%',
                   transform: 'translate(-50%, -50%)',
-                  width: '90px',
-                  height: '90px',
+                  width: '75px',
+                  height: '75px',
                   borderRadius: '43px',
                   objectFit: 'cover',
                 }}
@@ -82,8 +77,8 @@ export default function Home() {
                 style={{
                   bottom: '20px',
                   right: '20px',
-                  width: '100px',
-                  height: '100px',
+                  width: '83.33px',
+                  height: '83.33px',
                   borderRadius: '50%',
                   objectFit: 'cover',
                 }}
@@ -315,11 +310,7 @@ export default function Home() {
         </div>
 
         {/* New Block - Responsive grid: 1 column mobile, 2 columns tablet, 4 columns desktop */}
-        <motion.div 
-          ref={expertiseGridRef}
-          initial={{ opacity: 0, y: 40 }}
-          animate={isExpertiseSectionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-          transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
+        <div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-auto w-full expertise-blocks-grid gap-[3px] border-[3px] border-dark-brown"
           style={{
             // Width: full width on mobile/tablet
@@ -361,11 +352,10 @@ export default function Home() {
               "Running Product & UX research as a strategic lever"
             ]}
           />
-        </motion.div>
+        </div>
 
         {/* New Wrapper - 1692px width, 664px height */}
         <div 
-          ref={helpSectionWrapperRef}
           className="relative w-full mx-auto"
           style={{
             width: '1692px',
@@ -377,11 +367,7 @@ export default function Home() {
           <AnimatedContainerLine position="left" showCaption={false} diamondStopAt="middle" />
 
           {/* Content Container - 64px gap from line (responsive, 1920px benchmark), vertically centered */}
-          <motion.div 
-            ref={helpSectionRef}
-            initial={{ opacity: 0, y: 40 }}
-            animate={isHelpSectionWrapperInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-            transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
+          <div 
             className="flex items-center pr-6 md:pr-0" 
             style={{ 
               // Gap: scales from 24px at 320px to 64px at 1920px (benchmark)
@@ -440,7 +426,7 @@ export default function Home() {
               <li>Fractional design leadership</li>
             </ol>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </main>
