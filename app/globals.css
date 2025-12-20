@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --main-red-accent: #F62F20;
+  --main-white: #FFF8E9;
+  --main-medium-gray: #342927;
+}
+
+/* Expertise title image wrapper - align right on desktop */
+@media (min-width: 768px) {
+  .expertise-title-image-wrapper {
+    justify-content: flex-end;
+  }
+}
+
+/* Expertise blocks container - responsive width on desktop */
+@media (min-width: 1024px) {
+  .expertise-blocks-grid {
+    width: clamp(1200px, calc(1200px + (1692px - 1200px) * ((100vw - 1024px) / (1920px - 1024px))), 1692px);
+    max-width: none;
+  }
+}
