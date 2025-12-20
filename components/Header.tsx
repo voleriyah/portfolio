@@ -175,9 +175,6 @@ export default function Header() {
                     hover:opacity-70 transition-opacity
                     text-left w-full"
                   style={{
-                    marginTop: index === 0 ? '72px' : undefined,
-                  }}
-                  style={{
                     color: '#1E1E1E',
                     textAlign: 'left',
                     fontFamily: 'var(--font-erica)',
