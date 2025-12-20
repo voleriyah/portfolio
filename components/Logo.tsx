@@ -35,10 +35,10 @@ export default function Logo() {
           className="h-auto"
           style={{ 
             width: 'auto', 
-            // Fluid scaling: 38px at 1024px → 28px at 320px (smooth transition)
-            height: 'clamp(28px, 1.5vw + 1.25rem, 38px)',
-            // Proportional width scaling: 219px at 1024px → 164px at 320px  
-            maxWidth: 'clamp(164px, 13vw + 10rem, 219px)', 
+            // Fluid scaling: 45.6px at 1024px → 33.6px at 320px (smooth transition) - 1.2x bigger
+            height: 'clamp(33.6px, calc((1.5vw + 1.25rem) * 1.2), 45.6px)',
+            // Proportional width scaling: 262.8px at 1024px → 196.8px at 320px - 1.2x bigger
+            maxWidth: 'clamp(196.8px, calc((13vw + 10rem) * 1.2), 262.8px)', 
             flexShrink: 0,
             transition: 'height 0.2s cubic-bezier(0.4, 0, 0.2, 1), max-width 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
           }}
