@@ -132,9 +132,10 @@ export default function Header() {
               fill="#F62F20"
               style={{
                 transform: isMobileMenuOpen 
-                  ? 'translateY(-9px)' 
+                  ? 'translateY(-20px)' 
                   : 'translateY(0px)',
-                transition: 'transform 0.2s ease-in-out',
+                marginBottom: isMobileMenuOpen ? '2px' : '0px',
+                transition: 'transform 0.2s ease-in-out, margin-bottom 0.2s ease-in-out',
                 transitionDelay: '0s',
               }}
             />
@@ -150,8 +151,8 @@ export default function Header() {
                 transform: isMobileMenuOpen 
                   ? 'translateY(-9.5px) rotate(45deg)' 
                   : 'translateY(0px) rotate(0deg)',
-                transformOrigin: '22px 30.5px',
-                transition: 'transform 0.2s ease-in-out, fill 0.2s ease-in-out',
+                transformOrigin: '21px 30.5px',
+                transition: 'transform 0.2s ease-in-out, fill 0.2s ease-in-out, transform-origin 0.2s ease-in-out',
                 transitionDelay: isMobileMenuOpen ? '0.2s' : '0s',
               }}
             />
@@ -163,10 +164,6 @@ export default function Header() {
           <div className="fixed inset-0 bg-cream z-50 lg:hidden overflow-y-auto">
             {/* Menu content */}
             <nav className="flex flex-col items-start justify-start min-h-screen px-4 sm:px-6 md:px-8 py-8 pt-8 gap-[64px]">
-              {/* Logo at the top of mobile menu */}
-              <div className="w-full pb-4">
-                <Logo />
-              </div>
               {menuItems.map((item, index) => (
                 <a
                   key={item.label}
@@ -177,6 +174,9 @@ export default function Header() {
                   className="font-erica text-[36px] font-normal leading-[44px] text-dark-bg uppercase
                     hover:opacity-70 transition-opacity
                     text-left w-full"
+                  style={{
+                    marginTop: index === 0 ? '72px' : undefined,
+                  }}
                   style={{
                     color: '#1E1E1E',
                     textAlign: 'left',
