@@ -37,35 +37,62 @@ export default function Home() {
               boxSizing: 'border-box',
             }}
           >
-            {/* Combined image container for mobile/tablet (<1024px) - above title */}
-            <div
-              className="block lg:hidden w-full"
-              style={{
-                // Responsive width: scales from 320px (iPhone SE) to 390px (larger phones)
-                width: 'clamp(320px, 100%, 390px)',
-                // Responsive height: maintains aspect ratio, scales proportionally
-                height: 'clamp(329px, calc(329px + (402px - 329px) * ((100vw - 320px) / (414px - 320px))), 402px)',
-                flexShrink: 0,
-                overflow: 'hidden',
-                maxWidth: '100%',
-              }}
-            >
+            {/* Mobile Photo Gallery - Above title, no overlap */}
+            <div className="block md:hidden relative w-full mb-8" style={{ minHeight: '360px' }}>
+              {/* Photo 1 - Top-left */}
               <Image
-                src="/images/avatars-combined.png"
-                alt="Avatars combined"
-                width={390}
-                height={402}
+                src="/images/avatar1.png"
+                alt="Avatar 1"
+                width={178}
+                height={178}
+                className="absolute pointer-events-none z-20"
                 style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'contain',
+                  top: '20px',
+                  left: '20px',
+                  width: '80px',
+                  height: '80px',
+                  borderRadius: '27px',
+                  objectFit: 'cover',
+                }}
+              />
+              {/* Photo 2 - Middle */}
+              <Image
+                src="/images/avatar2.png"
+                alt="Avatar 2"
+                width={182}
+                height={182}
+                className="absolute pointer-events-none z-20"
+                style={{
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '90px',
+                  height: '90px',
+                  borderRadius: '43px',
+                  objectFit: 'cover',
+                }}
+              />
+              {/* Photo 3 - Lower-right */}
+              <Image
+                src="/images/avatar3.png"
+                alt="Avatar 3"
+                width={194}
+                height={194}
+                className="absolute pointer-events-none z-20"
+                style={{
+                  bottom: '20px',
+                  right: '20px',
+                  width: '100px',
+                  height: '100px',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
                 }}
               />
             </div>
 
             {/* Content wrapper for title and subtitle */}
             <div 
-              className="flex flex-col"
+              className="flex flex-col relative z-0"
               style={{
                 display: 'flex',
                 // Width scales from 320px (mobile) to 1053px at 1920px (benchmark)
@@ -80,9 +107,10 @@ export default function Home() {
                 alignItems: 'center',
                 flexShrink: 0,
                 boxSizing: 'border-box',
+                zIndex: 0,
               }}
               >
-              <div className="relative">
+              <div className="relative z-0">
                 <h1 className="font-erica uppercase self-stretch"
                   style={{
                     color: '#FFF8E9',
@@ -184,39 +212,48 @@ export default function Home() {
           </div>
           </div>
           
-          {/* Photo gallery - Absolutely positioned on left side, visible on desktop */}
-          {/* Photo 1 - Top left in hero section */}
+          {/* Photo gallery - Desktop versions only (mobile photos moved above title) */}
+          {/* Photo 1 - Rounded square: left side on desktop */}
           <Image
             src="/images/avatar1.png"
             alt="Avatar 1"
             width={178}
             height={178}
-            className="hidden lg:block absolute left-0 pointer-events-none z-20"
+            className="hidden md:block absolute pointer-events-none z-20"
             style={{
               top: '200px',
-              width: '178px',
-              height: '178px',
+              // Margin left: 0px at 320px, 30px at 1024px, then scales to 324px at 1920px  
+              left: 'clamp(0px, max(min(calc(0px + (30px - 0px) * ((100vw - 320px) / (1024px - 320px))), 30px), calc(30px + (324px - 30px) * ((100vw - 1024px) / (1920px - 1024px)))), 324px)',
+              // Width: scales from 100px at 320px to 178px at 1920px (benchmark)
+              width: 'clamp(100px, calc(100px + (178px - 100px) * ((100vw - 320px) / (1920px - 320px))), 178px)',
+              // Height: scales from 100px at 320px to 178px at 1920px (benchmark)
+              height: 'clamp(100px, calc(100px + (178px - 100px) * ((100vw - 320px) / (1920px - 320px))), 178px)',
               borderRadius: '27px',
               objectFit: 'cover',
             }}
           />
           
-          {/* Photo 2 - Middle, at section boundary (half in hero, half in expertise) */}
+          {/* Photo 2 - Diamond shape: at section boundary on desktop */}
           <Image
             src="/images/avatar2.png"
             alt="Avatar 2"
             width={182}
             height={182}
-            className="hidden lg:block absolute left-0 pointer-events-none z-20"
+            className="hidden md:block absolute pointer-events-none z-20"
             style={{
               bottom: '0px',
-              width: '182px',
-              height: '182px',
+              // Margin left: 0px at 320px, 30px at 1024px, then scales to 324px at 1920px  
+              left: 'clamp(0px, max(min(calc(0px + (30px - 0px) * ((100vw - 320px) / (1024px - 320px))), 30px), calc(30px + (324px - 30px) * ((100vw - 1024px) / (1920px - 1024px)))), 324px)',
+              // Width: scales from 105px at 320px to 182px at 1920px (benchmark)
+              width: 'clamp(105px, calc(105px + (182px - 105px) * ((100vw - 320px) / (1920px - 320px))), 182px)',
+              // Height: scales from 105px at 320px to 182px at 1920px (benchmark)
+              height: 'clamp(105px, calc(105px + (182px - 105px) * ((100vw - 320px) / (1920px - 320px))), 182px)',
               borderRadius: '43px',
               objectFit: 'cover',
               transform: 'translateY(50%)',
             }}
           />
+          
         </div>
       </section>
 
@@ -224,17 +261,21 @@ export default function Home() {
       <section id="expertise-section" ref={expertiseSectionRef} className="w-full bg-primary-red relative">
         {/* Container for Photo 3 and title */}
         <div className="max-w-[1692px] mx-auto relative">
-          {/* Photo 3 - Bottom left in expertise section */}
+          {/* Photo 3 - Desktop version: bottom left in expertise section */}
           <Image
             src="/images/avatar3.png"
             alt="Avatar 3"
             width={194}
             height={194}
-            className="hidden lg:block absolute left-0 pointer-events-none z-20"
+            className="hidden md:block absolute pointer-events-none z-20"
             style={{
               bottom: '200px',
-              width: '194px',
-              height: '194px',
+              // Margin left: 0px at 320px, 30px at 1024px, then scales to 324px at 1920px  
+              left: 'clamp(0px, max(min(calc(0px + (30px - 0px) * ((100vw - 320px) / (1024px - 320px))), 30px), calc(30px + (324px - 30px) * ((100vw - 1024px) / (1920px - 1024px)))), 324px)',
+              // Width: scales from 115px at 320px to 194px at 1920px (benchmark)
+              width: 'clamp(115px, calc(115px + (194px - 115px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+              // Height: scales from 115px at 320px to 194px at 1920px (benchmark)
+              height: 'clamp(115px, calc(115px + (194px - 115px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
               borderRadius: '50%',
               objectFit: 'cover',
             }}
