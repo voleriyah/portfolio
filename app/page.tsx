@@ -13,9 +13,9 @@ export default function Home() {
     <main className="min-h-screen bg-cream">
       {/* Hero Section - Height based on content, positioned below header */}
       <section 
-        className="w-full bg-dark-bg flex items-end md:items-center justify-center relative h-[100dvh] pb-[env(safe-area-inset-bottom)]"
+        className="w-full bg-dark-bg flex items-end md:items-center justify-center relative h-[100dvh] pb-[env(safe-area-inset-bottom)] overflow-x-clip"
       >
-        <div className="max-w-[1692px] w-full mx-auto relative h-full flex flex-col">
+        <div className="max-w-[1692px] w-full mx-auto relative h-full flex flex-col overflow-x-clip">
           <div className="w-full flex flex-col md:flex-row items-end md:items-center justify-center md:justify-end flex-1">
           <div 
             className="flex flex-col justify-end md:justify-center items-center flex-shrink-0 w-full md:w-auto h-full"
@@ -33,7 +33,7 @@ export default function Home() {
             }}
           >
             {/* Mobile Photo Gallery - Above title, no overlap */}
-            <div className="block md:hidden relative w-full flex-1" style={{ minWidth: '290px' }}>
+            <div className="block md:hidden relative w-full flex-1 overflow-x-clip" style={{ width: '100%', height: '100%' }}>
               {/* Photo 1 - Top-left */}
               <Image
                 src="/images/avatar1.png"
@@ -42,10 +42,12 @@ export default function Home() {
                 height={178}
                 className="absolute pointer-events-none z-20"
                 style={{
-                  top: '20px',
-                  left: '20px',
-                  width: '80px',
-                  height: '80px',
+                  // Responsive positioning: using vw units for better mobile scaling
+                  top: 'clamp(2vw, 5.13vw, 20px)',
+                  left: 'clamp(2vw, 5.13vw, 20px)',
+                  // Responsive sizing: using vw units for proportional scaling
+                  width: 'clamp(16vw, 20.5vw, 24vw)',
+                  height: 'clamp(16vw, 20.5vw, 24vw)',
                   borderRadius: '27px',
                   objectFit: 'cover',
                 }}
@@ -58,11 +60,13 @@ export default function Home() {
                 height={182}
                 className="absolute pointer-events-none z-20"
                 style={{
+                  // Centered vertically and horizontally
                   top: '50%',
                   left: '50%',
                   transform: 'translate(-50%, -50%)',
-                  width: '75px',
-                  height: '75px',
+                  // Responsive sizing: using vw units for proportional scaling
+                  width: 'clamp(15vw, 19.23vw, 22vw)',
+                  height: 'clamp(15vw, 19.23vw, 22vw)',
                   borderRadius: '43px',
                   objectFit: 'cover',
                 }}
@@ -75,10 +79,12 @@ export default function Home() {
                 height={194}
                 className="absolute pointer-events-none z-20"
                 style={{
-                  bottom: '20px',
-                  right: '20px',
-                  width: '83.33px',
-                  height: '83.33px',
+                  // Responsive positioning: using vw units for better mobile scaling
+                  bottom: 'clamp(2vw, 5.13vw, 20px)',
+                  right: 'clamp(2vw, 5.13vw, 20px)',
+                  // Responsive sizing: using vw units for proportional scaling
+                  width: 'clamp(18vw, 21.37vw, 25vw)',
+                  height: 'clamp(18vw, 21.37vw, 25vw)',
                   borderRadius: '50%',
                   objectFit: 'cover',
                 }}
