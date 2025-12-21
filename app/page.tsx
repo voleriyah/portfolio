@@ -13,18 +13,16 @@ export default function Home() {
     <main className="min-h-screen bg-cream">
       {/* Hero Section - Height based on content, positioned below header */}
       <section 
-        className="w-full bg-dark-bg flex items-end md:items-center justify-center relative h-[100dvh] pb-[env(safe-area-inset-bottom)] overflow-x-clip"
+        className="w-full bg-dark-bg flex items-end md:items-center justify-center relative pb-[env(safe-area-inset-bottom)] overflow-x-clip"
       >
-        <div className="max-w-[1692px] w-full mx-auto relative h-full flex flex-col overflow-x-clip">
-          <div className="w-full flex flex-col md:flex-row items-end md:items-center justify-center md:justify-end flex-1">
+        <div className="max-w-[1692px] w-full mx-auto relative flex flex-col overflow-x-clip">
+          <div className="w-full flex flex-col md:flex-row items-end md:items-center justify-center md:justify-end">
           <div 
-            className="flex flex-col justify-end md:justify-center items-center flex-shrink-0 w-full md:w-auto h-full"
+            className="flex flex-col justify-end md:justify-center items-center flex-shrink-0 w-full md:w-auto"
             style={{
               display: 'flex',
               // Responsive width: 100% on small screens (iPhone SE 320px, iPhone SE 375px), scales to 1053px at 1920px
               width: 'clamp(320px, 100%, 1053px)',
-              // Mobile: full height to fill available space, scales on larger screens
-              height: '100%',
               minHeight: 'auto',
               flexDirection: 'column',
               alignItems: 'center',
