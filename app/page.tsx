@@ -4,6 +4,7 @@ import Image from 'next/image';
 import ExpertiseBlock from '@/components/ExpertiseBlock';
 import AnimatedContainerLine from '@/components/AnimatedContainerLine';
 import AnimatedGasfisHeader from '@/components/AnimatedGasfisHeader';
+import CaseCard from '@/components/CaseCard';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -394,6 +395,7 @@ export default function Home() {
 
       {/* Cases Section */}
       <section id="cases-section" className="w-full bg-dark-brown relative">
+        {/* Title Block */}
         <div 
           className="w-full mx-auto"
           style={{
@@ -402,19 +404,50 @@ export default function Home() {
           }}
         >
           <AnimatedGasfisHeader />
-          
-          {/* Content Wrapper */}
-          <div 
-            className="w-full mx-auto"
+        </div>
+        
+        {/* Case Block Wrapper - Below title block */}
+        <div 
+          className="w-full mx-auto relative flex items-center justify-start"
+          style={{
+            // Width: 100% on mobile, max 1692px at 1920px (benchmark)
+            maxWidth: '1692px',
+            // Margin top: scales from 40px (mobile) to 200px (1920px)
+            marginTop: 'clamp(40px, calc(40px + (200px - 40px) * ((100vw - 320px) / (1920px - 320px))), 200px)',
+            // Padding: scales from mobile to desktop values at 1920px
+            paddingTop: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+            paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+          }}
+        >
+          {/* iPhone Image - Desktop only, positioned on top of case card */}
+          <Image
+            src="/images/bcc-screen.png"
+            alt="iPhone screen"
+            width={1920}
+            height={391}
+            className="hidden lg:block absolute pointer-events-none z-10"
             style={{
-              // Width: 100% on mobile, max 1692px at 1920px (benchmark)
-              maxWidth: '1692px',
-              // Height: scales from 80px at 320px to 190px at 1920px (benchmark)
-              height: 'clamp(80px, calc(80px + (190px - 80px) * ((100vw - 320px) / (1920px - 320px))), 190px)',
+              width: '356px',
+              height: '720px',
+              flexShrink: 0,
+              left: '594px',
+              top: '50%',
+              transform: 'translateY(-50%)',
             }}
-          >
-            {/* Cases content can be added here */}
-          </div>
+          />
+          
+          <CaseCard
+            size="large"
+            title="End-to-End Transformation of discovery process"
+            description="0 → 1 Design & research expertise integration across orgs enabled by Retail App Redesign"
+            buttonText="Read the case"
+            imageSrc="/images/bcc-screen.png"
+            imageAlt="Case study - Retail App Redesign"
+            phoneImageAlt="iPhone screen"
+            onButtonClick={() => {}}
+          />
         </div>
       </section>
     </main>

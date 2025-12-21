@@ -61,7 +61,7 @@ const AnimatedGasfisHeader = () => {
           transform: 'translate(-50%, -50%)',
      
           // Font size: scales from 72px at 320px to 316px at 1920px (benchmark)
-          fontSize: 'clamp(72px, calc(72px + (316px - 72px) * ((100vw - 320px) / (1920px - 320px))), 316px)',
+          fontSize: 'clamp(68px, calc(60px + (316px - 60px) * ((100vw - 320px) / (1920px - 320px))), 316px)',
           // Letter spacing: scales from 21.6px at 320px to 94.8px at 1920px (benchmark) - proportional to font size
           letterSpacing: 'clamp(21.6px, calc(21.6px + (94.8px - 21.6px) * ((100vw - 320px) / (1920px - 320px))), 94.8px)',
           //textAlign: 'justify',
