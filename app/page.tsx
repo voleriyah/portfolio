@@ -32,51 +32,18 @@ export default function Home() {
               boxSizing: 'border-box',
             }}
           >
-            {/* Mobile Photo Gallery - Above title, no overlap */}
+            {/* Mobile Photo Gallery - Combined image */}
             <div className="block md:hidden relative w-full flex-1 overflow-x-clip" style={{ width: '100%', height: '100%' }}>
-              {/* Photo 1 - Top-left */}
               <Image
-                src="/images/avatar1.png"
-                alt="Avatar 1"
-                width={178}
-                height={178}
-                className="absolute top-[120px] md:top-[200px] left-[30px] md:left-0 pointer-events-none z-20"
+                src="/images/avatars-combined.png"
+                alt="Avatars combined"
+                width={500}
+                height={500}
+                className="absolute pointer-events-none z-20"
                 style={{
-                  // Responsive sizing: using vw units for proportional scaling
-                  width: 'clamp(16vw, 20.5vw, 24vw)',
-                  height: 'clamp(16vw, 20.5vw, 24vw)',
-                  borderRadius: '27px',
-                  objectFit: 'cover',
-                }}
-              />
-              {/* Photo 2 - Middle */}
-              <Image
-                src="/images/avatar2.png"
-                alt="Avatar 2"
-                width={182}
-                height={182}
-                className="absolute top-[280px] left-1/2 -translate-x-1/2 md:translate-x-0 pointer-events-none z-20"
-                style={{
-                  // Responsive sizing: using vw units for proportional scaling
-                  width: 'clamp(15vw, 19.23vw, 22vw)',
-                  height: 'clamp(15vw, 19.23vw, 22vw)',
-                  borderRadius: '43px',
-                  objectFit: 'cover',
-                }}
-              />
-              {/* Photo 3 - Lower-right */}
-              <Image
-                src="/images/avatar3.png"
-                alt="Avatar 3"
-                width={194}
-                height={194}
-                className="absolute bottom-[280px] md:bottom-[200px] right-[30px] md:right-0 pointer-events-none z-20"
-                style={{
-                  // Responsive sizing: using vw units for proportional scaling
-                  width: 'clamp(18vw, 21.37vw, 25vw)',
-                  height: 'clamp(18vw, 21.37vw, 25vw)',
-                  borderRadius: '50%',
-                  objectFit: 'cover',
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
                 }}
               />
             </div>
