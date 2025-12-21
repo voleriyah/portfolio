@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import ExpertiseBlock from '@/components/ExpertiseBlock';
 import AnimatedContainerLine from '@/components/AnimatedContainerLine';
+import AnimatedGasfisHeader from '@/components/AnimatedGasfisHeader';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -387,6 +388,32 @@ export default function Home() {
               <li>Fractional design leadership</li>
             </ol>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Cases Section */}
+      <section id="cases-section" className="w-full bg-dark-brown relative">
+        <div 
+          className="w-full mx-auto"
+          style={{
+            // Width: 100% on mobile, max 1692px at 1920px (benchmark)
+            maxWidth: '1692px',
+          }}
+        >
+          <AnimatedGasfisHeader />
+          
+          {/* Content Wrapper */}
+          <div 
+            className="w-full mx-auto"
+            style={{
+              // Width: 100% on mobile, max 1692px at 1920px (benchmark)
+              maxWidth: '1692px',
+              // Height: scales from 80px at 320px to 190px at 1920px (benchmark)
+              height: 'clamp(80px, calc(80px + (190px - 80px) * ((100vw - 320px) / (1920px - 320px))), 190px)',
+            }}
+          >
+            {/* Cases content can be added here */}
           </div>
         </div>
       </section>
