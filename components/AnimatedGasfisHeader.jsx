@@ -4,13 +4,33 @@ import React, { useEffect, useState } from 'react';
 
 const AnimatedGasfisHeader = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isSkewed, setIsSkewed] = useState(false);
+  const containerRef = React.useRef(null);
 
   useEffect(() => {
-    setIsVisible(true);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Запускаем наклон белой полосы через 0.8s после появления полос
+          setTimeout(() => {
+            setIsSkewed(true);
+          }, 800);
+        }
+      },
+      { threshold: 0.2 } // Запускаем когда 20% блока видно
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   return (
     <div 
+      ref={containerRef}
       className="relative w-full max-w-[1692px] bg-[#342927] overflow-visible mx-auto"
       style={{
         // Height: scales from 200px (mobile) to 548px (1920px)
@@ -31,8 +51,8 @@ const AnimatedGasfisHeader = () => {
               className={`
                 relative w-[clamp(16px,4.3vw,72px)]
                 ${isHighlight 
-                  ? 'bg-gradient-to-br from-[#f5f0e8] to-[#ebe5dc]' 
-                  : 'bg-[#F13729]'
+                  ? 'bg-cream' 
+                  : 'bg-primary-red'
                 }
               `}
               style={{
@@ -40,9 +60,11 @@ const AnimatedGasfisHeader = () => {
                 transformOrigin: 'top',
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible 
-                  ? `translateY(0) scaleY(1) ${isHighlight ? 'skewX(5deg)' : ''}`
-                  : 'translateY(-100%) scaleY(0)',
-                transition: `all 0.8s ease-out ${index * 0.05}s`,
+                ? `scaleY(1) ${isHighlight ? (isSkewed ? 'skewX(5deg)' : 'skewX(0deg)') : ''}`
+                : 'scaleY(0)',
+              transition: isHighlight 
+                ? 'opacity 0.8s ease-out, transform 0.8s ease-out'
+                : 'all 0.8s ease-out',
                 zIndex: index % 2 === 0 ? 20 : 5, // Четные перекрывают, нечетные под заголовком
               }}
             />
@@ -57,7 +79,7 @@ const AnimatedGasfisHeader = () => {
           font-normal text-[#FFF8E9]
           uppercase z-10
           transition-all duration-1000 delay-[800ms]
-          top-[65%] lg:top-[98%]
+          top-[65%] lg:top-[99%]
           ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}
         `}
         style={{
@@ -65,6 +87,7 @@ const AnimatedGasfisHeader = () => {
           fontWeight: 400,
           //top: 'clamp(26%, 4vw + 22%, 98%)',
           transform: 'translate(-50%, -50%)',
+          overflowX: 'hidden',
      
           // Font size: scales from 72px at 320px to 316px at 1920px (benchmark)
           fontSize: 'clamp(68px, calc(60px + (316px - 60px) * ((100vw - 320px) / (1920px - 320px))), 316px)',

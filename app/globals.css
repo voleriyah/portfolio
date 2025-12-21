@@ -8,6 +8,10 @@
   --main-medium-gray: #342927;
 }
 
+body {
+  overflow-x: hidden !important;
+} 
+
 /* Expertise title image wrapper - align right on desktop */
 @media (min-width: 768px) {
   .expertise-title-image-wrapper {
