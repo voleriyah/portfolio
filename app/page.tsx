@@ -418,6 +418,7 @@ export default function Home() {
             paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
             paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
             paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            marginRight: 'clamp(24px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
           }}
         >
 

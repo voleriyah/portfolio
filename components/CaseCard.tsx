@@ -83,7 +83,7 @@ export default function CaseCard({
       className={`relative flex flex-col items-start ${className}`}
       style={{
         // Width: scales from 358px (mobile) to 994px (1920px)
-        width: 'clamp(358px, calc(336px + (994px - 336px) * ((100vw - 320px) / (1920px - 320px))), 994px)',
+        width: 'clamp(358px, calc(358px + (994px - 358px) * ((100vw - 320px) / (1920px - 320px))), 994px; width: 100%; max-width:994px)',
         // Height: scales from auto (mobile) to 460px (1920px)
         height: 'clamp(auto, calc(400px + (460px - 400px) * ((100vw - 320px) / (1920px - 320px))), 460px)',
         minHeight: 'clamp(400px, calc(400px + (460px - 400px) * ((100vw - 320px) / (1920px - 320px))), 460px)',
@@ -119,7 +119,7 @@ export default function CaseCard({
       <h3
         style={{
           // Max-width: 300px at 1920px desktop (fixed to avoid iPhone image intersection), full width on mobile
-          maxWidth: 'clamp(100%, calc(100% + (300px - 100%) * ((100vw - 320px) / (1920px - 320px))), 300px)',
+          maxWidth: 'clamp(480px, calc(100% + (300px - 100%) * ((100vw - 320px) / (1920px - 320px))), 300px)',
           alignSelf: 'stretch',
           color: 'var(--main-white, #FFF8E9)',
           fontFamily: '"Alegreya Sans"',
@@ -138,7 +138,7 @@ export default function CaseCard({
       <p
         style={{
           // Max-width: 300px at 1920px desktop (fixed to avoid iPhone image intersection), full width on mobile
-          maxWidth: 'clamp(100%, calc(100% + (300px - 100%) * ((100vw - 320px) / (1920px - 320px))), 300px)',
+          maxWidth: 'clamp(480px, calc(100% + (300px - 100%) * ((100vw - 320px) / (1920px - 320px))), 300px)',
           color: 'var(--main-white, #FFF8E9)',
           textAlign: 'left',
           fontFamily: '"Alegreya Sans"',
