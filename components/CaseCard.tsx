@@ -8,6 +8,7 @@ interface CaseCardProps {
   size?: 'large' | 'small';
   title: string;
   description: string;
+  tags?: string; // Hashtags or tags text above the card
   imageSrc?: string;
   imageAlt?: string;
   phoneImageSrc?: string;
@@ -21,6 +22,7 @@ export default function CaseCard({
   size = 'large',
   title,
   description,
+  tags,
   imageSrc,
   imageAlt = 'Case image',
   phoneImageSrc,
@@ -45,11 +47,43 @@ export default function CaseCard({
   }, []);
 
   return (
-    <div
+    <div className={`flex flex-col items-start ${className}`}>
+      {/* Tags text - Above the card */}
+      {tags && (
+        <div
+          style={{
+            //width: '300px',
+            maxWidth: 'clamp(100%, calc(100% + (300px - 100%) * ((100vw - 320px) / (1920px - 320px))), 300px)',
+            marginBottom: '32px',
+            // Right margin: 16px on mobile, scales to 0px on desktop
+            marginRight: 'clamp(16px, calc(16px + (0px - 16px) * ((100vw - 320px) / (1920px - 320px))), 0px)',
+          }}
+        >
+          <p
+            className="font-bold lg:font-extrabold"
+            style={{
+              color: '#FFF8E9',
+              fontFamily: '"Alegreya Sans"',
+              // Font size: scales from 18px (mobile) to 24px (1920px)
+              fontSize: 'clamp(18px, calc(18px + (24px - 18px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
+              fontStyle: 'normal',
+              lineHeight: 'normal',
+              // Letter spacing: scales from -0.18px (mobile) to -0.24px (1920px)
+              letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.24px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.24px)',
+              whiteSpace: 'pre-line',
+            }}
+          >
+            {tags}
+          </p>
+        </div>
+      )}
+
+      {/* Card Container */}
+      <div
       className={`relative flex flex-col items-start ${className}`}
       style={{
         // Width: scales from 358px (mobile) to 994px (1920px)
-        width: 'clamp(358px, calc(358px + (994px - 358px) * ((100vw - 320px) / (1920px - 320px))), 994px)',
+        width: 'clamp(358px, calc(336px + (994px - 336px) * ((100vw - 320px) / (1920px - 320px))), 994px)',
         // Height: scales from auto (mobile) to 460px (1920px)
         height: 'clamp(auto, calc(400px + (460px - 400px) * ((100vw - 320px) / (1920px - 320px))), 460px)',
         minHeight: 'clamp(400px, calc(400px + (460px - 400px) * ((100vw - 320px) / (1920px - 320px))), 460px)',
@@ -160,6 +194,7 @@ export default function CaseCard({
           />
         </div>
       )}
+      </div>
     </div>
   );
 }
