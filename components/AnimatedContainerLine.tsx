@@ -70,8 +70,6 @@ export default function AnimatedContainerLine({
         className="absolute left-1/2 w-4 h-4"
         style={{
           backgroundColor: color,
-        }}
-        style={{
           transform: 'translateX(-50%) rotate(45deg)',
         }}
         initial={{ top: 0, opacity: 0 }}
