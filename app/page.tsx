@@ -33,12 +33,12 @@ export default function Home() {
             }}
           >
             {/* Mobile Photo Gallery - Combined image */}
-            <div className="block md:hidden relative w-full overflow-x-clip" style={{ width: '100%', height: '362px' }}>
+            <div className="block md:hidden relative w-full overflow-x-clip" style={{ width: '100%', height: '332px' }}>
               <Image
-                src="/images/avatars-combined.png"
+                src="/images/avatars-mobile2.png"
                 alt="Avatars combined"
                 width={500}
-                height={500}
+                height={332}
                 className="absolute pointer-events-none z-20"
                 style={{
                   width: '100%',
