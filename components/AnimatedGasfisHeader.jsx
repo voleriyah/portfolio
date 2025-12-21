@@ -115,6 +115,13 @@ const AnimatedGasfisHeader = () => {
      .relative.w-\\[clamp\\(16px\\,4\\.3vw\\,72px\\)\\] {
        transition: --skew-angle 1132ms cubic-bezier(0.68, -0.55, 0.265, 1.55) 580ms !important;
      }
+
+     @media (min-width: 1024px) {
+  .header-container {
+    height: 548px;
+    margin-bottom: 100px !important;  // Добавь отступ снизу
+  }
+}
    `}</style>
     </div>
 

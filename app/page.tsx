@@ -409,7 +409,7 @@ export default function Home() {
         
         {/* Case Block Wrapper - Below title block */}
         <div 
-          className="w-full mx-auto relative flex items-center justify-start"
+          className="w-full mx-auto relative flex items-center justify-start mt-32 lg:mt-48"
           style={{
             // Width: 100% on mobile, max 1692px at 1920px (benchmark)
             maxWidth: '1692px',
@@ -418,7 +418,6 @@ export default function Home() {
             paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
             paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
             paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            marginRight: 'clamp(24px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
           }}
         >
 
