@@ -15,10 +15,10 @@ const AnimatedGasfisHeader = () => {
           // Запускаем наклон белой полосы через 0.8s после появления полос
           setTimeout(() => {
             setIsSkewed(true);
-          }, 800);
+          }, 780);
         }
       },
-      { threshold: 0.2 } // Запускаем когда 20% блока видно
+      { threshold: 0.7 } // Запускаем когда 20% блока видно
     );
 
     if (containerRef.current) {
@@ -59,12 +59,11 @@ const AnimatedGasfisHeader = () => {
                 height: isHighlight ? 'clamp(90px, 20.5vw, 347px)' : `clamp(${index % 2 === 0 ? '138px' : '124px'}, ${index % 2 === 0 ? '32.4vw' : '29.6vw'}, ${height}px)`,
                 transformOrigin: 'top',
                 opacity: isVisible ? 1 : 0,
-                transform: isVisible 
-                ? `scaleY(1) ${isHighlight ? (isSkewed ? 'skewX(5deg)' : 'skewX(0deg)') : ''}`
-                : 'scaleY(0)',
+                '--skew-angle': isHighlight ? (isSkewed ? '5deg' : '0deg') : '0deg',
+                transform: `scaleY(${isVisible ? 1 : 0}) skewX(var(--skew-angle))`,
               transition: isHighlight 
-                ? 'opacity 0.8s ease-out, transform 0.8s ease-out'
-                : 'all 0.8s ease-out',
+                ? 'opacity 580ms cubic-bezier(0.34, 1.56, 0.64, 1), transform 580ms cubic-bezier(0.34, 1.56, 0.64, 1)'
+                  : 'all 580ms cubic-bezier(0.34, 1.56, 0.64, 1)',
                 zIndex: index % 2 === 0 ? 20 : 5, // Четные перекрывают, нечетные под заголовком
               }}
             />
@@ -105,8 +104,23 @@ const AnimatedGasfisHeader = () => {
         href="https://fonts.googleapis.com/css2?family=Erica+One&display=swap"
         rel="stylesheet"
       />
+        <style jsx>{`
+    /* Анимация skew для белой полосы */
+     @property --skew-angle {
+       syntax: '<angle>';
+       initial-value: 0deg;
+       inherits: false;
+     }
+     
+     .relative.w-\\[clamp\\(16px\\,4\\.3vw\\,72px\\)\\] {
+       transition: --skew-angle 1132ms cubic-bezier(0.68, -0.55, 0.265, 1.55) 580ms !important;
+     }
+   `}</style>
     </div>
+
   );
+
+
 };
 
 export default AnimatedGasfisHeader;

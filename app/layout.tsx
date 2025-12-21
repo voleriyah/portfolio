@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${alegreyaSans.variable} ${ericaOne.variable} antialiased`}
+        className={`${alegreyaSans.variable} ${ericaOne.variable} antialiased overflow-x-hidden` } style={{ overflowX: 'hidden' }}
       >
         <Header />
         {children}
