@@ -10,7 +10,13 @@ const AnimatedGasfisHeader = () => {
   }, []);
 
   return (
-    <div className="relative w-full max-w-[1692px] h-[548px] bg-[#342927] overflow-visible mx-auto">
+    <div 
+      className="relative w-full max-w-[1692px] bg-[#342927] overflow-visible mx-auto"
+      style={{
+        // Height: scales from 200px (mobile) to 548px (1920px)
+        height: 'clamp(200px, calc(200px + (548px - 200px) * ((100vw - 320px) / (1920px - 320px))), 548px)',
+      }}
+    >
       {/* Контейнер с полосами */}
       <div className="absolute inset-0 flex gap-[clamp(10px,2.7vw,45px)] items-start justify-center">
         {[...Array(15)].map((_, index) => {
@@ -51,7 +57,7 @@ const AnimatedGasfisHeader = () => {
           font-normal text-[#FFF8E9]
           uppercase z-10
           transition-all duration-1000 delay-[800ms]
-          top-[26%] lg:top-[98%]
+          top-[65%] lg:top-[98%]
           ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}
         `}
         style={{
