@@ -40,11 +40,8 @@ export default function Home() {
                 alt="Avatar 1"
                 width={178}
                 height={178}
-                className="absolute pointer-events-none z-20"
+                className="absolute top-[120px] md:top-[200px] left-[30px] md:left-0 pointer-events-none z-20"
                 style={{
-                  // Responsive positioning: using vw units for better mobile scaling
-                  top: 'clamp(2vw, 5.13vw, 20px)',
-                  left: 'clamp(2vw, 5.13vw, 20px)',
                   // Responsive sizing: using vw units for proportional scaling
                   width: 'clamp(16vw, 20.5vw, 24vw)',
                   height: 'clamp(16vw, 20.5vw, 24vw)',
@@ -58,12 +55,8 @@ export default function Home() {
                 alt="Avatar 2"
                 width={182}
                 height={182}
-                className="absolute pointer-events-none z-20"
+                className="absolute top-[280px] left-1/2 -translate-x-1/2 md:translate-x-0 pointer-events-none z-20"
                 style={{
-                  // Centered vertically and horizontally
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
                   // Responsive sizing: using vw units for proportional scaling
                   width: 'clamp(15vw, 19.23vw, 22vw)',
                   height: 'clamp(15vw, 19.23vw, 22vw)',
@@ -77,11 +70,8 @@ export default function Home() {
                 alt="Avatar 3"
                 width={194}
                 height={194}
-                className="absolute pointer-events-none z-20"
+                className="absolute bottom-[280px] md:bottom-[200px] right-[30px] md:right-0 pointer-events-none z-20"
                 style={{
-                  // Responsive positioning: using vw units for better mobile scaling
-                  bottom: 'clamp(2vw, 5.13vw, 20px)',
-                  right: 'clamp(2vw, 5.13vw, 20px)',
                   // Responsive sizing: using vw units for proportional scaling
                   width: 'clamp(18vw, 21.37vw, 25vw)',
                   height: 'clamp(18vw, 21.37vw, 25vw)',
