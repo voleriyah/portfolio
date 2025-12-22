@@ -46,3 +46,8 @@ html {
     display: block !important;
   }
 }
+
+/* Motto section animated line - override left positioning */
+.motto-line-container > div[class*="absolute"] {
+  left: 0 !important;
+}

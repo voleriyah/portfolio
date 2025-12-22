@@ -58,34 +58,25 @@ export default function CaseCard({
     <div className={`flex flex-col items-start relative ${className}`}>
       {/* Desktop Image - Visible only on desktop (>=1024px) */}
       {desktopImageSrc && (
-        <>
-          <Image
-            src={desktopImageSrc}
-            alt={desktopImageAlt}
-            width={1920}
-            height={391}
-            className="desktop-case-img absolute pointer-events-none z-10"
-            style={{
-              width: '356px',
-              height: '720px',
-              flexShrink: 0,
-              left: '594px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              ...desktopImageStyle,
-            }}
-          />
-          <style jsx>{`
-            .desktop-case-img {
-              display: none !important;
-            }
-            @media (min-width: 1024px) {
-              .desktop-case-img {
-                display: block !important;
-              }
-            }
-          `}</style>
-        </>
+        <Image
+          src={desktopImageSrc}
+          alt={desktopImageAlt}
+          width={1920}
+          height={391}
+          className="absolute pointer-events-none z-10"
+          priority={false}
+          suppressHydrationWarning
+          style={{
+            display: isDesktop === true ? 'block' : 'none',
+            width: '356px',
+            height: '720px',
+            flexShrink: 0,
+            left: '594px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            ...desktopImageStyle,
+          }}
+        />
       )}
       
       {/* Tags text - Above the card */}

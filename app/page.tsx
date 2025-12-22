@@ -507,6 +507,103 @@ export default function Home() {
           />
         </div>
       </section>
+
+      {/* Motto Section */}
+      <section className="w-full bg-cream py-16 md:py-24 lg:py-32 relative" style={{ paddingTop: '0px' }}>
+        <div 
+          className="w-full mx-auto px-4 md:px-6 lg:px-8 relative"
+          style={{
+            maxWidth: '1692px',
+            paddingTop: '400px',
+            paddingBottom: '400px',
+          }}
+        >
+          {/* Animated Line - Positioned 300px from right on desktop, responsive */}
+          <div
+            className="absolute top-0 pointer-events-none z-10"
+            style={{
+              height: '100%',
+              right: 'clamp(16px, calc(16px + (300px - 16px) * ((100vw - 320px) / (1920px - 320px))), 300px)',
+            }}
+          >
+            <div className="motto-line-container" style={{ position: 'relative', width: '3px', height: '28%', top:'0' }}>
+              <AnimatedContainerLine position="right" showCaption={false} diamondStopAt="bottom" />
+            </div>
+          </div>
+
+          {/* Desktop version (>=768px) */}
+          <p
+            className="hidden md:block"
+            style={{
+              color: 'var(--main-medium-gray, #342927)',
+              textAlign: 'center',
+              fontFamily: '"Alegreya Sans"',
+              fontSize: 'clamp(43px, calc(43px + (128px - 43px) * ((100vw - 320px) / (1920px - 320px))), 128px)',
+              fontStyle: 'normal',
+              fontWeight: 800,
+              lineHeight: 'normal',
+              letterSpacing: 'clamp(-0.43px, calc(-0.43px + (-1.28px - -0.43px) * ((100vw - 320px) / (1920px - 320px))), -1.28px)',
+              textTransform: 'uppercase',
+            }}
+          >
+            I TURN{' '}
+            <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>DESIGN</span>
+            {' '}INTO<br />
+            A STRATEGIC{' '}
+            <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>LEVER</span>
+            <br />
+            ACROSS TEAMS AND PRODUCTS<br />
+            THROUGH{' '}
+            <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>CLEAR VISION</span>
+            {' '}&<br />
+            RESEARCH OUTCOME
+          </p>
+
+          {/* Mobile version (<768px) */}
+          <p
+            className="block md:hidden"
+            style={{
+              color: 'var(--main-medium-gray, #342927)',
+              textAlign: 'center',
+              fontFamily: '"Alegreya Sans"',
+              fontSize: '43px',
+              fontStyle: 'normal',
+              fontWeight: 800,
+              lineHeight: 'normal',
+              letterSpacing: '-0.43px',
+              textTransform: 'uppercase',
+            }}
+          >
+            I TURN{' '}
+            <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>DESIGN</span>
+            <br />
+            INTO A STRATEGIC<br />
+            <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>LEVER</span>
+            <br />
+            ACROSS TEAMS<br />
+            AND PRODUCTS<br />
+            THROUGH<br />
+            <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>CLEAR VISION</span>{' '}
+            <span style={{ color: 'var(--main-medium-gray, #342927)', fontStyle: 'italic' }}>&</span>
+            <br />
+            RESEARCH<br />
+            <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>OUTCOME</span>
+          </p>
+        </div>
+        <div
+            className="absolute bottom-0 pointer-events-none z-10"
+            style={{
+              height: '100%',
+              left: 'clamp(16px, calc(16px + (300px - 16px) * ((100vw - 320px) / (1920px - 320px))), 300px)',
+              top: '70%',
+            }}
+          >
+            <div className="motto-line-container" style={{ position: 'relative', width: '3px', height: '30%', bottom:'0' }}>
+              <AnimatedContainerLine position="left" showCaption={false} diamondStopAt="bottom" />
+            </div>
+          </div>
+
+      </section>
     </main>
   );
 }
