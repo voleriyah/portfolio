@@ -6,6 +6,7 @@ import AnimatedContainerLine from '@/components/AnimatedContainerLine';
 import AnimatedGasfisHeader from '@/components/AnimatedGasfisHeader';
 import CaseCard from '@/components/CaseCard';
 import ValueListItem from '@/components/ValueListItem';
+import CustomLink from '@/components/CustomLink';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -609,6 +610,7 @@ export default function Home() {
       {/* Values Section */}
       <section className="w-full bg-cream py-16 md:py-24 lg:py-32">
         
+        
         <div
           className="w-full mx-auto px-4 md:px-6 lg:px-8"
           style={{
@@ -668,6 +670,62 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Footer Section */}
+      <footer className="w-full bg-dark-bg">
+  <div
+    className="w-full mx-auto flex flex-col md:flex-row md:flex-row-reverse"
+    style={{
+      maxWidth: '1692px',
+    }}
+  >
+    {/* Title and Links - вверху на мобиле, слева на десктопе */}
+    <div
+      className="w-full md:w-1/2 flex flex-col justify-start"
+      style={{
+        paddingTop: 'clamp(40px, calc(40px + (260px - 40px) * ((100vw - 320px) / (1920px - 320px))), 260px)',
+        paddingLeft: 'clamp(16px, calc(16px + (64px - 16px) * ((100vw - 320px) / (1920px - 320px))), 64px)',
+        paddingRight: 'clamp(16px, calc(16px + (64px - 16px) * ((100vw - 320px) / (1920px - 320px))), 64px)',
+        paddingBottom: 'clamp(40px, calc(40px + (64px - 40px) * ((100vw - 320px) / (1920px - 320px))), 64px)',
+        gap: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)',
+      }}
+    >
+      <h2
+        style={{
+          color: '#FFF8E9',
+          fontFamily: '"Erica One", cursive',
+          fontSize: 'clamp(32px, calc(32px + (116px - 32px) * ((100vw - 320px) / (1920px - 320px))), 116px)',
+          fontWeight: 400,
+          textTransform: 'uppercase',
+          lineHeight: 'normal',
+        }}
+      >
+        Let's connect
+      </h2>
+      
+      <div className="flex flex-col items-start" style={{ gap: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+        <CustomLink href="https://www.linkedin.com/in/voleriyah" iconType="linkedin" variant="footer">
+          Connect
+        </CustomLink>
+        <CustomLink href="mailto:voleriyah@example.com" iconType="email" variant="footer">
+          Write me
+        </CustomLink>
+      </div>
+    </div>
+
+    {/* Pattern Image - внизу на мобиле, справа на десктопе */}
+    <div className="w-full md:w-1/2 flex-shrink-0">
+      <Image
+        src="/images/pattern.svg"
+        alt="Pattern"
+        width={987}
+        height={974}
+        className="w-full h-auto"
+      />
+    </div>
+  </div>
+</footer>
+
     </main>
   );
 }
