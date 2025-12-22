@@ -22,7 +22,8 @@ const AnimatedGasfisHeader = () => {
         setScreenSize('laptop');
       } else if (width >= 768) {
         setScreenSize('tablet');
-      } else {
+      } 
+      else {
         setScreenSize('mobile');
       }
     };
@@ -114,7 +115,7 @@ const AnimatedGasfisHeader = () => {
           top: screenSize === 'xl' ? '100%' 
             : screenSize === 'desktop' ? '86%' 
             : screenSize === 'laptop-lg' ? '88%' 
-            : screenSize === 'laptop' ? '70%' 
+            : screenSize === 'laptop' ? '75%' 
             : screenSize === 'tablet' ? '56%' 
             : '40%',
         }}
