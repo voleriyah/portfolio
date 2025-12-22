@@ -81,7 +81,6 @@ export default function Header() {
               key={item.label}
               href={item.href}
               showExternalIcon={item.external}
-              fontSize="text-[16px] lg:text-[18px] xl:text-[20px]"
               className="whitespace-nowrap hover:text-cream transition-colors"
             >
               {item.label.toUpperCase()}
