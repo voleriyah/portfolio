@@ -421,23 +421,6 @@ export default function Home() {
           }}
         >
 
-          {/* iPhone Image - Desktop only, positioned on top of case card */}
-          <Image
-            src="/images/bcc-screen.png"
-            alt="iPhone screen"
-            width={1920}
-            height={391}
-            className="hidden lg:block absolute pointer-events-none z-10"
-            style={{
-              width: '356px',
-              height: '720px',
-              flexShrink: 0,
-              left: '594px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-            }}
-          />
-          
           <CaseCard
             size="large"
             title="End-to-End Transformation of discovery process"
@@ -446,7 +429,80 @@ export default function Home() {
             buttonText="Read the case"
             imageSrc="/images/bcc-screen.png"
             imageAlt="Case study - Retail App Redesign"
+
             phoneImageAlt="iPhone screen"
+            desktopImageSrc="/images/bcc-screen.png"
+            desktopImageAlt="iPhone screen"
+            desktopImageStyle={{
+              width: '356px',
+              height: '720px',
+            }}
+            onButtonClick={() => {}}
+          />
+        </div>
+{/* Second Case Block Wrapper */}
+<div 
+          className="w-full mx-auto relative flex items-center justify-start"
+          style={{
+            // Width: 100% on mobile, max 1692px at 1920px (benchmark)
+            maxWidth: '1692px',
+            // Padding: scales from mobile to desktop values at 1920px
+            paddingTop: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+            paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+          }}
+        >
+          <CaseCard
+            size="large"
+            title="In-House UX Research Lab Across Two Banks and an Acquisition"
+            description="Research governance establishment with eye-tracking Lab"
+            tags={`#ResearchOps \n#Change management`}
+            buttonText="Read the case"
+            imageSrc="/images/lab-image.png"
+            imageAlt="Case study - UX Research Lab"
+
+            phoneImageAlt="UX Research Lab"
+            desktopImageSrc="/images/lab-image.png"
+            desktopImageAlt="UX Research Lab"
+            desktopImageStyle={{
+              width: '632px',
+              height: '449px',
+            }}
+            onButtonClick={() => {}}
+          />
+        </div>
+
+        {/* Third Case Block Wrapper */}
+        <div 
+          className="w-full mx-auto relative flex items-center justify-start"
+          style={{
+            // Width: 100% on mobile, max 1692px at 1920px (benchmark)
+            maxWidth: '1692px',
+            // Padding: scales from mobile to desktop values at 1920px
+            paddingTop: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+            paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+          }}
+        >
+          <CaseCard
+            size="large"
+            title="Design system establishing & scaling"
+            description="Governance Engine and Strategic Infrastructure with sustaining ROI"
+            tags={`#Design governance \n#Change management`}
+            buttonText="Read the case"
+            imageSrc="/images/ds-image.png"
+            imageAlt="Case study - Design System"
+
+            phoneImageAlt="Design System"
+            desktopImageSrc="/images/ds-image.png"
+            desktopImageAlt="Design System"
+            desktopImageStyle={{
+              width: '632px',
+              height: '499px',
+              top: '40%',
+            }}
             onButtonClick={() => {}}
           />
         </div>

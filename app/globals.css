@@ -35,3 +35,14 @@ html {
     max-width: none;
   }
 }
+
+/* Desktop case images - hidden on mobile/tablet, visible on desktop only */
+.desktop-case-image {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  .desktop-case-image {
+    display: block !important;
+  }
+}
