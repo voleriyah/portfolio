@@ -72,7 +72,7 @@ const AnimatedGasfisHeader = () => {
                 ${isHighlight ? `white-stripe bg-[#FFF8E9] ${isSkewed ? 'animate-skew' : ''}` : 'bg-[#F13729]'}
               `}
               style={{
-                height: isHighlight ? 'clamp(90px, 20.5vw, 347px)' : `clamp(${index % 2 === 0 ? '138px' : '124px'}, ${index % 2 === 0 ? '32.4vw' : '29.6vw'}, ${height}px)`,
+                height: isHighlight ? 'clamp(110px, 20.5vw, 347px)' : `clamp(${index % 2 === 0 ? '188px' : '164px'}, ${index % 2 === 0 ? '32.4vw' : '29.6vw'}, ${height}px)`,
                 transformOrigin: 'top',
                 opacity: isVisible ? 1 : 0,
                 transform: `scaleY(${isVisible ? 1 : 0})`,
@@ -97,7 +97,7 @@ const AnimatedGasfisHeader = () => {
         style={{
           fontFamily: '"Erica One", cursive',
           fontWeight: 400,
-          top: screenSize === 'desktop' ? '450px' : screenSize === 'tablet' ? '250px' : '140px',
+          top: screenSize === 'desktop' ? '450px' : screenSize === 'tablet' ? '250px' : '190px',
           fontSize: 'clamp(68px, calc(60px + (316px - 60px) * ((100vw - 320px) / (1920px - 320px))), 316px)',
           letterSpacing: 'clamp(21.6px, calc(21.6px + (94.8px - 21.6px) * ((100vw - 320px) / (1920px - 320px))), 94.8px)',
           paddingLeft: 'clamp(12px, 5.6vw, 94.8px)',
