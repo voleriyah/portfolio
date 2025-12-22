@@ -5,6 +5,7 @@ import ExpertiseBlock from '@/components/ExpertiseBlock';
 import AnimatedContainerLine from '@/components/AnimatedContainerLine';
 import AnimatedGasfisHeader from '@/components/AnimatedGasfisHeader';
 import CaseCard from '@/components/CaseCard';
+import ValueListItem from '@/components/ValueListItem';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -603,6 +604,69 @@ export default function Home() {
             </div>
           </div>
 
+      </section>
+
+      {/* Values Section */}
+      <section className="w-full bg-cream py-16 md:py-24 lg:py-32">
+        
+        <div
+          className="w-full mx-auto px-4 md:px-6 lg:px-8"
+          style={{
+            maxWidth: '1692px',
+            padding: 'clamp(24px, calc(24px + (80px - 24px) * ((100vw - 320px) / (1920px - 320px))), 80px)',
+          }}
+        >
+          {/* Value List Items */}
+          <div
+            className="flex flex-col"
+            style={{
+              // Gap: 44px on mobile, scales to 100px (1920px desktop)
+              gap: 'clamp(44px, calc(44px + (100px - 44px) * ((100vw - 320px) / (1920px - 320px))), 100px)',
+            }}
+          >
+            <ValueListItem
+              number="1"
+              title="System first"
+              subtitle="Systems over fragments"
+              description="Designing decision-making, not isolated artifacts"
+            />
+
+            <ValueListItem
+              number="2"
+              title="Clarity win"
+              subtitle="Clear bets, not feature soup"
+              description=" Strategy is choosing what not to build"
+            />
+
+            <ValueListItem
+              number="3"
+              title="Power in ambiguity"
+              subtitle="Constraints as design material"
+              description="Regulation, scale and risk are inputs"
+            />
+
+            <ValueListItem
+              number="4"
+              title="Honesty"
+              subtitle="Honest feedback, low drama"
+              description="Clarity beats comfort in leadership"
+            />
+
+            <ValueListItem
+              number="5"
+              title="No heroism"
+              subtitle="Replace heroes with systems"
+              description="Sustainable teams shouldn't rely on individual endeavors"
+            />
+
+            <ValueListItem
+              number="6"
+              title="Prove me right"
+              subtitle="Evidence before ego"
+              description="Research, data, and reality over opinions"
+            />
+          </div>
+        </div>
       </section>
     </main>
   );
