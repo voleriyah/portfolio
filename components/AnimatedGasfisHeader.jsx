@@ -122,6 +122,15 @@ const AnimatedGasfisHeader = () => {
     margin-bottom: 100px !important;  // Добавь отступ снизу
   }
 }
+  /* Планшет */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .header-container {
+    height: 450px;  /* Между мобилкой и десктопом */
+  }
+  .cases-title {
+    top: 300px !important;
+  }
+}
    `}</style>
     </div>
 

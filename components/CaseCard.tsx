@@ -52,11 +52,10 @@ export default function CaseCard({
       {tags && (
         <div
           style={{
-            //width: '300px',
-            maxWidth: 'clamp(100%, calc(100% + (300px - 100%) * ((100vw - 320px) / (1920px - 320px))), 300px)',
+            maxWidth: 'clamp(100%, calc(100% + (300px - 100%) * ((100vw - 1024px) / (1920px - 1024px))), 300px)',
             marginBottom: '32px',
-            // Right margin: 16px on mobile, scales to 0px on desktop
-            marginRight: 'clamp(16px, calc(16px + (0px - 16px) * ((100vw - 320px) / (1920px - 320px))), 0px)',
+            // Right margin: 16px on mobile/tablet, scales to 0px on desktop
+            marginRight: 'clamp(16px, calc(16px + (0px - 16px) * ((100vw - 1024px) / (1920px - 1024px))), 0px)',
           }}
         >
           <p
@@ -80,37 +79,40 @@ export default function CaseCard({
 
       {/* Card Container */}
       <div
-      className={`relative flex flex-col items-start ${className}`}
-      style={{
-        // Width: scales from 358px (mobile) to 994px (1920px)
-        width: 'clamp(358px, calc(358px + (994px - 358px) * ((100vw - 320px) / (1920px - 320px))), 994px; width: 100%; max-width:994px)',
-        // Height: scales from auto (mobile) to 460px (1920px)
-        height: 'clamp(auto, calc(400px + (460px - 400px) * ((100vw - 320px) / (1920px - 320px))), 460px)',
-        minHeight: 'clamp(400px, calc(400px + (460px - 400px) * ((100vw - 320px) / (1920px - 320px))), 460px)',
-        // Padding: scales from 35px 24px (mobile) to 44px (1920px)
-        paddingTop: 'clamp(35px, calc(35px + (44px - 35px) * ((100vw - 320px) / (1920px - 320px))), 44px)',
-        paddingRight: 'clamp(24px, calc(24px + (44px - 24px) * ((100vw - 320px) / (1920px - 320px))), 44px)',
-        paddingBottom: 'clamp(35px, calc(35px + (44px - 35px) * ((100vw - 320px) / (1920px - 320px))), 44px)',
-        paddingLeft: 'clamp(24px, calc(24px + (44px - 24px) * ((100vw - 320px) / (1920px - 320px))), 44px)',
-        // Gap: scales from 32px (mobile) to 48px (1920px)
-        gap: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)',
-        border: '3px solid var(--main-red-accent, #F62F20)',
-      }}
-    >
-      {/* iPhone Image - Positioned on top of card - Hidden on desktop (1024px+) */}
+        className={`relative flex flex-col items-start ${className}`}
+        style={{
+          // Mobile & Tablet (<1024px): 100% width (small card), Desktop (>=1024px): scales from 358px to 994px (1920px)
+          width: 'clamp(100%, calc(100% + (358px - 100%) * ((100vw - 320px) / (1024px - 320px))), clamp(358px, calc(358px + (994px - 358px) * ((100vw - 1024px) / (1920px - 1024px))), 994px))',
+          maxWidth: '100%', // Prevent overflow on mobile/tablet
+          boxSizing: 'border-box',
+          // Height: small card on mobile/tablet, scales to large card on desktop
+          height: 'clamp(auto, calc(400px + (460px - 400px) * ((100vw - 1024px) / (1920px - 1024px))), 460px)',
+          minHeight: 'clamp(400px, calc(400px + (460px - 400px) * ((100vw - 1024px) / (1920px - 1024px))), 460px)',
+          // Padding: small card (35px 24px) on mobile/tablet, scales to large card (44px) on desktop
+          paddingTop: 'clamp(35px, calc(35px + (44px - 35px) * ((100vw - 1024px) / (1920px - 1024px))), 44px)',
+          paddingRight: 'clamp(24px, calc(24px + (44px - 24px) * ((100vw - 1024px) / (1920px - 1024px))), 44px)',
+          paddingBottom: 'clamp(35px, calc(35px + (44px - 35px) * ((100vw - 1024px) / (1920px - 1024px))), 44px)',
+          paddingLeft: 'clamp(24px, calc(24px + (44px - 24px) * ((100vw - 1024px) / (1920px - 1024px))), 44px)',
+          // Gap: small card (32px) on mobile/tablet, scales to large card (48px) on desktop
+          gap: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 1024px) / (1920px - 1024px))), 48px)',
+          border: '3px solid var(--main-red-accent, #F62F20)',
+        }}
+      >
+      {/* iPhone Image - Positioned on top of card - Visible on mobile/tablet (<1024px), hidden on desktop */}
       {phoneImageSrc && (
         <Image
           src={phoneImageSrc}
           alt={phoneImageAlt}
           width={300}
           height={600}
-          className="absolute pointer-events-none z-10 md:hidden"
+          className="absolute pointer-events-none z-10 lg:hidden"
           style={{
-            // Left position: scales from mobile to 594px at tablet
-            left: 'clamp(20px, calc(20px + (594px - 20px) * ((100vw - 320px) / (1024px - 320px))), 594px)',
-            top: '-100px', // Position on top of the card
+            // Left position: center on mobile/tablet
+            left: '50%',
+            top: 'clamp(-100px, calc(-100px + (-60px - -100px) * ((100vw - 320px) / (1024px - 320px))), -60px)',
+            transform: 'translateX(-50%)',
             width: 'auto',
-            height: 'clamp(200px, calc(200px + (400px - 200px) * ((100vw - 320px) / (1024px - 320px))), 400px)',
+            height: 'clamp(200px, calc(200px + (300px - 200px) * ((100vw - 320px) / (1024px - 320px))), 300px)',
             objectFit: 'contain',
           }}
         />
@@ -118,13 +120,13 @@ export default function CaseCard({
       {/* Title */}
       <h3
         style={{
-          // Max-width: 300px at 1920px desktop (fixed to avoid iPhone image intersection), full width on mobile
-          maxWidth: 'clamp(480px, calc(100% + (300px - 100%) * ((100vw - 320px) / (1920px - 320px))), 300px)',
+          // Max-width: 300px at 1920px desktop (fixed to avoid iPhone image intersection), full width on mobile/tablet
+          maxWidth: 'clamp(460px, calc(100% + (300px - 100%) * ((100vw - 1024px) / (1920px - 1024px))), 300px)',
           alignSelf: 'stretch',
           color: 'var(--main-white, #FFF8E9)',
           fontFamily: '"Alegreya Sans"',
-          // Font size: scales from 32px (mobile) to 48px (1920px)
-          fontSize: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)',
+          // Font size: small card (32px) on mobile/tablet, scales to large card (48px) on desktop
+          fontSize: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 1024px) / (1920px - 1024px))), 48px)',
           fontStyle: 'normal',
           fontWeight: 900,
           lineHeight: 'normal',
@@ -137,13 +139,13 @@ export default function CaseCard({
       {/* Description */}
       <p
         style={{
-          // Max-width: 300px at 1920px desktop (fixed to avoid iPhone image intersection), full width on mobile
-          maxWidth: 'clamp(480px, calc(100% + (300px - 100%) * ((100vw - 320px) / (1920px - 320px))), 300px)',
+          // Max-width: 300px at 1920px desktop (fixed to avoid iPhone image intersection), full width on mobile/tablet
+          maxWidth: 'clamp(460px, calc(100% + (300px - 100%) * ((100vw - 1024px) / (1920px - 1024px))), 300px)',
           color: 'var(--main-white, #FFF8E9)',
           textAlign: 'left',
           fontFamily: '"Alegreya Sans"',
-          // Font size: scales from 20px (mobile) to 32px (1920px)
-          fontSize: 'clamp(20px, calc(20px + (32px - 20px) * ((100vw - 320px) / (1920px - 320px))), 32px)',
+          // Font size: small card (20px) on mobile/tablet, scales to large card (32px) on desktop
+          fontSize: 'clamp(20px, calc(20px + (32px - 20px) * ((100vw - 1024px) / (1920px - 1024px))), 32px)',
           fontStyle: 'normal',
           fontWeight: 400,
           lineHeight: 'normal',
@@ -152,9 +154,9 @@ export default function CaseCard({
         {description}
       </p>
 
-      {/* Button - Aligned left, with 32px gap before image on mobile */}
+      {/* Button - Aligned left, with 32px gap before image on mobile/tablet */}
       <div
-        className="w-full md:w-auto"
+        className="w-full lg:w-auto"
         style={{
           marginBottom: 'clamp(32px, calc(32px + (0px - 32px) * ((100vw - 320px) / (1024px - 320px))), 0px)',
         }}
@@ -167,10 +169,10 @@ export default function CaseCard({
         </MainButton>
       </div>
 
-      {/* Image Container - Hidden on desktop (1024px+) */}
+      {/* Image Container - Visible on mobile/tablet (<1024px), hidden on desktop */}
       {imageSrc && (
         <div
-          className="flex flex-col justify-center items-center self-stretch md:hidden"
+          className="flex flex-col justify-center items-center self-stretch lg:hidden"
           style={{
             // Height: scales from 469px (mobile) to 600px (tablet)
             height: 'clamp(469px, calc(469px + (600px - 469px) * ((100vw - 320px) / (1024px - 320px))), 600px)',

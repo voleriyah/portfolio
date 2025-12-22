@@ -4,57 +4,29 @@ import { useInView, motion } from 'framer-motion';
 import { useRef } from 'react';
 
 interface AnimatedContainerLineProps {
-  position?: 'left' | 'right' | 'responsive';
+  position?: 'left' | 'right';
   showCaption?: boolean;
   diamondStopAt?: 'middle' | 'bottom';
-  gap?: number;
-  color?: string;
 }
 
-export default function AnimatedContainerLine({ 
-  position = 'right', 
-  showCaption = true, 
-  diamondStopAt = 'bottom',
-  gap = 64,
-  color = '#342927'
-}: AnimatedContainerLineProps) {
+export default function AnimatedContainerLine({ position = 'right', showCaption = true, diamondStopAt = 'bottom' }: AnimatedContainerLineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { 
     once: true,
     amount: 0.1,
   });
 
-  // Responsive positioning: right on mobile, left on desktop
-  const getPositionStyle = () => {
-    if (position === 'responsive') {
-      return {}; // Use Tailwind classes for responsive positioning
-    }
-    return position === 'left' 
-      ? { left: `${gap}px`, right: 'auto' }
-      : { right: `${gap}px`, left: 'auto' };
-  };
-
+  const positionClass = position === 'left' ? 'left-16' : 'right-16';
   const stopPosition = diamondStopAt === 'middle' ? '50%' : 'calc(100% - 5px)';
 
-  const positionStyle = position === 'responsive' 
-    ? {} 
-    : getPositionStyle();
-
   return (
-    <div 
-      ref={containerRef} 
-      className={`absolute top-0 w-[3px] pointer-events-none z-10 ${position === 'responsive' ? 'right-[44px] lg:right-auto lg:left-[44px]' : ''}`}
-      style={{ 
-        height: '100%',
-        ...positionStyle,
-      }}
-    >
+    <div ref={containerRef} className={`absolute ${positionClass} top-0 w-[3px] pointer-events-none z-10`} style={{ height: '100%' }}>
       {/* Vertical Line */}
       <motion.div 
         className="absolute top-0 left-0 w-full"
         style={{ 
           height: '100%',
-          backgroundColor: color,
+          backgroundColor: '#342927',
           transformOrigin: 'top',
         }}
         initial={{ scaleY: 0 }}
@@ -67,9 +39,8 @@ export default function AnimatedContainerLine({
       
       {/* Sliding Diamond */}
       <motion.div
-        className="absolute left-1/2 w-4 h-4"
+        className="absolute left-1/2 w-4 h-4 bg-dark-brown"
         style={{
-          backgroundColor: color,
           transform: 'translateX(-50%) rotate(45deg)',
         }}
         initial={{ top: 0, opacity: 0 }}
