@@ -626,6 +626,31 @@ export default function Home() {
               gap: 'clamp(44px, calc(44px + (100px - 44px) * ((100vw - 320px) / (1920px - 320px))), 100px)',
             }}
           >
+               {/* Section Title + Link */}
+               <div 
+  className="flex flex-row justify-between items-center md:justify-start md:gap-[44px]"
+  style={{
+    marginBottom: 'clamp(44px, calc(44px + (80px - 44px) * ((100vw - 320px) / (1920px - 320px))), 80px)',
+  }}
+>
+
+  <h2
+    style={{
+      color: 'var(--main-medium-gray, #342927)',
+      fontFamily: '"Alegreya Sans"',
+      fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)',
+      fontWeight: 700,
+      lineHeight: 'normal',
+      letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)',
+    }}
+  >
+    My leadership values
+  </h2>
+  
+  <CustomLink href="https://www.linkedin.com/in/voleriyah" iconType="internal">
+    Read more
+  </CustomLink>
+</div>
             <ValueListItem
               number="1"
               title="System first"
@@ -709,10 +734,10 @@ export default function Home() {
           gap: 'clamp(44px, calc(44px + (130px - 44px) * ((100vw - 768px) / (1920px - 768px))), 130px)',
         }}
       >
-        <CustomLink href="https://www.linkedin.com/in/voleriyah" iconType="linkedin" variant="footer">
+        <CustomLink href="https://www.linkedin.com/in/voleriyah" iconType="linkedin" variant="footer" showExternalIcon={true}>
           Connect
         </CustomLink>
-        <CustomLink href="mailto:voleriyah@example.com" iconType="email" variant="footer">
+        <CustomLink href="mailto:voleriyah@example.com" iconType="email" variant="footer" showExternalIcon={true}>
           Write me
         </CustomLink>
       </div>

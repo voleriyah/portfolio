@@ -4,40 +4,47 @@ import Image from 'next/image';
 interface CustomLinkProps {
   href: string;
   children: React.ReactNode;
+  iconType?: 'linkedin' | 'email' | 'internal' | null;
   showExternalIcon?: boolean;
-  iconType?: 'linkedin' | 'email' | null;
   className?: string;
-  fontSize?: string; // Optional font size override (default: 32px)
-  variant?: 'default' | 'footer'; // Variant for different styling
+  variant?: 'default' | 'footer';
 }
 
 export default function CustomLink({
   href,
   children,
-  showExternalIcon = false,
   iconType = null,
+  showExternalIcon = false,
   className = '',
-  fontSize = 'text-[32px]',
   variant = 'default',
 }: CustomLinkProps) {
   const isExternal = href.startsWith('http://') || href.startsWith('https://') || href.startsWith('mailto:');
-  const shouldShowIcon = showExternalIcon || isExternal;
 
   // Get icon source based on iconType
   const getIconSrc = () => {
     if (iconType === 'linkedin') return '/images/icons/linkedin.svg';
     if (iconType === 'email') return '/images/icons/email.svg';
+    if (iconType === 'internal') return '/images/icons/internal.svg';
     return null;
   };
 
   const iconSrc = getIconSrc();
+  
+  // Get alt text for icon
+  const getIconAlt = () => {
+    if (iconType === 'linkedin') return 'LinkedIn';
+    if (iconType === 'email') return 'Email';
+    if (iconType === 'internal') return 'Internal link';
+    return 'Icon';
+  };
 
   // Default styling (red underline)
   const defaultLinkProps = {
-    className: `font-alegreya ${fontSize} font-bold text-primary-red underline 
-      tracking-[0.32px] decoration-solid ${className}`,
+    className: `font-alegreya font-bold text-primary-red underline tracking-[0.32px] decoration-solid ${className}`,
     style: {
       color: 'var(--main-red-accent, #F62F20)',
+      fontSize: 'clamp(18px, calc(18px + (24px - 18px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
+      fontWeight: 700,
       textDecorationLine: 'underline' as const,
       textDecorationStyle: 'solid' as const,
       textDecorationSkipInk: 'auto' as const,
@@ -51,7 +58,7 @@ export default function CustomLink({
     }),
   };
 
-  // Footer variant styling (cream color, no underline)
+  // Footer variant styling
   const footerLinkProps = {
     className: `flex items-center gap-3 hover:opacity-80 transition-opacity ${className}`,
     style: {
@@ -71,10 +78,11 @@ export default function CustomLink({
 
   const linkContent = variant === 'footer' ? (
     <>
-      {iconSrc && (
+      {/* Left side icons (linkedin, email) */}
+      {iconSrc && iconType !== 'internal' && (
         <Image
           src={iconSrc}
-          alt={iconType === 'linkedin' ? 'LinkedIn' : 'Email'}
+          alt={getIconAlt()}
           width={44}
           height={44}
           className="flex-shrink-0"
@@ -85,7 +93,22 @@ export default function CustomLink({
         />
       )}
       <span>{children}</span>
-      {shouldShowIcon && (
+      {/* Right side internal icon */}
+      {iconType === 'internal' && (
+        <Image
+          src="/images/icons/internal.svg"
+          alt="Internal link"
+          width={24}
+          height={24}
+          className="flex-shrink-0"
+          style={{
+            width: 'clamp(18px, calc(18px + (24px - 18px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
+            height: 'clamp(18px, calc(18px + (24px - 18px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
+          }}
+        />
+      )}
+      {/* Right side external icon */}
+      {showExternalIcon && (
         <Image
           src="/images/external.svg"
           alt="External link"
@@ -102,13 +125,32 @@ export default function CustomLink({
   ) : (
     <span className="inline-flex items-center gap-2">
       {children}
-      {shouldShowIcon && (
+      {/* Right side internal icon */}
+      {iconType === 'internal' && (
+        <Image
+          src="/images/icons/internal.svg"
+          alt="Internal link"
+          width={24}
+          height={24}
+          className="inline-block flex-shrink-0"
+          style={{
+            width: 'clamp(18px, calc(18px + (24px - 18px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
+            height: 'clamp(18px, calc(18px + (24px - 18px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
+          }}
+        />
+      )}
+      {/* Right side external icon */}
+      {showExternalIcon && (
         <Image
           src="/images/external.svg"
           alt="External link"
           width={24}
           height={24}
           className="inline-block flex-shrink-0"
+          style={{
+            width: 'clamp(18px, calc(18px + (24px - 18px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
+            height: 'clamp(18px, calc(18px + (24px - 18px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
+          }}
         />
       )}
     </span>

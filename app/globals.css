@@ -35,14 +35,3 @@ html {
     max-width: none;
   }
 }
-
-/* Footer links container - horizontal on desktop (>=968px), vertical on mobile */
-.footer-links-container {
-  flex-direction: column;
-}
-
-@media (min-width: 968px) {
-  .footer-links-container {
-    flex-direction: row;
-  }
-}

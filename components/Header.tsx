@@ -164,15 +164,6 @@ export default function Header() {
           <div className="fixed inset-0 bg-cream z-50 lg:hidden overflow-y-auto">
             {/* Menu content */}
             <nav className="flex flex-col items-start justify-start min-h-screen px-4 sm:px-6 md:px-8 py-8 pt-8 gap-[64px]"
-             style={{
-              // Vertical padding: scales from 16px at mobile to 38px at 1920px
-              paddingTop: 'clamp(16px, calc(16px + (38px - 16px) * ((100vw - 320px) / (1920px - 320px))), 38px)',
-              paddingBottom: 'clamp(16px, calc(16px + (38px - 16px) * ((100vw - 320px) / (1920px - 320px))), 38px)',
-              // Horizontal padding: scales from 16px at mobile to 72px at 1920px
-              paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-              paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-              boxSizing: 'border-box',
-            }}
             >
               {menuItems.map((item, index) => (
                 <a
