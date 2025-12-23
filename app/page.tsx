@@ -332,7 +332,7 @@ export default function Home() {
           }}
         >
           {/* Animated Vertical Line - Left aligned, Diamond stops in the middle */}
-          <AnimatedContainerLine position="left" showCaption={false} diamondStopAt="middle" leftOffset="44px" />
+          <AnimatedContainerLine position="left" showCaption={false} diamondStopAt="middle"  />
 
           {/* Content Container - 64px gap from line (responsive, 1920px benchmark), vertically centered */}
           <div 
