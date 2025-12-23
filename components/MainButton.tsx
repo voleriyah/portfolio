@@ -23,16 +23,20 @@ export default function MainButton({
       onClick={onClick}
       className={`inline-flex flex-col justify-center items-center ${className}`}
       style={{
-        padding: isLarge ? '24px' : '8px 16px',
+        padding: isLarge 
+          ? 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)' 
+          : '8px 16px',
         gap: '10px',
         borderRadius: '5px',
         background: 'var(--main-red-accent, #F62F20)',
         color: 'var(--main-white, #FFF8E9)',
         fontFamily: '"Alegreya Sans"',
-        fontSize: isLarge ? '28px' : '16px',
+        fontSize: isLarge 
+          ? 'clamp(20px, calc(20px + (28px - 20px) * ((100vw - 320px) / (1920px - 320px))), 28px)' 
+          : '16px',
         fontStyle: 'normal',
         fontWeight: 700,
-        lineHeight: isLarge ? '19.498px' : '19.498px', // 69.637% for large, 121.864% for small
+        lineHeight: isLarge ? '19.498px' : '19.498px',
         border: 'none',
         cursor: 'pointer',
         transition: 'opacity 0.2s ease-in-out',
@@ -48,4 +52,3 @@ export default function MainButton({
     </button>
   );
 }
-
