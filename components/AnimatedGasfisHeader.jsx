@@ -114,8 +114,8 @@ const AnimatedGasfisHeader = () => {
           paddingLeft: 'clamp(12px, 5.6vw, 94.8px)',
           top: screenSize === 'xl' ? '100%' 
             : screenSize === 'desktop' ? '86%' 
-            : screenSize === 'laptop-lg' ? '88%' 
-            : screenSize === 'laptop' ? '75%' 
+            : screenSize === 'laptop-lg' ? '90%' 
+            : screenSize === 'laptop' ? '78%' 
             : screenSize === 'tablet' ? '56%' 
             : '40%',
         }}

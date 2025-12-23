@@ -4,11 +4,12 @@ import Image from 'next/image';
 import ExpertiseBlock from '@/components/ExpertiseBlock';
 import AnimatedContainerLine from '@/components/AnimatedContainerLine';
 import AnimatedGasfisHeader from '@/components/AnimatedGasfisHeader';
-import CaseCard from '@/components/CaseCard';
+//import CaseCard from '@/components/CaseCard';
 import ValueListItem from '@/components/ValueListItem';
 import CustomLink from '@/components/CustomLink';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
+import CaseCardTest from '@/components/CaseCardTest';
 
 export default function Home() {
   const expertiseSectionRef = useRef(null);
@@ -408,106 +409,91 @@ export default function Home() {
         >
           <AnimatedGasfisHeader />
         </div>
-        
-        {/* Case Block Wrapper - Below title block */}
         <div 
-          className="w-full mx-auto relative flex items-center justify-start mt-32 lg:mt-48"
-          style={{
-            // Width: 100% on mobile, max 1692px at 1920px (benchmark)
-            maxWidth: '1692px',
-            // Padding: scales from mobile to desktop values at 1920px
-            paddingTop: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 294px)',
-            paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
-            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-          }}
-        >
+  className="w-full mx-auto relative flex items-center justify-start"
+  style={{
+    maxWidth: '1692px',
+    paddingTop: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+    paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+    paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+    paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+  }}
+>
+<AnimatedContainerLine position="left" showCaption={false} diamondStopAt="bottom" />
+{/* First Case Block */}
+<CaseCardTest
+  size="large"
+  title="End-to-End Transformation of discovery process"
+  description="0 → 1 Design & research expertise integration across orgs enabled by Retail App Redesign"
+  tags={`#Design governance\n#Design-driven change management`}
+  buttonText="Read the case"
+  imageSrc="/images/bcc-screen.png"
+  imageAlt="Case study - Retail App Redesign"
 
-          <CaseCard
-            size="large"
-            title="End-to-End Transformation of discovery process"
-            description="0 → 1 Design & research expertise integration across orgs enabled by Retail App Redesign"
-            tags={`#Design governance\n#Design-driven change management`}
-            buttonText="Read the case"
-            imageSrc="/images/bcc-screen.png"
-            imageAlt="Case study - Retail App Redesign"
+  desktopImageSrc="/images/bcc-screen.png"
+  desktopImageAlt="iPhone screen"
+  desktopImageWidth={356}
+  desktopImageHeight={721}
+  onButtonClick={() => {}}
+/></div>
 
-            phoneImageAlt="iPhone screen"
-            desktopImageSrc="/images/bcc-screen.png"
-            desktopImageAlt="iPhone screen"
-            desktopImageStyle={{
-              width: '356px',
-              height: '720px',
-            }}
-            onButtonClick={() => {}}
-          />
-        </div>
-{/* Second Case Block Wrapper */}
+{/* Second Case Block - Выровнен по правому краю */}
 <div 
-          className="w-full mx-auto relative flex items-center justify-start"
-          style={{
-            // Width: 100% on mobile, max 1692px at 1920px (benchmark)
-            maxWidth: '1692px',
-            // Padding: scales from mobile to desktop values at 1920px
-            paddingTop: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
-            paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
-            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-          }}
-        >
-          <CaseCard
-            size="large"
-            title="In-House UX Research Lab Across Two Banks and an Acquisition"
-            description="Research governance establishment with eye-tracking Lab"
-            tags={`#ResearchOps \n#Change management`}
-            buttonText="Read the case"
-            imageSrc="/images/lab-image.png"
-            imageAlt="Case study - UX Research Lab"
+  className="w-full mx-auto relative flex items-center justify-start"
+  style={{
+    maxWidth: '1692px',
+    paddingTop: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+    paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+    paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+    paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+  }}
+>
+  <CaseCardTest
+    size="large"
+    title="In-House UX Research Lab Across Two Banks and an Acquisition"
+    description="Research governance establishment with eye-tracking Lab"
+    tags={`#ResearchOps \n#Change management`}
+    buttonText="Read the case"
+    imageSrc="/images/lab-image.png"
+    imageAlt="Case study - UX Research Lab"
 
-            phoneImageAlt="UX Research Lab"
-            desktopImageSrc="/images/lab-image.png"
-            desktopImageAlt="UX Research Lab"
-            desktopImageStyle={{
-              width: '632px',
-              height: '449px',
-            }}
-            onButtonClick={() => {}}
-          />
-        </div>
+    desktopImageSrc="/images/lab-image.png"
+    desktopImageAlt="UX Research Lab"
+    desktopImageWidth={632}
+    desktopImageHeight={449}
+    align="right"
+    onButtonClick={() => {}}
+  />
+</div>
 
-        {/* Third Case Block Wrapper */}
-        <div 
-          className="w-full mx-auto relative flex items-center justify-start"
-          style={{
-            // Width: 100% on mobile, max 1692px at 1920px (benchmark)
-            maxWidth: '1692px',
-            // Padding: scales from mobile to desktop values at 1920px
-            paddingTop: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
-            paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
-            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-          }}
-        >
-          <CaseCard
-            size="large"
-            title="Design system establishing & scaling"
-            description="Governance Engine and Strategic Infrastructure with sustaining ROI"
-            tags={`#Design governance \n#Change management`}
-            buttonText="Read the case"
-            imageSrc="/images/ds-image.png"
-            imageAlt="Case study - Design System"
+{/* Third Case Block */}
+<div 
+  className="w-full mx-auto relative flex items-center justify-start"
+  style={{
+    maxWidth: '1692px',
+    paddingTop: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+    paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+    paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+    paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+  }}
+>
+  <CaseCardTest
+    size="large"
+    title="Design system establishing & scaling"
+    description="Governance Engine and Strategic Infrastructure with sustaining ROI"
+    tags={`#Design governance \n#Change management`}
+    buttonText="Read the case"
+    imageSrc="/images/ds-image.png"
+    imageAlt="Case study - Design System"
 
-            phoneImageAlt="Design System"
-            desktopImageSrc="/images/ds-image.png"
-            desktopImageAlt="Design System"
-            desktopImageStyle={{
-              width: '632px',
-              height: '499px',
-              top: '40%',
-            }}
-            onButtonClick={() => {}}
-          />
-        </div>
+    desktopImageSrc="/images/ds-image.png"
+    desktopImageAlt="Design System"
+    desktopImageWidth={632}
+    desktopImageHeight={499}
+    desktopImageStyle={{ top: '40%' }}
+    onButtonClick={() => {}}
+  />
+</div>
       </section>
 
       {/* Motto Section */}
@@ -616,6 +602,7 @@ export default function Home() {
           style={{
             maxWidth: '1692px',
             padding: 'clamp(24px, calc(24px + (80px - 24px) * ((100vw - 320px) / (1920px - 320px))), 80px)',
+            paddingTop: '0px',
           }}
         >
           {/* Value List Items */}
