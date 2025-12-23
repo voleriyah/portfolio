@@ -7,6 +7,17 @@
   --main-white: #FFF8E9;
   --main-medium-gray: #342927;
 }
+* {
+  background-color: transparent !important;
+}
+
+html {
+  background-color: #3E3532 !important;
+}
+
+body {
+  background-color: #3E3532 !important;
+}
 
 html, body {
   overflow-x: hidden !important;
