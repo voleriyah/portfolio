@@ -8,13 +8,15 @@ interface AnimatedContainerLineProps {
   showCaption?: boolean;
   diamondStopAt?: 'middle' | 'bottom';
   color?: string;
+  leftOffset?: string; // Custom left offset (e.g., '44px')
 }
 
 export default function AnimatedContainerLine({ 
   position = 'right', 
   showCaption = true, 
   diamondStopAt = 'bottom',
-  color = '#342927'
+  color = '#342927',
+  leftOffset
 }: AnimatedContainerLineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { 
@@ -22,11 +24,12 @@ export default function AnimatedContainerLine({
     amount: 0.1,
   });
 
-  const positionClass = position === 'left' ? 'left-16' : 'right-16';
+  const positionClass = position === 'left' ? (leftOffset ? '' : 'left-0') : 'right-16';
   const stopPosition = diamondStopAt === 'middle' ? '50%' : 'calc(100% - 5px)';
+  const leftStyle = position === 'left' && leftOffset ? { left: leftOffset } : {};
 
   return (
-    <div ref={containerRef} className={`absolute ${positionClass} top-0 w-[3px] pointer-events-none z-10`} style={{ height: '100%' }}>
+    <div ref={containerRef} className={`absolute ${positionClass} top-0 w-[3px] pointer-events-none z-10`} style={{ height: '100%', ...leftStyle }}>
       {/* Vertical Line */}
       <motion.div 
         className="absolute top-0 left-0 w-full"

@@ -331,7 +331,7 @@ export default function Home() {
           }}
         >
           {/* Animated Vertical Line - Left aligned, Diamond stops in the middle */}
-          <AnimatedContainerLine position="left" showCaption={false} diamondStopAt="middle" />
+          <AnimatedContainerLine position="left" showCaption={false} diamondStopAt="middle" leftOffset="44px" />
 
           {/* Content Container - 64px gap from line (responsive, 1920px benchmark), vertically centered */}
           <div 
@@ -399,25 +399,31 @@ export default function Home() {
 
       {/* Cases Section */}
       <section id="cases-section" className="w-full bg-dark-brown relative">
+        {/* Red Line - Absolute positioned from top of title block to start of first case card */}
+        <div 
+          className="absolute top-0 w-[3px] pointer-events-none z-10"
+          style={{
+            left: 'calc(max(0px, calc((100% - 1692px) / 2)) + clamp(24px, calc(24px + (44px - 24px) * ((100vw - 1024px) / (1920px - 1024px))), 44px))',
+            height: 'calc(clamp(350px, calc(350px + (548px - 350px) * ((100vw - 320px) / (1920px - 320px))), 548px) + clamp(40px, calc(40px + (350px - 40px) * ((100vw - 320px) / (1920px - 320px))), 350px))',
+          }}
+        >
+          <AnimatedContainerLine position="left" showCaption={false} diamondStopAt="bottom" color="#F62F20" />
+        </div>
         {/* Title Block */}
         <div 
-          className="w-full mx-auto"
+          className="w-full mx-auto relative"
           style={{
             // Width: 100% on mobile, max 1692px at 1920px (benchmark)
             maxWidth: '1692px',
           }}
         >
-          <div style={{ position: 'relative', width: '3px', height: '80%'}}>
-              <AnimatedContainerLine position="left" showCaption={false} diamondStopAt="bottom" color="#F62F20" />
-            </div>
           <AnimatedGasfisHeader />
-         
         </div>
         <div 
   className="w-full mx-auto relative flex items-center justify-start"
   style={{
     maxWidth: '1692px',
-    paddingTop: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+    paddingTop: 'clamp(40px, calc(40px + (350px - 40px) * ((100vw - 320px) / (1920px - 320px))), 350px)',
     paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
     paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
     paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',

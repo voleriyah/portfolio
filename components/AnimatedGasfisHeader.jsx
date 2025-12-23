@@ -72,6 +72,7 @@ const AnimatedGasfisHeader = () => {
     >
       {/* Контейнер с полосами */}
       <div className="absolute inset-0 flex gap-[clamp(10px,2.7vw,45px)] items-start justify-center">
+
         {[...Array(15)].map((_, index) => {
           const isHighlight = index === 11;
           const height = index % 2 === 0 ? 548 : 500;

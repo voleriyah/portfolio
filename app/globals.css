@@ -7,13 +7,7 @@
   --main-white: #FFF8E9;
   --main-medium-gray: #342927;
 }
-html {
-  background-color: #3E3532;
-}
 
-body {
-  background-color: #3E3532;
-}
 
 html, body {
   overflow-x: hidden !important;
