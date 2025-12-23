@@ -108,10 +108,10 @@ export default function CaseCard({
 
       {/* Card Container */}
       <div
-        className="relative flex flex-col items-start w-full"
+        className="relative flex flex-col items-start w-full xl:w-[994px]"
         style={{
-          width: 'clamp(100%, calc(100% + (994px - 100%) * ((100vw - 1024px) / (1920px - 1024px))), 994px)',
-          maxWidth: '994px',
+         // width: 'clamp(100%, calc(100% + (994px - 100%) * ((100vw - 1024px) / (1920px - 1024px))), 994px)',
+          //maxWidth: '994px',
           boxSizing: 'border-box',
           minHeight: 'clamp(400px, calc(400px + (460px - 400px) * ((100vw - 1024px) / (1920px - 1024px))), 460px)',
           paddingTop: 'clamp(35px, calc(35px + (44px - 35px) * ((100vw - 1024px) / (1920px - 1024px))), 44px)',
@@ -187,7 +187,7 @@ export default function CaseCard({
           className="flex flex-col justify-center items-center self-stretch xl:hidden"
           style={{
             width: '100%',
-            marginTop: '44px',
+            marginTop: '44pxpx',
           }}
         >
           <Image
