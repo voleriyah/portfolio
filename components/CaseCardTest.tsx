@@ -82,6 +82,7 @@ export default function CaseCard({
       {/* Tags text - Above the card */}
       {tags && (
         <div
+          className={align === 'right' ? 'xl:self-end' : ''}
           style={{
             maxWidth: 'clamp(100%, calc(100% + (300px - 100%) * ((100vw - 1024px) / (1920px - 1024px))), 300px)',
             marginBottom: '32px',
@@ -89,7 +90,7 @@ export default function CaseCard({
           }}
         >
           <p
-            className="font-bold lg:font-extrabold"
+            className={`font-bold xl:font-extrabold ${align === 'right' ? 'text-left xl:text-right' : 'text-left'}`}
             style={{
               color: '#FFF8E9',
               fontFamily: '"Alegreya Sans"',
@@ -107,8 +108,9 @@ export default function CaseCard({
 
       {/* Card Container */}
       <div
-        className={`relative flex flex-col w-full xl:w-[994px] ${align === 'right' ? 'xl:items-end' : 'items-start'}`}
+        className="relative flex flex-col items-start w-full"
         style={{
+          width: 'clamp(100%, calc(100% + (994px - 100%) * ((100vw - 1024px) / (1920px - 1024px))), 994px)',
           maxWidth: '994px',
           boxSizing: 'border-box',
           minHeight: 'clamp(400px, calc(400px + (460px - 400px) * ((100vw - 1024px) / (1920px - 1024px))), 460px)',
@@ -127,30 +129,27 @@ export default function CaseCard({
           alt={phoneImageAlt}
           width={300}
           height={600}
-          className="absolute pointer-events-none z-10 xl:hidden"
+          className="xl:hidden w-auto"
           style={{
-            left: '50%',
-            top: 'clamp(-100px, calc(-100px + (-60px - -100px) * ((100vw - 320px) / (1024px - 320px))), -60px)',
-            transform: 'translateX(-50%)',
-            width: 'auto',
-            height: 'clamp(200px, calc(200px + (300px - 200px) * ((100vw - 320px) / (1024px - 320px))), 300px)',
+            height: 'auto',
+            maxWidth: '50%',
             objectFit: 'contain',
+            marginTop: '44px',
           }}
         />
       )}
       
       {/* Title */}
       <h3
+        className={align === 'right' ? 'text-left xl:text-right xl:self-end' : 'text-left'}
         style={{
           maxWidth: 'clamp(460px, calc(100% + (300px - 100%) * ((100vw - 1024px) / (1920px - 1024px))), 300px)',
-          alignSelf: align === 'right' ? 'flex-end' : 'stretch',
           color: 'var(--main-white, #FFF8E9)',
           fontFamily: '"Alegreya Sans"',
           fontSize: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 1024px) / (1920px - 1024px))), 48px)',
           fontStyle: 'normal',
           fontWeight: 900,
           lineHeight: 'normal',
-          textAlign: align === 'right' ? 'right' : 'left',
         }}
       >
         {title}
@@ -158,11 +157,10 @@ export default function CaseCard({
 
       {/* Description */}
       <p
+        className={align === 'right' ? 'text-left xl:text-right xl:self-end' : 'text-left'}
         style={{
           maxWidth: 'clamp(460px, calc(100% + (300px - 100%) * ((100vw - 1024px) / (1920px - 1024px))), 300px)',
-          alignSelf: align === 'right' ? 'flex-end' : 'stretch',
           color: 'var(--main-white, #FFF8E9)',
-          textAlign: align === 'right' ? 'right' : 'left',
           fontFamily: '"Alegreya Sans"',
           fontSize: 'clamp(20px, calc(20px + (32px - 20px) * ((100vw - 1024px) / (1920px - 1024px))), 32px)',
           fontStyle: 'normal',
@@ -174,7 +172,7 @@ export default function CaseCard({
       </p>
 
       {/* Button */}
-      <div className="w-full xl:w-auto">
+      <div className={`w-full xl:w-auto ${align === 'right' ? 'xl:self-end' : ''}`}>
         <MainButton 
           size={buttonSize}
           onClick={onButtonClick}
@@ -189,7 +187,7 @@ export default function CaseCard({
           className="flex flex-col justify-center items-center self-stretch xl:hidden"
           style={{
             width: '100%',
-            marginTop: '72px',
+            marginTop: '44px',
           }}
         >
           <Image
@@ -198,7 +196,7 @@ export default function CaseCard({
             width={640}
             height={600}
             style={{
-              width: '100%',
+              width: 'auto',
               height: 'auto',
               objectFit: 'contain',
             }}

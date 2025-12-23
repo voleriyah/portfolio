@@ -407,7 +407,11 @@ export default function Home() {
             maxWidth: '1692px',
           }}
         >
+          <div style={{ position: 'relative', width: '3px', height: '80%'}}>
+              <AnimatedContainerLine position="left" showCaption={false} diamondStopAt="bottom" color="#F62F20" />
+            </div>
           <AnimatedGasfisHeader />
+         
         </div>
         <div 
   className="w-full mx-auto relative flex items-center justify-start"
@@ -419,7 +423,7 @@ export default function Home() {
     paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
   }}
 >
-<AnimatedContainerLine position="left" showCaption={false} diamondStopAt="bottom" />
+
 {/* First Case Block */}
 <CaseCardTest
   size="large"
