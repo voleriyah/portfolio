@@ -1,6 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import AnimatedContainerLine from '@/components/AnimatedContainerLine';
+import { motion, useInView } from 'framer-motion';
 import MainButton from './MainButton';
 import Image from 'next/image';
 
@@ -22,6 +24,8 @@ interface CaseCardProps {
   onButtonClick?: () => void;
   className?: string;
   align?: 'left' | 'right';
+  showVerticalLine?: boolean; // Показывать ли вертикальную линию
+  showHorizontalLine?: boolean; // Показывать ли горизонтальную линию
 }
 
 export default function CaseCard({
@@ -42,13 +46,23 @@ export default function CaseCard({
   onButtonClick,
   className = '',
   align = 'left',
+  showVerticalLine = false,
+  showHorizontalLine = true,
 }: CaseCardProps) {
   const [buttonSize, setButtonSize] = useState<'large' | 'small'>('small');
+  const [isDesktop, setIsDesktop] = useState(false);
+  const cardContainerRef = useRef<HTMLDivElement>(null);
+  
+  const isInView = useInView(cardContainerRef, { 
+    once: true,
+    amount: 0.9,
+  });
 
   useEffect(() => {
     const updateSizes = () => {
       const width = window.innerWidth;
       setButtonSize(width >= 1024 ? 'large' : 'small');
+      setIsDesktop(width >= 1024 && width <= 1920);
     };
     
     updateSizes();
@@ -58,7 +72,7 @@ export default function CaseCard({
 
   return (
     <div className={`flex flex-col items-start relative w-full ${align === 'right' ? 'xl:items-end' : ''} ${className}`}>
-      {/* Desktop Image - Visible only on desktop (>=1280px) */}
+      {/* Desktop Image */}
       {desktopImageSrc && (
         <Image
           src={desktopImageSrc}
@@ -79,7 +93,7 @@ export default function CaseCard({
         />
       )}
       
-      {/* Tags text - Above the card */}
+      {/* Tags */}
       {tags && (
         <div
           className={align === 'right' ? 'xl:self-end' : ''}
@@ -108,10 +122,9 @@ export default function CaseCard({
 
       {/* Card Container */}
       <div
+        ref={cardContainerRef}
         className="relative flex flex-col items-start w-full xl:w-[994px]"
         style={{
-         // width: 'clamp(100%, calc(100% + (994px - 100%) * ((100vw - 1024px) / (1920px - 1024px))), 994px)',
-          //maxWidth: '994px',
           boxSizing: 'border-box',
           minHeight: 'clamp(400px, calc(400px + (460px - 400px) * ((100vw - 1024px) / (1920px - 1024px))), 460px)',
           paddingTop: 'clamp(35px, calc(35px + (44px - 35px) * ((100vw - 1024px) / (1920px - 1024px))), 44px)',
@@ -122,88 +135,151 @@ export default function CaseCard({
           border: '3px solid var(--main-red-accent, #F62F20)',
         }}
       >
-      {/* iPhone Image - Visible on mobile/tablet (<1280px), hidden on desktop */}
-      {phoneImageSrc && (
-        <Image
-          src={phoneImageSrc}
-          alt={phoneImageAlt}
-          width={300}
-          height={600}
-          className="xl:hidden w-auto"
+        {/* Phone Image */}
+        {phoneImageSrc && (
+          <Image
+            src={phoneImageSrc}
+            alt={phoneImageAlt}
+            width={300}
+            height={600}
+            className="xl:hidden w-auto"
+            style={{
+              height: 'auto',
+              maxWidth: '50%',
+              objectFit: 'contain',
+              marginTop: '44px',
+            }}
+          />
+        )}
+        
+        {/* Title */}
+        <h3
+          className={align === 'right' ? 'text-left xl:text-right xl:self-end' : 'text-left'}
           style={{
-            height: 'auto',
-            maxWidth: '50%',
-            objectFit: 'contain',
-            marginTop: '44px',
+            maxWidth: 'clamp(460px, calc(100% + (300px - 100%) * ((100vw - 1024px) / (1920px - 1024px))), 300px)',
+            color: 'var(--main-white, #FFF8E9)',
+            fontFamily: '"Alegreya Sans"',
+            fontSize: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 1024px) / (1920px - 1024px))), 48px)',
+            fontStyle: 'normal',
+            fontWeight: 900,
+            lineHeight: 'normal',
           }}
-        />
+        >
+          {title}
+        </h3>
+
+        {/* Description */}
+        <p
+          className={align === 'right' ? 'text-left xl:text-right xl:self-end' : 'text-left'}
+          style={{
+            maxWidth: 'clamp(460px, calc(100% + (300px - 100%) * ((100vw - 1024px) / (1920px - 1024px))), 300px)',
+            color: 'var(--main-white, #FFF8E9)',
+            fontFamily: '"Alegreya Sans"',
+            fontSize: 'clamp(20px, calc(20px + (32px - 20px) * ((100vw - 1024px) / (1920px - 1024px))), 32px)',
+            fontStyle: 'normal',
+            fontWeight: 400,
+            lineHeight: 'normal',
+          }}
+        >
+          {description}
+        </p>
+
+        {/* Button */}
+        <div className={`w-full xl:w-auto ${align === 'right' ? 'xl:self-end' : ''}`}>
+          <MainButton 
+            size={buttonSize}
+            onClick={onButtonClick}
+          >
+            {buttonText}
+          </MainButton>
+        </div>
+
+        {/* Mobile Image Container */}
+        {imageSrc && (
+          <div
+            className="flex flex-col justify-center items-center self-stretch xl:hidden"
+            style={{
+              width: '100%',
+              marginTop: '44px',
+            }}
+          >
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              width={640}
+              height={600}
+              style={{
+                width: 'auto',
+                height: 'auto',
+                objectFit: 'contain',
+              }}
+            />
+          </div>
+        )}
+      </div>
+      
+      {/* Horizontal Animated Line + Vertical Line */}
+      {isDesktop && (
+        <>
+          {/* Horizontal Line */}
+          {showHorizontalLine && (
+            <motion.div
+              className="h-[3px] w-full absolute bottom-0"
+              style={{
+                backgroundColor: 'var(--main-red-accent, #F62F20)',
+                transformOrigin: align === 'right' ? 'right' : 'left',
+                zIndex: 0,
+              }}
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: isInView ? 1 : 0 }}
+              transition={{ 
+                duration: 1.5, 
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
+            />
+          )}
+          
+          {/* Vertical Line - идёт ВВЕРХ от конца горизонтальной линии */}
+          {showVerticalLine && (
+            <div
+              className="absolute"
+              style={{
+                left: align === 'left' ? 0 : 'auto',
+                right: align === 'right' ? 0 : 'auto',
+                bottom: '3px', // Начинается от конца горизонтальной линии (3px высота)
+                height: 'clamp(194px, calc(194px + (388px - 194px) * ((100vw - 1024px) / (1920px - 1024px))), 388px)', // Padding между карточками
+                zIndex: 0,
+              }}
+            >
+              <AnimatedContainerLine 
+                position={align === 'left' ? 'left' : 'right'} 
+                showCaption={false} 
+                diamondStopAt="bottom" 
+                color="#F62F20"
+              />
+            </div>
+          )}
+        </>
       )}
       
-      {/* Title */}
-      <h3
-        className={align === 'right' ? 'text-left xl:text-right xl:self-end' : 'text-left'}
-        style={{
-          maxWidth: 'clamp(460px, calc(100% + (300px - 100%) * ((100vw - 1024px) / (1920px - 1024px))), 300px)',
-          color: 'var(--main-white, #FFF8E9)',
-          fontFamily: '"Alegreya Sans"',
-          fontSize: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 1024px) / (1920px - 1024px))), 48px)',
-          fontStyle: 'normal',
-          fontWeight: 900,
-          lineHeight: 'normal',
-        }}
-      >
-        {title}
-      </h3>
-
-      {/* Description */}
-      <p
-        className={align === 'right' ? 'text-left xl:text-right xl:self-end' : 'text-left'}
-        style={{
-          maxWidth: 'clamp(460px, calc(100% + (300px - 100%) * ((100vw - 1024px) / (1920px - 1024px))), 300px)',
-          color: 'var(--main-white, #FFF8E9)',
-          fontFamily: '"Alegreya Sans"',
-          fontSize: 'clamp(20px, calc(20px + (32px - 20px) * ((100vw - 1024px) / (1920px - 1024px))), 32px)',
-          fontStyle: 'normal',
-          fontWeight: 400,
-          lineHeight: 'normal',
-        }}
-      >
-        {description}
-      </p>
-
-      {/* Button */}
-      <div className={`w-full xl:w-auto ${align === 'right' ? 'xl:self-end' : ''}`}>
-        <MainButton 
-          size={buttonSize}
-          onClick={onButtonClick}
-        >
-          {buttonText}
-        </MainButton>
-      </div>
-
-      {/* Image Container - Visible on mobile/tablet (<1280px), hidden on desktop */}
-      {imageSrc && (
+      {/* Mobile Vertical Lines - только вертикальные по левому краю на <1024px */}
+      {!isDesktop && showVerticalLine && (
         <div
-          className="flex flex-col justify-center items-center self-stretch xl:hidden"
+          className="absolute left-0"
           style={{
-            width: '100%',
-            marginTop: '44pxpx',
+            bottom: '3px',
+            height: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1024px - 320px))), 194px)',
+            zIndex: 0,
           }}
         >
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            width={640}
-            height={600}
-            style={{
-              width: 'auto',
-              height: 'auto',
-              objectFit: 'contain',
-            }}
+          <AnimatedContainerLine 
+            position="left" 
+            showCaption={false} 
+            diamondStopAt="bottom" 
+            color="#F62F20"
           />
         </div>
       )}
-      </div>
     </div>
   );
 }

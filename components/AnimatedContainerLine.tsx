@@ -8,7 +8,7 @@ interface AnimatedContainerLineProps {
   showCaption?: boolean;
   diamondStopAt?: 'middle' | 'bottom';
   color?: string;
-  leftOffset?: string; // Custom left offset (e.g., '44px')
+  showDiamond?: boolean;
 }
 
 export default function AnimatedContainerLine({ 
@@ -16,7 +16,7 @@ export default function AnimatedContainerLine({
   showCaption = true, 
   diamondStopAt = 'bottom',
   color = '#342927',
-  leftOffset
+  showDiamond = true,
 }: AnimatedContainerLineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { 
@@ -24,12 +24,11 @@ export default function AnimatedContainerLine({
     amount: 0.1,
   });
 
-  const positionClass = position === 'left' ? (leftOffset ? '' : 'left-0') : 'right-16';
+  const positionClass = position === 'left' ? 'left-16' : 'right-16';
   const stopPosition = diamondStopAt === 'middle' ? '50%' : 'calc(100% - 5px)';
-  const leftStyle = position === 'left' && leftOffset ? { left: leftOffset } : {};
 
   return (
-    <div ref={containerRef} className={`absolute ${positionClass} top-0 w-[3px] pointer-events-none z-10`} style={{ height: '100%', ...leftStyle }}>
+    <div ref={containerRef} className={`absolute ${positionClass} top-0 w-[3px] pointer-events-none z-10`} style={{ height: '100%' }}>
       {/* Vertical Line */}
       <motion.div 
         className="absolute top-0 left-0 w-full"
@@ -47,20 +46,22 @@ export default function AnimatedContainerLine({
       />
       
       {/* Sliding Diamond */}
-      <motion.div
-        className="absolute left-1/2 w-4 h-4"
-        style={{
-          backgroundColor: color,
-          transform: 'translateX(-50%) rotate(45deg)',
-        }}
-        initial={{ top: 0, opacity: 0 }}
-        animate={isInView ? { top: stopPosition, opacity: 1 } : { top: 0, opacity: 0 }}
-        transition={{ 
-          duration: 1.2, 
-          delay: 0.3, 
-          ease: "easeOut" 
-        }}
-      />
+      {showDiamond && (
+        <motion.div
+          className="absolute left-1/2 w-4 h-4"
+          style={{
+            backgroundColor: color,
+            transform: 'translateX(-50%) rotate(45deg)',
+          }}
+          initial={{ top: 0, opacity: 0 }}
+          animate={isInView ? { top: stopPosition, opacity: 1 } : { top: 0, opacity: 0 }}
+          transition={{ 
+            duration: 1.2, 
+            delay: 0.3, 
+            ease: "easeOut" 
+          }}
+        />
+      )}
       
       {/* Text - vertical writing mode, positioned 124px from top, 2 lines */}
       {showCaption && (

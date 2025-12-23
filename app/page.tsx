@@ -10,6 +10,7 @@ import CustomLink from '@/components/CustomLink';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import CaseCardTest from '@/components/CaseCardTest';
+import VerticalConnectorLine from '@/components/VerticalConnectorLine';
 
 export default function Home() {
   const expertiseSectionRef = useRef(null);
@@ -424,7 +425,7 @@ export default function Home() {
   style={{
     maxWidth: '1692px',
     paddingTop: 'clamp(40px, calc(40px + (350px - 40px) * ((100vw - 320px) / (1920px - 320px))), 350px)',
-    paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+   // paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
     paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
     paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
   }}
@@ -439,21 +440,22 @@ export default function Home() {
   buttonText="Read the case"
   imageSrc="/images/bcc-screen.png"
   imageAlt="Case study - Retail App Redesign"
-
+  showVerticalLine={false} 
+  showHorizontalLine={true}
   desktopImageSrc="/images/bcc-screen.png"
   desktopImageAlt="iPhone screen"
   desktopImageWidth={356}
   desktopImageHeight={721}
   onButtonClick={() => {}}
 /></div>
-
+<VerticalConnectorLine align="right" />
 {/* Second Case Block - Выровнен по правому краю */}
 <div 
   className="w-full mx-auto relative flex items-center justify-start"
   style={{
     maxWidth: '1692px',
-    paddingTop: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
-    paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+    paddingTop: 'clamp(40px, calc(40px + (60px - 40px) * ((100vw - 320px) / (1920px - 320px))), 60px)',
+    //paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
     paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
     paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
   }}
@@ -466,7 +468,7 @@ export default function Home() {
     buttonText="Read the case"
     imageSrc="/images/lab-image.png"
     imageAlt="Case study - UX Research Lab"
-
+showVerticalLine={false} showHorizontalLine={true} 
     desktopImageSrc="/images/lab-image.png"
     desktopImageAlt="UX Research Lab"
     desktopImageWidth={632}
@@ -476,13 +478,15 @@ export default function Home() {
   />
 </div>
 
+<VerticalConnectorLine align="left"  />
 {/* Third Case Block */}
 <div 
   className="w-full mx-auto relative flex items-center justify-start"
   style={{
     maxWidth: '1692px',
-    paddingTop: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
-    paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+   // paddingTop: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+    //paddingBottom: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
+    paddingTop: 'clamp(40px, calc(40px + (60px - 40px) * ((100vw - 320px) / (1920px - 320px))), 60px)',
     paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
     paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
   }}
@@ -504,6 +508,7 @@ export default function Home() {
     onButtonClick={() => {}}
   />
 </div>
+<VerticalConnectorLine align="right" showDiamond={false} />
       </section>
 
       {/* Motto Section */}
@@ -516,7 +521,10 @@ export default function Home() {
             paddingBottom: '400px',
           }}
         >
+
+
           {/* Animated Line - Positioned 300px from right on desktop, responsive */}
+         
           <div
             className="absolute top-0 pointer-events-none z-10"
             style={{
@@ -524,7 +532,7 @@ export default function Home() {
               right: 'clamp(16px, calc(16px + (300px - 16px) * ((100vw - 320px) / (1920px - 320px))), 300px)',
             }}
           >
-            <div className="motto-line-container" style={{ position: 'relative', width: '3px', height: '28%', top:'0' }}>
+            <div className="motto-line-container" style={{ position: 'relative', width: '3px', height: '19%', top:'0' }}>
               <AnimatedContainerLine position="right" showCaption={false} diamondStopAt="bottom" />
             </div>
           </div>
