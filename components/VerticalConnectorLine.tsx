@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { useInView } from 'framer-motion';
-import AnimatedContainerLine from './AnimatedContainerLine';
+import { motion, useInView } from 'framer-motion';
 
 interface VerticalConnectorLineProps {
   align?: 'left' | 'right';
@@ -18,10 +17,11 @@ export default function VerticalConnectorLine({
   showDiamond = true,
 }: VerticalConnectorLineProps) {
   const lineRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [showLine, setShowLine] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   
-  const isInView = useInView(lineRef, { 
+  const isInView = useInView(containerRef, { 
     once: true,
     amount: 0.1,
   });
@@ -35,18 +35,19 @@ export default function VerticalConnectorLine({
     return () => window.removeEventListener('resize', updateScreen);
   }, []);
 
-  useEffect(() => {
-    if (isInView) {
-      const timer = setTimeout(() => {
-        setShowLine(true);
-      }, 1500);
-      return () => clearTimeout(timer);
-    }
-  }, [isInView]);
+// Запускаем линию через 1.5s ПОСЛЕ того как элемент в зоне видимости
+useEffect(() => {
+  if (isInView) {  // <-- ВОТ ТУТ добавил проверку isInView
+    const timer = setTimeout(() => {
+      setShowLine(true);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }
+}, [isInView]);  // <-- И добавил зависимость от isInView
 
   return (
     <div 
-      ref={lineRef}
+      ref={containerRef}
       className={`w-full mx-auto relative ${hideOnMobile ? 'hidden lg:block' : ''}`}
       style={{
         maxWidth: '1692px',
@@ -55,20 +56,46 @@ export default function VerticalConnectorLine({
     >
       {showLine && (
         <div
-          className="absolute top-0 h-full w-[3px]"
+          ref={lineRef}
+          className="absolute top-0 h-full w-[3px] pointer-events-none"
           style={{
-            left: isDesktop && align === 'left' ? 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)' : !isDesktop ? '16px' : 'auto',
-            right: isDesktop && align === 'right' ? 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)' : 'auto',
+            left: align === 'left' ? 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)' : 'auto',
+            right: align === 'right' ? 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)' : 'auto',
             zIndex: 0,
           }}
         >
-          <AnimatedContainerLine 
-            position={isDesktop && align === 'right' ? 'right' : 'left'} 
-            showCaption={false} 
-            diamondStopAt="bottom"
-            color={color}
-            showDiamond={showDiamond}
+          {/* Vertical Line */}
+          <motion.div 
+            className="absolute top-0 left-0 w-full h-full"
+            style={{ 
+              backgroundColor: color,
+              transformOrigin: 'top',
+            }}
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: 1 }}
+            transition={{ 
+              duration: 1.5, 
+              ease: [0.25, 0.1, 0.25, 1],
+            }}
           />
+          
+          {/* Diamond */}
+          {showDiamond && (
+            <motion.div
+              className="absolute left-1/2 w-4 h-4"
+              style={{
+                backgroundColor: color,
+                transform: 'translateX(-50%) rotate(45deg)',
+              }}
+              initial={{ top: 0, opacity: 0 }}
+              animate={{ top: 'calc(100% - 5px)', opacity: 1 }}
+              transition={{ 
+                duration: 1.2, 
+                delay: 0.3, 
+                ease: "easeOut" 
+              }}
+            />
+          )}
         </div>
       )}
     </div>
