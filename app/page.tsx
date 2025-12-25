@@ -9,11 +9,13 @@ import ValueListItem from '@/components/ValueListItem';
 import CustomLink from '@/components/CustomLink';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import CaseCardTest from '@/components/CaseCardTest';
 import VerticalConnectorLine from '@/components/VerticalConnectorLine';
 
 export default function Home() {
   const expertiseSectionRef = useRef(null);
+  const router = useRouter();
   
 
   return (
@@ -446,7 +448,7 @@ export default function Home() {
   desktopImageAlt="iPhone screen"
   desktopImageWidth={356}
   desktopImageHeight={721}
-  onButtonClick={() => {}}
+  onButtonClick={() => router.push('/cases/end-to-end-transformation')}
 /></div>
 <VerticalConnectorLine align="right" />
 {/* Second Case Block - Выровнен по правому краю */}
