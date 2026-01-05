@@ -953,8 +953,8 @@ knowing when to walk away.
       Visual transformation
     </h1>
 
-    <p className="text-l" style={{ fontWeight: 700, marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Main screen and Information architecture</p>
-    
+   
+    <h2 className="heading-m" style={{ marginBottom: 'clamp(24px, calc(24px + (64px - 24px) * ((100vw - 320px) / (1920px - 320px))), 64px)' }}>Main screen and Information architecture</h2>
     {/* Desktop: 2 columns, Mobile: stacked */}
     <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 lg:items-center">
       
@@ -1025,7 +1025,7 @@ knowing when to walk away.
             <li>Shifted the navigation focus to "History," which now contains the Personal Finance Manager (PFM) and becomes the primary entry point for financial insights.</li><br />
             <li>Separated "Services" into its own area to support future product growth and removed non-essential shortcut buttons from the home screen to reduce noise.</li><br />
             <li>Replaced oversized marketing banners with flexible, scalable stories to increase available screen real estate and improve the visibility of ongoing campaigns.</li><br />
-            <li>Moved cashback to the home screen to improve discoverability and engagement.</li>
+            <li>Moved cashback to the home screen to improve discoverability and engagement.</li> <br/>
             <li>Introduced customizable home screen layout: users can now arrange financial tools the way they want. Product teams were required to create widget-level value blocks instead of single-action buttons — a shift toward a product-led home experience.</li><br />
             <li>Brought Payments and Transfers into fast-access actions on the home screen, with a long-term plan to merge these two sections in the bottom navigation.</li><br />  
             <li>Merged "Notifications" and "Messages" to reduce redundancy and simplify communication entry points.</li>
