@@ -954,12 +954,13 @@ knowing when to walk away.
     </h1>
 
    
-    <h2 className="heading-m" style={{ marginBottom: 'clamp(24px, calc(24px + (64px - 24px) * ((100vw - 320px) / (1920px - 320px))), 64px)' }}>Main screen and Information architecture</h2>
+   
     {/* Desktop: 2 columns, Mobile: stacked */}
-    <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 lg:items-center">
+    <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
       
       {/* Left: Slider */}
       <div className="w-full lg:w-1/2">
+      <h2 className="heading-m" style={{ marginBottom: 'clamp(24px, calc(24px + (64px - 24px) * ((100vw - 320px) / (1920px - 320px))), 64px)' }}>Main screen and Information architecture <br/>(Q3 2022 vs Q3 2025)</h2>
         <ReactCompareSlider
           itemOne={
             <ReactCompareSliderImage 
@@ -1029,6 +1030,165 @@ knowing when to walk away.
             <li>Introduced customizable home screen layout: users can now arrange financial tools the way they want. Product teams were required to create widget-level value blocks instead of single-action buttons — a shift toward a product-led home experience.</li><br />
             <li>Brought Payments and Transfers into fast-access actions on the home screen, with a long-term plan to merge these two sections in the bottom navigation.</li><br />  
             <li>Merged "Notifications" and "Messages" to reduce redundancy and simplify communication entry points.</li>
+          </ol> <br/><br/><br/><br/>
+        </div>
+      </div>
+
+    </div>
+
+     {/* Desktop: 2 columns, Mobile: stacked */}
+     <div className="flex flex-col lg:flex-row gap-8 lg:gap-12" style={{ marginTop: 'clamp(72px, calc(72px + (132px - 72px) * ((130vw - 320px) / (1920px - 320px))), 132px)' }}>
+      
+      {/* Left: Slider */}
+      <div className="w-full lg:w-1/2">
+      <h2 className="heading-m" style={{ marginBottom: 'clamp(24px, calc(24px + (64px - 24px) * ((100vw - 320px) / (1920px - 320px))), 64px)' }}>Cash loan launch & redesign <br/>(Q4 2023 vs Q3 2025)</h2>
+        <ReactCompareSlider
+          itemOne={
+            <ReactCompareSliderImage 
+              src="/images/loan-before.png" 
+              alt="Q3 2022"
+              style={{ objectFit: 'contain' }}
+            />
+          }
+          itemTwo={
+            <ReactCompareSliderImage 
+              src="/images/loan-after.png" 
+              alt="Q3 2025"
+              style={{ objectFit: 'contain' }}
+            />
+          }
+          portrait={true}
+          position={50}
+          style={{
+            width: '100%',
+            height: 'clamp(500px, 80vh, 1200px)',
+          }}
+          handle={
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100%',
+                height: '4px',
+                backgroundColor: '#F62F20',
+                position: 'relative',
+              }}
+            >
+              {/* Кружок по центру */}
+              <div
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  backgroundColor: '#F62F20',
+                  border: '3px solid #FFF8E9',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                }}
+              >
+                {/* Стрелки вверх/вниз */}
+                <div style={{ color: '#FFF8E9', fontSize: '24px', fontWeight: 'bold' }}>
+                  ⇅
+                </div>
+              </div>
+            </div>
+          }
+        />
+      </div><br/><br/><br/><br/>
+
+      {/* Right: Description */}
+      <div className="w-full lg:w-1/2 flex flex-col gap-6">
+        <div>
+          <h2 className="text-l" style={{ fontWeight: 700, marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)' }}>Key changes:</h2>
+          <ol className="text-l space-y-3" style={{ listStyle: 'decimal', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+            <li>Launched the product from scratch in parallel with the full app redesign, using existing UI components and form patterns to accelerate delivery and keep the experience consistent.</li><br />
+            <li>Improved the loan term selection in later iterations — replaced dropdowns with chips for faster comparison, better scannability, and reduced cognitive load.</li><br />
+            <li>Redesigned the insurance block: <br/>– added a clear explanation of what the insurance is and why it matters <br/>– recalculated and surfaced the actual approved amount considering insurance costs</li><br /> 
+            <li>Enhanced the payment calculator by providing the exact date of the first payment and making the monthly payment breakdown more transparent.</li><br />
+          </ol>
+        </div>
+      </div>
+
+    </div>
+
+
+
+        {/* Desktop: 2 columns, Mobile: stacked */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12" style={{ marginTop: 'clamp(72px, calc(72px + (132px - 72px) * ((130vw - 320px) / (1920px - 320px))), 132px)' }}>
+      
+      {/* Left: Slider */}
+      <div className="w-full lg:w-1/2">
+      <h2 className="heading-m" style={{ marginBottom: 'clamp(24px, calc(24px + (64px - 24px) * ((100vw - 320px) / (1920px - 320px))), 64px)' }}>FX exchange mini-app<br/>(Q2 2022 vs Q3 2025)</h2>
+        <ReactCompareSlider
+          itemOne={
+            <ReactCompareSliderImage 
+              src="/images/fx-before.png" 
+              alt="Q3 2022"
+              style={{ objectFit: 'contain' }}
+            />
+          }
+          itemTwo={
+            <ReactCompareSliderImage 
+              src="/images/fx-after-prod.png" 
+              alt="Q3 2025"
+              style={{ objectFit: 'contain' }}
+            />
+          }
+          portrait={true}
+          position={50}
+          style={{
+            width: '100%',
+            height: 'clamp(500px, 80vh, 1200px)',
+          }}
+          handle={
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100%',
+                height: '4px',
+                backgroundColor: '#F62F20',
+                position: 'relative',
+              }}
+            >
+              {/* Кружок по центру */}
+              <div
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  backgroundColor: '#F62F20',
+                  border: '3px solid #FFF8E9',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                }}
+              >
+                {/* Стрелки вверх/вниз */}
+                <div style={{ color: '#FFF8E9', fontSize: '24px', fontWeight: 'bold' }}>
+                  ⇅
+                </div>
+              </div>
+            </div>
+          }
+        />
+      </div><br/><br/><br/><br/>
+
+      {/* Right: Description */}
+      <div className="w-full lg:w-1/2 flex flex-col gap-6">
+        <div>
+          <h2 className="text-l" style={{ fontWeight: 700, marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)' }}>Key changes:</h2>
+          <ol className="text-l space-y-3" style={{ listStyle: 'decimal', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+            <li>Moved all FX functionality into a standalone mini-app, making the experience faster, clearer, and easier to scale.</li><br />
+            <li>Refocused the main screen around active traders (core audience): added a compact exchange rate view and customizable currency pairs, so users can track only what matters to them.</li><br />
+            <li>Designed a new navigation structure to support additional features and a new "News & Insights" section.</li><br />
+            <li>Aligned the entire experience with the design system, unifying components, patterns, and interaction logic.</li><br />
+            <li>Shipped iOS and Android widgets so users can monitor currency rates without opening the app.</li>
           </ol>
         </div>
       </div>
