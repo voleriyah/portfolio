@@ -12,6 +12,7 @@ import { useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import CaseCardTest from '@/components/CaseCardTest';
 import VerticalConnectorLine from '@/components/VerticalConnectorLine';
+import HorizontalConnectorLine from '@/components/HorizontalConnectorLine';
 
 export default function Home() {
   const expertiseSectionRef = useRef(null);
@@ -406,8 +407,8 @@ export default function Home() {
         <div 
           className="absolute top-0 w-[3px] pointer-events-none z-10"
           style={{
-            left: 'calc(max(0px, calc((100% - 1692px) / 2)) + clamp(24px, calc(24px + (44px - 24px) * ((100vw - 1024px) / (1920px - 1024px))), 44px))',
-            height: 'calc(clamp(350px, calc(350px + (548px - 350px) * ((100vw - 320px) / (1920px - 320px))), 548px) + clamp(40px, calc(40px + (350px - 40px) * ((100vw - 320px) / (1920px - 320px))), 350px))',
+            left: 'calc(max(0px, calc((100% - 1692px) / 2)) + clamp(0px, calc(0px + (24px - 0px) * ((100vw - 1024px) / (1920px - 1024px))), 24px))',
+            height: 'calc(clamp(300px, calc(300px + (548px - 300px) * ((100vw - 320px) / (1920px - 320px))), 548px) + clamp(40px, calc(40px + (350px - 40px) * ((100vw - 320px) / (1920px - 320px))), 300px))',
           }}
         >
           <AnimatedContainerLine position="left" showCaption={false} diamondStopAt="bottom" color="#F62F20" />
@@ -506,8 +507,11 @@ export default function Home() {
     desktopImageHeight={499}
     desktopImageStyle={{ top: '40%' }}
     onButtonClick={() => {}}
+    
   />
+
 </div>
+
 <VerticalConnectorLine align="right" showDiamond={false} />
       </section>
 
@@ -532,7 +536,7 @@ export default function Home() {
               right: 'clamp(16px, calc(16px + (300px - 16px) * ((100vw - 320px) / (1920px - 320px))), 300px)',
             }}
           >
-            <div className="motto-line-container" style={{ position: 'relative', width: '3px', height: '19%', top:'0' }}>
+            <div className="motto-line-container" style={{ position: 'absolute', width: '3px', height: '19%', top:'0', right:'0' }}>
               <AnimatedContainerLine position="right" showCaption={false} diamondStopAt="bottom" />
             </div>
           </div>
