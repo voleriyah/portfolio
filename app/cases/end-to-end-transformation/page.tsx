@@ -351,7 +351,7 @@ export default function EndToEndTransformationPage() {
         >
             <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Execution</h1>
             <p className="text-l" style={{ fontWeight: 700 }}>  Structural gaps </p> <br />
-            <ul className="list-disc list-inside space-y-2 text-l" style={{ fontWeight: 400, color: 'var(--main-white, #FFF8E9)', fontFamily: '"Alegreya Sans", sans-serif', fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)', fontStyle: 'normal', lineHeight: 'normal', letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)' }}>
+            <ul className="list-disc list-inside space-y-2 text-l" style={{ fontWeight: 400, color: 'var(--main-white, #FFF8E9)', fontFamily: '"Alegreya Sans", sans-serif', fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)', fontStyle: 'normal', lineHeight: 'normal', letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
                 <li>No formal product ownership; CPO role absent.</li>
                 <li>No unified product strategy → parallel priorities</li>
                 <li>Highly fragmented organization (50+ streams)</li>
@@ -364,7 +364,7 @@ export default function EndToEndTransformationPage() {
             <p className="text-l" style={{ fontWeight: 700 }}> Summary: The organization lacked a discovery backbone. Redesign required building one from scratch. </p> <br />
             <br /> <br /> <br /><br />
             <p className="text-l" style={{ fontWeight: 700 }}>  Enabled execution </p> <br />
-            <ul className="list-disc list-inside space-y-2 text-l" style={{ fontWeight: 400, color: 'var(--main-white, #FFF8E9)', fontFamily: '"Alegreya Sans", sans-serif', fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)', fontStyle: 'normal', lineHeight: 'normal', letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)' }}>
+            <ul className="list-disc list-inside space-y-2 text-l" style={{ fontWeight: 400, color: 'var(--main-white, #FFF8E9)', fontFamily: '"Alegreya Sans", sans-serif', fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)', fontStyle: 'normal', lineHeight: 'normal', letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
                 <li>Took interim ownership of the retail product strategy (stopped priority chaos)</li>
                 <li>Installed decision-making workflows inside design (temporary centralization to stabilize org)</li>
                 <li>Built a cross-C-level coalition (CMO, CTO, shareholder) → <b><i>alignment engine</i></b></li>
@@ -378,6 +378,352 @@ export default function EndToEndTransformationPage() {
 
         </div>
         </section>
+              {/* Product Strategy Section */}
+      <section className="w-full">
+        <div className="w-full mx-auto"
+          style={{
+            maxWidth: '1692px',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+            
+          }}
+        >
+          <h1 className="heading-xl" style={{  marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>The product strategy</h1>
+          
+          {/* Desktop: 3 columns layout */}
+          <div className="hidden lg:flex lg:flex-row gap-8 items-stretch" style={{ height: '100%' }}>
+            {/* Column 1: Product Problem & Insights */}
+            <div className="flex-1 flex flex-col gap-6">
+              <div>
+                <h2 className="text-l" style={{ color: 'var(--accent-red, #F62F20)',fontWeight: 700, marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 1024px) / (1920px - 1024px))), 24px)' }}>Product Problem <br /> (baseline)</h2><br /><br />
+                <p className="text-l" style={{ fontWeight: 700 }}>Prerequisites:</p>
+                <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+                  <li>No clear audience focus, product spread thin across all segments.</li>
+                  <li>Mass market dominated by 2 competitors in SuperApp segment → <b><i>no space to win head-on.</i></b></li>
+                  <li>Fragmented UX, no strong engagement loop, stagnated MAU.</li>
+                  <li>Users frustrated with money management, lacking tools they trust.</li>
+                  <li>Lack of must-have products for long-term retention (loans, mortgages).</li>
+                </ul>
+              </div><br /><br />
+              
+              <div>
+                <h2 className="text-l" style={{ fontWeight: 700, marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 1024px) / (1920px - 1024px))), 24px)' }}>Insights from JTBD & Market Patterns</h2>
+                <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+                  <li>People want control over money, not more features.</li>
+                  <li>Trust is a differentiating asset in finance.</li>
+                  <li>Growth potential sits in mass-affluent / affluent segments.</li>
+                  <li>PFM acts as a natural engagement engine → <b><i>drives MAU and potentially shifts behavioral model to predictive SuperApp as main market differentiator.</i></b></li>
+                  <li>Investment + FX = strong monetization vector for this audience.</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Arrow between columns (desktop) */}
+            <div className="flex flex-col items-center justify-center" style={{  paddingTop: 'clamp(0px, calc(40px + (80px - 40px) * ((100vw - 1024px) / (1920px - 1024px))), 20px)'}}>
+            <div
+                 style={{
+                   width: '44px',
+                   height: '44px',
+                   transform: 'rotate(270deg)',
+                   maskImage: 'url(/images/arrow-down.svg)',
+                   WebkitMaskImage: 'url(/images/arrow-down.svg)',
+                   maskRepeat: 'no-repeat',
+                   maskPosition: 'center',
+                   maskSize: 'contain',
+                   WebkitMaskSize: 'contain',
+                   backgroundColor: '#F62F20',
+                 }}
+               />
+               {/* Vertical line below arrow */}
+               <div
+                 style={{
+                   width: '1px',
+                   height: '100%',
+                   backgroundColor: '#F62F20',
+                   marginTop: '32px',
+                 }}
+               />
+            </div>
+
+            {/* Column 2: Q3 2022 Original vision */}
+            <div className="flex-1 flex flex-col gap-6">
+              <div>
+                <h2 className="text-l" style={{ color: 'var(--accent-red, #F62F20)', fontWeight: 700, marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 1024px) / (1920px - 1024px))), 24px)' }}>Q3 2022 <br /> (Original vision)</h2><br /><br />
+                
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-l" style={{ fontWeight: 700 }}>Strategic Bet (the core move):</p>
+                    <p className="text-l">Daily Banking + PFM as the product's engagement core with investments & trading added as value-extension.</p><br /><br />
+                  </div>
+                  
+                  <div>
+                    <p className="text-l" style={{ fontWeight: 700 }}>Vision (3-year horizon):</p>
+                    <p className="text-l">A trusted, literacy-driven retail banking experience with a SuperApp-ready architecture and modular expansion.</p><br /><br />
+                  </div>
+                  
+                  <div>
+                    <p className="text-l" style={{ fontWeight: 700 }}>Target:</p>
+                    <p className="text-l">Mass-affluent, Affluent, HNW.</p> <br /><br />
+                  </div>
+
+                  <div>
+                    <p className="text-l" style={{ fontWeight: 700 }}>Stack:</p>
+                    <p className="text-l">Flutter + WebView </p> <br /><br />
+                  </div>
+                  
+                  <div>
+                    <p className="text-l" style={{ fontWeight: 700 }}>Metrics (North-star group):</p>
+                    <ul className="text-l space-y-1" style={{ listStyle: 'none', paddingLeft: '0' }}>
+                      <li>↑ MAU</li>
+                      <li>↑ Payments online share</li>
+                      <li>↑ FX transaction value</li>
+                      <li>↑ Loans & mortgages adoption</li>
+                      <li>↑ SUM</li>
+                    </ul>  <br /><br />
+                  </div>
+                  
+                  <div>
+                    <p className="text-l" style={{ fontWeight: 700 }}>Emotional background (important):</p>
+                    <p className="text-l">The banking should give users the feeling of control and mental safety – no frustration, fear, irritation or disgust.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Arrow between columns (desktop) */}
+            <div className="flex flex-col items-center justify-center" style={{ paddingTop: 'clamp(0px, calc(40px + (80px - 40px) * ((100vw - 1024px) / (1920px - 1024px))), 20px)' }}>
+            <div
+                 style={{
+                   width: '44px',
+                   height: '44px',
+                   transform: 'rotate(270deg)',
+                   maskImage: 'url(/images/arrow-down.svg)',
+                   WebkitMaskImage: 'url(/images/arrow-down.svg)',
+                   maskRepeat: 'no-repeat',
+                   maskPosition: 'center',
+                   maskSize: 'contain',
+                   WebkitMaskSize: 'contain',
+                   backgroundColor: '#F62F20',
+                 }}
+               />
+               {/* Vertical line below arrow */}
+               <div
+                 style={{
+                   width: '1px',
+                   height: '100%',
+                   backgroundColor: '#F62F20',
+                   marginTop: '32px',
+                 }}
+               />
+            </div>
+
+            {/* Column 3: Q3 2024 Forced pivot */}
+            <div className="flex-1 flex flex-col gap-6">
+              <div>
+                <h2 className="text-l" style={{ color: 'var(--accent-red, #F62F20)', fontWeight: 700, marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 1024px) / (1920px - 1024px))), 24px)' }}>Q3 2024 <br /> (Forced pivot before release)</h2><br /><br />
+                
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-l" style={{ fontWeight: 700 }}>Core:</p>
+                    <p className="text-l">Predictive PFM.</p><br /><br />
+                  </div>
+                  
+                  <div>
+                    <p className="text-l" style={{ fontWeight: 700 }}>Target:</p>
+                    <p className="text-l">Mass segment.</p><br /><br />
+                  </div>
+                  
+                  <div>
+                    <p className="text-l" style={{ fontWeight: 700 }}>Scalability:</p>
+                    <p className="text-l">Limited by new platform constraints.</p><br /><br />
+                  </div>
+                  
+                  <div>
+                    <p className="text-l" style={{ fontWeight: 700 }}>Stack:</p>
+                    <p className="text-l">Flutter + Vue + AliPay MpaaS.</p><br /><br />
+                  </div>
+                  
+                  <div>
+                    <p className="text-l" style={{ fontWeight: 700 }}>Metric:</p>
+                    <p className="text-l">No north star, 1000 partners in ecosystem by 2026.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile: Vertically stacked layout */}
+          <div className="flex flex-col lg:hidden gap-6">
+            {/* Product Problem & Insights */}
+            <div className="flex flex-col gap-6">
+              <div>
+                <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Product Problem (baseline)</h2>
+                <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+                  <li>No clear audience focus, product spread thin across all segments.</li>
+                  <li>Mass market dominated by 2 competitors in SuperApp segment → no space to win head-on.</li>
+                  <li>Fragmented UX, no strong engagement loop, stagnated MAU.</li>
+                  <li>Users frustrated with money management, lacking tools they trust.</li>
+                  <li>Lack of must-have products for long-term retention (loans, mortgages).</li>
+                </ul>
+              </div>
+
+              <div>
+                <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Insights from JTBD & Market Patterns</h2>
+                <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+                  <li>People want control over money, not more features.</li>
+                  <li>Trust is a differentiating asset in finance.</li>
+                  <li>Growth potential sits in mass-affluent / affluent segments.</li>
+                  <li>PFM acts as a natural engagement engine → drives MAU and potentially shifts behavioral model to predictive SuperApp as main market differentiator.</li>
+                  <li>Investment + FX = strong monetization vector for this audience.</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Arrow down (mobile) */}
+            <div className="flex items-center justify-center" style={{ padding: '16px 0' }}>
+            <div
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  maskImage: 'url(/images/arrow-down.svg)',
+                  WebkitMaskImage: 'url(/images/arrow-down.svg)',
+                  maskRepeat: 'no-repeat',
+                  maskPosition: 'center',
+                  maskSize: 'contain',
+                  WebkitMaskSize: 'contain',
+                  backgroundColor: '#F62F20',
+                }}
+              />
+            </div>
+
+            {/* Q3 2022 Original vision */}
+            <div className="flex flex-col gap-4">
+              <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Q3 2022 (Original vision)</h2>
+              
+              <div className="space-y-4">
+                <div>
+                  <p className="text-l" style={{ fontWeight: 700 }}>Strategic Bet (the core move):</p>
+                  <p className="text-l">Daily Banking + PFM as the product's engagement core with investments & trading added as value-extension.</p>
+                </div>
+                
+                <div>
+                  <p className="text-l" style={{ fontWeight: 700 }}>Vision (3-year horizon):</p>
+                  <p className="text-l">A trusted, literacy-driven retail banking experience with a SuperApp-ready architecture and modular expansion.</p>
+                </div>
+                
+                <div>
+                  <p className="text-l" style={{ fontWeight: 700 }}>Target:</p>
+                  <p className="text-l">Mass-affluent → Affluent → HNW.</p>
+                </div>
+                
+                <div>
+                  <p className="text-l" style={{ fontWeight: 700 }}>Metrics (North-star group):</p>
+                  <ul className="text-l space-y-1" style={{ listStyle: 'none', paddingLeft: '0' }}>
+                    <li>↑ MAU</li>
+                    <li>↑ Payments online share</li>
+                    <li>↑ FX transaction value</li>
+                    <li>↑ Loans & mortgages adoption</li>
+                    <li>↑ SUM</li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <p className="text-l" style={{ fontWeight: 700 }}>Emotional background (important):</p>
+                  <p className="text-l">The banking should give users the feeling of control and mental safety – no frustration, fear, irritation or disgust.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Arrow down (mobile) */}
+            <div className="flex items-center justify-center" style={{ padding: '16px 0' }}>
+            <div
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  maskImage: 'url(/images/arrow-down.svg)',
+                  WebkitMaskImage: 'url(/images/arrow-down.svg)',
+                  maskRepeat: 'no-repeat',
+                  maskPosition: 'center',
+                  maskSize: 'contain',
+                  WebkitMaskSize: 'contain',
+                  backgroundColor: '#F62F20',
+                }}
+              />
+            </div>
+
+            {/* Q3 2024 Forced pivot */}
+            <div className="flex flex-col gap-4">
+              <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Q3 2024 (Forced pivot before release)</h2>
+              
+              <div className="space-y-4">
+                <div>
+                  <p className="text-l" style={{ fontWeight: 700 }}>Core:</p>
+                  <p className="text-l">Predictive PFM.</p>
+                </div>
+                
+                <div>
+                  <p className="text-l" style={{ fontWeight: 700 }}>Target:</p>
+                  <p className="text-l">Mass segment.</p>
+                </div>
+                
+                <div>
+                  <p className="text-l" style={{ fontWeight: 700 }}>Scalability:</p>
+                  <p className="text-l">Limited by new platform constraints.</p>
+                </div>
+                
+                <div>
+                  <p className="text-l" style={{ fontWeight: 700 }}>Stack:</p>
+                  <p className="text-l">Flutter + WebView + AliPay MpaaS.</p>
+                </div>
+                
+                <div>
+                  <p className="text-l" style={{ fontWeight: 700 }}>Metric:</p>
+                  <p className="text-l">No north star, 1000 partners in ecosystem by 2026.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+     
+
+      <section className="w-full">
+        <div className="w-full mx-auto"
+          style={{
+            maxWidth: '1692px',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+            
+          }}
+        >
+            <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>The pivot mitigation</h1>
+            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Context: </b> New SuperApp tech platform was introduced 2 months before launch → <b><i>the app had to be rapidly repositioned and rebuilt under heavy constraints.</i></b> </p> <br />
+            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Solution: </b> The pivot was misaligned with market reality and our release readiness. Forcing it pre-launch would have failed. We shipped with the original positioning and deferred the pivot to 2025.</p> <br />
+            <p className="text-l" style={{ fontWeight: 400 }}>  <b>My role: </b> Made the call to defer the pivot, keeping launch viable. Retrofitted design strategy to bridge original vision → <b><i> post-launch evolution.</i></b> </p> <br />
+        </div>
+      </section>
+
+      <section className="w-full">
+        <div className="w-full mx-auto"
+          style={{
+            maxWidth: '1692px',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
+          }}
+        >
+            <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Strategic Preconditions That Made the Pivot Possible</h1>
+            <ol className="text-l space-y-2" style={{ listStyle: 'number', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+                  <li><b>Scalable design foundation </b> → Retail UX strategy became self-running; iterative cycles cascaded to SME, internal, and ecosystem design streams</li><br />
+                  <li><b>Team maturity & systemization </b>→ Ownership distributed; Head of UX Retail hired; team became autonomous.</li><br />
+                  <li><b>Operational research backbone </b>→ Behavioral insights strengthened decision-making; research gained C-level credibility.</li><br />
+                  <li><b>Customer-outcome mindset adoption </b>→ Teams that adopted it became design allies instead of blockers.</li><br />
+                </ol>
+        </div>
+      </section>
 
       {/* Risks Section */}
       <section className="w-full">
@@ -387,7 +733,7 @@ export default function EndToEndTransformationPage() {
             paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
             paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
             paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
-            paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+            //paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
           }}
         >
              <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Critical risks and failures</h1>
@@ -417,6 +763,106 @@ export default function EndToEndTransformationPage() {
               mitigationStrategy="Provided crisis leadership and emotional containment so design team could continue under extreme pressure"
               outcome="Maintained team continuity under extreme pressure"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Impact: Business Section */}
+      <section className="w-full">
+        <div className="w-full mx-auto"
+          style={{
+            maxWidth: '1692px',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+            paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+          }}
+        >
+          <h1 className="heading-xl" style={{ marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Impact: Business</h1>
+          
+          <div className="space-y-6">
+            {/* Growth */}
+            <div>
+              <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Growth</h2>
+              <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+                <li>MAU grew from 1.245M to 1.562M (+317K users).</li>
+                <li>In-app payments share grew 6% Year-over-Year (YoY).</li>
+              </ul>
+            </div>
+
+            {/* Product Quality */}
+            <div>
+              <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Product Quality</h2>
+              <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+                <li>SUM (System Usability Scale) usability score improved from 11% to 71%, then to 80.9%.</li>
+                <li>App Store rating increased from 3.3 to 3.9.</li>
+              </ul>
+            </div>
+
+            {/* Monetization */}
+            <div>
+              <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Monetization</h2>
+              <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+                <li>Share of online loan applications increased from 16% to 39%, driving $53.4M in value in Q3 2025.</li>
+                <li>FX (Foreign Exchange) exchange transaction value increased by +114%, from $578K to $1.02M.</li>
+                <li>Average check of in-app payments grew by 8.2%.</li>
+              </ul>
+            </div>
+
+            {/* Brand & Experience */}
+            <div>
+              <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Brand & Experience</h2>
+              <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+                <li>User recommendation score (BHT NPS) increased from 11% to 31%.</li>
+                <li>The mobile experience is becoming a key driver of overall brand perception.</li>
+                <li>Markswebb: #1 in Kazakhstan for mobile banking UX.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Impact: Orgs outcome Section */}
+      <section className="w-full">
+        <div className="w-full mx-auto"
+          style={{
+            maxWidth: '1692px',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+            paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+          }}
+        >
+          <h1 className="heading-xl" style={{ marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Impact: Orgs outcome</h1>
+          
+          <div className="space-y-6">
+            {/* Built and structured the Design & Research function from scratch */}
+            <div>
+              <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Built and structured the Design & Research function from scratch</h2>
+              <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+                <li>Established 3 design streams: SME (Small and Medium-sized Enterprises), Retail, and Internal.</li>
+                <li>Established 2 research streams: UX/CX (User Experience/Customer Experience) and Market.</li>
+              </ul>
+            </div>
+
+            {/* Maturity Growth */}
+            <div>
+              <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Maturity Growth</h2>
+              <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+                <li>Raised org-wide design maturity from 0.11 (Q3 2022) to 2.05 (Q3 2025), which enabled predictable delivery, structured discovery, and measurable design impact.</li>
+                <li>Shifted the company from a delivery-only workflow to tactical design maturity (Invision level 3).</li>
+              </ul>
+            </div>
+
+            {/* Scaling */}
+            <div>
+              <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Scaling</h2>
+              <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+                <li>The team grew from 3 to 44 members, including 5 CX/UX research, 39 design IC (Individual Contributors), and 4 managers.</li>
+                <li>Established a multi-layer leadership structure and functional independence.</li>
+                <li>Market research was established (2022) and delegated (2024) to a new leadership role.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
