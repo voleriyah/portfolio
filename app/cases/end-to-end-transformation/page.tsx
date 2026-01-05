@@ -939,7 +939,7 @@ knowing when to walk away.
       </section>
 
       {/* Before/After Slider Section */}
-<section className="w-full">
+      <section className="w-full">
   <div className="w-full mx-auto"
     style={{
       maxWidth: '1692px',
@@ -952,30 +952,36 @@ knowing when to walk away.
     <h1 className="heading-xl" style={{ marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
       Visual transformation
     </h1>
+
+    <p className="text-l" style={{ fontWeight: 700, marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Main screen and Information architecture</p>
     
-    <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-      <ReactCompareSlider
-        itemOne={
-          <ReactCompareSliderImage 
-            src="/images/before-main.png" 
-            alt="Q3 2022"
-            style={{ objectFit: 'contain' }}
-          />
-        }
-        itemTwo={
-          <ReactCompareSliderImage 
-            src="/images/after-main.png" 
-            alt="Q3 2025"
-            style={{ objectFit: 'contain' }}
-          />
-        }
-        portrait={true}
-        position={50}
-        style={{
-          width: '100%',
-          height: 'clamp(500px, 70vh, 900px)',
-        }}
-        handle={
+    {/* Desktop: 2 columns, Mobile: stacked */}
+    <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 lg:items-center">
+      
+      {/* Left: Slider */}
+      <div className="w-full lg:w-1/2">
+        <ReactCompareSlider
+          itemOne={
+            <ReactCompareSliderImage 
+              src="/images/before-main.png" 
+              alt="Q3 2022"
+              style={{ objectFit: 'contain' }}
+            />
+          }
+          itemTwo={
+            <ReactCompareSliderImage 
+              src="/images/after-main.png" 
+              alt="Q3 2025"
+              style={{ objectFit: 'contain' }}
+            />
+          }
+          portrait={true}
+          position={50}
+          style={{
+            width: '100%',
+            height: 'clamp(500px, 80vh, 1200px)',
+          }}
+          handle={
             <div
               style={{
                 display: 'flex',
@@ -1008,9 +1014,25 @@ knowing when to walk away.
               </div>
             </div>
           }
-        
-      />
-      
+        />
+      </div>
+
+      {/* Right: Description */}
+      <div className="w-full lg:w-1/2 flex flex-col gap-6">
+        <div>
+          <h2 className="text-l" style={{ fontWeight: 700, marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)' }}>Key changes:</h2>
+          <ol className="text-l space-y-3" style={{ listStyle: 'decimal', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+            <li>Shifted the navigation focus to "History," which now contains the Personal Finance Manager (PFM) and becomes the primary entry point for financial insights.</li><br />
+            <li>Separated "Services" into its own area to support future product growth and removed non-essential shortcut buttons from the home screen to reduce noise.</li><br />
+            <li>Replaced oversized marketing banners with flexible, scalable stories to increase available screen real estate and improve the visibility of ongoing campaigns.</li><br />
+            <li>Moved cashback to the home screen to improve discoverability and engagement.</li>
+            <li>Introduced customizable home screen layout: users can now arrange financial tools the way they want. Product teams were required to create widget-level value blocks instead of single-action buttons — a shift toward a product-led home experience.</li><br />
+            <li>Brought Payments and Transfers into fast-access actions on the home screen, with a long-term plan to merge these two sections in the bottom navigation.</li><br />  
+            <li>Merged "Notifications" and "Messages" to reduce redundancy and simplify communication entry points.</li>
+          </ol>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
