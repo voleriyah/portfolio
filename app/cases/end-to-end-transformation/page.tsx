@@ -611,6 +611,11 @@ export default function EndToEndTransformationPage() {
                   <p className="text-l" style={{ fontWeight: 700 }}>Vision (3-year horizon):</p>
                   <p className="text-l">A trusted, literacy-driven retail banking experience with a SuperApp-ready architecture and modular expansion.</p>
                 </div>
+
+                <div>
+                    <p className="text-l" style={{ fontWeight: 700 }}>Stack:</p>
+                    <p className="text-l">Flutter + WebView </p> <br /><br />
+                  </div>
                 
                 <div>
                   <p className="text-l" style={{ fontWeight: 700 }}>Target:</p>
@@ -674,7 +679,7 @@ export default function EndToEndTransformationPage() {
                 
                 <div>
                   <p className="text-l" style={{ fontWeight: 700 }}>Stack:</p>
-                  <p className="text-l">Flutter + WebView + AliPay MpaaS.</p>
+                  <p className="text-l">Flutter + Vue + AliPay MpaaS.</p>
                 </div>
                 
                 <div>
