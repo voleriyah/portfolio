@@ -41,7 +41,7 @@ html {
 .heading-xl {
   color: var(--main-white, #FFF8E9);
   font-family: "Alegreya Sans", sans-serif;
-  font-size: clamp(32px, calc(32px + (64px - 32px) * ((100vw - 320px) / (1920px - 320px))), 64px);
+  font-size: clamp(24px, calc(24px + (64px - 24px) * ((100vw - 320px) / (1920px - 320px))), 64px);
   font-style: normal;
   font-weight: 800;
   line-height: normal;

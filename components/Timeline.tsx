@@ -131,7 +131,7 @@ export default function HorizontalTimeline({ steps }: HorizontalTimelineProps) {
                 key={index}
                 className="timeline-step relative flex flex-col items-start flex-shrink-0"
                 style={{
-                  width: 'clamp(350px, 23.4vw, 400px)',
+                  width: 'clamp(295px, 23.4vw, 400px)',
                 }}
               >
                 {/* Diamond - выровнен по центру карточки */}

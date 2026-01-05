@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import CustomLink from '@/components/CustomLink';
 import HorizontalTimeline, { TimelineCardHeading, TimelineCardText } from '@/components/Timeline';
+import LargeBulletList from '@/components/LargeBulletList';
 
 export default function EndToEndTransformationPage() {
   return (
@@ -12,6 +13,8 @@ export default function EndToEndTransformationPage() {
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
           }}
         >
       <h1 className="font-erica uppercase self-stretch"
@@ -29,7 +32,6 @@ export default function EndToEndTransformationPage() {
                     alignSelf: 'stretch',
                     marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
 
-                    paddingLeft: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
                   }}>
                   End-to-End Transformation of discovery process
                 </h1>
@@ -42,7 +44,6 @@ export default function EndToEndTransformationPage() {
               fontSize: 'clamp(20px, calc(20px + (32px - 20px) * ((100vw - 320px) / (1920px - 320px))), 32px)',
               fontWeight: 400,
               lineHeight: 'normal',
-              paddingLeft: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
               marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
             }}
           >
@@ -50,11 +51,7 @@ export default function EndToEndTransformationPage() {
           </p>
 
           {/* Case Tags */}
-          <div
-            style={{
-                paddingLeft: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
-            }}
-          >
+          <div>
             <p
               style={{
                 color: '#F62F20',
@@ -71,37 +68,27 @@ export default function EndToEndTransformationPage() {
 
         
           {/* Case Content Placeholder */}
-          <div
+          <div className="w-full mx-auto"
             style={{
-              color: '#FFF8E9',
-              fontFamily: '"Alegreya Sans", sans-serif',
-              fontSize: 'clamp(18px, calc(18px + (24px - 18px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
-              fontWeight: 400,
-              lineHeight: '1.6',
+              maxWidth: '1692px',
+              marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
             }}
           >
+            <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Market and Business Context</h1>
+            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Kazakhstan's market: </b> ~16M population, ~9.2M solvent. </p> <br />
 
-<div className="w-full mx-auto"
-          style={{
-            maxWidth: '1692px',
-            marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
-            marginLeft: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
-            marginRight: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
-          }}
-        >
+            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Bank CenterCredit: </b> S&P Top-4, 35+ years on the market, 3M+ active clients, 1.77B market cap, 8 000 employees.</p> <br />
 
-<h1 className="heading-xl" style={{ marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Market and Business Context</h1>
-<p className="text-l" style={{ fontWeight: 700 }}>  Kazakhstan’s market: </p> 
-<p className="text-l" style={{ fontWeight: 400 }}> ~16M population, ~9.2M solvent. </p> <br />
+            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Strategic direction: </b> build a SuperApp ecosystem integrating internal companies + external B2B/B2C partners: retail, foodtech, fintech.</p> <br />
+            <p className="text-l" style={{ fontWeight: 400 }}>  The bank is part of a diversified financial holding (20+ companies: investments, insurance, real estate, crypto, trading, development hub). </p> <br />
+          </div>
 
-<p className="text-l" style={{ fontWeight: 700 }}>  Bank CenterCredit: </p> 
-<p className="text-l" style={{ fontWeight: 400 }}> S&P Top-4, 35+ years on the market, 3M+ active clients, 1.77B market cap, 8 000 employees. </p> <br />
-
-<p className="text-l" style={{ fontWeight: 400 }}>  The bank is part of a diversified financial holding (20+ companies: investments, insurance, real estate, crypto, trading, development hub). </p> <br />
-
-<p className="text-l" style={{ fontWeight: 700 }}>  Strategic direction: </p> <p className="text-l" style={{ fontWeight: 400 }}> build a SuperApp ecosystem integrating internal companies + external B2B/B2C partners: retail, foodtech, fintech. </p>
-           </div>
-           
+          <div className="w-full mx-auto"
+            style={{
+              maxWidth: '1692px',
+              marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+            }}
+          >
             <HorizontalTimeline 
   steps={[
     { 
@@ -230,10 +217,165 @@ export default function EndToEndTransformationPage() {
       },
   ]}
 />
-
           </div>
         </div>
       </section>
+
+      {/* Strategy Block */}
+      <section 
+        className="w-full flex items-center justify-center"
+        style={{
+          height: 'clamp(600px, calc(600px + (1000px - 600px) * ((100vw - 320px) / (1920px - 320px))), 1000px)',
+        }}
+      >
+        <div className="flex flex-col items-center justify-center w-full">
+          {/* Top Diamonds - 2 diamonds horizontally aligned */}
+          <div className="flex items-center justify-center" style={{ gap: '24px', marginBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)' }}>
+            <div
+              style={{
+                width: '12px',
+                height: '12px',
+                backgroundColor: 'var(--main-red-accent, #F62F20)',
+                transform: 'rotate(45deg)', 
+                
+              }}
+            />
+            <div
+              style={{
+                width: '12px',
+                height: '12px',
+                backgroundColor: 'var(--main-red-accent, #F62F20)',
+                transform: 'rotate(45deg)',
+              }}
+            />
+          </div>
+
+          {/* Strategy Title */}
+          <h2
+            style={{
+              color: 'var(--main-white, #FFF8E9)',
+              textAlign: 'center',
+              fontFamily: '"Alegreya Sans", sans-serif',
+              fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)',
+              fontStyle: 'normal',
+              fontWeight: 900,
+              lineHeight: 'normal',
+              marginBottom: 'clamp(24px, calc(24px + (64px - 24px) * ((100vw - 320px) / (1920px - 320px))), 64px)',
+            }}
+          >
+            Strategy
+          </h2>
+
+          {/* Main Text */}
+          <h1 className="heading-xl" style={{ maxWidth: '664px', textAlign: 'center' }}>
+            Design-led org change through a flagship redesign
+          </h1>
+
+          {/* Bottom Diamonds - 2 diamonds horizontally aligned */}
+          <div className="flex items-center justify-center" style={{ gap: '24px', marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)' }}>
+            <div
+              style={{
+                width: '12px',
+                height: '12px',
+                backgroundColor: 'var(--main-red-accent, #F62F20)',
+                transform: 'rotate(45deg)',
+              }}
+            />
+            <div
+              style={{
+                width: '12px',
+                height: '12px',
+                backgroundColor: 'var(--main-red-accent, #F62F20)',
+                transform: 'rotate(45deg)',
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full">
+        <div className="w-full mx-auto"
+          style={{
+            maxWidth: '1692px',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            minHeight: 'clamp(200px, calc(400px + (800px - 400px) * ((100vw - 320px) / (1920px - 320px))), 400px)',
+          }}
+        >
+            <p className="text-l" style={{ fontWeight: 700 }}>  Context </p> <br />
+            <p className="text-l" style={{ fontWeight: 400 }}>  Post-acquisition restructuring created a political and operational vacuum: the design function had no defined mandate and was absent from strategic decision-making. <br /> <br /> This vacuum also created an opportunity: the organization needed a function capable of stabilizing product delivery and re-establishing customer-centered direction. I leveraged this moment to position design as that function, embedding governance and decision-making frameworks through the retail redesign. </p>
+            <br /> <br /> <br />
+            <p className="text-l" style={{ fontWeight: 700 }}>  Guiding Policy (the strategic idea) </p> <br />
+            <p className="text-l" style={{ fontWeight: 400 }}>  Deploy org-change through the redesign — embed governance, maturity and decision-making improvements inside the product delivery process.
+            Redesign becomes the flagship that justifies and protects systemic change. </p>
+
+           
+        </div>
+      </section>
+
+
+      <section className="w-full">
+        <div className="w-full mx-auto"
+          style={{
+            maxWidth: '1692px',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
+          }}
+        >
+            <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Strategic pillars</h1>
+            <LargeBulletList 
+                items={[
+                    'Reframe team workflows around customer-outcome mindset → raise product maturity.',
+                    'Temporarily centralize decision-making in design to stabilize the org and stop fragmentation.',
+                    'Position design as a strategic actor in all major business pivots.',
+                    'Build C-level credibility through clarity of vision + visual progress',
+                    'Strengthen researchOps to create a single source of truth for decisions.',
+                    'Use retail redesign as visible proof that the new operating model works.'
+
+                ]} 
+                />
+        </div>
+        </section>
+
+        <section className="w-full">
+        <div className="w-full mx-auto"
+          style={{
+            maxWidth: '1692px',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
+          }}
+        >
+            <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Execution</h1>
+            <p className="text-l" style={{ fontWeight: 700 }}>  Structural gaps </p> <br />
+            <ul className="list-disc list-inside space-y-2 text-l" style={{ fontWeight: 400, color: 'var(--main-white, #FFF8E9)', fontFamily: '"Alegreya Sans", sans-serif', fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)', fontStyle: 'normal', lineHeight: 'normal', letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)' }}>
+                <li>No formal product ownership; CPO role absent.</li>
+                <li>No unified product strategy → parallel priorities</li>
+                <li>Highly fragmented organization (50+ streams)</li>
+                <li>Legacy mobile app not feasible for iterative delivery</li>
+                <li>No credibility or shared decision-making model with C-suite</li>
+                <li>Research and analytics processes missing</li>
+                <li>Design function had 3 designers for entire bank</li>
+            </ul>
+            <br /> <br /> 
+            <p className="text-l" style={{ fontWeight: 700 }}> Summary: The organization lacked a discovery backbone. Redesign required building one from scratch. </p> <br />
+            <br /> <br /> <br /><br />
+            <p className="text-l" style={{ fontWeight: 700 }}>  Enabled execution </p> <br />
+            <ul className="list-disc list-inside space-y-2 text-l" style={{ fontWeight: 400, color: 'var(--main-white, #FFF8E9)', fontFamily: '"Alegreya Sans", sans-serif', fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)', fontStyle: 'normal', lineHeight: 'normal', letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)' }}>
+                <li>Took interim ownership of the retail product strategy (stopped priority chaos)</li>
+                <li>Installed decision-making workflows inside design (temporary centralization to stabilize org)</li>
+                <li>Built a cross-C-level coalition (CMO, CTO, shareholder) → <b><i>alignment engine</i></b></li>
+                <li>Introduced unified IA + a single roadmap → <b><i>eliminated fragmentation</i></b></li>
+                <li>Built researchOps + analytics pipeline to anchor decisions in evidence</li>
+                <li>Scaled design from 3 → <b><i>45+ across 3 streams; established 5-person research department</i></b></li>
+                <li>Introduced delivery management & quality control for predictable releases</li>
+            </ul>
+            <br /> <br /> 
+            <p className="text-l" style={{ fontWeight: 700 }}> Summary: I created the operating model that allowed redesign to happen at all. </p> <br />
+
+        </div>
+        </section>
 
       {/* Footer Section */}
       <footer className="w-full bg-dark-bg relative overflow-hidden">
