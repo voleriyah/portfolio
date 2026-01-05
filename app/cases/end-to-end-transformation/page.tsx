@@ -971,7 +971,7 @@ knowing when to walk away.
           }
           itemTwo={
             <ReactCompareSliderImage 
-              src="/images/after-main.png" 
+              src="/images/main-after-prod.png" 
               alt="Q3 2025"
               style={{ objectFit: 'contain' }}
             />
@@ -1030,7 +1030,7 @@ knowing when to walk away.
             <li>Introduced customizable home screen layout: users can now arrange financial tools the way they want. Product teams were required to create widget-level value blocks instead of single-action buttons — a shift toward a product-led home experience.</li><br />
             <li>Brought Payments and Transfers into fast-access actions on the home screen, with a long-term plan to merge these two sections in the bottom navigation.</li><br />  
             <li>Merged "Notifications" and "Messages" to reduce redundancy and simplify communication entry points.</li>
-          </ol> <br/><br/><br/><br/>
+          </ol> <br/><br/>
         </div>
       </div>
 
