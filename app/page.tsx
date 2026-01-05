@@ -442,8 +442,6 @@ export default function Home() {
   buttonText="Read the case"
   imageSrc="/images/bcc-screen.png"
   imageAlt="Case study - Retail App Redesign"
-  showVerticalLine={false} 
-  showHorizontalLine={true}
   desktopImageSrc="/images/bcc-screen.png"
   desktopImageAlt="iPhone screen"
   desktopImageWidth={356}
@@ -470,7 +468,7 @@ export default function Home() {
     buttonText="Read the case"
     imageSrc="/images/lab-image.png"
     imageAlt="Case study - UX Research Lab"
-showVerticalLine={false} showHorizontalLine={true} 
+
     desktopImageSrc="/images/lab-image.png"
     desktopImageAlt="UX Research Lab"
     desktopImageWidth={632}
