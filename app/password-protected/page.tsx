@@ -22,8 +22,8 @@ function PasswordForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#1E1E1E]">
-      <form onSubmit={handleSubmit} className="bg-[#FFF8E9] p-8 rounded border-[3px] max-w-md w-full">
+    <div className="min-h-screen flex items-center justify-center bg-[#FFF8E9] md:bg-[#1E1E1E] p-4 ">
+      <form onSubmit={handleSubmit} className="bg-[#FFF8E9] p-8 max-w-md w-full">
         <h1 className="text-2xl font-bold mb-4 text-[#342927]">Enter the password</h1>
         {error && <p className="text-red-600 mb-4">{error}</p>}
         <input
