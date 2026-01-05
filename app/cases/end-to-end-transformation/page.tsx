@@ -5,6 +5,7 @@ import CustomLink from '@/components/CustomLink';
 import HorizontalTimeline, { TimelineCardHeading, TimelineCardText } from '@/components/Timeline';
 import LargeBulletList from '@/components/LargeBulletList';
 import Risks from '@/components/Risks';
+import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider'; 
 
 export default function EndToEndTransformationPage() {
   return (
@@ -875,7 +876,6 @@ export default function EndToEndTransformationPage() {
       <section 
         className="w-full flex items-center justify-center"
         style={{
-            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
           paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
           height: 'clamp(800px, calc(800px + (1500px - 800px) * ((100vw - 320px) / (1920px - 320px))), 1500px)',
         }}
@@ -937,6 +937,83 @@ knowing when to walk away.
           </div>
         </div>
       </section>
+
+      {/* Before/After Slider Section */}
+<section className="w-full">
+  <div className="w-full mx-auto"
+    style={{
+      maxWidth: '1692px',
+      paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+      paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+      paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+      paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+    }}
+  >
+    <h1 className="heading-xl" style={{ marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+      Visual transformation
+    </h1>
+    
+    <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <ReactCompareSlider
+        itemOne={
+          <ReactCompareSliderImage 
+            src="/images/before-main.png" 
+            alt="Q3 2022"
+            style={{ objectFit: 'contain' }}
+          />
+        }
+        itemTwo={
+          <ReactCompareSliderImage 
+            src="/images/after-main.png" 
+            alt="Q3 2025"
+            style={{ objectFit: 'contain' }}
+          />
+        }
+        portrait={true}
+        position={50}
+        style={{
+          width: '100%',
+          height: 'clamp(500px, 70vh, 900px)',
+        }}
+        handle={
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100%',
+                height: '4px',
+                backgroundColor: '#F62F20',
+                position: 'relative',
+              }}
+            >
+              {/* Кружок по центру */}
+              <div
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  backgroundColor: '#F62F20',
+                  border: '3px solid #FFF8E9',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                }}
+              >
+                {/* Стрелки вверх/вниз */}
+                <div style={{ color: '#FFF8E9', fontSize: '24px', fontWeight: 'bold' }}>
+                  ⇅
+                </div>
+              </div>
+            </div>
+          }
+        
+      />
+      
+    </div>
+  </div>
+</section>
 
       {/* Footer Section */}
       <footer className="w-full bg-dark-bg relative overflow-hidden">
