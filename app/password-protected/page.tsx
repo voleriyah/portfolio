@@ -30,6 +30,12 @@ function PasswordForm() {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              handleSubmit(e as any);
+            }
+          }}
           className="w-full p-3 border-2 border-[#1E1E1E] rounded mb-4"
           placeholder="Password"
         />
