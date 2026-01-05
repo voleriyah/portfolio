@@ -36,6 +36,7 @@ function PasswordForm() {
               handleSubmit(e as any);
             }
           }}
+          autoFocus={true}
           className="w-full p-3 border-2 border-[#1E1E1E] rounded mb-4"
           placeholder="Password"
         />
