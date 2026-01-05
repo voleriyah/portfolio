@@ -65,4 +65,14 @@ html {
   font-style: normal;
   font-weight: 900;
   line-height: normal;
+}
+
+/* Hide scrollbar for horizontal scrolling */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }  

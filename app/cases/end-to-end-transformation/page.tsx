@@ -4,6 +4,7 @@ import Image from 'next/image';
 import CustomLink from '@/components/CustomLink';
 import HorizontalTimeline, { TimelineCardHeading, TimelineCardText } from '@/components/Timeline';
 import LargeBulletList from '@/components/LargeBulletList';
+import Risks from '@/components/Risks';
 
 export default function EndToEndTransformationPage() {
   return (
@@ -377,6 +378,48 @@ export default function EndToEndTransformationPage() {
 
         </div>
         </section>
+
+      {/* Risks Section */}
+      <section className="w-full">
+        <div className="w-full mx-auto"
+          style={{
+            maxWidth: '1692px',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+            paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+          }}
+        >
+             <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Critical risks and failures</h1>
+          <div
+            className="flex lg:flex-row items-start justify-start lg:justify-center gap-8 overflow-x-auto scrollbar-hide"
+            style={{
+              gap: 'clamp(24px, calc(24px + (32px - 24px) * ((100vw - 1024px) / (1920px - 1024px))), 32px)',
+              paddingLeft: 'clamp(16px, calc(16px + (0px - 16px) * ((100vw - 1024px) / (1920px - 1024px))), 0px)',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
+            <Risks
+              number="1"
+              riskDescription="Dependencies and fragmentation slowed delivery"
+              mitigationStrategy="Introduced release discipline Froze changes in legacy app to stop scope spread and regain control."
+              outcome="Recovered app rating after release from 1⭐ → 3.1⭐ in 3 months."
+            />
+            <Risks
+              number="2"
+              riskDescription="Security breach: design leaked to competitor and was uncovered 1 month before our release by their launch"
+              mitigationStrategy="Established new InfoSec workflow Created secure access and approval pipeline in Figma."
+              outcome="Prevented further leaks; increased organizational trust toward design."
+            />
+            <Risks
+              number="3"
+              riskDescription="Market signal: abrupt drop in app rating due to legacy tech debt"
+              mitigationStrategy="Provided crisis leadership and emotional containment so design team could continue under extreme pressure"
+              outcome="Maintained team continuity under extreme pressure"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Footer Section */}
       <footer className="w-full bg-dark-bg relative overflow-hidden">
