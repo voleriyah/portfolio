@@ -1,8 +1,8 @@
 'use client';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function PasswordProtected() {
+function PasswordForm() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
@@ -41,5 +41,13 @@ export default function PasswordProtected() {
         </button>
       </form>
     </div>
+  );
+}
+
+export default function PasswordProtected() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#1E1E1E] text-white">Загрузка...</div>}>
+      <PasswordForm />
+    </Suspense>
   );
 }
