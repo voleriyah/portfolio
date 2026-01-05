@@ -1104,8 +1104,9 @@ knowing when to walk away.
         <div>
           <h2 className="text-l" style={{ fontWeight: 700, marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)' }}>Key changes:</h2>
           <ol className="text-l space-y-3" style={{ listStyle: 'decimal', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-            <li>Launched the product from scratch in parallel with the full app redesign, using existing UI components and form patterns to accelerate delivery and keep the experience consistent.</li><br />
-            <li>Improved the loan term selection in later iterations — replaced dropdowns with chips for faster comparison, better scannability, and reduced cognitive load.</li><br />
+            <li>Launched the product from scratch in parallel with the full app redesign, using existing UI components and form patterns to accelerate delivery and keep the experience consistent. <b><i>Grew loan issuance from $2.4M → $17.9M.</i></b></li><br />
+            <li>Improved the loan term selection in later iterations — <b><i>SUM of approved loans Q3 YoY $17.9M → $53.4M.</i></b> </li><br />
+            <li>Replaced dropdowns with chips for faster comparison, better scannability, and reduced cognitive load.</li><br />
             <li>Redesigned the insurance block: <br/>– added a clear explanation of what the insurance is and why it matters <br/>– recalculated and surfaced the actual approved amount considering insurance costs</li><br /> 
             <li>Enhanced the payment calculator by providing the exact date of the first payment and making the monthly payment breakdown more transparent.</li><br />
           </ol>
@@ -1184,8 +1185,8 @@ knowing when to walk away.
         <div>
           <h2 className="text-l" style={{ fontWeight: 700, marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)' }}>Key changes:</h2>
           <ol className="text-l space-y-3" style={{ listStyle: 'decimal', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-            <li>Moved all FX functionality into a standalone mini-app, making the experience faster, clearer, and easier to scale.</li><br />
-            <li>Refocused the main screen around active traders (core audience): added a compact exchange rate view and customizable currency pairs, so users can track only what matters to them.</li><br />
+            <li>Moved all FX functionality into a standalone mini-app, making the experience faster, clearer, and easier to scale. <b><i>+20% operations volume (60,864 → 73,176).</i></b></li><br />
+            <li>Refocused the main screen around active traders (core audience): added a compact exchange rate view and customizable currency pairs, so users can track only what matters to them. <b><i>+10% active users (2,579 → 2,843).</i></b></li><br />
             <li>Designed a new navigation structure to support additional features and a new "News & Insights" section.</li><br />
             <li>Aligned the entire experience with the design system, unifying components, patterns, and interaction logic.</li><br />
             <li>Shipped iOS and Android widgets so users can monitor currency rates without opening the app.</li>
@@ -1198,7 +1199,7 @@ knowing when to walk away.
 </section>
 
       {/* Footer Section */}
-      <footer className="w-full bg-dark-bg relative overflow-hidden">
+      <footer className="w-full bg-dark-bg relative overflow-hidden" style={{ marginTop: 'clamp(72px, calc(72px + (132px - 72px) * ((130vw - 320px) / (1920px - 320px))), 132px)' }}>
         <div
           className="w-full mx-auto flex flex-col lg:flex-row"
           style={{
