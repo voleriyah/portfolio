@@ -867,6 +867,72 @@ export default function EndToEndTransformationPage() {
         </div>
       </section>
 
+      <section 
+        className="w-full flex items-center justify-center"
+        style={{
+            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+          paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+          height: 'clamp(800px, calc(800px + (1500px - 800px) * ((100vw - 320px) / (1920px - 320px))), 1500px)',
+        }}
+      >
+        <div className="flex flex-col items-center justify-center w-full"
+        style={{
+          
+        }}
+        >
+          {/* Top Diamonds - 2 diamonds horizontally aligned */}
+          <div className="flex items-center justify-center" style={{ gap: '24px', marginBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)' }}>
+            <div
+              style={{
+                width: '12px',
+                height: '12px',
+                backgroundColor: 'var(--main-red-accent, #F62F20)',
+                transform: 'rotate(45deg)', 
+                
+              }}
+            />
+            <div
+              style={{
+                width: '12px',
+                height: '12px',
+                backgroundColor: 'var(--main-red-accent, #F62F20)',
+                transform: 'rotate(45deg)',
+              }}
+            />
+          </div>
+
+
+          {/* Main Text */}
+          <h1 className="heading-xl" style={{ maxWidth: 'clamp(300px, calc(300px + (1000px - 300px) * ((100vw - 320px) / (1920px - 320px))), 1000px)', textAlign: 'center' }}>
+          I learned to lead without air,<br />  to build without prerequisites <br /> and to protect people in a system built to break them.
+<br />
+<br />
+Also, I learned the hardest won leadership skill: <br />
+knowing when to walk away.
+          </h1>
+
+          {/* Bottom Diamonds - 2 diamonds horizontally aligned */}
+          <div className="flex items-center justify-center" style={{ gap: '24px', marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)' }}>
+            <div
+              style={{
+                width: '12px',
+                height: '12px',
+                backgroundColor: 'var(--main-red-accent, #F62F20)',
+                transform: 'rotate(45deg)',
+              }}
+            />
+            <div
+              style={{
+                width: '12px',
+                height: '12px',
+                backgroundColor: 'var(--main-red-accent, #F62F20)',
+                transform: 'rotate(45deg)',
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Footer Section */}
       <footer className="w-full bg-dark-bg relative overflow-hidden">
         <div
