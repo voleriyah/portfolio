@@ -1009,7 +1009,7 @@ knowing when to walk away.
                 }}
               >
                 {/* Стрелки вверх/вниз */}
-                <div style={{ color: '#FFF8E9', fontSize: '24px', fontWeight: 'bold' }}>
+                <div style={{ color: '#FFF8E9', fontSize: '18px', fontWeight: 'bold' }}>
                   ⇅
                 </div>
               </div>
@@ -1090,7 +1090,7 @@ knowing when to walk away.
                 }}
               >
                 {/* Стрелки вверх/вниз */}
-                <div style={{ color: '#FFF8E9', fontSize: '24px', fontWeight: 'bold' }}>
+                <div style={{ color: '#FFF8E9', fontSize: '18px', fontWeight: 'bold' }}>
                   ⇅
                 </div>
               </div>
@@ -1171,7 +1171,7 @@ knowing when to walk away.
                 }}
               >
                 {/* Стрелки вверх/вниз */}
-                <div style={{ color: '#FFF8E9', fontSize: '24px', fontWeight: 'bold' }}>
+                <div style={{ color: '#FFF8E9', fontSize: '18px', fontWeight: 'bold' }}>
                   ⇅
                 </div>
               </div>
