@@ -89,6 +89,7 @@ export default function EndToEndTransformationPage() {
               marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
             }}
           >
+            <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Timeline</h1>
             <HorizontalTimeline 
   steps={[
     { 
@@ -221,6 +222,27 @@ export default function EndToEndTransformationPage() {
         </div>
       </section>
 
+      <section className="w-full">
+        <div className="w-full mx-auto"
+          style={{
+            maxWidth: '1692px',
+            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            minHeight: 'clamp(200px, calc(400px + (800px - 400px) * ((100vw - 320px) / (1920px - 320px))), 400px)',
+          }}
+        >
+            <p className="text-l" style={{ fontWeight: 700 }}>  Context </p> <br />
+            <p className="text-l" style={{ fontWeight: 400 }}>  Post-acquisition restructuring created a political and operational vacuum: the design function had no defined mandate and was absent from strategic decision-making. <br /> <br /> This vacuum also created an opportunity: the organization needed a function capable of stabilizing product delivery and re-establishing customer-centered direction. I leveraged this moment to position design as that function, embedding governance and decision-making frameworks through the retail redesign. </p>
+            <br /> <br /> <br />
+            <p className="text-l" style={{ fontWeight: 700 }}>  Guiding Policy (the strategic idea) </p> <br />
+            <p className="text-l" style={{ fontWeight: 400 }}>  Deploy org-change through the redesign — embed governance, maturity and decision-making improvements inside the product delivery process.
+            Redesign becomes the flagship that justifies and protects systemic change. </p>
+
+           
+        </div>
+      </section>
+
       {/* Strategy Block */}
       <section 
         className="w-full flex items-center justify-center"
@@ -299,28 +321,7 @@ export default function EndToEndTransformationPage() {
             maxWidth: '1692px',
             paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
             paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            minHeight: 'clamp(200px, calc(400px + (800px - 400px) * ((100vw - 320px) / (1920px - 320px))), 400px)',
-          }}
-        >
-            <p className="text-l" style={{ fontWeight: 700 }}>  Context </p> <br />
-            <p className="text-l" style={{ fontWeight: 400 }}>  Post-acquisition restructuring created a political and operational vacuum: the design function had no defined mandate and was absent from strategic decision-making. <br /> <br /> This vacuum also created an opportunity: the organization needed a function capable of stabilizing product delivery and re-establishing customer-centered direction. I leveraged this moment to position design as that function, embedding governance and decision-making frameworks through the retail redesign. </p>
-            <br /> <br /> <br />
-            <p className="text-l" style={{ fontWeight: 700 }}>  Guiding Policy (the strategic idea) </p> <br />
-            <p className="text-l" style={{ fontWeight: 400 }}>  Deploy org-change through the redesign — embed governance, maturity and decision-making improvements inside the product delivery process.
-            Redesign becomes the flagship that justifies and protects systemic change. </p>
-
-           
-        </div>
-      </section>
-
-
-      <section className="w-full">
-        <div className="w-full mx-auto"
-          style={{
-            maxWidth: '1692px',
-            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
+            //paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
           }}
         >
             <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Strategic pillars</h1>

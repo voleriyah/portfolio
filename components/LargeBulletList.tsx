@@ -53,7 +53,7 @@ export default function LargeBulletList({ items, className = '' }: LargeBulletLi
                     textTransform: 'uppercase',
                   }}
                 >
-                  {index + 1}
+                  {index + 1}.
                 </span>
               </div>
 
@@ -111,7 +111,7 @@ export default function LargeBulletList({ items, className = '' }: LargeBulletLi
                         textTransform: 'uppercase',
                       }}
                     >
-                      {itemNumber}
+                      {itemNumber}.
                     </span>
                   </div>
 

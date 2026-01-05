@@ -15,9 +15,9 @@ interface HorizontalTimelineProps {
 export function TimelineCardText({ children }: { children: ReactNode }) {
   return (
     <div 
-      className="text-[#342927] font-['Alegreya_Sans'] font-normal tracking-[-0.18px]"
+      className="text-[#FFF8E9] font-['Alegreya_Sans'] font-normal tracking-[-0.18px]"
       style={{
-        fontSize: 'clamp(16px, 1.8vw, 22px)',
+        fontSize: 'clamp(18px, 1.8vw, 24px)',
         lineHeight: 'normal',
       }}
     >
@@ -30,9 +30,9 @@ export function TimelineCardText({ children }: { children: ReactNode }) {
 export function TimelineCardHeading({ children }: { children: ReactNode }) {
   return (
     <h4 
-      className="text-[#342927] font-['Alegreya_Sans'] font-bold tracking-[-0.18px]"
+      className="text-[#FFF8E9] font-['Alegreya_Sans'] font-bold tracking-[-0.18px]"
       style={{
-        fontSize: 'clamp(16px, 1.8vw, 22px)',
+        fontSize: 'clamp(18px, 1.8vw, 24px)',
         lineHeight: 'normal',
       }}
     >
@@ -95,7 +95,7 @@ export default function HorizontalTimeline({ steps }: HorizontalTimelineProps) {
   const gap = 48;
 
   return (
-    <div className="w-full relative px-4 sm:px-6 lg:px-8">
+    <div className="w-full relative">
       {/* Scrollable container */}
       <div 
         ref={scrollRef}
@@ -148,14 +148,14 @@ export default function HorizontalTimeline({ steps }: HorizontalTimelineProps) {
                 <div 
                   className="text-center w-full"
                   style={{
-                    marginTop: 'clamp(32px, 3vw, 48px)',
+                    marginTop: 'clamp(36px, 3vw, 56px)',
                     minHeight: 'clamp(50px, 7vw, 80px)',
                   }}
                 >
                   <h3 
                     className="text-[#FFF8E9] font-['Alegreya_Sans'] font-bold tracking-[-0.24px]"
                     style={{
-                      fontSize: 'clamp(16px, 2vw, 24px)',
+                      fontSize: 'clamp(20px, 2vw, 32px)',
                       lineHeight: 'clamp(20px, 2.5vw, 30px)',
                     }}
                   >
@@ -165,7 +165,7 @@ export default function HorizontalTimeline({ steps }: HorizontalTimelineProps) {
 
                 {/* Card - адаптивный отступ от заголовка */}
                 <div 
-                  className="flex flex-col items-start gap-4 border-[3px] border-[#F62F20] bg-[#FFF8E9] p-6 w-full h-full"
+                  className="flex flex-col items-start gap-4 border-[3px] border-[#F62F20] bg-[#1E1E1E] p-6 w-full h-full"
                   style={{
                     minHeight: '450px',
                     marginTop: 'clamp(16px, 3vw, 48px)',
