@@ -20,11 +20,11 @@ export default function EndToEndTransformationPage() {
                     textAlign: 'left',
                     fontFamily: '"Erica One"',
                     // Responsive font size: scales from 40px (iPhone SE 320px) to 48px (iPhone XR 414px), then to 108px at 1920px
-                    fontSize: 'clamp(40px, calc(40px + (108px - 40px) * ((100vw - 320px) / (1920px - 320px))), 108px)',
+                    fontSize: 'clamp(32px, calc(32px + (108px - 32px) * ((100vw - 320px) / (1920px - 320px))), 108px)',
                     fontStyle: 'normal',
                     fontWeight: 400,
                     // Responsive line height: scales proportionally from 72px to 87px to 147px
-                    lineHeight: 'clamp(72px, calc(72px + (147px - 72px) * ((100vw - 320px) / (1920px - 320px))), 147px)',
+                    lineHeight: 'clamp(44px, calc(44px + (147px - 44px) * ((100vw - 320px) / (1920px - 320px))), 147px)',
                     textTransform: 'uppercase',
                     alignSelf: 'stretch',
                     marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
@@ -80,6 +80,28 @@ export default function EndToEndTransformationPage() {
               lineHeight: '1.6',
             }}
           >
+
+<div className="w-full mx-auto"
+          style={{
+            maxWidth: '1692px',
+            marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+            marginLeft: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
+            marginRight: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
+          }}
+        >
+
+<h1 className="heading-xl" style={{ marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Market and Business Context</h1>
+<p className="text-l" style={{ fontWeight: 700 }}>  Kazakhstan’s market: </p> 
+<p className="text-l" style={{ fontWeight: 400 }}> ~16M population, ~9.2M solvent. </p> <br />
+
+<p className="text-l" style={{ fontWeight: 700 }}>  Bank CenterCredit: </p> 
+<p className="text-l" style={{ fontWeight: 400 }}> S&P Top-4, 35+ years on the market, 3M+ active clients, 1.77B market cap, 8 000 employees. </p> <br />
+
+<p className="text-l" style={{ fontWeight: 400 }}>  The bank is part of a diversified financial holding (20+ companies: investments, insurance, real estate, crypto, trading, development hub). </p> <br />
+
+<p className="text-l" style={{ fontWeight: 700 }}>  Strategic direction: </p> <p className="text-l" style={{ fontWeight: 400 }}> build a SuperApp ecosystem integrating internal companies + external B2B/B2C partners: retail, foodtech, fintech. </p>
+           </div>
+           
             <HorizontalTimeline 
   steps={[
     { 
@@ -107,34 +129,108 @@ export default function EndToEndTransformationPage() {
       )
     },
     { 
-      title: 'Первый продукт', 
+      title: 'Q3 2022 Acquisition \n& Strategy Reset', 
       content: (
         <>
-          <TimelineCardHeading>Запуск MVP</TimelineCardHeading>
           <TimelineCardText>
-            Выпустили минимально жизнеспособный продукт и получили первых клиентов.
+          <ol className="list-decimal list-inside space-y-2">
+            <li>Merger of banks; full C-suite change</li>
+            <li>Product strategy vacuum</li>
+           </ol>
+           <br />
+          
           </TimelineCardText>
-          <TimelineCardHeading>Обратная связь</TimelineCardHeading>
+          <TimelineCardHeading>Approach:</TimelineCardHeading>
           <TimelineCardText>
-            Активно собирали отзывы и улучшали продукт на основе потребностей рынка.
+          <ol className="list-decimal list-inside space-y-2">
+            <li>Took ownership of retail app strategy (shadow CPO)</li>
+            <li>Built Fintech IA anticipating SuperApp scale</li>
+            <li>Re-established decision-making core around customer outcomes</li>
+           </ol>
+          
           </TimelineCardText>
         </>
       )
     },
     { 
-      title: 'Раунд инвестиций', 
+      title: 'Q4 2022 – Q3 2024 — Capability Building & Governance', 
       content: (
         <>
-          <TimelineCardHeading>Привлечение капитала</TimelineCardHeading>
+
           <TimelineCardText>
-            Успешно закрыли раунд Series A и масштабировали команду до 50 человек.
+          <ol className="list-decimal list-inside space-y-2">
+            <li>Set up design processes in low maturity teams</li>
+            <li>Alignment with CMO / CTO</li>
+            <li>4 release postponements due to product fragmentation</li>
+           </ol>
+           <br />     
+
+           <TimelineCardHeading>Approach:</TimelineCardHeading>
+           <ol className="list-decimal list-inside space-y-2">
+            <li>Built a multi-layered operating model (discovery → delivery)</li>
+            <li>Scaled team to strategic maturity level (2.05/4)</li>
+           </ol>
           </TimelineCardText>
         </>
       )
     },
+
+    { 
+        title: '🔥 Q3 2024 Release in fire 🔥', 
+        content: (
+          <>
+  
+            <TimelineCardText>
+            <ol className="list-decimal list-inside space-y-2">
+              <li>Critical leak → forced full visual redesign</li>
+              <li>Burnout risk</li>
+              <li>App technical debt + IA issues → rating drop to 1★</li>
+              <li>Strategic shock: AliPay tech stack purchased 2 months before release</li>
+             </ol>
+
+             <br />     
+  
+             <TimelineCardHeading>Approach:</TimelineCardHeading>
+             <ol className="list-decimal list-inside space-y-2">
+              <li>Crisis leadership: protected team, kept release moving</li>
+              <li>Reset collaboration with InfoSec</li>
+              <li>Ensured redesign integrity and launch readiness under impossible constraints</li>
+             </ol>
+            </TimelineCardText>
+          </>
+        )
+      },
+
+      { 
+        title: 'Q3 2024 – Q3 2025 Strategic Pivot & Recovery', 
+        content: (
+          <>
+  
+            <TimelineCardText>
+            <ol className="list-decimal list-inside space-y-2">
+              <li> Rebuilt product strategy on the fly</li>
+              <li>Retrofitted existing redesign to support SuperApp architecture</li>
+              <li>Stabilized the app and restored trust</li>
+              <li>Rating covered 1★ → 3.9★ within months</li>
+              <li>SUM: 11% → 80.9%</li>
+              <li>Shifted design into influencing-tier in product org</li>
+             </ol>
+
+             <br />     
+  
+             <TimelineCardHeading>Approach:</TimelineCardHeading>
+             <ol className="list-decimal list-inside space-y-2">
+              <li>Crisis leadership: protected team, kept release moving</li>
+              <li>Reset collaboration with InfoSec</li>
+              <li>Ensured redesign integrity and launch readiness under impossible constraints</li>
+             </ol>
+            </TimelineCardText>
+          </>
+        )
+      },
   ]}
 />
-            <p>Case study content goes here...</p>
+
           </div>
         </div>
       </section>

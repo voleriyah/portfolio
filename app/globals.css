@@ -36,3 +36,33 @@ html {
     max-width: none;
   }
 }
+
+/* Global Heading Style - Title/XL */
+.heading-xl {
+  color: var(--main-white, #FFF8E9);
+  font-family: "Alegreya Sans", sans-serif;
+  font-size: clamp(32px, calc(32px + (64px - 32px) * ((100vw - 320px) / (1920px - 320px))), 64px);
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  letter-spacing: clamp(-0.32px, calc(-0.32px + (-0.64px - -0.32px) * ((100vw - 320px) / (1920px - 320px))), -0.64px);
+}
+
+/* Global Text Style - Paragraph/L */
+.text-l {
+  color: var(--main-white, #FFF8E9);
+  font-family: "Alegreya Sans", sans-serif;
+  font-size: clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.heading-s {
+  color: var(--main-white, #FFF8E9);
+  font-family: "Alegreya Sans";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}  
