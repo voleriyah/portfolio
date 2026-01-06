@@ -1239,7 +1239,7 @@ knowing when to walk away.
               <CustomLink href="https://www.linkedin.com/in/voleriyah" iconType="linkedin" variant="footer" showExternalIcon={true}>
                 Connect
               </CustomLink>
-              <CustomLink href="mailto:voleriyah@example.com" iconType="email" variant="footer" showExternalIcon={true}>
+              <CustomLink href="mailto:valeriya.kostyuchenko@gmail.com" iconType="email" variant="footer" showExternalIcon={true}>
                 Write me
               </CustomLink>
             </div>

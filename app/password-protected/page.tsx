@@ -26,7 +26,7 @@ function PasswordForm() {
       <form onSubmit={handleSubmit} className="bg-[#1E1E1E] p-8 max-w-md w-full">
         <h1 className="text-2xl font-bold mb-4 text-[#FFF8E9]">Enter the password</h1>
         <p className="text-s" style={{ color: '#FFF8E9', fontWeight: 400 }}>Due to confidentiality, case studies are password-protected.
-        Happy to provide access <a href="mailto:voleriyah@example.com" className="text-[#F62F20]">on request.</a></p> <br /><br />
+        Happy to provide access <a href="mailto:valeriya.kostyuchenko@gmail.com" className="text-[#F62F20]">on request.</a></p> <br /><br />
         {error && <p className="text-red-600 mb-4">{error}</p>}
         <input
           type="password"
