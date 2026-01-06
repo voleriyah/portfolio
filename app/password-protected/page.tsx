@@ -22,9 +22,11 @@ function PasswordForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#FFF8E9] md:bg-[#1E1E1E] p-4 ">
-      <form onSubmit={handleSubmit} className="bg-[#FFF8E9] p-8 max-w-md w-full">
-        <h1 className="text-2xl font-bold mb-4 text-[#342927]">Enter the password</h1>
+    <div className="min-h-screen flex items-center justify-center bg-[#1E1E1E] md:bg-[#1E1E1E] p-4 ">
+      <form onSubmit={handleSubmit} className="bg-[#1E1E1E] p-8 max-w-md w-full">
+        <h1 className="text-2xl font-bold mb-4 text-[#FFF8E9]">Enter the password</h1>
+        <p className="text-s" style={{ color: '#FFF8E9', fontWeight: 400 }}>Due to confidentiality, case studies are password-protected.
+        Happy to provide access <a href="mailto:voleriyah@example.com" className="text-[#F62F20]">on request.</a></p> <br /><br />
         {error && <p className="text-red-600 mb-4">{error}</p>}
         <input
           type="password"
@@ -53,7 +55,7 @@ function PasswordForm() {
 
 export default function PasswordProtected() {
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#1E1E1E] text-white">Загрузка...</div>}>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#1E1E1E] text-white">Loading...</div>}>
       <PasswordForm />
     </Suspense>
   );
