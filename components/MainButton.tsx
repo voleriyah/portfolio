@@ -39,13 +39,15 @@ export default function MainButton({
         lineHeight: isLarge ? '19.498px' : '19.498px',
         border: 'none',
         cursor: 'pointer',
-        transition: 'opacity 0.2s ease-in-out',
+        transition: 'opacity 0.2s ease-in-out, transform 0.3s ease-out',
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.opacity = '0.9';
+        e.currentTarget.style.transform = 'translate(6px, -6px)';
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.opacity = '1';
+        e.currentTarget.style.transform = 'translate(0, 0)';
       }}
     >
       {children}

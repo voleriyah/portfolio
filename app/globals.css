@@ -9,13 +9,14 @@
 }
 
 
-html, body {
-  overflow-x: hidden !important;
-  max-width: 100vw !important;
-}
-
 html {
   overflow-x: hidden !important;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
 }
 
 .overflow-x-hidden {
@@ -77,6 +78,16 @@ letter-spacing: clamp(-0.24px, calc(-0.24px + (-0.36px - -0.24px) * ((100vw - 32
   line-height: normal;
 }
 
+.subtitle-l {
+  color: var(--main-white, #FFF8E9);
+  font-family: "Alegreya Sans";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
 /* Hide scrollbar for horizontal scrolling */
 .scrollbar-hide {
   scrollbar-width: none;
@@ -85,4 +96,30 @@ letter-spacing: clamp(-0.24px, calc(-0.24px + (-0.36px - -0.24px) * ((100vw - 32
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Custom Link hover underline animation */
+.custom-link-text {
+  position: relative;
+  display: inline-block;
+}
+
+.custom-link-text::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0.12em;
+  background-color: currentColor;
+  transition: width 0.3s ease-in-out;
+  transform: translateY(calc(0.25em));
+}
+
+a:hover .custom-link-text::after {
+  width: 100%;
+}
+
+a:focus-visible .custom-link-text::after {
+  width: 100%;
 }  

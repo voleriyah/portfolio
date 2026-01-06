@@ -5,7 +5,8 @@ import CustomLink from '@/components/CustomLink';
 import HorizontalTimeline, { TimelineCardHeading, TimelineCardText } from '@/components/Timeline';
 import LargeBulletList from '@/components/LargeBulletList';
 import Risks from '@/components/Risks';
-import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider'; 
+import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
+import ScrollToTopButton from '@/components/ScrollToTopButton'; 
 
 export default function EndToEndTransformationPage() {
   return (
@@ -38,25 +39,13 @@ export default function EndToEndTransformationPage() {
                   End-to-End Transformation of discovery process
                 </h1>
 
-          {/* Case Description */}
-          <p
-            style={{
-              color: '#FFF8E9',
-              fontFamily: '"Alegreya Sans", sans-serif',
-              fontSize: 'clamp(20px, calc(20px + (32px - 20px) * ((100vw - 320px) / (1920px - 320px))), 32px)',
-              fontWeight: 400,
-              lineHeight: 'normal',
-              marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
-            }}
-          >
-            0 → 1 Design & research expertise integration across orgs enabled by Retail App Redesign
-          </p>
+         
 
           {/* Case Tags */}
           <div>
             <p
               style={{
-                color: '#F62F20',
+                color: '#FFF8E9',
                 fontFamily: '"Alegreya Sans", sans-serif',
                 fontSize: 'clamp(18px, calc(18px + (24px - 18px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
                 fontWeight: 700,
@@ -64,10 +53,66 @@ export default function EndToEndTransformationPage() {
                 whiteSpace: 'pre-line',
               }}
             >
-              #Design governance{'\n'}#Design-driven change management
+              #Design governance, #Design-driven change management
             </p>
           </div>
 
+          {/* Table of Contents */}
+          <div
+            className="w-full mx-auto"
+            style={{
+              maxWidth: '1692px',
+              marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+              marginBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+            }}
+          >
+            <h2 className="heading-m" style={{ marginBottom: 'clamp(24px, calc(24px + (64px - 24px) * ((100vw - 320px) / (1920px - 320px))), 64px)' }}>Table of Contents</h2>
+            <div className="flex flex-col gap-4" style={{ gap: 'clamp(12px, calc(12px + (16px - 12px) * ((100vw - 320px) / (1920px - 320px))), 16px)' }}>
+              <CustomLink href="#market-and-business-context" iconType={null} showExternalIcon={false}>
+                Market and business context
+              </CustomLink>
+        
+                <CustomLink href="#timeline" iconType={null} showExternalIcon={false}>
+                  Timeline
+                </CustomLink>
+                <div style={{ paddingLeft: 'clamp(24px, calc(24px + (32px - 24px) * ((100vw - 320px) / (1920px - 320px))), 32px)' }}>
+                  <CustomLink href="#context" iconType={null} showExternalIcon={false}>
+                    Context
+                  </CustomLink>
+                </div>
+            
+              <CustomLink href="#strategy" iconType={null} showExternalIcon={false}>
+                Strategy
+              </CustomLink>
+              <CustomLink href="#strategic-pillars" iconType={null} showExternalIcon={false}>
+                Strategic pillars
+              </CustomLink>
+              <CustomLink href="#execution" iconType={null} showExternalIcon={false}>
+                Execution
+              </CustomLink>
+              <CustomLink href="#product-strategy" iconType={null} showExternalIcon={false}>
+                The product strategy
+              </CustomLink>
+              <CustomLink href="#pivot" iconType={null} showExternalIcon={false}>
+                The pivot
+              </CustomLink>
+              <CustomLink href="#critical-risks" iconType={null} showExternalIcon={false}>
+                Critical risks and failures
+              </CustomLink>
+              <CustomLink href="#impact-business" iconType={null} showExternalIcon={false}>
+                Impact: Business
+              </CustomLink>
+              <CustomLink href="#impact-orgs" iconType={null} showExternalIcon={false}>
+                Impact: Orgs outcome
+              </CustomLink>
+              <CustomLink href="#leadership-outcome" iconType={null} showExternalIcon={false}>
+                Leadership outcome
+              </CustomLink>
+              <CustomLink href="#visual-transformation" iconType={null} showExternalIcon={false}>
+                Visual transformation
+              </CustomLink>
+            </div>
+          </div>
         
           {/* Case Content Placeholder */}
           <div className="w-full mx-auto"
@@ -76,7 +121,7 @@ export default function EndToEndTransformationPage() {
               marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
             }}
           >
-            <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Market and Business Context</h1>
+            <h1 id="market-and-business-context" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Market and Business Context</h1>
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>Kazakhstan's market: </b> ~16M population, ~9.2M solvent. </p> <br />
 
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>Bank CenterCredit: </b> S&P Top-4, 35+ years on the market, 3M+ active clients, 1.77B market cap, 8 000 employees.</p> <br />
@@ -91,7 +136,7 @@ export default function EndToEndTransformationPage() {
               marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
             }}
           >
-            <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Timeline</h1>
+            <h1 id="timeline" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Timeline</h1>
             <HorizontalTimeline 
   steps={[
     { 
@@ -234,7 +279,7 @@ export default function EndToEndTransformationPage() {
             minHeight: 'clamp(200px, calc(400px + (800px - 400px) * ((100vw - 320px) / (1920px - 320px))), 400px)',
           }}
         >
-            <p className="text-l" style={{ fontWeight: 700 }}>  Context </p> <br />
+            <p id="context" className="text-l" style={{ fontWeight: 700 }}>  Context </p> <br />
             <p className="text-l" style={{ fontWeight: 400 }}>  Post-acquisition restructuring created a political and operational vacuum: the design function had no defined mandate and was absent from strategic decision-making. <br /> <br /> This vacuum also created an opportunity: the organization needed a function capable of stabilizing product delivery and re-establishing customer-centered direction. I leveraged this moment to position design as that function, embedding governance and decision-making frameworks through the retail redesign. </p>
             <br /> <br /> <br />
             <p className="text-l" style={{ fontWeight: 700 }}>  Guiding Policy (the strategic idea) </p> <br />
@@ -247,6 +292,7 @@ export default function EndToEndTransformationPage() {
 
       {/* Strategy Block */}
       <section 
+        id="strategy"
         className="w-full flex items-center justify-center"
         style={{
           height: 'clamp(600px, calc(600px + (1000px - 600px) * ((100vw - 320px) / (1920px - 320px))), 1000px)',
@@ -326,7 +372,7 @@ export default function EndToEndTransformationPage() {
             //paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
           }}
         >
-            <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Strategic pillars</h1>
+            <h1 id="strategic-pillars" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Strategic pillars</h1>
             <LargeBulletList 
                 items={[
                     'Reframe team workflows around customer-outcome mindset → raise product maturity.',
@@ -350,7 +396,7 @@ export default function EndToEndTransformationPage() {
             paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
           }}
         >
-            <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Execution</h1>
+            <h1 id="execution" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Execution</h1>
             <p className="text-l" style={{ fontWeight: 700 }}>  Structural gaps </p> <br />
             <ul className="list-disc list-inside space-y-2 text-l" style={{ fontWeight: 400, color: 'var(--main-white, #FFF8E9)', fontFamily: '"Alegreya Sans", sans-serif', fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)', fontStyle: 'normal', lineHeight: 'normal', letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
                 <li>No formal product ownership; CPO role absent.</li>
@@ -390,7 +436,7 @@ export default function EndToEndTransformationPage() {
             
           }}
         >
-          <h1 className="heading-xl" style={{  marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>The product strategy</h1>
+          <h1 id="product-strategy" className="heading-xl" style={{  marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>The product strategy</h1>
           
           {/* Desktop: 3 columns layout */}
           <div className="hidden lg:flex lg:flex-row gap-8 items-stretch" style={{ height: '100%' }}>
@@ -705,7 +751,7 @@ export default function EndToEndTransformationPage() {
             
           }}
         >
-            <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>The pivot mitigation</h1>
+            <h1 id="pivot" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>The pivot mitigation</h1>
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>Context: </b> New SuperApp tech platform was introduced 2 months before launch → <b><i>the app had to be rapidly repositioned and rebuilt under heavy constraints.</i></b> </p> <br />
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>Solution: </b> The pivot was misaligned with market reality and our release readiness. Forcing it pre-launch would have failed. We shipped with the original positioning and deferred the pivot to 2025.</p> <br />
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>My role: </b> Made the call to defer the pivot, keeping launch viable. Retrofitted design strategy to bridge original vision → <b><i> post-launch evolution.</i></b> </p> <br />
@@ -742,7 +788,7 @@ export default function EndToEndTransformationPage() {
             //paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
           }}
         >
-             <h1 className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Critical risks and failures</h1>
+             <h1 id="critical-risks" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Critical risks and failures</h1>
           <div
             className="flex lg:flex-row items-start justify-start lg:justify-center gap-8 overflow-x-auto scrollbar-hide"
             style={{
@@ -784,7 +830,7 @@ export default function EndToEndTransformationPage() {
             paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
           }}
         >
-          <h1 className="heading-xl" style={{ marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Impact: Business</h1>
+          <h1 id="impact-business" className="heading-xl" style={{ marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Impact: Business</h1>
           
           <div className="space-y-6">
             {/* Growth */}
@@ -839,7 +885,7 @@ export default function EndToEndTransformationPage() {
             paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
           }}
         >
-          <h1 className="heading-xl" style={{ marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Impact: Orgs outcome</h1>
+          <h1 id="impact-orgs" className="heading-xl" style={{ marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Impact: Orgs outcome</h1>
           
           <div className="space-y-6">
             {/* Built and structured the Design & Research function from scratch */}
@@ -908,13 +954,13 @@ export default function EndToEndTransformationPage() {
 
 
           {/* Main Text */}
-          <h1 className="heading-xl" style={{ maxWidth: 'clamp(300px, calc(300px + (1000px - 300px) * ((100vw - 320px) / (1920px - 320px))), 1000px)', textAlign: 'center' }}>
-          I learned to lead without air,<br />  to build without prerequisites <br /> and to protect people in a system built to break them.
-<br />
-<br />
+          <h1 id="leadership-outcome" className="heading-xl" style={{ maxWidth: 'clamp(300px, calc(300px + (1000px - 300px) * ((100vw - 320px) / (1920px - 320px))), 1000px)', textAlign: 'center' }}>
+           I learned to lead without air,<br />  to build without prerequisites <br /> and to protect people in a system built to break them.
+ <br />
+ <br />
 Also, I learned the hardest won leadership skill: <br />
 knowing when to walk away.
-          </h1>
+           </h1>
 
           {/* Bottom Diamonds - 2 diamonds horizontally aligned */}
           <div className="flex items-center justify-center" style={{ gap: '24px', marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)' }}>
@@ -949,9 +995,9 @@ knowing when to walk away.
       paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
     }}
   >
-    <h1 className="heading-xl" style={{ marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+    <h1 id="visual-transformation" className="heading-xl" style={{ marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
       Visual transformation
-    </h1>
+     </h1>
 
    
    
@@ -1281,6 +1327,9 @@ knowing when to walk away.
           <Image src="/images/pattern.svg" alt="Pattern" width={987} height={974} className="w-full h-auto" />
         </div>
       </footer>
+
+      {/* Scroll to Top Button */}
+      <ScrollToTopButton />
     </main>
   );
 }

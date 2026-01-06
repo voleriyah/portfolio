@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -19,6 +21,48 @@ export default function CustomLink({
   variant = 'default',
 }: CustomLinkProps) {
   const isExternal = href.startsWith('http://') || href.startsWith('https://') || href.startsWith('mailto:');
+  const isAnchor = href.startsWith('#');
+
+  // Smooth scroll function with ease-out
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isAnchor) {
+      e.preventDefault();
+      // Remove focus immediately to prevent underline from sticking
+      if (e.currentTarget instanceof HTMLElement) {
+        e.currentTarget.blur();
+      }
+      
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        const startPosition = window.pageYOffset;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        const duration = 400; // milliseconds
+        const startTime = performance.now();
+
+        const easeOutCubic = (t: number): number => {
+          return 1 - Math.pow(1 - t, 3);
+        };
+
+        const animation = (currentTime: number) => {
+          const timeElapsed = currentTime - startTime;
+          const progress = Math.min(timeElapsed / duration, 1);
+          const ease = easeOutCubic(progress);
+          
+          window.scrollTo(0, startPosition + distance * ease);
+          
+          if (progress < 1) {
+            requestAnimationFrame(animation);
+          }
+        };
+
+        // Start immediately without waiting
+        requestAnimationFrame(animation);
+      }
+    }
+  };
 
   // Get icon source based on iconType
   const getIconSrc = () => {
@@ -92,7 +136,7 @@ export default function CustomLink({
           }}
         />
       )}
-      <span>{children}</span>
+      <span className="custom-link-text">{children}</span>
       {/* Right side internal icon */}
       {iconType === 'internal' && (
         <Image
@@ -124,7 +168,7 @@ export default function CustomLink({
     </>
   ) : (
     <span className="inline-flex items-center gap-2">
-      {children}
+      <span className="custom-link-text">{children}</span>
       {/* Right side internal icon */}
       {iconType === 'internal' && (
         <Image
@@ -159,6 +203,14 @@ export default function CustomLink({
   if (isExternal) {
     return (
       <a href={href} {...linkProps}>
+        {linkContent}
+      </a>
+    );
+  }
+
+  if (isAnchor) {
+    return (
+      <a href={href} {...linkProps} onClick={handleAnchorClick}>
         {linkContent}
       </a>
     );
