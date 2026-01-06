@@ -1,6 +1,7 @@
 'use client';
 import { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import MainButton from '@/components/MainButton';
 
 function PasswordForm() {
   const [password, setPassword] = useState('');
@@ -48,6 +49,7 @@ function PasswordForm() {
         >
           Enter
         </button>
+
       </form>
     </div>
   );
