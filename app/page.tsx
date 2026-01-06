@@ -475,7 +475,8 @@ export default function Home() {
     desktopImageWidth={632}
     desktopImageHeight={449}
     align="right"
-    onButtonClick={() => {}}
+    
+    onButtonClick={() => router.push('/cases/research-lab')}
   />
 </div>
 

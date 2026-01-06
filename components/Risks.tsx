@@ -13,14 +13,13 @@ interface RisksProps {
 export default function Risks({ number, riskDescription, mitigationStrategy, outcome }: RisksProps) {
   return (
     <div
-      className="flex flex-col justify-start items-center flex-shrink-0"
+      className="flex flex-col justify-start items-center flex-shrink-0 w-full"
       style={{
-        width: 'clamp(300px, calc(300px + (480px - 300px) * ((100vw - 320px) / (1920px - 320px))), 480px)',
         minHeight: 'clamp(467px, calc(467px + (785px - 467px) * ((100vw - 320px) / (1920px - 320px))), 785px)',
         paddingTop: '24px',
-        paddingRight: '16px',
+        paddingRight: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 1024px) / (1920px - 1024px))), 48px)',
         paddingBottom: '24px',
-        paddingLeft: '24px',
+        paddingLeft: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 1024px) / (1920px - 1024px))), 48px)',
         gap: 'clamp(16px, calc(16px + (32px - 16px) * ((100vw - 320px) / (1920px - 320px))), 32px)',
         border: '3px solid var(--main-red-accent, #F62F20)',
         background: '#1E1E1E',

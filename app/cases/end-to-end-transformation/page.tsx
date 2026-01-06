@@ -9,6 +9,29 @@ import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slide
 import ScrollToTopButton from '@/components/ScrollToTopButton'; 
 
 export default function EndToEndTransformationPage() {
+  const risksItems = [
+    {
+      number: "1",
+      riskDescription: "Dependencies and fragmentation slowed delivery",
+      mitigationStrategy: "Introduced release discipline Froze changes in legacy app to stop scope spread and regain control.",
+      outcome: "Recovered app rating after release from 1⭐ → 3.1⭐ in 3 months."
+    },
+    {
+      number: "2",
+      riskDescription: "Security breach: design leaked to competitor and was uncovered 1 month before our release by their launch",
+      mitigationStrategy: "Established new InfoSec workflow Created secure access and approval pipeline in Figma.",
+      outcome: "Prevented further leaks; increased organizational trust toward design."
+    },
+    {
+      number: "3",
+      riskDescription: "Market signal: abrupt drop in app rating due to legacy tech debt",
+      mitigationStrategy: "Provided crisis leadership and emotional containment so design team could continue under extreme pressure",
+      outcome: "Maintained team continuity under extreme pressure"
+    }
+  ];
+  
+  const risksGridCols = risksItems.length > 3 ? 'lg:grid-cols-2' : 'lg:grid-cols-3';
+
   return (
     <main className="min-h-screen bg-dark-bg">
       {/* Case Content Section */}
@@ -790,31 +813,20 @@ export default function EndToEndTransformationPage() {
         >
              <h1 id="critical-risks" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Critical risks and failures</h1>
           <div
-            className="flex lg:flex-row items-start justify-start lg:justify-center gap-8 overflow-x-auto scrollbar-hide"
+            className={`grid grid-cols-1 ${risksGridCols} items-start justify-items-center gap-8`}
             style={{
               gap: 'clamp(24px, calc(24px + (32px - 24px) * ((100vw - 1024px) / (1920px - 1024px))), 32px)',
-              paddingLeft: 'clamp(16px, calc(16px + (0px - 16px) * ((100vw - 1024px) / (1920px - 1024px))), 0px)',
-              WebkitOverflowScrolling: 'touch',
             }}
           >
-            <Risks
-              number="1"
-              riskDescription="Dependencies and fragmentation slowed delivery"
-              mitigationStrategy="Introduced release discipline Froze changes in legacy app to stop scope spread and regain control."
-              outcome="Recovered app rating after release from 1⭐ → 3.1⭐ in 3 months."
-            />
-            <Risks
-              number="2"
-              riskDescription="Security breach: design leaked to competitor and was uncovered 1 month before our release by their launch"
-              mitigationStrategy="Established new InfoSec workflow Created secure access and approval pipeline in Figma."
-              outcome="Prevented further leaks; increased organizational trust toward design."
-            />
-            <Risks
-              number="3"
-              riskDescription="Market signal: abrupt drop in app rating due to legacy tech debt"
-              mitigationStrategy="Provided crisis leadership and emotional containment so design team could continue under extreme pressure"
-              outcome="Maintained team continuity under extreme pressure"
-            />
+            {risksItems.map((risk, index) => (
+              <Risks
+                key={index}
+                number={risk.number}
+                riskDescription={risk.riskDescription}
+                mitigationStrategy={risk.mitigationStrategy}
+                outcome={risk.outcome}
+              />
+            ))}
           </div>
         </div>
       </section>
