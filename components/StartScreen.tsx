@@ -8,30 +8,32 @@ interface StartScreenProps {
 }
 
 export default function StartScreen({ children }: StartScreenProps) {
+  const [mounted, setMounted] = useState(false);
   const [show, setShow] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const [stage, setStage] = useState(0);
   const [logoScale, setLogoScale] = useState(1);
   const [circleScale, setCircleScale] = useState(0);
-  const [mounted, setMounted] = useState(false);
 
+  // First mount effect
   useEffect(() => {
     setMounted(true);
+    
+    // Check visited immediately on mount
+    if (typeof window !== 'undefined') {
+      const visited = localStorage.getItem('portfolio-visited');
+      if (visited === 'yes') {
+        setShowContent(true);
+      } else {
+        setShow(true);
+      }
+    }
   }, []);
 
   useEffect(() => {
-    if (!mounted || typeof window === 'undefined') {
+    if (!mounted || !show) {
       return;
     }
-    
-    const visited = localStorage.getItem('portfolio-visited');
-    
-    if (visited === 'yes') {
-      setShowContent(true);
-      return;
-    }
-
-    setShow(true);
     
     setTimeout(() => setLogoScale(1.3), 200);       // +10% через 200ms
     setTimeout(() => setLogoScale(1), 600);         // обратно через 400ms
@@ -54,7 +56,7 @@ export default function StartScreen({ children }: StartScreenProps) {
       setShowContent(true);
       localStorage.setItem('portfolio-visited', 'yes');
     }, 5732);                                       // 3732 + 2000ms (circle transition)
-  }, [mounted]);
+  }, [mounted, show]);
 
   return (
     <>
@@ -91,16 +93,18 @@ export default function StartScreen({ children }: StartScreenProps) {
           </div>
 
           {/* Темный овал под логотипом - OUTSIDE wrapper */}
-          <div style={{
-            position: 'absolute',
-            width: '280px',
-            height: '200px',
-            borderRadius: '50%',
-            backgroundColor: '#1E1E1E',
-            transform: `scale(${circleScale === 1 ? 15 : 0})`,
-            transition: 'transform 2s cubic-bezier(0.33, 1, 0.68, 1)',
-            zIndex: 5,
-          }} />
+          {show && (
+            <div style={{
+              position: 'absolute',
+              width: '280px',
+              height: '200px',
+              borderRadius: '50%',
+              backgroundColor: '#1E1E1E',
+              transform: `scale(${circleScale === 1 ? 15 : 0})`,
+              transition: 'transform 2s cubic-bezier(0.33, 1, 0.68, 1)',
+              zIndex: 5,
+            }} />
+          )}
 
           {/* Scaling wrapper */}
           <div style={{
