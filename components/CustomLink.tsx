@@ -6,7 +6,7 @@ import Image from 'next/image';
 interface CustomLinkProps {
   href: string;
   children: React.ReactNode;
-  iconType?: 'linkedin' | 'email' | 'internal' | null;
+  iconType?: 'linkedin' | 'email' | 'internal' | 'telegram' | null;
   showExternalIcon?: boolean;
   className?: string;
   variant?: 'default' | 'footer';
@@ -69,6 +69,7 @@ export default function CustomLink({
     if (iconType === 'linkedin') return '/images/icons/linkedin.svg';
     if (iconType === 'email') return '/images/icons/email.svg';
     if (iconType === 'internal') return '/images/icons/internal.svg';
+    if (iconType === 'telegram') return '/images/icons/telegram.svg';
     return null;
   };
 
@@ -79,6 +80,7 @@ export default function CustomLink({
     if (iconType === 'linkedin') return 'LinkedIn';
     if (iconType === 'email') return 'Email';
     if (iconType === 'internal') return 'Internal link';
+    if (iconType === 'telegram') return 'Telegram';
     return 'Icon';
   };
 

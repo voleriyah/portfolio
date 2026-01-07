@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation';
 import CaseCardTest from '@/components/CaseCardTest';
 import VerticalConnectorLine from '@/components/VerticalConnectorLine';
 import HorizontalConnectorLine from '@/components/HorizontalConnectorLine';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   const expertiseSectionRef = useRef(null);
@@ -706,89 +707,8 @@ export default function Home() {
         </div>
       </section>
 
-     {/* Footer Section */}
-<footer className="w-full bg-dark-bg relative overflow-hidden">
-  <div
-    className="w-full mx-auto flex flex-col lg:flex-row"
-    style={{
-      maxWidth: '1692px',
-    }}
-  >
-    {/* Title and Links */}
-    <div
-      className="w-full lg:w-1/2 flex flex-col justify-start relative z-10 lg:ml-auto"
-      style={{
-        paddingTop: 'clamp(40px, calc(40px + (260px - 40px) * ((100vw - 320px) / (1920px - 320px))), 260px)',
-        paddingLeft: 'clamp(16px, calc(16px + (64px - 16px) * ((100vw - 320px) / (1920px - 320px))), 64px)',
-        paddingRight: 'clamp(16px, calc(16px + (64px - 16px) * ((100vw - 320px) / (1920px - 320px))), 64px)',
-        paddingBottom: 'clamp(40px, calc(40px + (64px - 40px) * ((100vw - 320px) / (1920px - 320px))), 64px)',
-        gap: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)',
-      }}
-    >
-      <h2
-        style={{
-          color: '#FFF8E9',
-          fontFamily: '"Erica One", cursive',
-          fontSize: 'clamp(68px, calc(68px + (116px - 68px) * ((100vw - 320px) / (1920px - 320px))), 116px)',
-          fontWeight: 400,
-          textTransform: 'uppercase',
-          lineHeight: 'normal',
-        }}
-      >
-        Let's <br/> connect
-      </h2>
-      
-      <div 
-        className="flex flex-col lg:flex-row items-start"
-        style={{
-          gap: 'clamp(44px, calc(44px + (130px - 44px) * ((100vw - 768px) / (1920px - 768px))), 130px)',
-        }}
-      >
-        <CustomLink href="https://www.linkedin.com/in/voleriyah" iconType="linkedin" variant="footer" showExternalIcon={true}>
-          Connect
-        </CustomLink>
-        <CustomLink href="mailto:valeriya.kostyuchenko@gmail.com" iconType="email" variant="footer" showExternalIcon={true}>
-          Write me
-        </CustomLink>
-      </div>
-
-      <p
-        style={{
-          color: '#FFF8E9',
-          fontFamily: '"Alegreya Sans"',
-          fontSize: '20px',
-          fontWeight: 400,
-          lineHeight: 'normal',
-          marginTop: '120px',
-        }}
-      >
-        © 2025 Valeriya. All rights reserved.
-      </p>
-    </div>
-  </div>
-
-  {/* Pattern Image - СЛЕВА за контейнером */}
-  <div className="hidden lg:block absolute top-0 left-0 w-1/2 h-full">
-    <Image
-      src="/images/pattern.svg"
-      alt="Pattern"
-      width={987}
-      height={974}
-      className="w-full h-full"
-      style={{
-        width: '100%',
-        height: '100%',
-        objectFit: 'contain',
-        objectPosition: 'left center',
-      }}
-    />
-  </div>
-
-  {/* Pattern на мобиле */}
-  <div className="lg:hidden w-full">
-    <Image src="/images/pattern.svg" alt="Pattern" width={987} height={974} className="w-full h-auto" />
-  </div>
-</footer>
+      {/* Footer Section */}
+      <Footer />
 
     </main>
   );
