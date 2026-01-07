@@ -113,7 +113,7 @@ export default function AboutPage() {
        <p className="text-l" >I organize and curate design meetups and discussions, bringing together practitioners from different disciplines and levels of experience.</p> <br />
        <p className="text-l" >For me, community work is not about visibility, but about creating spaces where complex topics can be discussed honestly — without performance, hierarchy, or buzzwords.</p> <br />
        <p className="text-l" >These spaces help surface real patterns from practice: how teams break, how systems fail, and what actually works in constrained environments.</p> <br />  
-       <p className="text-l" >Community work is an extension of how I lead: <b><i>by connecting people, sharing hard-earned knowledge, and strengthening the profession beyond a single company or role.</i></b></p> <br />
+       <p className="text-l" >Community work is an extension of how I lead: <b><i>by connecting people, sharing hard-earned knowledge, and strengthening the profession beyond a single company or role.</i></b></p> 
           </div>
 
         </section>
