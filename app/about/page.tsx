@@ -129,26 +129,8 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="w-full">
-        <div className="w-full mx-auto"
-          style={{
-            maxWidth: '1692px',
-            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            paddingTop: 'clamp(92px, calc(92px + (120px - 92px) * ((100vw - 320px) / (1920px - 320px))), 120px)',
-            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            //paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
-          }}
-        >
-
-        <h1 id="achievements" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Feel free to contact me</h1>
-          <CustomLink href="mailto:valeriya.kostyuchenko@gmail.com" iconType="email" variant="footer" showExternalIcon={true}>Email</CustomLink> <br /><br />
-          <CustomLink href="https://www.linkedin.com/in/voleriyah" iconType="linkedin" variant="footer"  showExternalIcon={true}>LinkedIn</CustomLink> <br /><br />
-          <CustomLink href="https://t.me/voleriyah" iconType="telegram" variant="footer"  showExternalIcon={true}>Telegram</CustomLink> <br /><br />
-          </div>
- 
-        </section>
-
-
+       
+       
 
       {/* Footer Section */}
       <Footer />
