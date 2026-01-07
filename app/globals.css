@@ -6,6 +6,7 @@
   --main-red-accent: #F62F20;
   --main-white: #FFF8E9;
   --main-medium-gray: #342927;
+  --main-black: #1E1E1E;
 }
 
 
@@ -79,13 +80,13 @@ letter-spacing: clamp(-0.24px, calc(-0.24px + (-0.36px - -0.24px) * ((100vw - 32
 }
 
 .subtitle-l {
-  color: var(--main-white, #FFF8E9);
+  color: var(--main-black, #1E1E1E);
   font-family: "Alegreya Sans";
-  font-size: 32px;
+  font-size: clamp(18px, calc(24px + (32px - 24px) * ((100vw - 320px) / (1920px - 320px))), 32px);
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  letter-spacing: -0.32px;
+  letter-spacing: clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px);
 }
 
 /* Hide scrollbar for horizontal scrolling */

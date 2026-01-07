@@ -61,7 +61,21 @@ export default function StartScreen({ children }: StartScreenProps) {
             justifyContent: 'center',
           }}
         >
-          {/* Темный овал под логотипом */}
+          {/* Top Welcome */}
+          <div 
+            className="subtitle-l"
+            style={{
+              position: 'absolute',
+              top: '64px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              zIndex: 100,
+            }}
+          >
+            Welcome
+          </div>
+
+          {/* Темный овал под логотипом - OUTSIDE wrapper */}
           <div style={{
             position: 'absolute',
             width: '280px',
@@ -73,7 +87,14 @@ export default function StartScreen({ children }: StartScreenProps) {
             zIndex: 5,
           }} />
 
-          <div style={{ position: 'relative', width: '200px', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
+          {/* Scaling wrapper */}
+          <div style={{
+            transform: 'scale(min(1, (100vw - 48px) / 1400px))',
+            transformOrigin: 'center center',
+            padding: '0 24px',
+          }}>
+
+            <div style={{ position: 'relative', width: '200px', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
             
             {/* Левые ромбы */}
             <div style={{ 
@@ -152,6 +173,21 @@ export default function StartScreen({ children }: StartScreenProps) {
               transform: `translateX(${stage >= 3 ? '-600px' : '0'}) rotate(45deg)`,
               transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1)',
             }} />
+          </div>
+          </div>
+
+          {/* Bottom Welcome */}
+          <div 
+            className="subtitle-l"
+            style={{
+              position: 'absolute',
+              bottom: '64px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              zIndex: 100,
+            }}
+          >
+            Welcome
           </div>
         </div>
       )}
