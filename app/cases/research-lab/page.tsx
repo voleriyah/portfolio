@@ -350,21 +350,17 @@ export default function EndToEndTransformationPage() {
             paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
             paddingTop: 'clamp(92px, calc(92px + (120px - 92px) * ((100vw - 320px) / (1920px - 320px))), 120px)',
             paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            display: 'grid',
-            placeItems: 'center', /* оба направления сразу */
-
             //paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
           }}
         >
-          <div style={{   margin: '0 auto', width: '1024px' }}>
-
-          <ImageContainer 
-  src="/images/facereading.png" 
-  alt="Facereding example"
-  caption="E-commerce client is feeling frustrated during usability test"
-  width={1024}
-  height={768}
-/>
+          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+            <ImageContainer 
+              src="/images/facereading.png" 
+              alt="Facereding example"
+              caption="E-commerce client is feeling frustrated during usability test"
+              width={1024}
+              height={768}
+            />
           </div>
 
 
@@ -413,21 +409,17 @@ export default function EndToEndTransformationPage() {
             paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
             paddingTop: 'clamp(92px, calc(92px + (120px - 92px) * ((100vw - 320px) / (1920px - 320px))), 120px)',
             paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            display: 'grid',
-            placeItems: 'center', /* оба направления сразу */
-
-            //paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
+            
           }}
         >
-          <div style={{   margin: '0 auto', width: '1024px' }}>
-
-          <ImageContainer 
-  src="/images/eyetracking.png" 
-  alt="Eyetracking heatmap"
-  caption="Eye-tracking research results for design system components — Table & Filters"
-  width={1024}
-  height={768}
-/>
+          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+            <ImageContainer 
+              src="/images/eyetracking.png" 
+              alt="Eyetracking"
+              caption="Eye-tracking research results for design system components — Table & Filters"
+              width={1024}
+              height={768}
+            />
           </div>
 
 

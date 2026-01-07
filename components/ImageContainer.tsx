@@ -20,7 +20,7 @@ export default function ImageContainer({
 }: ImageContainerProps) {
   return (
     <div
-      className="flex flex-col items-start"
+      className="flex flex-col items-center"
       style={{
         width: 'clamp(320px, calc(320px + (1024px - 320px) * ((100vw - 320px) / (1920px - 320px))), 1024px)',
         paddingTop: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)',
