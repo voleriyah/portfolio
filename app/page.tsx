@@ -77,7 +77,7 @@ export default function Home() {
           const elementTop = rect.top;
           const elementHeight = rect.height;
           // Element is visible when its top is above viewport bottom minus 20% of its height
-          const visibleThreshold = windowHeight - (elementHeight * 0.2);
+          const visibleThreshold = windowHeight - (elementHeight * 0.1);
           
           if (elementTop < visibleThreshold && elementTop + elementHeight > 0) {
             setState(true);
@@ -90,19 +90,6 @@ export default function Home() {
       checkElement(expertiseTitleImageRef, setShowExpertiseTitleImage);
       checkElement(expertiseGridRef, setShowExpertiseGrid);
       checkElement(expertiseLine2Ref, setShowExpertiseLine2);
-      
-      // Check "How can I help" - wait for line 2's diamond animation
-      if (howCanIHelpRef.current && showExpertiseLine2) {
-        const rect = howCanIHelpRef.current.getBoundingClientRect();
-        const elementTop = rect.top;
-        const elementHeight = rect.height;
-        const visibleThreshold = windowHeight - (elementHeight * 0.2);
-        
-        if (elementTop < visibleThreshold && elementTop + elementHeight > 0 && !showHowCanIHelp) {
-          // Add delay for diamond animation (1.5s after line 2 appears)
-          setTimeout(() => setShowHowCanIHelp(true), 1500);
-        }
-      }
     };
     
     // Initial check
@@ -114,6 +101,18 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', checkScrollPosition);
     };
+  }, []);
+
+  // "How can I help" appears immediately after line 2's diamond animation completes
+  useEffect(() => {
+    if (showExpertiseLine2 && !showHowCanIHelp) {
+      // Diamond animation takes 1.5s (1.2s duration + 0.3s delay) after line starts
+      const timer = setTimeout(() => {
+        setShowHowCanIHelp(true);
+      }, 1500);
+
+      return () => clearTimeout(timer);
+    }
   }, [showExpertiseLine2, showHowCanIHelp]);
 
   return (
