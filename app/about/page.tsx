@@ -71,7 +71,7 @@ export default function AboutPage() {
             marginBottom: 'clamp(24px, calc(24px + (64px - 24px) * ((100vw - 320px) / (1920px - 320px))), 64px)',
           }}
         >
-          I work with complex product organizations where <br/> scale, regulation, and ambiguity are the norm.
+          I work with complex product organizations where scale, regulation, and ambiguity are the norm.
         </h2>
 
         <p className="text-l">My background spans product design, research, and organizational design.</p><br /> 
