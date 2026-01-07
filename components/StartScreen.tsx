@@ -13,10 +13,14 @@ export default function StartScreen({ children }: StartScreenProps) {
   const [stage, setStage] = useState(0);
   const [logoScale, setLogoScale] = useState(1);
   const [circleScale, setCircleScale] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined') {
-      setShowContent(true);
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted || typeof window === 'undefined') {
       return;
     }
     
@@ -29,7 +33,6 @@ export default function StartScreen({ children }: StartScreenProps) {
 
     setShow(true);
     
-    // Пульсация логотипа (шаг 400ms, старт 200ms)
     setTimeout(() => setLogoScale(1.3), 200);       // +10% через 200ms
     setTimeout(() => setLogoScale(1), 600);         // обратно через 400ms
     setTimeout(() => setLogoScale(1.5), 1000);      // +10% снова через 400ms
@@ -51,11 +54,13 @@ export default function StartScreen({ children }: StartScreenProps) {
       setShowContent(true);
       localStorage.setItem('portfolio-visited', 'yes');
     }, 5732);                                       // 3732 + 2000ms (circle transition)
-  }, []);
+  }, [mounted]);
 
   return (
     <>
-      {show && (
+      {!mounted ? null : (
+        <>
+          {show && (
         <div 
           style={{ 
             position: 'fixed',
@@ -76,8 +81,9 @@ export default function StartScreen({ children }: StartScreenProps) {
             style={{
               position: 'absolute',
               top: '64px',
-              left: '50%',
-              transform: 'translateX(-50%)',
+              left: '0',
+              right: '0',
+              textAlign: 'center',
               zIndex: 100,
             }}
           >
@@ -193,17 +199,20 @@ export default function StartScreen({ children }: StartScreenProps) {
             style={{
               position: 'absolute',
               bottom: '64px',
-              left: '50%',
-              transform: 'translateX(-50%)',
+              left: '0',
+              right: '0',
+              textAlign: 'center',
               zIndex: 100,
             }}
           >
             Welcome
           </div>
         </div>
+          )}
+          
+          {showContent && children}
+        </>
       )}
-      
-      {showContent && children}
     </>
   );
 }
