@@ -29,19 +29,28 @@ export default function StartScreen({ children }: StartScreenProps) {
 
     setShow(true);
     
-    setTimeout(() => setStage(1), 100);
-    setTimeout(() => setLogoScale(1.2), 532);
-    setTimeout(() => setStage(2), 900);
-    setTimeout(() => setLogoScale(1.44), 1332);
-    setTimeout(() => setStage(3), 1700);
-    setTimeout(() => setLogoScale(1.728), 2132);
-    setTimeout(() => setCircleScale(1), 3000);
+    // Пульсация логотипа (шаг 400ms, старт 200ms)
+    setTimeout(() => setLogoScale(1.3), 200);       // +10% через 200ms
+    setTimeout(() => setLogoScale(1), 600);         // обратно через 400ms
+    setTimeout(() => setLogoScale(1.5), 1000);      // +10% снова через 400ms
+    setTimeout(() => setLogoScale(1.3), 1400);        // обратно через 400ms
+    
+    // Пауза 100ms
+    
+    // Основная анимация (начинается с 1500ms)
+    setTimeout(() => setStage(1), 1500);            // было 100, +1400
+    setTimeout(() => setLogoScale(1.7), 1932);      // было 532, +1400 (было 1.2, теперь +50%)
+    setTimeout(() => setStage(2), 2300);            // было 900, +1400
+    setTimeout(() => setLogoScale(2.55), 2732);     // было 1332, +1400 (было 1.44, теперь 1.5*1.5)
+    setTimeout(() => setStage(3), 3100);            // было 1700, +1400
+    setTimeout(() => setLogoScale(3.825), 3532);    // было 2132, +1400 (было 1.728, теперь 2.25*1.5)
+    setTimeout(() => setCircleScale(1), 3732);      // начало сразу после анимации ромбов (3100 + 632ms transition)
     
     setTimeout(() => {
       setShow(false);
       setShowContent(true);
       localStorage.setItem('portfolio-visited', 'yes');
-    }, 4000);
+    }, 5732);                                       // 3732 + 2000ms (circle transition)
   }, []);
 
   return (
@@ -92,6 +101,8 @@ export default function StartScreen({ children }: StartScreenProps) {
             transform: 'scale(min(1, (100vw - 48px) / 1400px))',
             transformOrigin: 'center center',
             padding: '0 24px',
+            position: 'relative',
+            zIndex: 10,
           }}>
 
             <div style={{ position: 'relative', width: '200px', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
