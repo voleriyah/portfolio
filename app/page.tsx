@@ -8,7 +8,7 @@ import AnimatedGasfisHeader from '@/components/AnimatedGasfisHeader';
 import ValueListItem from '@/components/ValueListItem';
 import CustomLink from '@/components/CustomLink';
 import { motion } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import CaseCardTest from '@/components/CaseCardTest';
 import VerticalConnectorLine from '@/components/VerticalConnectorLine';
@@ -18,7 +18,36 @@ import Footer from '@/components/Footer';
 export default function Home() {
   const expertiseSectionRef = useRef(null);
   const router = useRouter();
-  
+  const [heroAnimationStarted, setHeroAnimationStarted] = useState(false);
+  const [showImages, setShowImages] = useState(false);
+  const [showTitle, setShowTitle] = useState(false);
+  const [showSubtitle, setShowSubtitle] = useState(false);
+
+  useEffect(() => {
+    // Check if user has already visited (StartScreen won't show)
+    const visited = typeof window !== 'undefined' ? localStorage.getItem('portfolio-visited') : null;
+    
+    if (visited === 'yes') {
+      // If already visited, start animation immediately
+      setHeroAnimationStarted(true);
+      setShowImages(true);
+      setTimeout(() => setShowTitle(true), 400);
+      setTimeout(() => setShowSubtitle(true), 800);
+    } else {
+      // StartScreen finishes at 6832ms, then start hero animation
+      const timer = setTimeout(() => {
+        setHeroAnimationStarted(true);
+        // Images fade in first (0ms delay)
+        setShowImages(true);
+        // Title fades in second (400ms delay)
+        setTimeout(() => setShowTitle(true), 400);
+        // Subtitle fades in third (800ms delay)
+        setTimeout(() => setShowSubtitle(true), 800);
+      }, 6832);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   return (
     <main className="min-h-screen bg-cream">
@@ -42,7 +71,15 @@ export default function Home() {
             }}
           >
             {/* Mobile Photo Gallery - Combined image */}
-            <div className="block md:hidden relative w-full overflow-x-clip" style={{ width: '100%', height: '332px' }}>
+            <div 
+              className="block md:hidden relative w-full overflow-x-clip" 
+              style={{ 
+                width: '100%', 
+                height: '332px',
+                opacity: showImages ? 1 : 0,
+                transition: 'opacity 0.6s ease-in-out',
+              }}
+            >
               <Image
                 src="/images/avatars-mobile2.png"
                 alt="Avatars combined"
@@ -77,7 +114,13 @@ export default function Home() {
                 zIndex: 0,
               }}
               >
-              <div className="relative z-0">
+              <div 
+                className="relative z-0"
+                style={{
+                  opacity: showTitle ? 1 : 0,
+                  transition: 'opacity 0.6s ease-in-out',
+                }}
+              >
                 <h1 className="font-erica uppercase self-stretch"
                   style={{
                     color: '#FFF8E9',
@@ -136,6 +179,8 @@ export default function Home() {
                 style={{
                   // Gap between subtitle paragraphs (smaller than title-to-subtitle gap)
                   gap: 'clamp(8px, calc(8px + (16px - 8px) * ((100vw - 320px) / (1920px - 320px))), 16px)',
+                  opacity: showSubtitle ? 1 : 0,
+                  transition: 'opacity 0.6s ease-in-out',
                 }}
               >
               <p 
@@ -181,45 +226,59 @@ export default function Home() {
           
           {/* Photo gallery - Desktop versions only (mobile photos moved above title) */}
           {/* Photo 1 - Rounded square: left side on desktop */}
-          <Image
-            src="/images/avatar1.png"
-            alt="Avatar 1"
-            width={178}
-            height={178}
+          <div
             className="hidden md:block absolute pointer-events-none z-20"
             style={{
               top: '200px',
               // Margin left: 0px at 320px, 30px at 1024px, then scales to 324px at 1920px  
               left: 'clamp(0px, max(min(calc(0px + (30px - 0px) * ((100vw - 320px) / (1024px - 320px))), 30px), calc(30px + (324px - 30px) * ((100vw - 1024px) / (1920px - 1024px)))), 324px)',
-              // Width: scales from 100px at 320px to 178px at 1920px (benchmark)
-              width: 'clamp(100px, calc(100px + (178px - 100px) * ((100vw - 320px) / (1920px - 320px))), 178px)',
-              // Height: scales from 100px at 320px to 178px at 1920px (benchmark)
-              height: 'clamp(100px, calc(100px + (178px - 100px) * ((100vw - 320px) / (1920px - 320px))), 178px)',
-              borderRadius: '27px',
-              objectFit: 'cover',
+              opacity: showImages ? 1 : 0,
+              transition: 'opacity 0.6s ease-in-out',
             }}
-          />
+          >
+            <Image
+              src="/images/avatar1.png"
+              alt="Avatar 1"
+              width={178}
+              height={178}
+              style={{
+                // Width: scales from 100px at 320px to 178px at 1920px (benchmark)
+                width: 'clamp(100px, calc(100px + (178px - 100px) * ((100vw - 320px) / (1920px - 320px))), 178px)',
+                // Height: scales from 100px at 320px to 178px at 1920px (benchmark)
+                height: 'clamp(100px, calc(100px + (178px - 100px) * ((100vw - 320px) / (1920px - 320px))), 178px)',
+                borderRadius: '27px',
+                objectFit: 'cover',
+              }}
+            />
+          </div>
           
           {/* Photo 2 - Diamond shape: at section boundary on desktop */}
-          <Image
-            src="/images/avatar2.png"
-            alt="Avatar 2"
-            width={182}
-            height={182}
+          <div
             className="hidden md:block absolute pointer-events-none z-20"
             style={{
               bottom: '0px',
               // Margin left: 0px at 320px, 30px at 1024px, then scales to 324px at 1920px  
               left: 'clamp(0px, max(min(calc(0px + (30px - 0px) * ((100vw - 320px) / (1024px - 320px))), 30px), calc(30px + (324px - 30px) * ((100vw - 1024px) / (1920px - 1024px)))), 324px)',
-              // Width: scales from 105px at 320px to 182px at 1920px (benchmark)
-              width: 'clamp(105px, calc(105px + (182px - 105px) * ((100vw - 320px) / (1920px - 320px))), 182px)',
-              // Height: scales from 105px at 320px to 182px at 1920px (benchmark)
-              height: 'clamp(105px, calc(105px + (182px - 105px) * ((100vw - 320px) / (1920px - 320px))), 182px)',
-              borderRadius: '43px',
-              objectFit: 'cover',
-              transform: 'translateY(50%)',
+              opacity: showImages ? 1 : 0,
+              transition: 'opacity 0.6s ease-in-out',
             }}
-          />
+          >
+            <Image
+              src="/images/avatar2.png"
+              alt="Avatar 2"
+              width={182}
+              height={182}
+              style={{
+                // Width: scales from 105px at 320px to 182px at 1920px (benchmark)
+                width: 'clamp(105px, calc(105px + (182px - 105px) * ((100vw - 320px) / (1920px - 320px))), 182px)',
+                // Height: scales from 105px at 320px to 182px at 1920px (benchmark)
+                height: 'clamp(105px, calc(105px + (182px - 105px) * ((100vw - 320px) / (1920px - 320px))), 182px)',
+                borderRadius: '43px',
+                objectFit: 'cover',
+                transform: 'translateY(50%)',
+              }}
+            />
+          </div>
           
         </div>
       </section>
