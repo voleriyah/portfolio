@@ -8,32 +8,20 @@ interface StartScreenProps {
 }
 
 export default function StartScreen({ children }: StartScreenProps) {
-  const [mounted, setMounted] = useState(false);
-  const [show, setShow] = useState(false);
-  const [showContent, setShowContent] = useState(false);
+  // Check localStorage synchronously on client
+  const getInitialShow = () => {
+    if (typeof window === 'undefined') return false;
+    return localStorage.getItem('portfolio-visited') !== 'yes';
+  };
+
+  const [show, setShow] = useState(getInitialShow);
+  const [showContent, setShowContent] = useState(!getInitialShow());
   const [stage, setStage] = useState(0);
   const [logoScale, setLogoScale] = useState(1);
   const [circleScale, setCircleScale] = useState(0);
 
-  // First mount effect
   useEffect(() => {
-    setMounted(true);
-    
-    // Check visited immediately on mount
-    if (typeof window !== 'undefined') {
-      const visited = localStorage.getItem('portfolio-visited');
-      if (visited === 'yes') {
-        setShowContent(true);
-      } else {
-        setShow(true);
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!mounted || !show) {
-      return;
-    }
+    if (!show) return;
     
     setTimeout(() => setLogoScale(1.3), 200);       // +10% через 200ms
     setTimeout(() => setLogoScale(1), 600);         // обратно через 400ms
@@ -50,19 +38,22 @@ export default function StartScreen({ children }: StartScreenProps) {
     setTimeout(() => setStage(3), 3100);            // было 1700, +1400
     setTimeout(() => setLogoScale(3.825), 3532);    // было 2132, +1400 (было 1.728, теперь 2.25*1.5)
     setTimeout(() => setCircleScale(1), 3732);      // начало сразу после анимации ромбов (3100 + 632ms transition)
-    
     setTimeout(() => {
       setShow(false);
       setShowContent(true);
-      localStorage.setItem('portfolio-visited', 'yes');
-    }, 5732);                                       // 3732 + 2000ms (circle transition)
-  }, [mounted, show]);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('portfolio-visited', 'yes');
+      }
+    }, 5732);
+  }, [show]);
+
+  if (typeof window === 'undefined') {
+    return null; // Don't render anything on server
+  }
 
   return (
     <>
-      {!mounted ? null : (
-        <>
-          {show && (
+      {show && (
         <div 
           style={{ 
             position: 'fixed',
@@ -92,19 +83,17 @@ export default function StartScreen({ children }: StartScreenProps) {
             Welcome
           </div>
 
-          {/* Темный овал под логотипом - OUTSIDE wrapper */}
-          {show && (
-            <div style={{
-              position: 'absolute',
-              width: '280px',
-              height: '200px',
-              borderRadius: '50%',
-              backgroundColor: '#1E1E1E',
-              transform: `scale(${circleScale === 1 ? 15 : 0})`,
-              transition: 'transform 2s cubic-bezier(0.33, 1, 0.68, 1)',
-              zIndex: 5,
-            }} />
-          )}
+          {/* Темный овал под логотипом */}
+          <div style={{
+            position: 'absolute',
+            width: '280px',
+            height: '200px',
+            borderRadius: '50%',
+            backgroundColor: '#1E1E1E',
+            transform: `scale(${circleScale === 1 ? 15 : 0})`,
+            transition: 'transform 2s cubic-bezier(0.33, 1, 0.68, 1)',
+            zIndex: 5,
+          }} />
 
           {/* Scaling wrapper */}
           <div style={{
@@ -125,7 +114,7 @@ export default function StartScreen({ children }: StartScreenProps) {
               height: '29px', 
               borderRadius: '16px', 
               backgroundColor: '#1E1E1E',
-              transform: `translateX(${stage >= 3 ? '600px' : '0'}) rotate(45deg)`,
+              transform: stage >= 3 ? `translateX(600px) rotate(45deg)` : 'rotate(45deg)',
               transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1)',
             }} />
             
@@ -136,7 +125,7 @@ export default function StartScreen({ children }: StartScreenProps) {
               height: '38px', 
               borderRadius: '16px', 
               backgroundColor: '#1E1E1E',
-              transform: `translateX(${stage >= 2 ? '450px' : '0'}) rotate(45deg)`,
+              transform: stage >= 2 ? `translateX(450px) rotate(45deg)` : 'rotate(45deg)',
               transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1)',
             }} />
             
@@ -147,7 +136,7 @@ export default function StartScreen({ children }: StartScreenProps) {
               height: '64px', 
               borderRadius: '16px', 
               backgroundColor: '#1E1E1E',
-              transform: `translateX(${stage >= 1 ? '300px' : '0'}) rotate(45deg)`,
+              transform: stage >= 1 ? `translateX(300px) rotate(45deg)` : 'rotate(45deg)',
               transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1)',
             }} />
 
@@ -169,7 +158,7 @@ export default function StartScreen({ children }: StartScreenProps) {
               height: '64px', 
               borderRadius: '16px', 
               backgroundColor: '#1E1E1E',
-              transform: `translateX(${stage >= 1 ? '-300px' : '0'}) rotate(45deg)`,
+              transform: stage >= 1 ? `translateX(-300px) rotate(45deg)` : 'rotate(45deg)',
               transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1)',
             }} />
             
@@ -180,7 +169,7 @@ export default function StartScreen({ children }: StartScreenProps) {
               height: '38px', 
               borderRadius: '16px', 
               backgroundColor: '#1E1E1E',
-              transform: `translateX(${stage >= 2 ? '-450px' : '0'}) rotate(45deg)`,
+              transform: stage >= 2 ? `translateX(-450px) rotate(45deg)` : 'rotate(45deg)',
               transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1)',
             }} />
             
@@ -191,7 +180,7 @@ export default function StartScreen({ children }: StartScreenProps) {
               height: '29px', 
               borderRadius: '16px', 
               backgroundColor: '#1E1E1E',
-              transform: `translateX(${stage >= 3 ? '-600px' : '0'}) rotate(45deg)`,
+              transform: stage >= 3 ? `translateX(-600px) rotate(45deg)` : 'rotate(45deg)',
               transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1)',
             }} />
           </div>
@@ -212,11 +201,9 @@ export default function StartScreen({ children }: StartScreenProps) {
             Welcome
           </div>
         </div>
-          )}
-          
-          {showContent && children}
-        </>
       )}
+      
+      {showContent && children}
     </>
   );
 }
