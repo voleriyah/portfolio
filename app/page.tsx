@@ -507,8 +507,8 @@ export default function Home() {
     desktopImageWidth={632}
     desktopImageHeight={499}
     desktopImageStyle={{ top: '40%' }}
-    onButtonClick={() => {}}
-    
+
+    onButtonClick={() => router.push('/cases/design-system')}
   />
 
 </div>

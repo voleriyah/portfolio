@@ -13,31 +13,26 @@ export default function EndToEndTransformationPage() {
   const risksItems = [
     {
       number: "1",
-      riskDescription: "Research became a bottleneck after adoption and started acting as a single source of vision instead of enabling business owners.",
-      mitigationStrategy: "Launched an internal research academy for PMs, POs, designers, BAs, and marketers to redistribute research ownership.",
-      outcome: "Enabled 12 teams to work with customer journey maps; 3 product teams adopted service blueprints as part of their core processes during the course"
+      riskDescription: "DS perceived as automation layer, not value driver.Design competency’s lack of credibility",
+      mitigationStrategy: "Used pattern-driven evidence vs rhetoric to disarm resistance",
+      outcome: "Increased trust in design by demonstrating value through pattern libraries and reusable components"
     },
     {
       number: "2",
-      riskDescription: "No research governance in place, leading to fragmented decision-making and lack of alignment across teams.",
-      mitigationStrategy: "Established ResearchOps governance: recruiting, knowledge base, guides, output standards.",
-      outcome: "Prevented further leaks; increased organizational trust toward research."
+      riskDescription: "Business–engineering communication gap",
+      mitigationStrategy: "Attached ROI, time-to-market and governance metrics to DS",
+      outcome: "DS achieved export readiness and became a monetizable product"
     },
     {
       number: "3",
-      riskDescription: "Market signal: lack of research in the strategic decision-making process",
-      mitigationStrategy: "Introduced a unified research workflow and shared reporting standards across organizations.",
-      outcome: "Launched Research day initiatives and scaled product hypothesis check to 70 per event"
-    },
-    {
-      number: "4",
-      riskDescription: "Low adoption of insights in product and business decision-making.",
-      mitigationStrategy: "Established a CX committee to formalize insight-driven decision-making.",
-      outcome: "Standardized VoC and NPS metrics across business streams and embedded CX-driven changes directly into team backlogs."
+      riskDescription: "Low product management maturity",
+      mitigationStrategy: "Ran 2-year internal advocacy play until DS gained institutional legitimacy",
+      outcome: "Function secured authority, visibility and embedded power in org decision loops"
     }
   ];
   
   const risksGridCols = risksItems.length > 3 ? 'lg:grid-cols-2' : 'lg:grid-cols-3';
+  const risksGridClassName = `grid grid-cols-1 ${risksGridCols} items-start justify-items-center gap-8`;
 
   return (
     <main className="min-h-screen bg-dark-bg">
@@ -66,7 +61,7 @@ export default function EndToEndTransformationPage() {
                     marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
 
                   }}>
-                  In-House UX Research Lab Across Two Banks and an Acquisition
+                  Design system establishing & scaling
                 </h1>
 
          
@@ -83,7 +78,7 @@ export default function EndToEndTransformationPage() {
                 whiteSpace: 'pre-line',
               }}
             >
-              #ResearchOps, #Change management
+              #Design governance, #Change management
             </p>
           </div>
 
@@ -116,7 +111,9 @@ export default function EndToEndTransformationPage() {
               <CustomLink href="#execution" iconType={null} showExternalIcon={false}>
                 Execution
               </CustomLink>
-
+              <CustomLink href="#execution-internal" iconType={null} showExternalIcon={false}>
+                Execution: Internal
+              </CustomLink>
               <CustomLink href="#critical-risks" iconType={null} showExternalIcon={false}>
                 Critical risks and failures
               </CustomLink>
@@ -138,11 +135,13 @@ export default function EndToEndTransformationPage() {
               marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
             }}
           >
-            <h1 id="market-and-business-context" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Context</h1>
-            <p className="text-l" style={{ fontWeight: 400 }}>  <b>2019 — Alfa Bank (Kazakhstan) </b> <br/>The UX market was at a very low maturity level. There was no formal research practice, no ResearchOps, and no governance. Design decisions were driven by delivery speed, not by user evidence. Customer-centered thinking was identified as a potential competitive advantage. The goal was to create the first in-house usability lab to introduce research as a capability and shift decision-making in discovery. </p> <br />
+            <h1 id="market-and-business-context" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Market and Business Context</h1>
+            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Kazakhstan's market: </b> ~16M population, ~9.2M solvent. </p> <br />
 
-            <p className="text-l" style={{ fontWeight: 400 }}>  <b>2022 — Bank CenterCredit (post-acquisition) </b> <br/>After the acquisition, I inherited the lab in a fragmented state. The ambition expanded: the lab was repositioned as a strategic asset, with a long-term goal of becoming an external, revenue-generating capability.</p> <br />
+            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Bank CenterCredit: </b> S&P Top-4, 35+ years on the market, 3M+ active clients, 1.77B market cap, 8 000 employees.</p> <br />
 
+            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Strategic direction: </b> build a SuperApp ecosystem integrating internal companies + external B2B/B2C partners: retail, foodtech, fintech.</p> <br />
+            <p className="text-l" style={{ fontWeight: 400 }}>  The bank is part of a diversified financial holding (20+ companies: investments, insurance, real estate, crypto, trading, development hub). </p> <br />
           </div>
 
           <div className="w-full mx-auto"
@@ -155,43 +154,49 @@ export default function EndToEndTransformationPage() {
             <HorizontalTimeline 
   steps={[
     { 
-      title: '2019 Alfa Bank — UX lab establishment', 
+      title: '2022: Turbulent inception', 
       content: (
         <>
-        <TimelineCardHeading>Role: Research Lead</TimelineCardHeading>
-          <TimelineCardText>
-          Fragmented design maturity. SME focus. No research practice. No governance. Retail redesign created overlaps and decision conflicts. <br /> <br />
+        <TimelineCardHeading>Strategy: Bank as API supplier</TimelineCardHeading>
+        <TimelineCardText>
+          <ul className="list-disc list-inside space-y-2">
+            <li> No design culture or ownership</li>
+            <li>Bank merger + sanctions turmoil</li>
+            <li>Strategy shifts, leadership turnover</li>
+           </ul> <br /> <br />
           </TimelineCardText>
 
           <TimelineCardHeading>Approach:</TimelineCardHeading>
           <TimelineCardText>
           <ul className="list-disc list-inside space-y-2">
-            <li>Created a lab with a formal research practice</li>
-            <li>Established ResearchOps and governance</li>
-            <li>Introduced research as a capability</li>
-            <li>Shifted decision-making in discovery</li>
-           </ul>
+            <li>Creating mandate in instability</li>
+            <li>Starting DS to create alignment and stability</li>
+           </ul><br /> <br />
           </TimelineCardText>
+          <TimelineCardHeading>Built DS with optionality — anticipating pivots before they were declared.</TimelineCardHeading>
         </>
       )
     },
     { 
-      title: '2020 Alfa Bank — Lab Launch ', 
+      title: '2023 :  Design as strategic lever ', 
       content: (
         <>
-         <TimelineCardHeading>Role: Head of UX and UX Research</TimelineCardHeading>
+         <TimelineCardHeading>Strategy: Daily bank under holding umbrella </TimelineCardHeading>
           <TimelineCardText>
-          COVID-19 lockdown during lab construction
-           <br /> <br />
+          <ul className="list-disc list-inside space-y-2">
+            <li>Two positioning pivots</li>
+            <li>Full retail redesign & new visual language</li>
+            <li>Strategy shifts, leadership turnover</li>
+           </ul> <br /> <br />
+
           
           </TimelineCardText>
           <TimelineCardHeading>Approach:</TimelineCardHeading>
           <TimelineCardText>
           <ol className="list-decimal list-inside space-y-2">
-            <li>Continued lab build under lockdown constraints</li>
-            <li>Scaled the team from 0 to 3</li>
-            <li>Introduced ResearchOps governance: recruiting, knowledge base, guides, output standards</li>
-         
+            <li>Launching an MVP in old visual language </li>
+            <li>DS became core narrative + execution engine</li>
+            
            </ol>
           
           </TimelineCardText>
@@ -199,19 +204,21 @@ export default function EndToEndTransformationPage() {
       )
     },
     { 
-      title: '2022 — Bank CenterCredit — Acquisition & Strategy Reset', 
+      title: '2024 :  Enterprise expansion', 
       content: (
         <>
-         <TimelineCardHeading>Role: Head of UX and UX Research</TimelineCardHeading>
-          <TimelineCardText>
-          The lab was in poor condition and required a full rebuild and re-adoption.
-           <br /> <br />     
+         <TimelineCardHeading>Strategy: Focus on B2B and boxed products</TimelineCardHeading>
+         <TimelineCardText>
+         Entered B2B + internal systems
+          <br /> <br />
+          
+          </TimelineCardText>
 
            <TimelineCardHeading>Approach:</TimelineCardHeading>
+           <TimelineCardText>
            <ol className="list-decimal list-inside space-y-2">
-            <li>Repositioned the research lab as a core discovery milestone during the merger</li>
-            <li>Restored trust in research across product and business teams</li>
-            <li>Rebuilt processes and adoption, not just the space</li>
+            <li>Alignment with the teams across the orgs</li>
+            <li>DS evolved into operational infrastructure</li>
            </ol>
           </TimelineCardText>
         </>
@@ -219,20 +226,24 @@ export default function EndToEndTransformationPage() {
     },
 
     { 
-        title: '2024-2025 — Bank CenterCredit — Tech Upgrade', 
+        title: '2025 : Institutionalization & monetization', 
         content: (
           <>
-            <TimelineCardHeading>Role: Director of product Design</TimelineCardHeading>
+            <TimelineCardHeading>Strategy: Fintech → SuperApp + API supplier</TimelineCardHeading>
             <TimelineCardText>
-            The lab was planned to evolve into an external asset within the holding.
-            <br /> <br />
-              
+            <ul className="list-disc list-inside space-y-2">
+            <li>Boxed solution prepared for sale</li>
+            <li>Adopted across holding ecosystem </li>
+            <li>Strategy shifts (again) – Prepared for superApp</li></ul>
+          <br /> <br />
+          
+          </TimelineCardText>
   
              <TimelineCardHeading>Approach:</TimelineCardHeading>
+             <TimelineCardText>
              <ol className="list-decimal list-inside space-y-2">
-              <li>Upgrade lab to support advanced research methodologies needed for blue ocean exploration and external consulting revenue stream.</li>
-              <li>Launch an internal research academy</li>
-              <li>Prepare the lab for external research and consulting services</li>
+              <li>Adaptation on-the fly</li>
+              <li>Design shifted from cost centre to commercial & governance asset</li>
          
              </ol>
             </TimelineCardText>
@@ -244,6 +255,7 @@ export default function EndToEndTransformationPage() {
 />
           </div>
         </div>
+        
       </section>
 
       {/* Strategy Block */}
@@ -294,7 +306,7 @@ export default function EndToEndTransformationPage() {
 
           {/* Main Text */}
           <h1 className="heading-xl" style={{ maxWidth: '664px', textAlign: 'center' }}>
-          Move research upstream and own discovery
+          Trojan horse that shifts the way decisions make
           </h1>
 
           {/* Bottom Diamonds - 2 diamonds horizontally aligned */}
@@ -331,17 +343,41 @@ export default function EndToEndTransformationPage() {
             <h1 id="strategic-pillars" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Strategic pillars</h1>
             <LargeBulletList 
                 items={[
-                    'Build research from zero — Establish research as a capability where it didn’t exist before.',
-                    'Make research visible at leadership level — Turn research into a trusted input for decision-making.',
-                    'Shift influence upstream — Use research to shape strategy and product direction early, not to validate outcomes.',
-                    'Embed research into discovery — Connect research directly to design and early discovery stages.',
-                    'Standardize and scale ResearchOps — Create repeatable processes to increase speed and quality.',
-                    'Design for future expansion — Prepare the lab for advanced research and potential external use.'
+                    'Create a unified design language + refine development stack',
+                    'Shift designers from executors to strategic contributors',
+                    'Prepare the design system as a boxed commercial product for CIS export',
+                    'Convert design from execution to infrastructure that could be measured.',
+                    'Win credibility and gain weight for design function in organization'
 
                 ]} 
                 />
+                
         </div>
         </section>
+
+        <section className="w-full">
+        <div className="w-full mx-auto"
+          style={{
+            maxWidth: '1692px',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            //paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
+          }}
+        >
+            <h1 id="achievements" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Achievements</h1>
+
+            <br />
+            <ul className="list-decimal list-inside space-y-2 text-l" style={{ fontWeight: 400, color: 'var(--main-white, #FFF8E9)', fontFamily: '"Alegreya Sans", sans-serif', fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)', fontStyle: 'normal', lineHeight: 'normal', letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+                <li>Built scalable baseline for retail redesign and SuperApp, cutting delivery cost</li>
+                <li>Established design as strategic authority and maturity driver</li>
+                <li>Embedded DS into products commercialized externally</li>
+                <li>Created business-attached maturity indicators used in governance and investment logic</li>
+                <li>Collaborated with chairman, semi-chairmen, CxOs, established design-centered decision making process</li>
+            </ul>
+            <br />
+            <br />
+          </div>
+          </section>
 
         <section className="w-full">
         <div className="w-full mx-auto"
@@ -355,9 +391,9 @@ export default function EndToEndTransformationPage() {
         >
           <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <ImageContainer 
-              src="/images/facereading.png" 
-              alt="Facereding example"
-              caption="E-commerce client is feeling frustrated during usability test"
+              src="/images/ds-documentation.png" 
+              alt="chips documentation"
+              caption="Documentation example in Figma — ready to migrate to storybook"
               width={1024}
               height={768}
             />
@@ -377,26 +413,35 @@ export default function EndToEndTransformationPage() {
           }}
         >
             <h1 id="execution" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Execution</h1>
-            <p className="text-l" style={{ fontWeight: 700 }}>  Structural gaps </p> <br />
+            <p className="text-l" style={{ fontWeight: 700 }}>Build a plane mid-air</p><br />
+            <p className="text-l" >Inherited design framed as UI support with no scaling readiness. I reframed it into governance layer with monetizable capability. Volatile environment (mergers, sanctions, leadership turnover, post-COVID imbalance) made scaling impossible unless design became governance and enablement – so I built it that way</p>
+            <br />
+            <p className="text-l" style={{ fontWeight: 700 }}>Challenges</p><br />
             <ul className="list-disc list-inside space-y-2 text-l" style={{ fontWeight: 400, color: 'var(--main-white, #FFF8E9)', fontFamily: '"Alegreya Sans", sans-serif', fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)', fontStyle: 'normal', lineHeight: 'normal', letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-                <li>No discovery processes in either bank at the starting point</li>
-                <li>Strategic decisions made without market or user evidence (Bank CenterCredit)</li>
-                <li>No C-level sponsorship for research</li>
-                <li>No budget for ResearchOps or lab setup</li>
+                <li>No C-level support or product leadership</li>
+                <li>Fragmented tech stack and competing redesign streams</li>
+                <li>Zero dedicated budget/team</li>
+                <li>Misaligned business–tech communication</li>
+                <li>Lack of product leadership in internal systems (CRM/BPM)</li>
+                <li>Strategic incoherence across leadership tiers (3 pivots in 2 years)</li>
             </ul>
-            <br /> <br />
+            <br />
+            <br />
   
-            <p className="text-l" style={{ fontWeight: 700 }}>  Enabled execution </p> <br />
+            <p className="text-l" style={{ fontWeight: 700 }}>Strategic moves</p>
+            <br />
             <ul className="list-disc list-inside space-y-2 text-l" style={{ fontWeight: 400, color: 'var(--main-white, #FFF8E9)', fontFamily: '"Alegreya Sans", sans-serif', fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)', fontStyle: 'normal', lineHeight: 'normal', letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-                <li>Built a physical usability lab as a CX hub</li>
-                <li>Took ownership during the merger and advocated for the research function (2022)</li>
-                <li>Accelerated design governance and embedded research governance alongside it</li>
-                <li>Launched market and product research streams</li>
-                <li>Partnered with Marketing to make research allocation transparent</li>
-                <li>Mobilized cross-functional support: aligned with Art Direction on the visual concept, secured space with Administration, partnered with Marketing Insights to benchmark global UX labs</li>
-                <li>Established and scaled Product & UX Research from 0 → 3</li>
+                <li>Built bottom-up legitimacy by shipping measurable ROI (3× delivery speed,  ~14k savings per task)</li>
+                <li>Formed design–engineering coalition to bypass org dependency </li>
+                <li>Reframed DS from tooling to governance & scalability engine</li>
+                <li>Secured leadership sponsorship and converted DS into an official product stream</li>
+                <li>Shifted ownership — designers became product owners in internal streams</li>
+                <li>Embedded DS into commercial offerings (export pipeline)</li>
+                <li>Created partner-integration infrastructure enabling export scalability a physical usability lab as a CX hub</li>
+           
             </ul>
-            <br /> <br /> 
+            <br />
+            <br /> 
             
         </div>
         </section>
@@ -414,9 +459,9 @@ export default function EndToEndTransformationPage() {
         >
           <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <ImageContainer 
-              src="/images/eyetracking.png" 
-              alt="Eyetracking"
-              caption="Eye-tracking research results for design system components — Table & Filters"
+              src="/images/guidelines.png" 
+              alt="notion documentation"
+              caption="Design system usage guidelines"
               width={1024}
               height={768}
             />
@@ -439,7 +484,7 @@ export default function EndToEndTransformationPage() {
         >
              <h1 id="critical-risks" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Critical risks and failures</h1>
           <div
-            className={`grid grid-cols-1 ${risksGridCols} items-start justify-items-center gap-8`}
+            className={risksGridClassName}
             style={{
               gap: 'clamp(24px, calc(24px + (32px - 24px) * ((100vw - 1024px) / (1920px - 1024px))), 32px)',
             }}
@@ -455,9 +500,60 @@ export default function EndToEndTransformationPage() {
             ))}
           </div>
         </div>
+        
       </section>
 
-      {/* Impact: Business Section */}
+      <section className="w-full">
+      <div className="w-full mx-auto"
+          style={{
+            maxWidth: '1692px',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+            //paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+          }}
+        >
+
+<h1 id="execution-internal" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Execution — internal operating model</h1>
+<ul className="list-disc list-inside space-y-2 text-l" style={{ fontWeight: 400, color: 'var(--main-white, #FFF8E9)', fontFamily: '"Alegreya Sans", sans-serif', fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)', fontStyle: 'normal', lineHeight: 'normal', letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+                <li>Built DS enablement channel → increased DS transparency, 80+ active contributors in 3 months</li>
+                <li>Introduced component governance workflow (design → engineering → QA → director alignment) → smoother component adoption</li>
+                <li>Installed role framework for knowledge transfer within design streams → faster pattern evolution and component maintenance</li>
+                <li>Consolidated editorial ownership, embedded UX writing into DS ops → design became accountable for company-wide voice (push, legal copy, UI text, comms)</li>
+                <li>Transformed design review loop : Designer → DS Ops → UX Writer → Design Lead → Dev Lead → Product Owner → Design Director (optional) → reduced design cycles from 10 to 3</li>
+            </ul>            <br />
+            <br />
+
+            <p className="text-l" style={{ fontWeight: 700 }}>Impact: Design shifted from execution craft to institutional function and became decision infrastructure driving cost, speed and quality</p><br />
+            <br />
+            <br />
+          </div>
+      </section>
+
+      <section className="w-full">
+        <div className="w-full mx-auto"
+          style={{
+            maxWidth: '1692px',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingTop: 'clamp(92px, calc(92px + (120px - 92px) * ((100vw - 320px) / (1920px - 320px))), 120px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+            <ImageContainer 
+              src="/images/telegram-channel1.png" 
+              alt="telegram channel"
+              caption="Design system Telegram channel "
+              width={1024}
+              height={768}
+            />
+          </div>
+          </div>
+        </section>
+
+
+         {/* Impact: Bsiness Section */}
       <section className="w-full">
         <div className="w-full mx-auto"
           style={{
@@ -471,97 +567,24 @@ export default function EndToEndTransformationPage() {
           <h1 id="impact-business" className="heading-xl" style={{ marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Impact: Business</h1>
           
           <div className="space-y-6">
-            {/* Growth */}
             <div>
-              <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Alfa Bank</h2>
               <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-
-                <li>Increased retail NPS by +13% after embedding user research into discovery and redesigning core mobile journeys.</li>
-                <li>Established the UX Lab as a cultural and physical hub for the design team, marking the shift toward a product-oriented mindset.</li>
+                <li>82% DS adoption across major fintech product and internal banking streams, ~12% external ecosystem</li>
+                <li>241% ROI by year 3 (~$7.7M annual saving, ~$2.3 uplift YoY) </li>
+                <li>“Primary Button” alone unlocked ~$442K / year  </li>
+                <li>Onboarding newcomers reduced 5 days → 70 minutes </li>
+                <li>Design flow assembling time decreased by 60%</li>
+                <li>Refactored 3 internal streams and SME products twice</li>
+                <li>DS exported to CIS as commercial box solution  </li>
+                <li>Tech stack reduced from 13 → 6 scalable stacks  </li>
               </ul>
             </div>
-
-            {/* Product Quality */}
-            <div>
-              <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Bank CenterCredit</h2>
-              <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-                <li>Reduced researcher workload by 10% within two months by delegating basic customer interviews to designers.</li>
-                <li>Launched an internal research academy: 33 participants from design, product, and research completed a 2-month MVP program.</li>
-                <li>Upgraded the lab with eye-tracking equipment and more advanced testing protocols.</li>
-                <li>Prepared the lab as a ready-to-launch standalone asset planned for 2026.</li>
-              </ul>
-            </div>
-
-
-
-
           </div>
         </div>
       </section>
 
 
-      <section 
-        className="w-full flex items-center justify-center"
-        style={{
-          paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
-          height: 'clamp(800px, calc(800px + (1000px - 800px) * ((100vw - 320px) / (1920px - 320px))), 1000px)',
-        }}
-      >
-        <div className="flex flex-col items-center justify-center w-full"
-        style={{
-          
-        }}
-        >
-          {/* Top Diamonds - 2 diamonds horizontally aligned */}
-          <div className="flex items-center justify-center" style={{ gap: '24px', marginBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)' }}>
-            <div
-              style={{
-                width: '12px',
-                height: '12px',
-                backgroundColor: 'var(--main-red-accent, #F62F20)',
-                transform: 'rotate(45deg)', 
-                
-              }}
-            />
-            <div
-              style={{
-                width: '12px',
-                height: '12px',
-                backgroundColor: 'var(--main-red-accent, #F62F20)',
-                transform: 'rotate(45deg)',
-              }}
-            />
-          </div>
-
-
-          {/* Main Text */}
-          <h1 id="leadership-outcome" className="heading-xl" style={{ maxWidth: 'clamp(300px, calc(300px + (1000px - 300px) * ((100vw - 320px) / (1920px - 320px))), 1000px)', textAlign: 'center' }}>
-          I’m comfortable operating in uncertainty, resistance, and change
-           </h1>
-
-          {/* Bottom Diamonds - 2 diamonds horizontally aligned */}
-          <div className="flex items-center justify-center" style={{ gap: '24px', marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)' }}>
-            <div
-              style={{
-                width: '12px',
-                height: '12px',
-                backgroundColor: 'var(--main-red-accent, #F62F20)',
-                transform: 'rotate(45deg)',
-              }}
-            />
-            <div
-              style={{
-                width: '12px',
-                height: '12px',
-                backgroundColor: 'var(--main-red-accent, #F62F20)',
-                transform: 'rotate(45deg)',
-              }}
-            />
-          </div>
-        </div>
-      </section>
-
-      <section className="w-full">
+        <section className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -576,14 +599,17 @@ export default function EndToEndTransformationPage() {
           <div className="space-y-6">
             <div>
               <ul className="text-l space-y-2" style={{ listStyle: 'number', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-                <li>I take ownership where systems don’t exist yet</li><br />
-                <li>I build influence before authority</li><br />
-                <li>I design structures that survive beyond my role</li><br />
+                <li><b>I shifted influence from evangelism to inevitability.</b><br/> I embedded rules, mechanisms and accountability structures that enforced alignment without selling or convincing.</li><br />
+                <li><b>I moved from needing sponsorship to generating it.</b><br/> Legitimacy came from outcomes, savings and export value, not titles or permission.</li><br />
+                <li><b>I turned design into an economic actor.</b><br/> Design produced measurable ROI, enabled monetization, and became a revenue-bearing capability rather than a cost centre.</li><br />
+                <li><b>I manufactured internal tolerance for ambiguity and discipline in chaos.</b><br/> The design system became an instrument of alignment, decision hygiene, and scale under volatile conditions.</li><br />
+                <li><b>I translated culture into capital.</b><br/> What started as evangelism became a branding engine: Design became the company’s maturity narrative externally, attracting talent, credibility and investment interest — and that brand converted into adoption, budget and commercial opportunity.</li><br />
               </ul>
             </div>
           </div>
         </div>
       </section>
+     
 
 
       {/* Footer Section */}
@@ -675,4 +701,11 @@ export default function EndToEndTransformationPage() {
     </main>
   );
 }
+
+
+
+     
+
+
+
 
