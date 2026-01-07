@@ -22,6 +22,20 @@ export default function Home() {
   const [showImages, setShowImages] = useState(false);
   const [showTitle, setShowTitle] = useState(false);
   const [showSubtitle, setShowSubtitle] = useState(false);
+  
+  // Expertise section animation states
+  const [showExpertiseLine1, setShowExpertiseLine1] = useState(false);
+  const [showExpertiseTitleImage, setShowExpertiseTitleImage] = useState(false);
+  const [showExpertiseGrid, setShowExpertiseGrid] = useState(false);
+  const [showExpertiseLine2, setShowExpertiseLine2] = useState(false);
+  const [showHowCanIHelp, setShowHowCanIHelp] = useState(false);
+  
+  // Refs for expertise elements
+  const expertiseLine1Ref = useRef<HTMLDivElement>(null);
+  const expertiseTitleImageRef = useRef<HTMLDivElement>(null);
+  const expertiseGridRef = useRef<HTMLDivElement>(null);
+  const expertiseLine2Ref = useRef<HTMLDivElement>(null);
+  const howCanIHelpRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Check if user has already visited (StartScreen won't show)
@@ -48,6 +62,59 @@ export default function Home() {
       return () => clearTimeout(timer);
     }
   }, []);
+
+  // Expertise section animation - triggered by scroll event
+  useEffect(() => {
+    const checkScrollPosition = () => {
+      if (typeof window === 'undefined') return;
+      
+      const windowHeight = window.innerHeight;
+      
+      // Check each element's position - trigger when 20% is visible
+      const checkElement = (ref: React.RefObject<HTMLDivElement | null>, setState: (value: boolean) => void) => {
+        if (ref.current) {
+          const rect = ref.current.getBoundingClientRect();
+          const elementTop = rect.top;
+          const elementHeight = rect.height;
+          // Element is visible when its top is above viewport bottom minus 20% of its height
+          const visibleThreshold = windowHeight - (elementHeight * 0.2);
+          
+          if (elementTop < visibleThreshold && elementTop + elementHeight > 0) {
+            setState(true);
+          }
+        }
+      };
+      
+      // Check elements in order
+      checkElement(expertiseLine1Ref, setShowExpertiseLine1);
+      checkElement(expertiseTitleImageRef, setShowExpertiseTitleImage);
+      checkElement(expertiseGridRef, setShowExpertiseGrid);
+      checkElement(expertiseLine2Ref, setShowExpertiseLine2);
+      
+      // Check "How can I help" - wait for line 2's diamond animation
+      if (howCanIHelpRef.current && showExpertiseLine2) {
+        const rect = howCanIHelpRef.current.getBoundingClientRect();
+        const elementTop = rect.top;
+        const elementHeight = rect.height;
+        const visibleThreshold = windowHeight - (elementHeight * 0.2);
+        
+        if (elementTop < visibleThreshold && elementTop + elementHeight > 0 && !showHowCanIHelp) {
+          // Add delay for diamond animation (1.5s after line 2 appears)
+          setTimeout(() => setShowHowCanIHelp(true), 1500);
+        }
+      }
+    };
+    
+    // Initial check
+    checkScrollPosition();
+    
+    // Add scroll listener
+    window.addEventListener('scroll', checkScrollPosition, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', checkScrollPosition);
+    };
+  }, [showExpertiseLine2, showHowCanIHelp]);
 
   return (
     <main className="min-h-screen bg-cream">
@@ -318,10 +385,20 @@ export default function Home() {
           }}
         >
           {/* Animated Vertical Line - Diamond stops near bottom */}
-          <AnimatedContainerLine diamondStopAt="bottom" />
+          <div 
+            ref={expertiseLine1Ref}
+            style={{ opacity: showExpertiseLine1 ? 1 : 0, transition: 'opacity 0.6s ease-in-out' }}
+          >
+            <AnimatedContainerLine diamondStopAt="bottom" />
+          </div>
           {/* Title Image - aligned left on mobile, right on desktop */}
           <div 
+            ref={expertiseTitleImageRef}
             className="absolute top-0 left-0 md:left-auto md:right-0 h-full flex items-center expertise-title-image-wrapper"
+            style={{
+              opacity: showExpertiseTitleImage ? 1 : 0,
+              transition: 'opacity 0.6s ease-in-out',
+            }}
           >
             <Image
               src="/images/expertise-title.svg"
@@ -342,6 +419,7 @@ export default function Home() {
 
         {/* New Block - Responsive grid: 1 column mobile, 2 columns tablet, 4 columns desktop */}
         <div 
+          ref={expertiseGridRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-auto w-full expertise-blocks-grid gap-[3px] border-[3px] border-dark-brown"
           style={{
             // Width: full width on mobile/tablet
@@ -349,6 +427,8 @@ export default function Home() {
             minHeight: 'clamp(520px, calc(520px + (662px - 520px) * ((100vw - 1024px) / (1920px - 1024px))), 662px)',
             alignItems: 'stretch',
             backgroundColor: '#342927', // dark-brown background for grid to show gaps as divider lines
+            opacity: showExpertiseGrid ? 1 : 0,
+            transition: 'opacity 0.6s ease-in-out',
           }}
         >
           <ExpertiseBlock
@@ -395,7 +475,12 @@ export default function Home() {
           }}
         >
           {/* Animated Vertical Line - Left aligned, Diamond stops in the middle */}
-          <AnimatedContainerLine position="left" showCaption={false} diamondStopAt="middle"  />
+          <div 
+            ref={expertiseLine2Ref}
+            style={{ opacity: showExpertiseLine2 ? 1 : 0, transition: 'opacity 0.6s ease-in-out' }}
+          >
+            <AnimatedContainerLine position="left" showCaption={false} diamondStopAt="middle"  />
+          </div>
 
           {/* Content Container - 64px gap from line (responsive, 1920px benchmark), vertically centered */}
           <div 
@@ -409,6 +494,7 @@ export default function Home() {
             }}
           >
             <div 
+              ref={howCanIHelpRef}
               className="flex flex-col"
               style={{
                 width: '539px',
@@ -429,6 +515,8 @@ export default function Home() {
                 lineHeight: 'normal',
                 // Letter spacing: scales from -0.24px at 320px to -0.32px at 1920px (benchmark)
                 letterSpacing: 'clamp(-0.24px, calc(-0.24px + (-0.32px - -0.24px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)',
+                opacity: showHowCanIHelp ? 1 : 0,
+                transition: 'opacity 0.6s ease-in-out',
               }}
             >
               How can I help
@@ -448,6 +536,8 @@ export default function Home() {
                 // Letter spacing: scales from -0.24px at 320px to -0.36px at 1920px (benchmark)
                 letterSpacing: 'clamp(-0.24px, calc(-0.24px + (-0.36px - -0.24px) * ((100vw - 320px) / (1920px - 320px))), -0.36px)',
                 alignSelf: 'stretch',
+                opacity: showHowCanIHelp ? 1 : 0,
+                transition: 'opacity 0.6s ease-in-out',
               }}
             >
               <li>Design management</li>
