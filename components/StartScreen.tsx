@@ -15,6 +15,11 @@ export default function StartScreen({ children }: StartScreenProps) {
   const [circleScale, setCircleScale] = useState(0);
 
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      setShowContent(true);
+      return;
+    }
+    
     const visited = localStorage.getItem('portfolio-visited');
     
     if (visited === 'yes') {

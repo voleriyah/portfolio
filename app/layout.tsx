@@ -17,7 +17,7 @@ const ericaOne = Erica_One({
 });
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
+  title: "Valeriya Kostyuchenko | Director of Product Design",
   description: "Welcome to my portfolio",
 };
 
