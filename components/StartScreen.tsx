@@ -22,7 +22,7 @@ export default function StartScreen({ children }: StartScreenProps) {
 
   useEffect(() => {
     if (!show) return;
-    
+    setTimeout(() => setLogoScale(1), 0);
     setTimeout(() => setLogoScale(1.3), 200);       // +10% через 200ms
     setTimeout(() => setLogoScale(1), 600);         // обратно через 400ms
     setTimeout(() => setLogoScale(1.5), 1000);      // +10% снова через 400ms
