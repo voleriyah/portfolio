@@ -8,6 +8,7 @@ interface ValueListItemProps {
   subtitle?: string;
   description: string;
   className?: string;
+  color?: string;
 }
 
 export default function ValueListItem({
@@ -16,6 +17,7 @@ export default function ValueListItem({
   subtitle,
   description,
   className = '',
+  color = 'var(--main-medium-gray, #342927)',
 }: ValueListItemProps) {
   return (
     <div
@@ -30,7 +32,8 @@ export default function ValueListItem({
       {/* Number - Full width at top */}
       <span
         style={{
-          color: 'var(--main-medium-gray, #342927)',
+
+          color: color,
           fontFamily: '"Alegreya Sans"',
           fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)',
           fontStyle: 'normal',
@@ -56,7 +59,7 @@ export default function ValueListItem({
         <h3
           className="font-black xl:font-extrabold xl:w-[520px]"
           style={{
-            color: 'var(--main-medium-gray, #342927)',
+            color: color,
             fontFamily: '"Alegreya Sans"',
             fontSize: 'clamp(32px, calc(32px + (56px - 32px) * ((100vw - 320px) / (1920px - 320px))), 56px)',
             fontStyle: 'normal',
@@ -75,7 +78,7 @@ export default function ValueListItem({
           {subtitle && (
             <p
               style={{
-                color: '#342927',
+                color: color,
                 fontFamily: '"Alegreya Sans"',
                 fontSize: 'clamp(20px, calc(20px + (36px - 20px) * ((100vw - 320px) / (1920px - 320px))), 36px)',
                 fontStyle: 'normal',
@@ -95,7 +98,7 @@ export default function ValueListItem({
           <p
             className="font-bold lg:font-normal"
             style={{
-              color: '#342927',
+              color: color,
               fontFamily: '"Alegreya Sans"',
               fontSize: 'clamp(20px, calc(20px + (36px - 20px) * ((100vw - 320px) / (1920px - 320px))), 36px)',
               fontStyle: 'normal',

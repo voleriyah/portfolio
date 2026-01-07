@@ -658,7 +658,7 @@ export default function Home() {
     My leadership values
   </h2>
   
-  <CustomLink href="https://www.linkedin.com/in/voleriyah" iconType="internal">
+  <CustomLink href="/leadership" iconType="internal">
     Read more
   </CustomLink>
 </div>

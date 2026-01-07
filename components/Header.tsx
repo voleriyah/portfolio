@@ -9,7 +9,7 @@ import CustomLink from './CustomLink';
 const menuItems = [
   { label: 'cases', href: '#cases', external: false },
   { label: 'about', href: '/about', external: false },
-  { label: 'my leadership', href: '#my-leadership', external: false },
+  { label: 'my leadership', href: '/leadership', external: false },
   { label: 'medium', href: 'https://voleriyah.medium.com', external: true },
 ];
 
