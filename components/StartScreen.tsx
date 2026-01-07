@@ -8,21 +8,23 @@ interface StartScreenProps {
 }
 
 export default function StartScreen({ children }: StartScreenProps) {
-  // Check localStorage synchronously on client
-  const getInitialShow = () => {
-    if (typeof window === 'undefined') return false;
-    return localStorage.getItem('portfolio-visited') !== 'yes';
-  };
-
-  const [show, setShow] = useState(getInitialShow);
-  const [showContent, setShowContent] = useState(!getInitialShow());
+  const [show, setShow] = useState(true); // ALWAYS TRUE on first render
+  const [showContent, setShowContent] = useState(false);
   const [stage, setStage] = useState(0);
   const [logoScale, setLogoScale] = useState(1);
   const [circleScale, setCircleScale] = useState(0);
 
   useEffect(() => {
-    if (!show) return;
-    setTimeout(() => setLogoScale(1), 0);
+    // Check if already visited AFTER mount
+    if (typeof window !== 'undefined') {
+      const visited = localStorage.getItem('portfolio-visited');
+      if (visited === 'yes') {
+        setShow(false);
+        setShowContent(true);
+        return;
+      }
+    }
+    
     setTimeout(() => setLogoScale(1.3), 200);       // +10% через 200ms
     setTimeout(() => setLogoScale(1), 600);         // обратно через 400ms
     setTimeout(() => setLogoScale(1.5), 1000);      // +10% снова через 400ms
@@ -45,11 +47,7 @@ export default function StartScreen({ children }: StartScreenProps) {
         localStorage.setItem('portfolio-visited', 'yes');
       }
     }, 5732);
-  }, [show]);
-
-  if (typeof window === 'undefined') {
-    return null; // Don't render anything on server
-  }
+  }, []);
 
   return (
     <>
@@ -147,7 +145,7 @@ export default function StartScreen({ children }: StartScreenProps) {
               transform: `scale(${logoScale})`,
               transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1)',
             }}>
-              <Image src="/images/start.svg" alt="Logo" width={200} height={200} />
+              <Image src="/images/start.svg" alt="Logo" width={200} height={200} priority />
             </div>
 
             {/* Правые ромбы */}
