@@ -10,6 +10,9 @@ interface StartScreenProps {
 export default function StartScreen({ children }: StartScreenProps) {
   const [show, setShow] = useState(true); // ALWAYS TRUE on first render
   const [showContent, setShowContent] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(false);
+  const [showLogo, setShowLogo] = useState(false);
+  const [showDiamonds, setShowDiamonds] = useState(false);
   const [stage, setStage] = useState(0);
   const [logoScale, setLogoScale] = useState(1);
   const [circleScale, setCircleScale] = useState(0);
@@ -25,28 +28,35 @@ export default function StartScreen({ children }: StartScreenProps) {
       }
     }
     
-    setTimeout(() => setLogoScale(1.3), 200);       // +10% через 200ms
-    setTimeout(() => setLogoScale(1), 600);         // обратно через 400ms
-    setTimeout(() => setLogoScale(1.5), 1000);      // +10% снова через 400ms
-    setTimeout(() => setLogoScale(1.3), 1400);        // обратно через 400ms
+    // Fade-in animations
+    setTimeout(() => setShowWelcome(true), 200);     // Welcome через 200ms
+    setTimeout(() => setShowDiamonds(true), 850);    // Ромбы через 650ms после Welcome (200+650)
+    setTimeout(() => setShowLogo(true), 1300);       // Логотип через 450ms после ромбов (850+450)
+    
+    // Пульсация логотипа (начинается сразу с ромбами = 1300ms)
+    setTimeout(() => setLogoScale(1.3), 1300);
+    setTimeout(() => setLogoScale(1), 1700);
+    setTimeout(() => setLogoScale(1.5), 2100);
+    setTimeout(() => setLogoScale(1.3), 2500);
     
     // Пауза 100ms
     
-    // Основная анимация (начинается с 1500ms)
-    setTimeout(() => setStage(1), 1500);            // было 100, +1400
-    setTimeout(() => setLogoScale(1.7), 1932);      // было 532, +1400 (было 1.2, теперь +50%)
-    setTimeout(() => setStage(2), 2300);            // было 900, +1400
-    setTimeout(() => setLogoScale(2.55), 2732);     // было 1332, +1400 (было 1.44, теперь 1.5*1.5)
-    setTimeout(() => setStage(3), 3100);            // было 1700, +1400
-    setTimeout(() => setLogoScale(3.825), 3532);    // было 2132, +1400 (было 1.728, теперь 2.25*1.5)
-    setTimeout(() => setCircleScale(1), 3732);      // начало сразу после анимации ромбов (3100 + 632ms transition)
+    // Основная анимация (начинается с 2600ms)
+    setTimeout(() => setStage(1), 2600);
+    setTimeout(() => setLogoScale(1.7), 3032);
+    setTimeout(() => setStage(2), 3400);
+    setTimeout(() => setLogoScale(2.55), 3832);
+    setTimeout(() => setStage(3), 4200);
+    setTimeout(() => setLogoScale(3.825), 4632);
+    setTimeout(() => setCircleScale(1), 4832);
+    
     setTimeout(() => {
       setShow(false);
       setShowContent(true);
       if (typeof window !== 'undefined') {
         localStorage.setItem('portfolio-visited', 'yes');
       }
-    }, 5732);
+    }, 6832);
   }, []);
 
   return (
@@ -76,6 +86,8 @@ export default function StartScreen({ children }: StartScreenProps) {
               right: '0',
               textAlign: 'center',
               zIndex: 100,
+              opacity: showWelcome ? 1 : 0,
+              transition: 'opacity 0.4s ease-in-out',
             }}
           >
             Welcome
@@ -100,6 +112,8 @@ export default function StartScreen({ children }: StartScreenProps) {
             padding: '0 24px',
             position: 'relative',
             zIndex: 10,
+            opacity: showLogo ? 1 : 0,
+            transition: 'opacity 0.4s ease-in-out',
           }}>
 
             <div style={{ position: 'relative', width: '200px', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
@@ -113,7 +127,8 @@ export default function StartScreen({ children }: StartScreenProps) {
               borderRadius: '16px', 
               backgroundColor: '#1E1E1E',
               transform: stage >= 3 ? `translateX(600px) rotate(45deg)` : 'rotate(45deg)',
-              transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease-in-out',
+              opacity: showDiamonds ? 1 : 0,
             }} />
             
             <div style={{ 
@@ -124,7 +139,8 @@ export default function StartScreen({ children }: StartScreenProps) {
               borderRadius: '16px', 
               backgroundColor: '#1E1E1E',
               transform: stage >= 2 ? `translateX(450px) rotate(45deg)` : 'rotate(45deg)',
-              transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease-in-out',
+              opacity: showDiamonds ? 1 : 0,
             }} />
             
             <div style={{ 
@@ -135,7 +151,8 @@ export default function StartScreen({ children }: StartScreenProps) {
               borderRadius: '16px', 
               backgroundColor: '#1E1E1E',
               transform: stage >= 1 ? `translateX(300px) rotate(45deg)` : 'rotate(45deg)',
-              transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease-in-out',
+              opacity: showDiamonds ? 1 : 0,
             }} />
 
             {/* Логотип */}
@@ -157,7 +174,8 @@ export default function StartScreen({ children }: StartScreenProps) {
               borderRadius: '16px', 
               backgroundColor: '#1E1E1E',
               transform: stage >= 1 ? `translateX(-300px) rotate(45deg)` : 'rotate(45deg)',
-              transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease-in-out',
+              opacity: showDiamonds ? 1 : 0,
             }} />
             
             <div style={{ 
@@ -168,7 +186,8 @@ export default function StartScreen({ children }: StartScreenProps) {
               borderRadius: '16px', 
               backgroundColor: '#1E1E1E',
               transform: stage >= 2 ? `translateX(-450px) rotate(45deg)` : 'rotate(45deg)',
-              transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease-in-out',
+              opacity: showDiamonds ? 1 : 0,
             }} />
             
             <div style={{ 
@@ -179,7 +198,8 @@ export default function StartScreen({ children }: StartScreenProps) {
               borderRadius: '16px', 
               backgroundColor: '#1E1E1E',
               transform: stage >= 3 ? `translateX(-600px) rotate(45deg)` : 'rotate(45deg)',
-              transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              transition: 'transform 0.632s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease-in-out',
+              opacity: showDiamonds ? 1 : 0,
             }} />
           </div>
           </div>
@@ -194,6 +214,8 @@ export default function StartScreen({ children }: StartScreenProps) {
               right: '0',
               textAlign: 'center',
               zIndex: 100,
+              opacity: showWelcome ? 1 : 0,
+              transition: 'opacity 0.4s ease-in-out',
             }}
           >
             Welcome
