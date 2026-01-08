@@ -1,15 +1,17 @@
 export const shimmer = (w: number, h: number) => `
-<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="g">
-      <stop stop-color="#1E1E1E" offset="20%" />
-      <stop stop-color="#2A2A2A" offset="50%" />
-      <stop stop-color="#1E1E1E" offset="70%" />
+    <linearGradient id="shimmer-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E1E1E" />
+      <stop offset="20%" stop-color="#2A2A2A" />
+      <stop offset="40%" stop-color="#1E1E1E" />
+      <stop offset="60%" stop-color="#2A2A2A" />
+      <stop offset="80%" stop-color="#1E1E1E" />
+      <stop offset="100%" stop-color="#2A2A2A" />
     </linearGradient>
   </defs>
   <rect width="${w}" height="${h}" fill="#1E1E1E" />
-  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+  <rect width="${w}" height="${h}" fill="url(#shimmer-gradient)" />
 </svg>`
 
 export const toBase64 = (str: string) =>
