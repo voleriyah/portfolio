@@ -16,6 +16,7 @@ export default function EndToEndTransformationPage() {
   // Title and tags animation states
   const [showTitle, setShowTitle] = useState(false);
   const [showTags, setShowTags] = useState(false);
+  const [showTableOfContents, setShowTableOfContents] = useState(false);
   
   // Content blocks animation states
   const [visibleBlocks, setVisibleBlocks] = useState<Set<number>>(new Set());
@@ -26,6 +27,9 @@ export default function EndToEndTransformationPage() {
     setShowTitle(true);
     setTimeout(() => {
       setShowTags(true);
+      setTimeout(() => {
+        setShowTableOfContents(true);
+      }, 400);
     }, 400);
   }, []);
 
@@ -35,7 +39,7 @@ export default function EndToEndTransformationPage() {
 
     const checkScrollPosition = () => {
       blockRefs.current.forEach((ref, index) => {
-        if (!ref || visibleBlocks.has(index)) return;
+        if (!ref || visibleBlocks.has(index) || index === 0) return; // Skip index 0 (table of contents)
 
         const windowHeight = window.innerHeight;
         const rect = ref.getBoundingClientRect();
@@ -156,9 +160,8 @@ export default function EndToEndTransformationPage() {
 
           {/* Table of Contents */}
           <motion.div
-            ref={(el) => { blockRefs.current[0] = el; }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: visibleBlocks.has(0) ? 1 : 0 }}
+            animate={{ opacity: showTableOfContents ? 1 : 0 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
             className="w-full mx-auto"
             style={{

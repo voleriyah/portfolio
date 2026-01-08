@@ -40,7 +40,7 @@ function PasswordForm() {
             }
           }}
           autoFocus={true}
-          className="w-full p-3 border-2 border-[#1E1E1E] rounded mb-4"
+          className="w-full p-3 border-2 border-[#1E1E1E] rounded mb-4 bg-[#FFF8E9]"
           placeholder="Password"
         />
         <button
