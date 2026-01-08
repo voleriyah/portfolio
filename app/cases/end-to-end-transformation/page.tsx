@@ -34,7 +34,7 @@ export default function EndToEndTransformationPage() {
   const risksGridCols = risksItems.length > 3 ? 'lg:grid-cols-2' : 'lg:grid-cols-3';
 
   return (
-    <main className="min-h-screen bg-dark-bg">
+    <main className="min-h-screen bg-dark-bg" style={{ paddingTop: 'clamp(92px, calc(92px + (124px - 92px) * ((100vw - 320px) / (1920px - 320px))), 124px)' }}>
       {/* Case Content Section */}
       <section className="w-full">
         <div className="w-full mx-auto"

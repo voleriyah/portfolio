@@ -12,7 +12,7 @@ import Footer from '@/components/Footer';
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-dark-bg">
+    <main className="min-h-screen bg-dark-bg" style={{ paddingTop: 'clamp(92px, calc(92px + (124px - 92px) * ((100vw - 320px) / (1920px - 320px))), 124px)' }}>
       <section className="w-full">
         <div className="w-full mx-auto"
           style={{

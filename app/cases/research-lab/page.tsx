@@ -41,7 +41,7 @@ export default function EndToEndTransformationPage() {
   const risksGridCols = risksItems.length > 3 ? 'lg:grid-cols-2' : 'lg:grid-cols-3';
 
   return (
-    <main className="min-h-screen bg-dark-bg">
+    <main className="min-h-screen bg-dark-bg" style={{ paddingTop: 'clamp(92px, calc(92px + (124px - 92px) * ((100vw - 320px) / (1920px - 320px))), 124px)' }}>
       {/* Case Content Section */}
       <section className="w-full">
         <div className="w-full mx-auto"
@@ -501,11 +501,35 @@ export default function EndToEndTransformationPage() {
       </section>
 
 
+      <section className="w-full">
+        <div className="w-full mx-auto"
+          style={{
+            maxWidth: '1692px',
+            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
+            
+          }}
+        >
+          <h1 id="leadership-outcome" className="heading-xl" style={{ marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>My leadership outcome</h1>
+          
+          <div className="space-y-6">
+            <div>
+              <ul className="text-l space-y-2" style={{ listStyle: 'number', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
+                <li>I take ownership where systems don’t exist yet</li><br />
+                <li>I build influence before authority</li><br />
+                <li>I design structures that survive beyond my role</li><br />
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section 
         className="w-full flex items-center justify-center"
         style={{
           paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
-          height: 'clamp(800px, calc(800px + (1000px - 800px) * ((100vw - 320px) / (1920px - 320px))), 1000px)',
+          height: 'clamp(800px, calc(800px + (1000px - 800px) * ((100vw - 320px) / (1920px - 320px))), 300px)',
         }}
       >
         <div className="flex flex-col items-center justify-center w-full"
@@ -562,29 +586,7 @@ export default function EndToEndTransformationPage() {
         </div>
       </section>
 
-      <section className="w-full">
-        <div className="w-full mx-auto"
-          style={{
-            maxWidth: '1692px',
-            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
-            paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
-          }}
-        >
-          <h1 id="leadership-outcome" className="heading-xl" style={{ marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>My leadership outcome</h1>
-          
-          <div className="space-y-6">
-            <div>
-              <ul className="text-l space-y-2" style={{ listStyle: 'number', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-                <li>I take ownership where systems don’t exist yet</li><br />
-                <li>I build influence before authority</li><br />
-                <li>I design structures that survive beyond my role</li><br />
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+     
 
 
       {/* Footer Section */}
