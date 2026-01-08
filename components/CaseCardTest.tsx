@@ -23,6 +23,7 @@ interface CaseCardProps {
   onButtonClick?: () => void;
   className?: string;
   align?: 'left' | 'right';
+  animateLine?: boolean;
 }
 
 export default function CaseCard({
@@ -43,10 +44,51 @@ export default function CaseCard({
   onButtonClick,
   className = '',
   align = 'left',
+  animateLine,
 }: CaseCardProps) {
   const [buttonSize, setButtonSize] = useState<'large' | 'small'>('small');
-  const lineRef = useRef(null);
+  const lineRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(lineRef, { once: true, margin: "-100px" });
+  
+  // Use animateLine prop if provided, otherwise use isInView
+  const shouldAnimateLine = animateLine !== undefined ? animateLine : isInView;
+
+  // Force animation when shouldAnimateLine changes
+  useEffect(() => {
+    if (lineRef.current && shouldAnimateLine) {
+      console.log('Line animation triggered, align:', align);
+      // Reset to ensure animation triggers
+      const element = lineRef.current;
+      element.style.transition = 'none';
+      // For right-aligned cards, start from right (100%), for left-aligned start from left (0%)
+      element.style.width = '0%';
+      if (align === 'right') {
+        element.style.marginLeft = 'auto';
+      } else {
+        element.style.marginLeft = '0';
+      }
+      
+      // Force reflow
+      element.offsetHeight;
+      
+      // Apply animation
+      requestAnimationFrame(() => {
+        console.log('Applying line animation, element:', element);
+        element.style.transition = 'width 1.5s cubic-bezier(0.33, 1, 0.68, 1) 0.2s';
+        element.style.width = '100%';
+      });
+    } else if (lineRef.current && !shouldAnimateLine) {
+      // Reset when should not animate
+      const element = lineRef.current;
+      element.style.transition = 'none';
+      element.style.width = '0%';
+      if (align === 'right') {
+        element.style.marginLeft = 'auto';
+      } else {
+        element.style.marginLeft = '0';
+      }
+    }
+  }, [shouldAnimateLine, align]);
 
   useEffect(() => {
     const updateSizes = () => {
@@ -209,22 +251,21 @@ export default function CaseCard({
         </div>
       </div>
 
-      {/* Right Column: Animated Horizontal Line (hidden on mobile) */}
-      <motion.div 
-        ref={lineRef}
-        className="hidden xl:block h-[3px] bg-[#F62F20] flex-1"
-        style={{
-          minWidth: '0',
-          transformOrigin: align === 'left' ? 'left' : 'right',
-        }}
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: isInView ? 1 : 0 }}
-        transition={{ 
-          duration: 1.5, 
-          ease: [0.33, 1, 0.68, 1],
-          delay: 0.2,
-        }}
-      />
+      {/* Horizontal Line Column (hidden on mobile) */}
+      <div className="hidden xl:block flex-1" style={{ minWidth: '0', width: '100%' }}>
+        <div 
+          ref={lineRef}
+          className="h-[3px] bg-[#F62F20]"
+          style={{
+            width: '0%',
+            height: '3px',
+            display: 'block',
+            backgroundColor: '#F62F20',
+            minWidth: '0',
+            marginLeft: align === 'right' ? 'auto' : '0',
+          }}
+        />
+      </div>
     </div>
   );
 }

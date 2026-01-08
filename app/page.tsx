@@ -36,6 +36,21 @@ export default function Home() {
   const expertiseGridRef = useRef<HTMLDivElement>(null);
   const expertiseLine2Ref = useRef<HTMLDivElement>(null);
   const howCanIHelpRef = useRef<HTMLDivElement>(null);
+  
+  // Case card 1 animation states
+  const [showCaseCard1, setShowCaseCard1] = useState(false);
+  const caseCard1Ref = useRef<HTMLDivElement>(null);
+  
+  // First vertical line animation state (after card 1)
+  const [showVerticalLine1, setShowVerticalLine1] = useState(false);
+  
+  // Case card 2 animation states
+  const [showCaseCard2, setShowCaseCard2] = useState(false);
+  const caseCard2Ref = useRef<HTMLDivElement>(null);
+  
+  // Case card 3 animation states
+  const [showCaseCard3, setShowCaseCard3] = useState(false);
+  const caseCard3Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Check if user has already visited (StartScreen won't show)
@@ -88,7 +103,6 @@ export default function Home() {
       // Check elements in order
       checkElement(expertiseLine1Ref, setShowExpertiseLine1);
       checkElement(expertiseTitleImageRef, setShowExpertiseTitleImage);
-      checkElement(expertiseGridRef, setShowExpertiseGrid);
       checkElement(expertiseLine2Ref, setShowExpertiseLine2);
     };
     
@@ -103,6 +117,18 @@ export default function Home() {
     };
   }, []);
 
+  // Expertise grid appears immediately after line 1's diamond animation completes
+  useEffect(() => {
+    if (showExpertiseLine1 && !showExpertiseGrid) {
+      // Diamond animation takes 1.5s (1.2s duration + 0.3s delay) after line starts
+      const timer = setTimeout(() => {
+        setShowExpertiseGrid(true);
+      }, 1500);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showExpertiseLine1, showExpertiseGrid]);
+
   // "How can I help" appears immediately after line 2's diamond animation completes
   useEffect(() => {
     if (showExpertiseLine2 && !showHowCanIHelp) {
@@ -114,6 +140,178 @@ export default function Home() {
       return () => clearTimeout(timer);
     }
   }, [showExpertiseLine2, showHowCanIHelp]);
+
+  // Case card 1 animation - triggered by scroll event
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const checkScrollPosition = () => {
+      if (!caseCard1Ref.current) return;
+      
+      const windowHeight = window.innerHeight;
+      const rect = caseCard1Ref.current.getBoundingClientRect();
+      const elementTop = rect.top;
+      const elementHeight = rect.height;
+      
+      // Calculate visible portion
+      const visibleTop = Math.max(0, -elementTop);
+      const visibleBottom = Math.min(elementHeight, windowHeight - elementTop);
+      const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+      const visiblePercentage = elementHeight > 0 ? (visibleHeight / elementHeight) * 100 : 0;
+      
+      // 5% visible - vertical line appears
+      if (visiblePercentage >= 5) {
+        setShowVerticalLine1((prev) => {
+          if (!prev) {
+            console.log('Vertical line 1 triggered at', visiblePercentage.toFixed(1), '% visible');
+          }
+          return true;
+        });
+      }
+      
+      // 10% visible - card appears
+      if (visiblePercentage >= 10) {
+        setShowCaseCard1((prev) => {
+          if (!prev) {
+            console.log('Card 1 appeared at', visiblePercentage.toFixed(1), '% visible');
+          }
+          return true;
+        });
+      }
+      
+    };
+    
+    // Initial check
+    checkScrollPosition();
+    
+    // Add scroll listener with throttling
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          checkScrollPosition();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', checkScrollPosition, { passive: true });
+
+    
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkScrollPosition);
+    };
+  }, []);
+
+  // Case card 2 animation - triggered by scroll event
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const checkScrollPosition = () => {
+      if (!caseCard2Ref.current) return;
+      
+      const windowHeight = window.innerHeight;
+      const rect = caseCard2Ref.current.getBoundingClientRect();
+      const elementTop = rect.top;
+      const elementHeight = rect.height;
+      
+      // Calculate visible portion
+      const visibleTop = Math.max(0, -elementTop);
+      const visibleBottom = Math.min(elementHeight, windowHeight - elementTop);
+      const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+      const visiblePercentage = elementHeight > 0 ? (visibleHeight / elementHeight) * 100 : 0;
+      
+      // 10% visible - card appears
+      if (visiblePercentage >= 10) {
+        setShowCaseCard2((prev) => {
+          if (!prev) {
+            console.log('Card 2 appeared at', visiblePercentage.toFixed(1), '% visible');
+          }
+          return true;
+        });
+      }
+    };
+    
+    // Initial check
+    checkScrollPosition();
+    
+    // Add scroll listener with throttling
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          checkScrollPosition();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', checkScrollPosition, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkScrollPosition);
+    };
+  }, []);
+
+  // Case card 3 animation - triggered by scroll event
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const checkScrollPosition = () => {
+      if (!caseCard3Ref.current) return;
+      
+      const windowHeight = window.innerHeight;
+      const rect = caseCard3Ref.current.getBoundingClientRect();
+      const elementTop = rect.top;
+      const elementHeight = rect.height;
+      
+      // Calculate visible portion
+      const visibleTop = Math.max(0, -elementTop);
+      const visibleBottom = Math.min(elementHeight, windowHeight - elementTop);
+      const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+      const visiblePercentage = elementHeight > 0 ? (visibleHeight / elementHeight) * 100 : 0;
+      
+      // 10% visible - card appears
+      if (visiblePercentage >= 10) {
+        setShowCaseCard3((prev) => {
+          if (!prev) {
+            console.log('Card 3 appeared at', visiblePercentage.toFixed(1), '% visible');
+          }
+          return true;
+        });
+      }
+    };
+    
+    // Initial check
+    checkScrollPosition();
+    
+    // Add scroll listener with throttling
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          checkScrollPosition();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', checkScrollPosition, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkScrollPosition);
+    };
+  }, []);
 
   return (
     <main className="min-h-screen bg-cream">
@@ -552,16 +750,21 @@ export default function Home() {
 
       {/* Cases Section */}
       <section id="cases-section" className="w-full bg-dark-brown relative">
-        {/* Red Line - Absolute positioned from top of title block to start of first case card */}
+        {/* Red Line - Absolute positioned from top of title block to 24px above first case card */}
         <div 
           className="absolute top-0 w-[3px] pointer-events-none z-10"
           style={{
-            left: 'calc(max(0px, calc((100% - 1692px) / 2)) + clamp(0px, calc(0px + (24px - 0px) * ((100vw - 1024px) / (1920px - 1024px))), 24px))',
-            height: 'calc(clamp(300px, calc(300px + (548px - 300px) * ((100vw - 320px) / (1920px - 320px))), 548px) + clamp(40px, calc(40px + (350px - 40px) * ((100vw - 320px) / (1920px - 320px))), 300px))',
+  
+            height: 'calc(clamp(300px, calc(300px + (548px - 300px) * ((100vw - 320px) / (1920px - 320px))), 548px) + clamp(40px, calc(40px + (350px - 40px) * ((100vw - 320px) / (1920px - 320px))), 350px) - 24px)',
           }}
         >
+
           <AnimatedContainerLine position="left" showCaption={false} diamondStopAt="bottom" color="#F62F20" />
         </div>
+
+        <div className="line-container" style={{ position: 'absolute', width: '3px', top:'0', left:'0', right:'auto' }}>
+            
+            </div>
         {/* Title Block */}
         <div 
           className="w-full mx-auto relative"
@@ -573,7 +776,7 @@ export default function Home() {
           <AnimatedGasfisHeader />
         </div>
         <div 
-  className="w-full mx-auto relative flex items-center justify-start"
+  className="w-full mx-auto relative"
   style={{
     maxWidth: '1692px',
     paddingTop: 'clamp(40px, calc(40px + (350px - 40px) * ((100vw - 320px) / (1920px - 320px))), 350px)',
@@ -584,24 +787,37 @@ export default function Home() {
 >
 
 {/* First Case Block */}
-<CaseCardTest
-  size="large"
-  title="End-to-End Transformation of discovery process"
-  description="0 → 1 Design & research expertise integration across orgs enabled by Retail App Redesign"
-  tags={`#Design governance\n#Design-driven change management`}
-  buttonText="Read the case"
-  imageSrc="/images/bcc-screen.png"
-  imageAlt="Case study - Retail App Redesign"
-  desktopImageSrc="/images/bcc-screen.png"
-  desktopImageAlt="iPhone screen"
-  desktopImageWidth={356}
-  desktopImageHeight={721}
-  onButtonClick={() => router.push('/cases/end-to-end-transformation')}
-/></div>
-<VerticalConnectorLine align="right" />
+
+
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: showCaseCard1 ? 1 : 0 }}
+  transition={{ duration: 0.6, ease: "easeInOut" }}
+  className="w-full"
+>
+  <div ref={caseCard1Ref} className="w-full">
+    <CaseCardTest
+      size="large"
+      title="End-to-End Transformation of discovery process"
+      description="0 → 1 Design & research expertise integration across orgs enabled by Retail App Redesign"
+      tags={`#Design governance\n#Design-driven change management`}
+      buttonText="Read the case"
+      imageSrc="/images/bcc-screen.png"
+      imageAlt="Case study - Retail App Redesign"
+      desktopImageSrc="/images/bcc-screen.png"
+      desktopImageAlt="iPhone screen"
+      desktopImageWidth={356}
+      desktopImageHeight={721}
+      onButtonClick={() => router.push('/cases/end-to-end-transformation')}
+      animateLine={showCaseCard1}
+    />
+  </div>
+</motion.div>
+</div>
+<VerticalConnectorLine align="right" animate={showVerticalLine1} />
 {/* Second Case Block - Выровнен по правому краю */}
 <div 
-  className="w-full mx-auto relative flex items-center justify-start"
+  className="w-full mx-auto relative"
   style={{
     maxWidth: '1692px',
     paddingTop: 'clamp(40px, calc(40px + (60px - 40px) * ((100vw - 320px) / (1920px - 320px))), 60px)',
@@ -610,7 +826,14 @@ export default function Home() {
     paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
   }}
 >
-  <CaseCardTest
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: showCaseCard2 ? 1 : 0 }}
+    transition={{ duration: 0.6, ease: "easeInOut" }}
+    className="w-full"
+  >
+    <div ref={caseCard2Ref} className="w-full">
+      <CaseCardTest
     size="large"
     title="In-House UX Research Lab Across Two Banks and an Acquisition"
     description="Research governance establishment with eye-tracking Lab"
@@ -624,15 +847,17 @@ export default function Home() {
     desktopImageWidth={632}
     desktopImageHeight={449}
     align="right"
-    
     onButtonClick={() => router.push('/cases/research-lab')}
-  />
+    animateLine={showCaseCard2}
+      />
+    </div>
+  </motion.div>
 </div>
 
 <VerticalConnectorLine align="left"  />
 {/* Third Case Block */}
 <div 
-  className="w-full mx-auto relative flex items-center justify-start"
+  className="w-full mx-auto relative"
   style={{
     maxWidth: '1692px',
    // paddingTop: 'clamp(40px, calc(40px + (194px - 40px) * ((100vw - 320px) / (1920px - 320px))), 194px)',
@@ -642,7 +867,14 @@ export default function Home() {
     paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
   }}
 >
-  <CaseCardTest
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: showCaseCard3 ? 1 : 0 }}
+    transition={{ duration: 0.6, ease: "easeInOut" }}
+    className="w-full"
+  >
+    <div ref={caseCard3Ref} className="w-full">
+      <CaseCardTest
     size="large"
     title="Design system establishing & scaling"
     description="Governance Engine and Strategic Infrastructure with sustaining ROI"
@@ -656,10 +888,11 @@ export default function Home() {
     desktopImageWidth={632}
     desktopImageHeight={499}
     desktopImageStyle={{ top: '40%' }}
-
     onButtonClick={() => router.push('/cases/design-system')}
-  />
-
+    animateLine={showCaseCard3}
+      />
+    </div>
+  </motion.div>
 </div>
 
 <VerticalConnectorLine align="right" showDiamond={false} />
@@ -674,22 +907,13 @@ export default function Home() {
             paddingTop: '400px',
             paddingBottom: '400px',
           }}
-        >
-
+        >          
 
           {/* Animated Line - Positioned 300px from right on desktop, responsive */}
-         
-          <div
-            className="absolute top-0 pointer-events-none z-10"
-            style={{
-              height: '100%',
-              right: 'clamp(16px, calc(16px + (300px - 16px) * ((100vw - 320px) / (1920px - 320px))), 300px)',
-            }}
-          >
-            <div className="motto-line-container" style={{ position: 'absolute', width: '3px', height: '19%', top:'0', right:'0' }}>
-              <AnimatedContainerLine position="right" showCaption={false} diamondStopAt="bottom" />
+          <div className="motto-line-container" style={{ position: 'absolute', width: '3px', top:'0', right:'0', left:'auto' }}>
+            <VerticalConnectorLine align="right" height="80vh" color="#1e1e1e"/>
             </div>
-          </div>
+         
 
           {/* Desktop version (>=768px) */}
           <p

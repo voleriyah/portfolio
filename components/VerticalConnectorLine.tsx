@@ -8,6 +8,8 @@ interface VerticalConnectorLineProps {
   hideOnMobile?: boolean;
   color?: string;
   showDiamond?: boolean;
+  animate?: boolean; // External trigger for animation
+  height?: string; // Custom height, defaults to responsive clamp
 }
 
 export default function VerticalConnectorLine({ 
@@ -15,6 +17,8 @@ export default function VerticalConnectorLine({
   hideOnMobile = false,
   color = '#F62F20',
   showDiamond = true,
+  animate,
+  height = 'clamp(230px, calc(230px + (432px - 230px) * ((100vw - 320px) / (1920px - 320px))), 432px)',
 }: VerticalConnectorLineProps) {
   const lineRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -35,15 +39,27 @@ export default function VerticalConnectorLine({
     return () => window.removeEventListener('resize', updateScreen);
   }, []);
 
-// Запускаем линию через 1.5s ПОСЛЕ того как элемент в зоне видимости
-useEffect(() => {
-  if (isInView) {  // <-- ВОТ ТУТ добавил проверку isInView
-    const timer = setTimeout(() => {
-      setShowLine(true);
-    }, 1500);
-    return () => clearTimeout(timer);
-  }
-}, [isInView]);  // <-- И добавил зависимость от isInView
+  // Use external animate prop if provided, otherwise use isInView
+  useEffect(() => {
+    if (animate !== undefined) {
+      if (animate) {
+        const timer = setTimeout(() => {
+          setShowLine(true);
+        }, 1500);
+        return () => clearTimeout(timer);
+      } else {
+        setShowLine(false);
+      }
+    } else {
+      // Default behavior: запускаем линию через 1.5s ПОСЛЕ того как элемент в зоне видимости
+      if (isInView) {
+        const timer = setTimeout(() => {
+          setShowLine(true);
+        }, 200);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [animate, isInView]);
 
   return (
     <div 
@@ -51,7 +67,7 @@ useEffect(() => {
       className={`w-full mx-auto relative ${hideOnMobile ? 'hidden lg:block' : ''}`}
       style={{
         maxWidth: '1692px',
-        height: 'clamp(230px, calc(230px + (432px - 230px) * ((100vw - 320px) / (1920px - 320px))), 432px)',
+        height: height,
       }}
     >
       {showLine && (
