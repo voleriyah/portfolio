@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import MainButton from './MainButton';
-import Image from 'next/image';
+import ShimmerImage from './ShimmerImage';
 import { motion, useInView } from 'framer-motion';
 
 interface CaseCardProps {
@@ -105,7 +105,7 @@ export default function CaseCard({
     <div className={`flex ${align === 'right' ? 'flex-row-reverse' : 'flex-row'} items-end relative w-full ${className}`}>
       {/* Desktop Image - Visible only on desktop (>=1280px) */}
       {desktopImageSrc && (
-        <Image
+        <ShimmerImage
           src={desktopImageSrc}
           alt={desktopImageAlt}
           width={desktopImageWidth}
@@ -169,7 +169,7 @@ export default function CaseCard({
         >
           {/* iPhone Image - Visible on mobile/tablet (<1280px), hidden on desktop */}
           {phoneImageSrc && (
-            <Image
+            <ShimmerImage
               src={phoneImageSrc}
               alt={phoneImageAlt}
               width={300}
@@ -235,7 +235,7 @@ export default function CaseCard({
                 marginTop: '44px',
               }}
             >
-              <Image
+              <ShimmerImage
                 src={imageSrc}
                 alt={imageAlt}
                 width={640}

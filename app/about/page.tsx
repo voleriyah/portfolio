@@ -9,6 +9,7 @@ import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slide
 import ScrollToTopButton from '@/components/ScrollToTopButton'; 
 import ImageContainer from '@/components/ImageContainer';
 import Footer from '@/components/Footer';
+import { shimmer, toBase64 } from '@/lib/shimmer'
 
 export default function AboutPage() {
   return (
@@ -89,6 +90,7 @@ export default function AboutPage() {
           style={{ 
             objectPosition: 'center',
             display: 'block',
+            
           }} 
         />
       </div>

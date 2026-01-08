@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import ShimmerImage from '@/components/ShimmerImage';
 import ExpertiseBlock from '@/components/ExpertiseBlock';
 import AnimatedContainerLine from '@/components/AnimatedContainerLine';
 import AnimatedGasfisHeader from '@/components/AnimatedGasfisHeader';
@@ -546,7 +546,7 @@ export default function Home() {
                 transition: 'opacity 0.6s ease-in-out',
               }}
             >
-              <Image
+              <ShimmerImage
                 src="/images/avatars-mobile2.png"
                 alt="Avatars combined"
                 width={500}
@@ -702,7 +702,7 @@ export default function Home() {
               transition: 'opacity 0.6s ease-in-out',
             }}
           >
-            <Image
+            <ShimmerImage
               src="/images/avatar1.png"
               alt="Avatar 1"
               width={178}
@@ -729,7 +729,7 @@ export default function Home() {
               transition: 'opacity 0.6s ease-in-out',
             }}
           >
-            <Image
+            <ShimmerImage
               src="/images/avatar2.png"
               alt="Avatar 2"
               width={182}
@@ -754,7 +754,7 @@ export default function Home() {
         {/* Container for Photo 3 and title */}
         <div className="max-w-[1692px] mx-auto relative">
           {/* Photo 3 - Desktop version: bottom left in expertise section */}
-          <Image
+          <ShimmerImage
             src="/images/avatar3.png"
             alt="Avatar 3"
             width={194}
@@ -799,7 +799,7 @@ export default function Home() {
               transition: 'opacity 0.6s ease-in-out',
             }}
           >
-            <Image
+            <ShimmerImage
               src="/images/expertise-title.svg"
               alt="Expertise"
               width={1268}

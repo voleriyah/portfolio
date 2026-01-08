@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import ShimmerImage from './ShimmerImage';
 
 interface ImageContainerProps {
   src: string;
@@ -36,7 +36,7 @@ export default function ImageContainer({
           position: 'relative',
         }}
       >
-        <Image
+        <ShimmerImage
           src={src}
           alt={alt}
           width={width || 1024}

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
+import ShimmerImage from './ShimmerImage';
 import CustomLink from './CustomLink';
 import { motion } from 'framer-motion';
 
@@ -157,7 +157,7 @@ export default function Footer({ marginTop }: FooterProps) {
         animate={{ opacity: showFooterImageAndTitle ? 1 : 0 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
       >
-        <Image
+        <ShimmerImage
           src="/images/pattern.svg"
           alt="Pattern"
           width={987}
@@ -179,7 +179,7 @@ export default function Footer({ marginTop }: FooterProps) {
         animate={{ opacity: showFooterImageAndTitle ? 1 : 0 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
       >
-        <Image src="/images/pattern.svg" alt="Pattern" width={987} height={974} className="w-full h-auto" />
+        <ShimmerImage src="/images/pattern.svg" alt="Pattern" width={987} height={974} className="w-full h-auto" />
       </motion.div>
     </footer>
   );

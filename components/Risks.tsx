@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import ShimmerImage from './ShimmerImage';
 
 interface RisksProps {
   number: string;
@@ -65,7 +65,7 @@ export default function Risks({ number, riskDescription, mitigationStrategy, out
           alignItems: 'center',
         }}
       >
-        <Image
+        <ShimmerImage
           src="/images/arrow-down.svg"
           alt="Arrow down"
           width={44}
