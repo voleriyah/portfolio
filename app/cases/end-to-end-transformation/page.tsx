@@ -7,9 +7,71 @@ import LargeBulletList from '@/components/LargeBulletList';
 import Risks from '@/components/Risks';
 import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
-import Footer from '@/components/Footer'; 
+import Footer from '@/components/Footer';
+import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
 
 export default function EndToEndTransformationPage() {
+  // Title and tags animation states
+  const [showTitle, setShowTitle] = useState(false);
+  const [showTags, setShowTags] = useState(false);
+  
+  // Content blocks animation states
+  const [visibleBlocks, setVisibleBlocks] = useState<Set<number>>(new Set());
+  const blockRefs = useRef<(HTMLElement | null)[]>([]);
+
+  // Title and tags animation on mount
+  useEffect(() => {
+    setShowTitle(true);
+    setTimeout(() => {
+      setShowTags(true);
+    }, 400);
+  }, []);
+
+  // Scroll-triggered fade-in for content blocks
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const checkScrollPosition = () => {
+      blockRefs.current.forEach((ref, index) => {
+        if (!ref || visibleBlocks.has(index)) return;
+
+        const windowHeight = window.innerHeight;
+        const rect = ref.getBoundingClientRect();
+        const elementHeight = rect.height;
+
+        const visibleTop = Math.max(0, -rect.top);
+        const visibleBottom = Math.min(elementHeight, windowHeight - rect.top);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+        const visiblePercentage = elementHeight > 0 ? (visibleHeight / elementHeight) * 100 : 0;
+
+        if (visiblePercentage >= 10) {
+          setVisibleBlocks((prev) => new Set([...prev, index]));
+        }
+      });
+    };
+
+    checkScrollPosition();
+
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          checkScrollPosition();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', checkScrollPosition, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkScrollPosition);
+    };
+  }, [visibleBlocks]);
   const risksItems = [
     {
       number: "1",
@@ -44,29 +106,38 @@ export default function EndToEndTransformationPage() {
             paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
           }}
         >
-      <h1 className="font-erica uppercase self-stretch"
-                  style={{
-                    color: '#FFF8E9',
-                    textAlign: 'left',
-                    fontFamily: '"Erica One"',
-                    // Responsive font size: scales from 40px (iPhone SE 320px) to 48px (iPhone XR 414px), then to 108px at 1920px
-                    fontSize: 'clamp(32px, calc(32px + (108px - 32px) * ((100vw - 320px) / (1920px - 320px))), 108px)',
-                    fontStyle: 'normal',
-                    fontWeight: 400,
-                    // Responsive line height: scales proportionally from 72px to 87px to 147px
-                    lineHeight: 'clamp(44px, calc(44px + (147px - 44px) * ((100vw - 320px) / (1920px - 320px))), 147px)',
-                    textTransform: 'uppercase',
-                    alignSelf: 'stretch',
-                    marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
+      <motion.h1 
+        className="font-erica uppercase self-stretch"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showTitle ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        style={{
+          color: '#FFF8E9',
+          textAlign: 'left',
+          fontFamily: '"Erica One"',
+          // Responsive font size: scales from 40px (iPhone SE 320px) to 48px (iPhone XR 414px), then to 108px at 1920px
+          fontSize: 'clamp(32px, calc(32px + (108px - 32px) * ((100vw - 320px) / (1920px - 320px))), 108px)',
+          fontStyle: 'normal',
+          fontWeight: 400,
+          // Responsive line height: scales proportionally from 72px to 87px to 147px
+          lineHeight: 'clamp(44px, calc(44px + (147px - 44px) * ((100vw - 320px) / (1920px - 320px))), 147px)',
+          textTransform: 'uppercase',
+          alignSelf: 'stretch',
+          marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
 
-                  }}>
-                  End-to-End Transformation of discovery process
-                </h1>
+        }}
+      >
+        End-to-End Transformation of discovery process
+      </motion.h1>
 
          
 
           {/* Case Tags */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showTags ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
             <p
               style={{
                 color: '#FFF8E9',
@@ -79,10 +150,14 @@ export default function EndToEndTransformationPage() {
             >
               #Design governance, #Design-driven change management
             </p>
-          </div>
+          </motion.div>
 
           {/* Table of Contents */}
-          <div
+          <motion.div
+            ref={(el) => { blockRefs.current[0] = el; }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: visibleBlocks.has(0) ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
             className="w-full mx-auto"
             style={{
               maxWidth: '1692px',
@@ -136,10 +211,15 @@ export default function EndToEndTransformationPage() {
                 Visual transformation
               </CustomLink>
             </div>
-          </div>
+          </motion.div>
         
           {/* Case Content Placeholder */}
-          <div className="w-full mx-auto"
+          <motion.div 
+            ref={(el) => { blockRefs.current[1] = el; }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: visibleBlocks.has(1) ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="w-full mx-auto"
             style={{
               maxWidth: '1692px',
               marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
@@ -152,9 +232,14 @@ export default function EndToEndTransformationPage() {
 
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>Strategic direction: </b> build a SuperApp ecosystem integrating internal companies + external B2B/B2C partners: retail, foodtech, fintech.</p> <br />
             <p className="text-l" style={{ fontWeight: 400 }}>  The bank is part of a diversified financial holding (20+ companies: investments, insurance, real estate, crypto, trading, development hub). </p> <br />
-          </div>
+          </motion.div>
 
-          <div className="w-full mx-auto"
+          <motion.div 
+            ref={(el) => { blockRefs.current[2] = el; }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: visibleBlocks.has(2) ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="w-full mx-auto"
             style={{
               maxWidth: '1692px',
               marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
@@ -289,11 +374,16 @@ export default function EndToEndTransformationPage() {
       },
   ]}
 />
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <section className="w-full">
+      <motion.section 
+        ref={(el) => { blockRefs.current[3] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(3) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -312,10 +402,14 @@ export default function EndToEndTransformationPage() {
 
            
         </div>
-      </section>
+      </motion.section>
 
       {/* Strategy Block */}
-      <section 
+      <motion.section 
+        ref={(el) => { blockRefs.current[4] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(4) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
         id="strategy"
         className="w-full flex items-center justify-center"
         style={{
@@ -385,9 +479,14 @@ export default function EndToEndTransformationPage() {
             />
           </div>
         </div>
-      </section>
+        </motion.section>
 
-      <section className="w-full">
+      <motion.section 
+        ref={(el) => { blockRefs.current[7] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(7) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -409,9 +508,14 @@ export default function EndToEndTransformationPage() {
                 ]} 
                 />
         </div>
-        </section>
+        </motion.section>
 
-        <section className="w-full">
+        <motion.section 
+          ref={(el) => { blockRefs.current[5] = el; }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: visibleBlocks.has(5) ? 1 : 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -448,9 +552,14 @@ export default function EndToEndTransformationPage() {
             <p className="text-l" style={{ fontWeight: 700 }}> Summary: I created the operating model that allowed redesign to happen at all. </p> <br />
 
         </div>
-        </section>
+        </motion.section>
               {/* Product Strategy Section */}
-      <section className="w-full">
+      <motion.section 
+        ref={(el) => { blockRefs.current[6] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(6) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -761,11 +870,16 @@ export default function EndToEndTransformationPage() {
             </div>
           </div>
         </div>
-      </section>
+        </motion.section>
 
      
 
-      <section className="w-full">
+      <motion.section 
+        ref={(el) => { blockRefs.current[8] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(8) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -780,9 +894,14 @@ export default function EndToEndTransformationPage() {
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>Solution: </b> The pivot was misaligned with market reality and our release readiness. Forcing it pre-launch would have failed. We shipped with the original positioning and deferred the pivot to 2025.</p> <br />
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>My role: </b> Made the call to defer the pivot, keeping launch viable. Retrofitted design strategy to bridge original vision → <b><i> post-launch evolution.</i></b> </p> <br />
         </div>
-      </section>
+        </motion.section>
 
-      <section className="w-full">
+      <motion.section 
+        ref={(el) => { blockRefs.current[9] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(9) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -799,10 +918,15 @@ export default function EndToEndTransformationPage() {
                   <li><b>Customer-outcome mindset adoption </b>→ Teams that adopted it became design allies instead of blockers.</li><br />
                 </ol>
         </div>
-      </section>
+        </motion.section>
 
       {/* Risks Section */}
-      <section className="w-full">
+      <motion.section 
+        ref={(el) => { blockRefs.current[10] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(10) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -830,10 +954,15 @@ export default function EndToEndTransformationPage() {
             ))}
           </div>
         </div>
-      </section>
+        </motion.section>
 
       {/* Impact: Business Section */}
-      <section className="w-full">
+      <motion.section 
+        ref={(el) => { blockRefs.current[11] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(11) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -885,10 +1014,15 @@ export default function EndToEndTransformationPage() {
             </div>
           </div>
         </div>
-      </section>
+        </motion.section>
 
       {/* Impact: Orgs outcome Section */}
-      <section className="w-full">
+      <motion.section 
+        ref={(el) => { blockRefs.current[12] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(12) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -930,9 +1064,13 @@ export default function EndToEndTransformationPage() {
             </div>
           </div>
         </div>
-      </section>
+        </motion.section>
 
-      <section 
+      <motion.section 
+        ref={(el) => { blockRefs.current[13] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(13) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
         className="w-full flex items-center justify-center"
         style={{
           paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
@@ -995,10 +1133,15 @@ knowing when to walk away.
             />
           </div>
         </div>
-      </section>
+        </motion.section>
 
       {/* Before/After Slider Section */}
-      <section className="w-full">
+      <motion.section 
+        ref={(el) => { blockRefs.current[14] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(14) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="w-full">
   <div className="w-full mx-auto"
     style={{
       maxWidth: '1692px',
@@ -1255,7 +1398,7 @@ knowing when to walk away.
 
     </div>
   </div>
-</section>
+        </motion.section>
 
       {/* Footer Section */}
       <Footer />

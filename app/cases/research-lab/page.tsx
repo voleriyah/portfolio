@@ -9,8 +9,70 @@ import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slide
 import ScrollToTopButton from '@/components/ScrollToTopButton'; 
 import ImageContainer from '@/components/ImageContainer';
 import Footer from '@/components/Footer';
+import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
 
 export default function EndToEndTransformationPage() {
+  // Title and tags animation states
+  const [showTitle, setShowTitle] = useState(false);
+  const [showTags, setShowTags] = useState(false);
+  
+  // Content blocks animation states
+  const [visibleBlocks, setVisibleBlocks] = useState<Set<number>>(new Set());
+  const blockRefs = useRef<(HTMLElement | null)[]>([]);
+
+  // Title and tags animation on mount
+  useEffect(() => {
+    setShowTitle(true);
+    setTimeout(() => {
+      setShowTags(true);
+    }, 400);
+  }, []);
+
+  // Scroll-triggered fade-in for content blocks
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const checkScrollPosition = () => {
+      blockRefs.current.forEach((ref, index) => {
+        if (!ref || visibleBlocks.has(index)) return;
+
+        const windowHeight = window.innerHeight;
+        const rect = ref.getBoundingClientRect();
+        const elementHeight = rect.height;
+
+        const visibleTop = Math.max(0, -rect.top);
+        const visibleBottom = Math.min(elementHeight, windowHeight - rect.top);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+        const visiblePercentage = elementHeight > 0 ? (visibleHeight / elementHeight) * 100 : 0;
+
+        if (visiblePercentage >= 10) {
+          setVisibleBlocks((prev) => new Set([...prev, index]));
+        }
+      });
+    };
+
+    checkScrollPosition();
+
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          checkScrollPosition();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', checkScrollPosition, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkScrollPosition);
+    };
+  }, [visibleBlocks]);
   const risksItems = [
     {
       number: "1",
@@ -51,29 +113,38 @@ export default function EndToEndTransformationPage() {
             paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
           }}
         >
-      <h1 className="font-erica uppercase self-stretch"
-                  style={{
-                    color: '#FFF8E9',
-                    textAlign: 'left',
-                    fontFamily: '"Erica One"',
-                    // Responsive font size: scales from 40px (iPhone SE 320px) to 48px (iPhone XR 414px), then to 108px at 1920px
-                    fontSize: 'clamp(32px, calc(32px + (108px - 32px) * ((100vw - 320px) / (1920px - 320px))), 108px)',
-                    fontStyle: 'normal',
-                    fontWeight: 400,
-                    // Responsive line height: scales proportionally from 72px to 87px to 147px
-                    lineHeight: 'clamp(44px, calc(44px + (147px - 44px) * ((100vw - 320px) / (1920px - 320px))), 147px)',
-                    textTransform: 'uppercase',
-                    alignSelf: 'stretch',
-                    marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
+      <motion.h1 
+        className="font-erica uppercase self-stretch"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showTitle ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        style={{
+          color: '#FFF8E9',
+          textAlign: 'left',
+          fontFamily: '"Erica One"',
+          // Responsive font size: scales from 40px (iPhone SE 320px) to 48px (iPhone XR 414px), then to 108px at 1920px
+          fontSize: 'clamp(32px, calc(32px + (108px - 32px) * ((100vw - 320px) / (1920px - 320px))), 108px)',
+          fontStyle: 'normal',
+          fontWeight: 400,
+          // Responsive line height: scales proportionally from 72px to 87px to 147px
+          lineHeight: 'clamp(44px, calc(44px + (147px - 44px) * ((100vw - 320px) / (1920px - 320px))), 147px)',
+          textTransform: 'uppercase',
+          alignSelf: 'stretch',
+          marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)',
 
-                  }}>
-                  In-House UX Research Lab Across Two Banks and an Acquisition
-                </h1>
+        }}
+      >
+        In-House UX Research Lab Across Two Banks and an Acquisition
+      </motion.h1>
 
          
 
           {/* Case Tags */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showTags ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
             <p
               style={{
                 color: '#FFF8E9',
@@ -86,10 +157,14 @@ export default function EndToEndTransformationPage() {
             >
               #ResearchOps, #Change management
             </p>
-          </div>
+          </motion.div>
 
           {/* Table of Contents */}
-          <div
+          <motion.div
+            ref={(el) => { blockRefs.current[0] = el; }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: visibleBlocks.has(0) ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
             className="w-full mx-auto"
             style={{
               maxWidth: '1692px',
@@ -130,10 +205,15 @@ export default function EndToEndTransformationPage() {
               </CustomLink>
 
             </div>
-          </div>
+          </motion.div>
         
           {/* Case Content Placeholder */}
-          <div className="w-full mx-auto"
+          <motion.div 
+            ref={(el) => { blockRefs.current[1] = el; }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: visibleBlocks.has(1) ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="w-full mx-auto"
             style={{
               maxWidth: '1692px',
               marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
@@ -144,9 +224,14 @@ export default function EndToEndTransformationPage() {
 
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>2022 — Bank CenterCredit (post-acquisition) </b> <br/>After the acquisition, I inherited the lab in a fragmented state. The ambition expanded: the lab was repositioned as a strategic asset, with a long-term goal of becoming an external, revenue-generating capability.</p> <br />
 
-          </div>
+          </motion.div>
 
-          <div className="w-full mx-auto"
+          <motion.div 
+            ref={(el) => { blockRefs.current[2] = el; }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: visibleBlocks.has(2) ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="w-full mx-auto"
             style={{
               maxWidth: '1692px',
               marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
@@ -243,12 +328,16 @@ export default function EndToEndTransformationPage() {
 
   ]}
 />
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Strategy Block */}
-      <section 
+      <motion.section 
+        ref={(el) => { blockRefs.current[3] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(3) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
         id="strategy"
         className="w-full flex items-center justify-center"
         style={{
@@ -318,9 +407,14 @@ export default function EndToEndTransformationPage() {
             />
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="w-full">
+      <motion.section 
+        ref={(el) => { blockRefs.current[4] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(4) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -342,9 +436,14 @@ export default function EndToEndTransformationPage() {
                 ]} 
                 />
         </div>
-        </section>
+        </motion.section>
 
-        <section className="w-full">
+        <motion.section 
+          ref={(el) => { blockRefs.current[5] = el; }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: visibleBlocks.has(5) ? 1 : 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -365,10 +464,15 @@ export default function EndToEndTransformationPage() {
           </div>
 
 
-          </div>
-        </section>
+        </div>
+        </motion.section>
 
-        <section className="w-full">
+        <motion.section 
+          ref={(el) => { blockRefs.current[6] = el; }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: visibleBlocks.has(6) ? 1 : 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -400,10 +504,15 @@ export default function EndToEndTransformationPage() {
             <br /> <br /> 
             
         </div>
-        </section>
+        </motion.section>
 
 
-        <section className="w-full">
+        <motion.section 
+          ref={(el) => { blockRefs.current[7] = el; }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: visibleBlocks.has(7) ? 1 : 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -423,12 +532,17 @@ export default function EndToEndTransformationPage() {
             />
           </div>
 
-
-          </div>
-        </section>
+            
+        </div>
+        </motion.section>
   
       {/* Risks Section */}
-      <section className="w-full">
+      <motion.section 
+        ref={(el) => { blockRefs.current[8] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(8) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -446,7 +560,7 @@ export default function EndToEndTransformationPage() {
             }}
           >
             {risksItems.map((risk, index) => (
-              <Risks
+            <Risks
                 key={index}
                 number={risk.number}
                 riskDescription={risk.riskDescription}
@@ -456,10 +570,15 @@ export default function EndToEndTransformationPage() {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Impact: Business Section */}
-      <section className="w-full">
+      <motion.section 
+        ref={(el) => { blockRefs.current[9] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(9) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -498,10 +617,15 @@ export default function EndToEndTransformationPage() {
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
 
-      <section className="w-full">
+      <motion.section 
+        ref={(el) => { blockRefs.current[10] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(10) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
@@ -523,9 +647,13 @@ export default function EndToEndTransformationPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section 
+      <motion.section 
+        ref={(el) => { blockRefs.current[11] = el; }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: visibleBlocks.has(11) ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
         className="w-full flex items-center justify-center"
         style={{
           paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
@@ -584,7 +712,7 @@ export default function EndToEndTransformationPage() {
             />
           </div>
         </div>
-      </section>
+      </motion.section>
 
      
 
