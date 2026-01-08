@@ -511,7 +511,12 @@ export default function Home() {
   }, [showValuesTitle, showValueItems]);
 
   return (
-    <main className="min-h-screen bg-cream">
+    <main 
+      className="min-h-screen bg-cream"
+      style={{
+        paddingTop: 'clamp(92px, calc(92px + (124px - 92px) * ((100vw - 320px) / (1920px - 320px))), 124px)',
+      }}
+    >
       {/* Hero Section - Height based on content, positioned below header */}
       <section 
         className="w-full bg-dark-bg flex items-end md:items-center justify-center relative pb-[env(safe-area-inset-bottom)] overflow-x-clip"
