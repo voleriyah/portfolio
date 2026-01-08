@@ -113,8 +113,8 @@ export default function EndToEndTransformationPage() {
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
-            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingLeft: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
+            paddingRight: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
           }}
         >
       <motion.h1 
@@ -421,8 +421,8 @@ export default function EndToEndTransformationPage() {
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
-            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingLeft: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
+            paddingRight: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
             //paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
           }}
         >
@@ -450,10 +450,10 @@ export default function EndToEndTransformationPage() {
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
-            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+
             paddingTop: 'clamp(92px, calc(92px + (120px - 92px) * ((100vw - 320px) / (1920px - 320px))), 120px)',
-            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            //paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
+            paddingLeft: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
+            paddingRight: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
@@ -479,8 +479,8 @@ export default function EndToEndTransformationPage() {
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
-            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingLeft: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
+            paddingRight: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
             paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
           }}
         >
@@ -519,10 +519,10 @@ export default function EndToEndTransformationPage() {
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
-            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+           
             paddingTop: 'clamp(92px, calc(92px + (120px - 92px) * ((100vw - 320px) / (1920px - 320px))), 120px)',
-            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            
+            paddingLeft: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
+            paddingRight: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
@@ -549,8 +549,8 @@ export default function EndToEndTransformationPage() {
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
-            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingLeft: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
+            paddingRight: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
             paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
             //paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
           }}
@@ -585,8 +585,8 @@ export default function EndToEndTransformationPage() {
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
-            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingLeft: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
+            paddingRight: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
             paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
             paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
           }}
@@ -632,8 +632,8 @@ export default function EndToEndTransformationPage() {
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
-            paddingLeft: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
-            paddingRight: 'clamp(16px, calc(16px + (72px - 16px) * ((100vw - 320px) / (1920px - 320px))), 72px)',
+            paddingLeft: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
+            paddingRight: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
             paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
             
           }}
