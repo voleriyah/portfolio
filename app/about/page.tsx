@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import ShimmerImage from '@/components/ShimmerImage';
 import CustomLink from '@/components/CustomLink';
 import HorizontalTimeline, { TimelineCardHeading, TimelineCardText } from '@/components/Timeline';
 import LargeBulletList from '@/components/LargeBulletList';
@@ -9,7 +9,6 @@ import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slide
 import ScrollToTopButton from '@/components/ScrollToTopButton'; 
 import ImageContainer from '@/components/ImageContainer';
 import Footer from '@/components/Footer';
-import { shimmer, toBase64 } from '@/lib/shimmer'
 
 export default function AboutPage() {
   return (
@@ -83,14 +82,15 @@ export default function AboutPage() {
       </div>
       
       <div className="relative w-full overflow-hidden min-h-[500px]">
-        <img 
+        <ShimmerImage 
           src="/images/valeriya-kostyuchenko.png" 
           alt="valeriya kostyuchenko" 
+          width={800}
+          height={1200}
           className="w-full h-auto md:absolute md:inset-0 md:w-full md:h-full md:object-cover"
           style={{ 
             objectPosition: 'center',
             display: 'block',
-            
           }} 
         />
       </div>
