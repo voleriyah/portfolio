@@ -56,6 +56,12 @@ export default function Home() {
   const [showMottoHeading, setShowMottoHeading] = useState(false);
   const mottoHeadingRef = useRef<HTMLDivElement>(null);
   const mottoLineRef = useRef<HTMLDivElement>(null);
+  
+  // Values section animation states
+  const [showValuesTitle, setShowValuesTitle] = useState(false);
+  const [showValueItems, setShowValueItems] = useState<boolean[]>(new Array(6).fill(false));
+  const valuesTitleRef = useRef<HTMLDivElement>(null);
+  const valueItemRefs = useRef<(HTMLDivElement | null)[]>(new Array(6).fill(null));
 
   useEffect(() => {
     // Check if user has already visited (StartScreen won't show)
@@ -433,6 +439,76 @@ export default function Home() {
       clearTimeout(lineAnimationTimer);
     };
   }, [showMottoHeading]);
+
+  // Values section animations - triggered by scroll (10% visibility)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const checkScrollPosition = () => {
+      // Check title
+      if (valuesTitleRef.current) {
+        const windowHeight = window.innerHeight;
+        const rect = valuesTitleRef.current.getBoundingClientRect();
+        const elementTop = rect.top;
+        const elementHeight = rect.height;
+        
+        const visibleTop = Math.max(0, -elementTop);
+        const visibleBottom = Math.min(elementHeight, windowHeight - elementTop);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+        const visiblePercentage = elementHeight > 0 ? (visibleHeight / elementHeight) * 100 : 0;
+        
+        if (visiblePercentage >= 10 && !showValuesTitle) {
+          setShowValuesTitle(true);
+        }
+      }
+      
+      // Check each value item
+      valueItemRefs.current.forEach((ref, index) => {
+        if (ref && !showValueItems[index]) {
+          const windowHeight = window.innerHeight;
+          const rect = ref.getBoundingClientRect();
+          const elementTop = rect.top;
+          const elementHeight = rect.height;
+          
+          const visibleTop = Math.max(0, -elementTop);
+          const visibleBottom = Math.min(elementHeight, windowHeight - elementTop);
+          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+          const visiblePercentage = elementHeight > 0 ? (visibleHeight / elementHeight) * 100 : 0;
+          
+          if (visiblePercentage >= 10) {
+            setShowValueItems((prev) => {
+              const newState = [...prev];
+              newState[index] = true;
+              return newState;
+            });
+          }
+        }
+      });
+    };
+    
+    // Initial check
+    checkScrollPosition();
+    
+    // Add scroll listener with throttling
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          checkScrollPosition();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', checkScrollPosition, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkScrollPosition);
+    };
+  }, [showValuesTitle, showValueItems]);
 
   return (
     <main className="min-h-screen bg-cream">
@@ -1138,71 +1214,120 @@ export default function Home() {
             }}
           >
                {/* Section Title + Link */}
-               <div 
-  className="flex flex-row justify-between items-center md:justify-start md:gap-[44px]"
-  style={{
-    marginBottom: 'clamp(44px, calc(44px + (80px - 44px) * ((100vw - 320px) / (1920px - 320px))), 80px)',
-  }}
->
-
-  <h2
-    style={{
-      color: 'var(--main-medium-gray, #342927)',
-      fontFamily: '"Alegreya Sans"',
-      fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)',
-      fontWeight: 700,
-      lineHeight: 'normal',
-      letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)',
-    }}
-  >
-    My leadership values
-  </h2>
-  
-  <CustomLink href="/leadership" iconType="internal">
-    Read more
-  </CustomLink>
-</div>
+               <motion.div
+            ref={valuesTitleRef}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showValuesTitle ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
+            <div 
+              className="flex flex-row justify-between items-center md:justify-start md:gap-[44px]"
+              style={{
+                marginBottom: 'clamp(44px, calc(44px + (80px - 44px) * ((100vw - 320px) / (1920px - 320px))), 80px)',
+              }}
+            >
+              <h2
+                style={{
+                  color: 'var(--main-medium-gray, #342927)',
+                  fontFamily: '"Alegreya Sans"',
+                  fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)',
+                  fontWeight: 700,
+                  lineHeight: 'normal',
+                  letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)',
+                }}
+              >
+                My leadership values
+              </h2>
+              
+              <CustomLink href="/leadership" iconType="internal">
+                Read more
+              </CustomLink>
+            </div>
+          </motion.div>
+          
+          <motion.div
+            ref={(el) => { valueItemRefs.current[0] = el; }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showValueItems[0] ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
             <ValueListItem
               number="1"
               title="System first"
               subtitle="Systems over fragments"
               description="Designing decision-making, not isolated artifacts"
             />
+          </motion.div>
 
+          <motion.div
+            ref={(el) => { valueItemRefs.current[1] = el; }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showValueItems[1] ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
             <ValueListItem
               number="2"
               title="Clarity win"
               subtitle="Clear bets, not feature soup"
               description=" Strategy is choosing what not to build"
             />
+          </motion.div>
 
+          <motion.div
+            ref={(el) => { valueItemRefs.current[2] = el; }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showValueItems[2] ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
             <ValueListItem
               number="3"
               title="Power in ambiguity"
               subtitle="Constraints as design material"
               description="Regulation, scale and risk are inputs"
             />
+          </motion.div>
 
+          <motion.div
+            ref={(el) => { valueItemRefs.current[3] = el; }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showValueItems[3] ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
             <ValueListItem
               number="4"
               title="Honesty"
               subtitle="Honest feedback, low drama"
               description="Clarity beats comfort in leadership"
             />
+          </motion.div>
 
+          <motion.div
+            ref={(el) => { valueItemRefs.current[4] = el; }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showValueItems[4] ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
             <ValueListItem
               number="5"
               title="No heroism"
               subtitle="Replace heroes with systems"
               description="Sustainable teams shouldn't rely on individual endeavors"
             />
+          </motion.div>
 
+          <motion.div
+            ref={(el) => { valueItemRefs.current[5] = el; }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showValueItems[5] ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
             <ValueListItem
               number="6"
               title="Prove me right"
               subtitle="Evidence before ego"
               description="Research, data, and reality over opinions"
             />
+          </motion.div>
           </div>
         </div>
       </section>
