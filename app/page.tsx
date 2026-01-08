@@ -51,6 +51,11 @@ export default function Home() {
   // Case card 3 animation states
   const [showCaseCard3, setShowCaseCard3] = useState(false);
   const caseCard3Ref = useRef<HTMLDivElement>(null);
+  
+  // Motto section animation states
+  const [showMottoHeading, setShowMottoHeading] = useState(false);
+  const mottoHeadingRef = useRef<HTMLDivElement>(null);
+  const mottoLineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Check if user has already visited (StartScreen won't show)
@@ -117,17 +122,68 @@ export default function Home() {
     };
   }, []);
 
-  // Expertise grid appears immediately after line 1's diamond animation completes
+  // Expertise grid animation - triggered by scroll (10% visibility) or fallback timer
   useEffect(() => {
-    if (showExpertiseLine1 && !showExpertiseGrid) {
-      // Diamond animation takes 1.5s (1.2s duration + 0.3s delay) after line starts
-      const timer = setTimeout(() => {
+    if (typeof window === 'undefined') return;
+    
+    const checkScrollPosition = () => {
+      if (!expertiseGridRef.current) return;
+      
+      const windowHeight = window.innerHeight;
+      const rect = expertiseGridRef.current.getBoundingClientRect();
+      const elementTop = rect.top;
+      const elementHeight = rect.height;
+      
+      // Calculate visible portion
+      const visibleTop = Math.max(0, -elementTop);
+      const visibleBottom = Math.min(elementHeight, windowHeight - elementTop);
+      const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+      const visiblePercentage = elementHeight > 0 ? (visibleHeight / elementHeight) * 100 : 0;
+      
+      // 10% visible - grid appears
+      if (visiblePercentage >= 10) {
+        setShowExpertiseGrid((prev) => {
+          if (!prev) {
+            console.log('Expertise grid appeared at', visiblePercentage.toFixed(1), '% visible');
+          }
+          return true;
+        });
+      }
+    };
+    
+    // Initial check
+    checkScrollPosition();
+    
+    // Add scroll listener with throttling
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          checkScrollPosition();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', checkScrollPosition, { passive: true });
+    
+    // Fallback: trigger after line 1 animation finishes (1.5s delay + 1.5s duration = 3s total)
+    // This ensures grid appears even if scroll trigger doesn't fire
+    const lineAnimationTimer = setTimeout(() => {
+      if (!showExpertiseGrid) {
+        console.log('Expertise grid triggered by line animation completion');
         setShowExpertiseGrid(true);
-      }, 1500);
-
-      return () => clearTimeout(timer);
-    }
-  }, [showExpertiseLine1, showExpertiseGrid]);
+      }
+    }, 3000);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkScrollPosition);
+      clearTimeout(lineAnimationTimer);
+    };
+  }, [showExpertiseGrid]);
 
   // "How can I help" appears immediately after line 2's diamond animation completes
   useEffect(() => {
@@ -312,6 +368,71 @@ export default function Home() {
       window.removeEventListener('resize', checkScrollPosition);
     };
   }, []);
+
+  // Motto section animation - triggered when line finishes or by scroll (10% visibility)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    // Check if line animation finished (1.5s delay + 1.5s duration = 3s total)
+    // But we'll use scroll trigger as primary since line might be faster
+    const checkScrollPosition = () => {
+      if (!mottoHeadingRef.current) return;
+      
+      const windowHeight = window.innerHeight;
+      const rect = mottoHeadingRef.current.getBoundingClientRect();
+      const elementTop = rect.top;
+      const elementHeight = rect.height;
+      
+      // Calculate visible portion
+      const visibleTop = Math.max(0, -elementTop);
+      const visibleBottom = Math.min(elementHeight, windowHeight - elementTop);
+      const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+      const visiblePercentage = elementHeight > 0 ? (visibleHeight / elementHeight) * 100 : 0;
+      
+      // 10% visible - heading appears
+      if (visiblePercentage >= 10) {
+        setShowMottoHeading((prev) => {
+          if (!prev) {
+            console.log('Motto heading appeared at', visiblePercentage.toFixed(1), '% visible');
+          }
+          return true;
+        });
+      }
+    };
+    
+    // Initial check
+    checkScrollPosition();
+    
+    // Add scroll listener with throttling
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          checkScrollPosition();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', checkScrollPosition, { passive: true });
+    
+    // Fallback: trigger after line animation finishes (3s total: 1.5s delay + 1.5s duration)
+    // This ensures heading appears even if scroll trigger doesn't fire
+    const lineAnimationTimer = setTimeout(() => {
+      if (!showMottoHeading) {
+        console.log('Motto heading triggered by line animation completion');
+        setShowMottoHeading(true);
+      }
+    }, 3000);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkScrollPosition);
+      clearTimeout(lineAnimationTimer);
+    };
+  }, [showMottoHeading]);
 
   return (
     <main className="min-h-screen bg-cream">
@@ -911,68 +1032,75 @@ export default function Home() {
 
           {/* Animated Line - Positioned 300px from right on desktop, responsive */}
           <div className="motto-line-container" style={{ position: 'absolute', width: '3px', top:'0', right:'0', left:'auto' }}>
-            <VerticalConnectorLine align="right" height="80vh" color="#1e1e1e"/>
+            <VerticalConnectorLine align="right" height="50vh" color="#1e1e1e"/>
             </div>
          
 
           {/* Desktop version (>=768px) */}
-          <p
-            className="hidden md:block"
-            style={{
-              color: 'var(--main-medium-gray, #342927)',
-              textAlign: 'center',
-              fontFamily: '"Alegreya Sans"',
-              fontSize: 'clamp(43px, calc(43px + (128px - 43px) * ((100vw - 320px) / (1920px - 320px))), 128px)',
-              fontStyle: 'normal',
-              fontWeight: 800,
-              lineHeight: 'normal',
-              letterSpacing: 'clamp(-0.43px, calc(-0.43px + (-1.28px - -0.43px) * ((100vw - 320px) / (1920px - 320px))), -1.28px)',
-              textTransform: 'uppercase',
-            }}
+          <motion.div
+            ref={mottoHeadingRef}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showMottoHeading ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
           >
-            I TURN{' '}
-            <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>DESIGN</span>
-            {' '}INTO<br />
-            A STRATEGIC{' '}
-            <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>LEVER</span>
-            <br />
-            ACROSS TEAMS AND PRODUCTS<br />
-            THROUGH{' '}
-            <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>CLEAR VISION</span>
-            {' '}&<br />
-            RESEARCH OUTCOME
-          </p>
+            <p
+              className="hidden md:block"
+              style={{
+                color: 'var(--main-medium-gray, #342927)',
+                textAlign: 'center',
+                fontFamily: '"Alegreya Sans"',
+                fontSize: 'clamp(43px, calc(43px + (128px - 43px) * ((100vw - 320px) / (1920px - 320px))), 128px)',
+                fontStyle: 'normal',
+                fontWeight: 800,
+                lineHeight: 'normal',
+                letterSpacing: 'clamp(-0.43px, calc(-0.43px + (-1.28px - -0.43px) * ((100vw - 320px) / (1920px - 320px))), -1.28px)',
+                textTransform: 'uppercase',
+              }}
+            >
+              I TURN{' '}
+              <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>DESIGN</span>
+              {' '}INTO<br />
+              A STRATEGIC{' '}
+              <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>LEVER</span>
+              <br />
+              ACROSS TEAMS AND PRODUCTS<br />
+              THROUGH{' '}
+              <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>CLEAR VISION</span>
+              {' '}&<br />
+              RESEARCH OUTCOME
+            </p>
 
-          {/* Mobile version (<768px) */}
-          <p
-            className="block md:hidden"
-            style={{
-              color: 'var(--main-medium-gray, #342927)',
-              textAlign: 'center',
-              fontFamily: '"Alegreya Sans"',
-              fontSize: '43px',
-              fontStyle: 'normal',
-              fontWeight: 800,
-              lineHeight: 'normal',
-              letterSpacing: '-0.43px',
-              textTransform: 'uppercase',
-            }}
-          >
-            I TURN{' '}
-            <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>DESIGN</span>
-            <br />
-            INTO A STRATEGIC<br />
-            <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>LEVER</span>
-            <br />
-            ACROSS TEAMS<br />
-            AND PRODUCTS<br />
-            THROUGH<br />
-            <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>CLEAR VISION</span>{' '}
-            <span style={{ color: 'var(--main-medium-gray, #342927)', fontStyle: 'italic' }}>&</span>
-            <br />
-            RESEARCH<br />
-            <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>OUTCOME</span>
-          </p>
+            {/* Mobile version (<768px) */}
+            <p
+              className="block md:hidden"
+              style={{
+                color: 'var(--main-medium-gray, #342927)',
+                textAlign: 'center',
+                fontFamily: '"Alegreya Sans"',
+                fontSize: '43px',
+                fontStyle: 'normal',
+                fontWeight: 800,
+                lineHeight: 'normal',
+                letterSpacing: '-0.43px',
+                textTransform: 'uppercase',
+              }}
+            >
+              I TURN{' '}
+              <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>DESIGN</span>
+              <br />
+              INTO A STRATEGIC<br />
+              <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>LEVER</span>
+              <br />
+              ACROSS TEAMS<br />
+              AND PRODUCTS<br />
+              THROUGH<br />
+              <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>CLEAR VISION</span>{' '}
+              <span style={{ color: 'var(--main-medium-gray, #342927)', fontStyle: 'italic' }}>&</span>
+              <br />
+              RESEARCH<br />
+              <span style={{ color: 'var(--main-red-accent, #F62F20)', fontStyle: 'italic' }}>OUTCOME</span>
+            </p>
+          </motion.div>
         </div>
         <div
             className="absolute bottom-0 pointer-events-none z-10"
