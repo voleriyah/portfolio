@@ -45,7 +45,7 @@ export default function VerticalConnectorLine({
       if (animate) {
         const timer = setTimeout(() => {
           setShowLine(true);
-        }, 1500);
+        }, 500);
         return () => clearTimeout(timer);
       } else {
         setShowLine(false);
@@ -55,7 +55,7 @@ export default function VerticalConnectorLine({
       if (isInView) {
         const timer = setTimeout(() => {
           setShowLine(true);
-        }, 200);
+        }, 500);
         return () => clearTimeout(timer);
       }
     }
