@@ -15,6 +15,7 @@ const menuItems = [
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [pressedItem, setPressedItem] = useState<string | null>(null);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -179,11 +180,16 @@ export default function Header() {
                   key={item.label}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
+                  onMouseDown={() => setPressedItem(item.label)}
+                  onMouseUp={() => setPressedItem(null)}
+                  onMouseLeave={() => setPressedItem(null)}
+                  onTouchStart={() => setPressedItem(item.label)}
+                  onTouchEnd={() => setPressedItem(null)}
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener noreferrer" : undefined}
-                  className="font-erica text-[36px] font-normal leading-[44px] text-dark-bg uppercase hover:opacity-70 transition-opacity text-left w-full"
+                  className="font-erica text-[36px] font-normal leading-[44px] text-dark-bg uppercase hover:opacity-70 transition-colors text-left w-full"
                   style={{
-                    color: '#1E1E1E',
+                    color: pressedItem === item.label ? '#F62F20' : '#1E1E1E',
                     fontFamily: 'var(--font-erica)',
                     fontSize: '32px',
                     fontWeight: 400,
