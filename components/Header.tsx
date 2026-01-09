@@ -185,15 +185,25 @@ export default function Header() {
                   style={{
                     color: '#1E1E1E',
                     fontFamily: 'var(--font-erica)',
-                    fontSize: '36px',
+                    fontSize: '32px',
                     fontWeight: 400,
-                    lineHeight: '44px',
+                    lineHeight: '38px',
                   }}
                 >
                   {item.label.toUpperCase()}
                 </a>
               ))}
             </nav>
+
+            <div className="flex flex-col items-start justify-start px-4 sm:px-6 md:px-8 py-8 gap-[64px]">
+            <CustomLink href="https://www.linkedin.com/in/voleriyah" iconType="linkedin" variant="footer" showExternalIcon={true}>
+              Connect
+            </CustomLink>
+            <CustomLink href="mailto:valeriya.kostyuchenko@gmail.com" iconType="email" variant="footer" showExternalIcon={true}>
+              Mail
+            </CustomLink>
+            <CustomLink href="https://t.me/voleriyah" iconType="telegram" variant="footer"  showExternalIcon={true}>Telegram</CustomLink>
+          </div>
           </div>
         )}
       </div>

@@ -62,8 +62,8 @@ const AnimatedGasfisHeader = () => {
       ref={containerRef}
       className="relative w-full max-w-[1692px] bg-[#342927] overflow-visible mx-auto"
       style={{
-        height: screenSize === 'xl' ? '548px' 
-          : screenSize === 'desktop' ? '548px' 
+        height: screenSize === 'xl' ? '588px' 
+          : screenSize === 'desktop' ? '558px' 
           : screenSize === 'laptop-lg' ? '520px' 
           : screenSize === 'laptop' ? '500px' 
           : screenSize === 'tablet' ? '450px' 
