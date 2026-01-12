@@ -1328,7 +1328,7 @@ export default function Home() {
           >
             <ValueListItem
               number="6"
-              title="Prove me right"
+              title="Prove me wrong"
               subtitle="Evidence before ego"
               description="Research, data, and reality over opinions"
             />
