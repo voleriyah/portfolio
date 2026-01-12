@@ -223,6 +223,7 @@ export default function EndToEndTransformationPage() {
             }}
           >
             <h1 id="market-and-business-context" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Context</h1>
+            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Role: </b> Head of product design and research → VP of product design and research </p> <br />
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>2019 — Alfa Bank (Kazakhstan) </b> <br/>The UX market was at a very low maturity level. There was no formal research practice, no ResearchOps, and no governance. Design decisions were driven by delivery speed, not by user evidence. Customer-centered thinking was identified as a potential competitive advantage. The goal was to create the first in-house usability lab to introduce research as a capability and shift decision-making in discovery. </p> <br />
 
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>2022 — Bank CenterCredit (post-acquisition) </b> <br/>After the acquisition, I inherited the lab in a fragmented state. The ambition expanded: the lab was repositioned as a strategic asset, with a long-term goal of becoming an external, revenue-generating capability.</p> <br />

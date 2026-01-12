@@ -229,6 +229,7 @@ export default function EndToEndTransformationPage() {
             }}
           >
             <h1 id="market-and-business-context" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Market and Business Context</h1>
+            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Role: </b> VP of product design and research </p> <br />
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>Kazakhstan's market: </b> ~16M population, ~9.2M solvent. </p> <br />
 
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>Bank CenterCredit: </b> S&P Top-4, 35+ years on the market, 3M+ active clients, 1.77B market cap, 8 000 employees.</p> <br />
