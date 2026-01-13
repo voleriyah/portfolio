@@ -208,17 +208,17 @@ export default function AboutPage() {
   </div>
 </section>
 
-
-        <section className="w-full">
+<section className="w-full">
         <div className="w-full mx-auto"
           style={{
             maxWidth: '1692px',
             paddingLeft: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
             paddingRight: 'clamp(16px, calc(16px + (144px - 16px) * ((100vw - 320px) / (1920px - 320px))), 144px)',
-            //paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
+            paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', 
           }}
         >
-            
+            <h1 id="availability" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Availability</h1>
+            <p className="text-l">I am open to permanent and fractional executive leadership roles, strategic consulting locally and globally.</p><br /> 
           </div>
           </section>
 
