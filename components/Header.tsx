@@ -16,6 +16,8 @@ const menuItems = [
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [pressedItem, setPressedItem] = useState<string | null>(null);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -31,11 +33,45 @@ export default function Header() {
     };
   }, [isMobileMenuOpen]);
 
+  // Handle scroll direction detection for header visibility
+  useEffect(() => {
+    // Don't hide header when mobile menu is open
+    if (isMobileMenuOpen) {
+      setIsHeaderVisible(true);
+      return;
+    }
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Show header at the top of the page
+      if (currentScrollY < 10) {
+        setIsHeaderVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        // Scrolling down - hide header
+        setIsHeaderVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up - show header
+        setIsHeaderVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY, isMobileMenuOpen]);
+
   return (
     <header 
       className="w-full bg-dark-bg flex items-center justify-center flex-shrink-0 fixed top-0 left-0 right-0 z-[55]"
       style={{
         height: 'clamp(92px, calc(92px + (124px - 92px) * ((100vw - 320px) / (1920px - 320px))), 124px)',
+        transform: (isHeaderVisible || isMobileMenuOpen) ? 'translateY(0)' : 'translateY(-100%)',
+        transition: 'transform 0.3s ease-in-out',
       }}>
       {/* Responsive Container */}
       <div 
