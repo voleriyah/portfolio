@@ -87,6 +87,11 @@ function RootLayoutClient({
   );
 }
 
+export const metadata = {
+  title: 'Valeriya Kostyuchenko',
+  description: 'Director of Product Design & Research',
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
