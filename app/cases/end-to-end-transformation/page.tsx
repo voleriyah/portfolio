@@ -1166,7 +1166,7 @@ knowing when to walk away.
       
       {/* Left: Slider */}
       <div className="w-full lg:w-1/2">
-      <h2 className="heading-m" style={{ marginBottom: 'clamp(24px, calc(24px + (64px - 24px) * ((100vw - 320px) / (1920px - 320px))), 64px)' }}>Main screen and Information architecture <br/>(Q3 2022 vs Q3 2025)</h2>
+      <h2 className="heading-m" style={{ marginBottom: 'clamp(24px, calc(24px + (64px - 24px) * ((100vw - 320px) / (1920px - 320px))), 64px)' }}>Main screen and Information architecture <br/>(Q3 2022 — light, Q3 2025 — dark)</h2>
         <ReactCompareSlider
           itemOne={
             <ReactCompareSliderImage 
@@ -1247,7 +1247,7 @@ knowing when to walk away.
       
       {/* Left: Slider */}
       <div className="w-full lg:w-1/2">
-      <h2 className="heading-m" style={{ marginBottom: 'clamp(24px, calc(24px + (64px - 24px) * ((100vw - 320px) / (1920px - 320px))), 64px)' }}>Cash loan launch & redesign <br/>(Q4 2023 vs Q3 2025)</h2>
+      <h2 className="heading-m" style={{ marginBottom: 'clamp(24px, calc(24px + (64px - 24px) * ((100vw - 320px) / (1920px - 320px))), 64px)' }}>Cash loan launch & redesign <br/>(Q4 2023 — top vs Q3 2025 — bottom)</h2>
         <ReactCompareSlider
           itemOne={
             <ReactCompareSliderImage 
@@ -1328,7 +1328,7 @@ knowing when to walk away.
       
       {/* Left: Slider */}
       <div className="w-full lg:w-1/2">
-      <h2 className="heading-m" style={{ marginBottom: 'clamp(24px, calc(24px + (64px - 24px) * ((100vw - 320px) / (1920px - 320px))), 64px)' }}>FX exchange mini-app<br/>(Q2 2022 vs Q3 2025)</h2>
+      <h2 className="heading-m" style={{ marginBottom: 'clamp(24px, calc(24px + (64px - 24px) * ((100vw - 320px) / (1920px - 320px))), 64px)' }}>FX exchange mini-app<br/>(Q2 2022 — light vs Q3 2025 — dark)</h2>
         <ReactCompareSlider
           itemOne={
             <ReactCompareSliderImage 
