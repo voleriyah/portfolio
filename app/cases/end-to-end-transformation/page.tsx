@@ -1001,9 +1001,9 @@ export default function EndToEndTransformationPage() {
             <div>
               <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Monetization</h2>
               <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-                <li>Share of online loan applications increased from 16% to 39%, driving $53.4M in value in Q3 2025.</li>
-                <li>FX (Foreign Exchange) exchange transaction value increased by +114%, from $578K to $1.02M.</li>
-                <li>Average check of in-app payments grew by 8.2%.</li>
+                <li>Share of online loan applications increased from 16% to 39%, driving significant Q3 2025 volume growth</li>
+                <li>FX transaction value increased by +114% YoY</li>
+                <li>Average check of in-app payments grew by 8.2%</li>
               </ul>
             </div>
 
@@ -1310,8 +1310,8 @@ knowing when to walk away.
         <div>
           <h2 className="text-l" style={{ fontWeight: 700, marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)' }}>Key changes:</h2>
           <ol className="text-l space-y-3" style={{ listStyle: 'decimal', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-            <li>Launched the product from scratch in parallel with the full app redesign, using existing UI components and form patterns to accelerate delivery and keep the experience consistent. <b><i>Grew loan issuance from $2.4M → $17.9M.</i></b></li><br />
-            <li>Improved the loan term selection in later iterations — <b><i>SUM of approved loans Q3 YoY $17.9M → $53.4M.</i></b> </li><br />
+            <li>Launched the product from scratch in parallel with the full app redesign, using existing UI components and form patterns to accelerate delivery and keep the experience consistent. <b><i>Grew loan issuance by 7x over the redesign period.</i></b></li><br />
+            <li>Improved the loan term selection in later iterations — <b><i>SUM of approved loans grew 3x YoY in Q3.</i></b> </li><br />
             <li>Replaced dropdowns with chips for faster comparison, better scannability, and reduced cognitive load.</li><br />
             <li>Redesigned the insurance block: <br/>– added a clear explanation of what the insurance is and why it matters <br/>– recalculated and surfaced the actual approved amount considering insurance costs</li><br /> 
             <li>Enhanced the payment calculator by providing the exact date of the first payment and making the monthly payment breakdown more transparent.</li><br />

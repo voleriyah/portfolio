@@ -2,10 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 // Список защищённых кейсов (только эти требуют пароль)
-const PROTECTED_CASES = [
-  'end-to-end-transformation',
-  'design-system',
-
+const PROTECTED_CASES: string[] = [
   // добавляй сюда slug'и которые нужно защитить
 ];
 
