@@ -88,7 +88,7 @@ export default function EndToEndTransformationPage() {
       number: "2",
       riskDescription: "No research governance in place, leading to fragmented decision-making and lack of alignment across teams.",
       mitigationStrategy: "Established ResearchOps governance: recruiting, knowledge base, guides, output standards.",
-      outcome: "Prevented further leaks; increased organizational trust toward research."
+      outcome: "Increased organizational trust toward research."
     },
     {
       number: "3",
