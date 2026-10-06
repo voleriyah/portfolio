@@ -264,9 +264,6 @@ export default function EndToEndTransformationPage() {
               <CustomLink href="#impact-orgs" iconType={null} showExternalIcon={false}>
                 Impact: Orgs outcome
               </CustomLink>
-              <CustomLink href="#leadership-outcome" iconType={null} showExternalIcon={false}>
-                Leadership outcome
-              </CustomLink>
               <CustomLink href="#visual-transformation" iconType={null} showExternalIcon={false}>
                 Visual transformation
               </CustomLink>
@@ -286,7 +283,7 @@ export default function EndToEndTransformationPage() {
             }}
           >
             <h1 id="market-and-business-context" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Market and Business Context</h1>
-            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Role: </b> Director of product design and research </p> <br />
+            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Role: </b> Director of product design </p> <br />
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>Kazakhstan's market: </b> ~16M population, ~9.2M solvent. </p> <br />
 
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>Bank CenterCredit: </b> S&P Top-4, 35+ years on the market, 3M+ active clients, 1.77B market cap, 8 000 employees.</p> <br />
@@ -1048,7 +1045,7 @@ export default function EndToEndTransformationPage() {
             <div>
               <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Product Quality</h2>
               <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-                <li>SUM (System Usability Metric) usability score improved from 11% to 71%, then to 81%.</li>
+                <li>SUM (Single Usability Metric) usability score improved from 11% to 71%, then to 81%.</li>
                 <li>App Store rating increased from 3.3 to 3.9.</li>
               </ul>
             </div>
