@@ -1,4 +1,5 @@
 import { Alegreya_Sans, Erica_One } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import RootLayoutClient from "@/components/RootLayoutClient";
 
@@ -30,6 +31,18 @@ export default function RootLayout({
         className={`${alegreyaSans.variable} ${ericaOne.variable} antialiased overflow-x-hidden`}
         style={{ overflowX: 'hidden' }}
       >
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-BV2S1MX3CP"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-BV2S1MX3CP');
+          `}
+        </Script>
         <RootLayoutClient>
           {children}
         </RootLayoutClient>
