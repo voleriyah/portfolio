@@ -212,24 +212,6 @@ export default function EndToEndTransformationPage() {
                 </TimelineCardText>
               </div>
             </div>
-            <div className="flex items-center justify-center" style={{ gap: '24px', marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)' }}>
-              <div
-                style={{
-                  width: '12px',
-                  height: '12px',
-                  backgroundColor: 'var(--main-red-accent, #F62F20)',
-                  transform: 'rotate(45deg)',
-                }}
-              />
-              <div
-                style={{
-                  width: '12px',
-                  height: '12px',
-                  backgroundColor: 'var(--main-red-accent, #F62F20)',
-                  transform: 'rotate(45deg)',
-                }}
-              />
-            </div>
           </motion.div>
 
           {/* Table of Contents */}
@@ -434,7 +416,7 @@ export default function EndToEndTransformationPage() {
               <li> Rebuilt product strategy on the fly</li>
               <li>Retrofitted existing redesign to support SuperApp architecture</li>
               <li>Stabilized the app and restored trust</li>
-              <li>Rating covered 1★ → 3.9★ within months</li>
+              <li>Rating recovered 1★ → 3.9★ within months</li>
               <li>SUM: 11% → 80.9%</li>
               <li>Shifted design into influencing-tier in product org</li>
              </ol>
@@ -623,7 +605,7 @@ export default function EndToEndTransformationPage() {
                 <li>Built a cross-C-level coalition (CMO, CTO, shareholder) → <b><i>alignment engine</i></b></li>
                 <li>Introduced unified IA + a single roadmap → <b><i>eliminated fragmentation</i></b></li>
                 <li>Built researchOps + analytics pipeline to anchor decisions in evidence</li>
-                <li>Scaled design from 3 → <b><i>45+ across 3 streams; established 5-person research department</i></b></li>
+                <li>Scaled design from 3 → <b><i>44 across 3 streams; established 5-person research department</i></b></li>
                 <li>Introduced delivery management & quality control for predictable releases</li>
             </ul>
             <br /> <br /> 
@@ -1066,7 +1048,7 @@ export default function EndToEndTransformationPage() {
             <div>
               <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Product Quality</h2>
               <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-                <li>SUM (System Usability Scale) usability score improved from 11% to 71%, then to 80.9%.</li>
+                <li>SUM (System Usability Metric) usability score improved from 11% to 71%, then to 81%.</li>
                 <li>App Store rating increased from 3.3 to 3.9.</li>
               </ul>
             </div>
@@ -1135,7 +1117,7 @@ export default function EndToEndTransformationPage() {
             <div>
               <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Scaling</h2>
               <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-                <li>The team grew from 3 to 44 members, including 5 CX/UX research, 39 design IC (Individual Contributors), and 4 managers.</li>
+                <li>Grew the design and research team from 3 to 44 people: 35 designers, 5 UX/CX researchers and 4 managers.</li>
                 <li>Established a multi-layer leadership structure and functional independence.</li>
                 <li>Market research was established (2022) and delegated (2024) to a new leadership role.</li>
               </ul>
@@ -1316,7 +1298,7 @@ export default function EndToEndTransformationPage() {
           <h2 className="text-l" style={{ fontWeight: 700, marginBottom: 'clamp(16px, calc(16px + (24px - 16px) * ((100vw - 320px) / (1920px - 320px))), 24px)' }}>Key changes:</h2>
           <ol className="text-l space-y-3" style={{ listStyle: 'decimal', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
             <li>Launched the product from scratch in parallel with the full app redesign, using existing UI components and form patterns to accelerate delivery and keep the experience consistent. <b><i>Grew loan issuance by 7x over the redesign period.</i></b></li><br />
-            <li>Improved the loan term selection in later iterations — <b><i>SUM of approved loans grew 3x YoY in Q3.</i></b> </li><br />
+            <li>Improved the loan term selection in later iterations — <b><i>total value of approved loans grew 3x YoY in Q3.</i></b> </li><br />
             <li>Replaced dropdowns with chips for faster comparison, better scannability, and reduced cognitive load.</li><br />
             <li>Redesigned the insurance block: <br/>– added a clear explanation of what the insurance is and why it matters <br/>– recalculated and surfaced the actual approved amount considering insurance costs</li><br /> 
             <li>Enhanced the payment calculator by providing the exact date of the first payment and making the monthly payment breakdown more transparent.</li><br />
