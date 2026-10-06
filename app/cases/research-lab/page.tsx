@@ -163,6 +163,57 @@ export default function EndToEndTransformationPage() {
             </p>
           </motion.div>
 
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showTags ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="flex w-full flex-col items-center"
+            style={{
+              paddingTop: 'clamp(156px, calc(156px + (230px - 156px) * ((100vw - 320px) / (1920px - 320px))), 230px)',
+              paddingBottom: 'clamp(156px, calc(156px + (230px - 156px) * ((100vw - 320px) / (1920px - 320px))), 230px)',
+            }}
+          >
+            <div
+              className="grid w-full grid-cols-1 items-center lg:grid-cols-[auto_minmax(0,1fr)]"
+              style={{
+                gap: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)',
+              }}
+            >
+              <div className="order-2 flex justify-center lg:order-1 lg:justify-start">
+                <Image
+                  src="/images/lab-image.png"
+                  alt="UX Research Lab"
+                  width={632}
+                  height={449}
+                  className="h-auto w-full max-w-[480px] object-contain lg:max-w-[520px]"
+                  priority
+                />
+              </div>
+              <div className="order-1 flex w-full flex-col items-start justify-center gap-4 lg:order-2">
+                <h2
+                  style={{
+                    color: 'var(--main-white, #FFF8E9)',
+                    textAlign: 'left',
+                    fontFamily: '"Alegreya Sans", sans-serif',
+                    fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)',
+                    fontStyle: 'normal',
+                    fontWeight: 900,
+                    lineHeight: 'normal',
+                  }}
+                >
+                  Summary
+                </h2>
+                <TimelineCardHeading>Role: Head of UX & Research at Alfa Bank → Director of Product Design at Bank CenterCredit</TimelineCardHeading>
+                <TimelineCardText>
+                  Built an in-house usability lab and research function from scratch at Alfa Bank Kazakhstan. After Bank CenterCredit acquired Alfa, inherited the same lab and expanded its capabilities with eye-tracking, research quality control and an internal research academy.
+                </TimelineCardText>
+                <TimelineCardText>
+                  <b>Outcomes:</b> Research-led iterations at Alfa improved usability from <b>53% to 70% in B2B</b> and <b>64% to 80% in B2C</b>; the retail redesign increased <b>NPS by 13 points</b>. At BCC, research quality reached <b>CSI 4.9/5</b>.
+                </TimelineCardText>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Table of Contents */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -171,7 +222,6 @@ export default function EndToEndTransformationPage() {
             className="w-full mx-auto"
             style={{
               maxWidth: '1692px',
-              marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
               marginBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
             }}
           >
@@ -223,7 +273,7 @@ export default function EndToEndTransformationPage() {
             }}
           >
             <h1 id="market-and-business-context" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Context</h1>
-            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Role: </b> Head of product design and research → VP of product design and research </p> <br />
+            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Role: </b> Head of product design and research → Director of Product Design </p> <br />
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>2019 — Alfa Bank (Kazakhstan) </b> <br/>The UX market was at a very low maturity level. There was no formal research practice, no ResearchOps, and no governance. Design decisions were driven by delivery speed, not by user evidence. Customer-centered thinking was identified as a potential competitive advantage. The goal was to create the first in-house usability lab to introduce research as a capability and shift decision-making in discovery. </p> <br />
 
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>2022 — Bank CenterCredit (post-acquisition) </b> <br/>After the acquisition, I inherited the lab in a fragmented state. The ambition expanded: the lab was repositioned as a strategic asset, with a long-term goal of becoming an external, revenue-generating capability.</p> <br />

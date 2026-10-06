@@ -1272,7 +1272,7 @@ export default function Home() {
           >
             <ValueListItem
               number="2"
-              title="Clarity win"
+              title="Clarity wins"
               subtitle="Clear bets, not feature soup"
               description=" Strategy is choosing what not to build"
             />

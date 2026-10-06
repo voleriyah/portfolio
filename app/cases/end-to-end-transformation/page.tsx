@@ -85,9 +85,9 @@ export default function EndToEndTransformationPage() {
     },
     {
       number: "2",
-      riskDescription: "Security breach: design leaked to competitor and was uncovered 1 month before our release by their launch",
+      riskDescription: "A full visual redesign became necessary one month before launch.",
       mitigationStrategy: "Established new InfoSec workflow Created secure access and approval pipeline in Figma.",
-      outcome: "Prevented further leaks; increased organizational trust toward design."
+      outcome: "Outcome: Maintained launch readiness and strengthened design access controls."
     },
     {
       number: "3",
@@ -384,7 +384,7 @@ export default function EndToEndTransformationPage() {
   
             <TimelineCardText>
             <ol className="list-decimal list-inside space-y-2">
-              <li>Critical leak → forced full visual redesign</li>
+              <li>Unplanned full visual redesign one month before launch</li>
               <li>Burnout risk</li>
               <li>App technical debt + IA issues → rating drop to 1★</li>
               <li>Strategic shock: AliPay tech stack purchased 2 months before release</li>

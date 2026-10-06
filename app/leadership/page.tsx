@@ -314,7 +314,7 @@ export default function LeadershipPage() {
         >
           <ValueListItem
             number="2"
-            title="Clarity win"
+            title="Clarity wins"
             subtitle="Clear bets, not feature soup"
             description=" Strategy is choosing what not to build"
             color="#FFF8E9"
@@ -374,7 +374,7 @@ export default function LeadershipPage() {
         >
           <ValueListItem
             number="6"
-            title="Prove me right"
+            title="Prove me wrong"
             subtitle="Evidence before ego"
             description="Research, data, and reality over opinions"
             color="#FFF8E9"
