@@ -156,6 +156,82 @@ export default function EndToEndTransformationPage() {
             </p>
           </motion.div>
 
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showTags ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="flex w-full flex-col items-center"
+            style={{
+              paddingTop: 'clamp(156px, calc(156px + (230px - 156px) * ((100vw - 320px) / (1920px - 320px))), 230px)',
+              paddingBottom: 'clamp(156px, calc(156px + (230px - 156px) * ((100vw - 320px) / (1920px - 320px))), 230px)',
+            }}
+          >
+            <div
+              className="grid w-full grid-cols-1 items-center lg:grid-cols-[auto_minmax(0,1fr)]"
+              style={{
+                gap: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)',
+              }}
+            >
+              <div className="order-2 flex justify-center lg:order-1 lg:justify-start">
+                <Image
+                  src="/images/bcc-screen.png"
+                  alt="Retail app on iPhone"
+                  width={356}
+                  height={721}
+                  className="h-auto w-auto max-h-[520px] object-contain lg:max-h-[640px]"
+                  priority
+                />
+              </div>
+              <div className="order-1 flex w-full flex-col items-start justify-center gap-4 lg:order-2">
+                <h2
+                  style={{
+                    color: 'var(--main-white, #FFF8E9)',
+                    textAlign: 'left',
+                    fontFamily: '"Alegreya Sans", sans-serif',
+                    fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)',
+                    fontStyle: 'normal',
+                    fontWeight: 900,
+                    lineHeight: 'normal',
+                  }}
+                >
+                  Summary
+                </h2>
+                <TimelineCardHeading>
+                  Led the retail app’s product strategy and redesign while building the design and research function from 3 to 44 people. Used the redesign to establish shared priorities, research-led decisions and bank-wide design governance, navigating a platform change and a strategic pivot.
+                </TimelineCardHeading>
+                <TimelineCardText>Role: Director of Product Design</TimelineCardText>
+                <TimelineCardHeading>Product outcomes</TimelineCardHeading>
+                <TimelineCardText>
+                  <ul className="list-disc list-inside space-y-2">
+                    <li>MAU: 1.33M → 1.56M (+17%)</li>
+                    <li>Usability (SUM): 11% → 81%</li>
+                    <li>In-app payments share: 79% → 85% YoY</li>
+                    <li>Online loan application share: 16% at launch → 39% after iterations</li>
+                    <li>FX transaction value: +114% YoY</li>
+                  </ul>
+                </TimelineCardText>
+              </div>
+            </div>
+            <div className="flex items-center justify-center" style={{ gap: '24px', marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)' }}>
+              <div
+                style={{
+                  width: '12px',
+                  height: '12px',
+                  backgroundColor: 'var(--main-red-accent, #F62F20)',
+                  transform: 'rotate(45deg)',
+                }}
+              />
+              <div
+                style={{
+                  width: '12px',
+                  height: '12px',
+                  backgroundColor: 'var(--main-red-accent, #F62F20)',
+                  transform: 'rotate(45deg)',
+                }}
+              />
+            </div>
+          </motion.div>
+
           {/* Table of Contents */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -164,7 +240,6 @@ export default function EndToEndTransformationPage() {
             className="w-full mx-auto"
             style={{
               maxWidth: '1692px',
-              marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
               marginBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
             }}
           >
@@ -229,7 +304,7 @@ export default function EndToEndTransformationPage() {
             }}
           >
             <h1 id="market-and-business-context" className="heading-xl" style={{ paddingTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)', marginBottom: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>Market and Business Context</h1>
-            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Role: </b> VP of product design and research </p> <br />
+            <p className="text-l" style={{ fontWeight: 400 }}>  <b>Role: </b> Director of product design and research </p> <br />
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>Kazakhstan's market: </b> ~16M population, ~9.2M solvent. </p> <br />
 
             <p className="text-l" style={{ fontWeight: 400 }}>  <b>Bank CenterCredit: </b> S&P Top-4, 35+ years on the market, 3M+ active clients, 1.77B market cap, 8 000 employees.</p> <br />
@@ -368,9 +443,8 @@ export default function EndToEndTransformationPage() {
   
              <TimelineCardHeading>Approach:</TimelineCardHeading>
              <ol className="list-decimal list-inside space-y-2">
-              <li>Crisis leadership: protected team, kept release moving</li>
-              <li>Reset collaboration with InfoSec</li>
-              <li>Ensured redesign integrity and launch readiness under impossible constraints</li>
+              <li>Turned chaos into a scalable strategy</li>
+              <li>Ensured continuity between redesign → SuperApp → ecosystem future</li>
              </ol>
             </TimelineCardText>
           </>
@@ -983,8 +1057,8 @@ export default function EndToEndTransformationPage() {
             <div>
               <h2 className="text-l" style={{ fontWeight: 700, marginBottom: '16px' }}>Growth</h2>
               <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-                <li>MAU grew from 1.245M to 1.562M (+317K users).</li>
-                <li>In-app payments share grew 6% Year-over-Year (YoY).</li>
+                <li>MAU grew from 1.33M to 1.56M.</li>
+                <li>In-app payments share 79% → 85% Year-over-Year (YoY).</li>
               </ul>
             </div>
 
@@ -1066,75 +1140,6 @@ export default function EndToEndTransformationPage() {
                 <li>Market research was established (2022) and delegated (2024) to a new leadership role.</li>
               </ul>
             </div>
-          </div>
-        </div>
-        </motion.section>
-
-      <motion.section 
-        ref={(el) => { blockRefs.current[13] = el; }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: visibleBlocks.has(13) ? 1 : 0 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
-        className="w-full flex items-center justify-center"
-        style={{
-          paddingBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
-          height: 'clamp(800px, calc(800px + (1500px - 800px) * ((100vw - 320px) / (1920px - 320px))), 1500px)',
-        }}
-      >
-        <div className="flex flex-col items-center justify-center w-full"
-        style={{
-          
-        }}
-        >
-          {/* Top Diamonds - 2 diamonds horizontally aligned */}
-          <div className="flex items-center justify-center" style={{ gap: '24px', marginBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)' }}>
-            <div
-              style={{
-                width: '12px',
-                height: '12px',
-                backgroundColor: 'var(--main-red-accent, #F62F20)',
-                transform: 'rotate(45deg)', 
-                
-              }}
-            />
-            <div
-              style={{
-                width: '12px',
-                height: '12px',
-                backgroundColor: 'var(--main-red-accent, #F62F20)',
-                transform: 'rotate(45deg)',
-              }}
-            />
-          </div>
-
-
-          {/* Main Text */}
-          <h1 id="leadership-outcome" className="heading-xl" style={{ maxWidth: 'clamp(300px, calc(300px + (1000px - 300px) * ((100vw - 320px) / (1920px - 320px))), 1000px)', textAlign: 'center' }}>
-           I learned to lead without air,<br />  to build without prerequisites <br /> and to protect people in a system built to break them.
- <br />
- <br />
-Also, I learned the hardest won leadership skill: <br />
-knowing when to walk away.
-           </h1>
-
-          {/* Bottom Diamonds - 2 diamonds horizontally aligned */}
-          <div className="flex items-center justify-center" style={{ gap: '24px', marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)' }}>
-            <div
-              style={{
-                width: '12px',
-                height: '12px',
-                backgroundColor: 'var(--main-red-accent, #F62F20)',
-                transform: 'rotate(45deg)',
-              }}
-            />
-            <div
-              style={{
-                width: '12px',
-                height: '12px',
-                backgroundColor: 'var(--main-red-accent, #F62F20)',
-                transform: 'rotate(45deg)',
-              }}
-            />
           </div>
         </div>
         </motion.section>
