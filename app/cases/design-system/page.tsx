@@ -158,6 +158,57 @@ export default function EndToEndTransformationPage() {
             </p>
           </motion.div>
 
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showTags ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="flex w-full flex-col items-center"
+            style={{
+              paddingTop: 'clamp(156px, calc(156px + (230px - 156px) * ((100vw - 320px) / (1920px - 320px))), 230px)',
+              paddingBottom: 'clamp(156px, calc(156px + (230px - 156px) * ((100vw - 320px) / (1920px - 320px))), 230px)',
+            }}
+          >
+            <div
+              className="grid w-full grid-cols-1 items-center lg:grid-cols-[auto_minmax(0,1fr)]"
+              style={{
+                gap: 'clamp(24px, calc(24px + (48px - 24px) * ((100vw - 320px) / (1920px - 320px))), 48px)',
+              }}
+            >
+              <div className="order-2 flex justify-center lg:order-1 lg:justify-start">
+                <Image
+                  src="/images/ds-image.png"
+                  alt="Design system"
+                  width={632}
+                  height={458}
+                  className="h-auto w-full max-w-[480px] object-contain lg:max-w-[520px]"
+                  priority
+                />
+              </div>
+              <div className="order-1 flex w-full flex-col items-start justify-center gap-4 lg:order-2">
+                <h2
+                  style={{
+                    color: 'var(--main-white, #FFF8E9)',
+                    textAlign: 'left',
+                    fontFamily: '"Alegreya Sans", sans-serif',
+                    fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)',
+                    fontStyle: 'normal',
+                    fontWeight: 900,
+                    lineHeight: 'normal',
+                  }}
+                >
+                  Summary
+                </h2>
+                <TimelineCardHeading>Role: Director of Product Design · Bank CenterCredit</TimelineCardHeading>
+                <TimelineCardText>
+                  Built and scaled a bank-wide design system across 50+ squads, turning fragmented design and engineering practices into shared infrastructure. Established component governance, built a design–engineering coalition and secured leadership sponsorship to make the system an official product stream.
+                </TimelineCardText>
+                <TimelineCardText>
+                  <b>Outcome:</b> 82% adoption and 241% ROI by year three. Design flow assembly time fell by 60%, while onboarding dropped from 5 days to 70 minutes.
+                </TimelineCardText>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Table of Contents */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -166,7 +217,6 @@ export default function EndToEndTransformationPage() {
             className="w-full mx-auto"
             style={{
               maxWidth: '1692px',
-              marginTop: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
               marginBottom: 'clamp(48px, calc(48px + (92px - 48px) * ((100vw - 320px) / (1920px - 320px))), 92px)',
             }}
           >
@@ -545,13 +595,13 @@ export default function EndToEndTransformationPage() {
             <p className="text-l" style={{ fontWeight: 700 }}>Strategic moves</p>
             <br />
             <ul className="list-disc list-inside space-y-2 text-l" style={{ fontWeight: 400, color: 'var(--main-white, #FFF8E9)', fontFamily: '"Alegreya Sans", sans-serif', fontSize: 'clamp(18px, calc(18px + (32px - 18px) * ((100vw - 320px) / (1920px - 320px))), 32px)', fontStyle: 'normal', lineHeight: 'normal', letterSpacing: 'clamp(-0.18px, calc(-0.18px + (-0.32px - -0.18px) * ((100vw - 320px) / (1920px - 320px))), -0.32px)', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-                <li>Built bottom-up legitimacy by shipping measurable ROI (3× delivery speed,  ~14k savings per task)</li>
+                <li>Built bottom-up legitimacy by shipping measurable ROI (3× delivery speed,  ~$14k savings per task)</li>
                 <li>Formed design–engineering coalition to bypass org dependency </li>
                 <li>Reframed DS from tooling to governance & scalability engine</li>
                 <li>Secured leadership sponsorship and converted DS into an official product stream</li>
                 <li>Shifted ownership — designers became product owners in internal streams</li>
                 <li>Embedded DS into commercial offerings (export pipeline)</li>
-                <li>Created partner-integration infrastructure enabling export scalability a physical usability lab as a CX hub</li>
+            
            
             </ul>
             <br />
@@ -709,12 +759,11 @@ export default function EndToEndTransformationPage() {
             <div>
               <ul className="text-l space-y-2" style={{ listStyle: 'disc', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
                 <li>82% DS adoption across major fintech product and internal banking streams, ~12% external ecosystem</li>
-                <li>241% ROI by year 3 (~$7.7M annual saving, ~$2.3 uplift YoY) </li>
+                <li>241% ROI by year 3 (~$7.7M annual saving, ~$2.3M uplift YoY) </li>
                 <li>“Primary Button” alone unlocked ~$442K / year  </li>
                 <li>Onboarding newcomers reduced 5 days → 70 minutes </li>
                 <li>Design flow assembling time decreased by 60%</li>
                 <li>Refactored 3 internal streams and SME products twice</li>
-                <li>DS exported to CIS as commercial box solution  </li>
                 <li>Tech stack reduced from 13 → 6 scalable stacks  </li>
               </ul>
             </div>
@@ -742,13 +791,8 @@ export default function EndToEndTransformationPage() {
           
           <div className="space-y-6">
             <div>
-              <ul className="text-l space-y-2" style={{ listStyle: 'number', paddingLeft: 'clamp(32px, calc(32px + (48px - 32px) * ((100vw - 320px) / (1920px - 320px))), 48px)' }}>
-                <li><b>I shifted influence from evangelism to inevitability.</b><br/> I embedded rules, mechanisms and accountability structures that enforced alignment without selling or convincing.</li><br />
-                <li><b>I moved from needing sponsorship to generating it.</b><br/> Legitimacy came from outcomes, savings and export value, not titles or permission.</li><br />
-                <li><b>I turned design into an economic actor.</b><br/> Design produced measurable ROI, enabled monetization, and became a revenue-bearing capability rather than a cost centre.</li><br />
-                <li><b>I manufactured internal tolerance for ambiguity and discipline in chaos.</b><br/> The design system became an instrument of alignment, decision hygiene, and scale under volatile conditions.</li><br />
-                <li><b>I translated culture into capital.</b><br/> What started as evangelism became a branding engine: Design became the company’s maturity narrative externally, attracting talent, credibility and investment interest — and that brand converted into adoption, budget and commercial opportunity.</li><br />
-              </ul>
+            <p className="text-l" style={{ fontWeight: 400 }}>I established shared ownership between design and engineering, secured leadership sponsorship and embedded component governance into delivery. This made the design system a maintained internal product with measurable adoption and economic value.</p>
+              
           </div>
           </div>
         </div>

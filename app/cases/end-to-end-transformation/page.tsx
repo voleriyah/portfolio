@@ -370,7 +370,7 @@ export default function EndToEndTransformationPage() {
            <TimelineCardHeading>Approach:</TimelineCardHeading>
            <ol className="list-decimal list-inside space-y-2">
             <li>Built a multi-layered operating model (discovery → delivery)</li>
-            <li>Scaled team to strategic maturity level (2.05/4)</li>
+            <li>Scaled team to strategic maturity level </li>
            </ol>
           </TimelineCardText>
         </>
@@ -602,7 +602,7 @@ export default function EndToEndTransformationPage() {
                 <li>Built a cross-C-level coalition (CMO, CTO, shareholder) → <b><i>alignment engine</i></b></li>
                 <li>Introduced unified IA + a single roadmap → <b><i>eliminated fragmentation</i></b></li>
                 <li>Built researchOps + analytics pipeline to anchor decisions in evidence</li>
-                <li>Scaled design from 3 → <b><i>44 across 3 streams; established 5-person research department</i></b></li>
+                <li>Scaled design from 3 → <b><i>44 across 3 streams; including a 5-person research department</i></b></li>
                 <li>Introduced delivery management & quality control for predictable releases</li>
             </ul>
             <br /> <br /> 
