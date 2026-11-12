@@ -269,7 +269,7 @@ main {
 .lang-switch:hover,
 .lang-switch:focus-visible { color: #ae00e8; }
 .d-lang { left: 327px; top: 784px; height: 20px; }
-.m-lang { left: 27px; top: 73px; height: 20px; }
+.m-lang { left: 27px; top: 75px; height: 16px; font-size: 12px; gap: 5px; }
 
 /* английское имя длиннее русского — чуть меньше, чтобы не упираться в край рамки */
 .lang-en .name { font-size: 41px; left: 318px; }
