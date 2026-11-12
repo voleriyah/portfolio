@@ -8,11 +8,15 @@ export default function Stage({
   width,
   height,
   fit,
+  cropTop = 0,
+  cropBottom = 0,
   children,
 }: {
   width: number;
   height: number;
   fit: 'contain' | 'width';
+  cropTop?: number;
+  cropBottom?: number;
   children: React.ReactNode;
 }) {
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -23,16 +27,18 @@ export default function Stage({
       const wrap = wrapRef.current;
       const stage = stageRef.current;
       if (!wrap || !stage) return;
+      const visibleH = height - cropTop - cropBottom;
       const byWidth = window.innerWidth / width;
-      const scale = fit === 'width' ? byWidth : Math.min(byWidth, window.innerHeight / height);
+      const scale = fit === 'width' ? byWidth : Math.min(byWidth, window.innerHeight / visibleH);
       stage.style.transform = `scale(${scale})`;
+      stage.style.top = `${-cropTop * scale}px`;
       wrap.style.width = `${width * scale}px`;
-      wrap.style.height = `${height * scale}px`;
+      wrap.style.height = `${visibleH * scale}px`;
     };
     apply();
     window.addEventListener('resize', apply);
     return () => window.removeEventListener('resize', apply);
-  }, [width, height, fit]);
+  }, [width, height, fit, cropTop, cropBottom]);
 
   return (
     <div className="stage-wrap" ref={wrapRef}>

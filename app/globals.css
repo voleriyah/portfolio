@@ -244,6 +244,9 @@ main {
 
 @media (max-width: 760px) {
   .desktop { display: none; }
+  .mobile { min-height: 100svh; display: flex !important; align-items: center; justify-content: flex-start; }
+  .mobile .stage-wrap { overflow: visible; }
+  .m-marquee { left: -600px; width: 1600px; }
   .mobile { display: block; }
   main { display: block; min-height: 0; }
 }
