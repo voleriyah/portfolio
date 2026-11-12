@@ -250,3 +250,26 @@ main {
   .mobile { display: block; }
   main { display: block; min-height: 0; }
 }
+
+/* ---------- переключатель языка ---------- */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: normal;
+  text-transform: uppercase;
+  color: #000;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+.lang-switch img { display: block; width: 1.1em; height: 0.79em; flex: none; }
+.lang-switch:hover,
+.lang-switch:focus-visible { color: #ae00e8; }
+.d-lang { left: 327px; top: 784px; height: 20px; }
+.m-lang { left: 27px; top: 73px; height: 20px; }
+
+/* английское имя длиннее русского — чуть меньше, чтобы не упираться в край рамки */
+.lang-en .name { font-size: 41px; left: 318px; }

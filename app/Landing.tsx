@@ -1,36 +1,7 @@
 import Stage from './Stage';
+import { CONSULTING, desktopLinks, dict, mobileLinks, type Lang } from './content';
 
-const CONSULTING = 'https://consulting.voleriyah.com/';
-
-const links = [
-  { label: 'Кейсы / портфолио', href: CONSULTING + 'cases/', left: 493, top: 452, gap: 16 },
-  { label: 'Консалтинг', href: CONSULTING, left: 565, top: 510, gap: 8 },
-  { label: 'E-mail', href: 'mailto:valeriya.kostyuchenko@gmail.com', left: 594, top: 568, gap: 16 },
-  { label: 'Telegram', href: 'https://t.me/voleriyah', left: 551, top: 626, gap: 16 },
-  { label: 'Linkedin', href: 'https://www.linkedin.com/in/v-kostyuchenko/', left: 541, top: 684, gap: 16 },
-  { label: 'CV', href: 'https://drive.google.com/file/d/173F2W6vdlEgdFgIMJs5ZrYasTNb6WTZU/view?usp=sharing', left: 578, top: 737, gap: 16 },
-];
-
-const mobileLinks = [
-  { label: 'Портфолио', href: CONSULTING + 'cases/', left: 231, top: 241 },
-  { label: 'Консалтинг', href: CONSULTING, left: 215, top: 311 },
-  { label: 'E-mail', href: 'mailto:valeriya.kostyuchenko@gmail.com', left: 199, top: 381 },
-  { label: 'Telegram', href: 'https://t.me/voleriyah', left: 183, top: 451 },
-  { label: 'Linkedin', href: 'https://www.linkedin.com/in/v-kostyuchenko/', left: 167, top: 521 },
-  { label: 'CV', href: 'https://drive.google.com/file/d/173F2W6vdlEgdFgIMJs5ZrYasTNb6WTZU/view?usp=sharing', left: 151, top: 586 },
-];
-
-// [текст до, подчёркнутая часть, текст после]
-const facts: [string, string, string][] = [
-  ['', '16', ' лет в IT'],
-  ['', '7', ' лет fullstack разработки'],
-  ['', '200+', ' проведенных собеседований'],
-  ['команды ', '40+', ' человек'],
-  ['ROI дизайн систем ', '200%+', ''],
-  ['', '3', ' дизайн-функции с нуля'],
-];
-
-function Facts() {
+function Facts({ facts }: { facts: [string, string, string][] }) {
   return (
     <>
       {facts.map(([a, u, b]) => (
@@ -52,15 +23,29 @@ function Chevron() {
   );
 }
 
-export default function Page() {
+function LangSwitch({ lang, className }: { lang: Lang; className: string }) {
+  const sw = dict[lang].switch;
   return (
-    <main>
+    <a className={`lang-switch ${className}`} href={sw.href} hrefLang={sw.lang} lang={sw.lang}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={sw.flag} alt="" width={28} height={20} />
+      <span>{sw.label}</span>
+    </a>
+  );
+}
+
+export default function Landing({ lang }: { lang: Lang }) {
+  const d = dict[lang];
+  const links = desktopLinks(lang);
+  const mLinks = mobileLinks(lang);
+  return (
+    <main className={`lang-${lang}`}>
       <div className="desktop"><Stage width={1440} height={1024} fit="contain">
         {/* бегущая строка с достижениями */}
-        <div className="marquee" aria-label="Достижения">
+        <div className="marquee" aria-label={d.factsLabel}>
           <div className="marquee-track">
-            <div className="marquee-group"><Facts /></div>
-            <div className="marquee-group" aria-hidden="true"><Facts /></div>
+            <div className="marquee-group"><Facts facts={d.facts} /></div>
+            <div className="marquee-group" aria-hidden="true"><Facts facts={d.facts} /></div>
           </div>
         </div>
 
@@ -75,7 +60,7 @@ export default function Page() {
         {/* портрет */}
         <div className="portrait">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/stub/portrait.jpg" alt="Валерия Костюченко" />
+          <img src="/stub/portrait.jpg" alt={d.name} />
         </div>
         <div className="portrait-frame">
           <div className="portrait-frame-rot">
@@ -84,7 +69,7 @@ export default function Page() {
           </div>
         </div>
 
-        <h1 className="name">Валерия Костюченко</h1>
+        <h1 className="name">{d.name}</h1>
         <p className="role">AI-native Design &amp; Product Leader</p>
 
         {links.map((l) => (
@@ -104,22 +89,23 @@ export default function Page() {
 
         {/* разделитель и копирайт */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
+        <LangSwitch lang={lang} className="d-lang" />
         <img className="divider" src="/stub/divider.svg" alt="" />
         <p className="copy">© Valeriya Kostyuchenko, 2026</p>
       </Stage></div>
 
       <div className="mobile">
-        <Stage width={393} height={852} fit="contain" cropTop={80} cropBottom={4}>
+        <Stage width={393} height={852} fit="contain" cropTop={62} cropBottom={4}>
           <div className="m-marquee" aria-hidden="true">
             <div className="marquee-track">
-              <div className="marquee-group"><Facts /></div>
-              <div className="marquee-group"><Facts /></div>
+              <div className="marquee-group"><Facts facts={d.facts} /></div>
+              <div className="marquee-group"><Facts facts={d.facts} /></div>
             </div>
           </div>
 
           <div className="m-portrait">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/stub/portrait.jpg" alt="Валерия Костюченко" />
+            <img src="/stub/portrait.jpg" alt={d.name} />
           </div>
           <div className="m-frame">
             <div className="m-frame-rot">
@@ -128,10 +114,10 @@ export default function Page() {
             </div>
           </div>
 
-          <p className="m-name">Валерия Костюченко</p>
+          <p className="m-name">{d.name}</p>
           <p className="m-role">AI-native Design &amp; Product Leader</p>
 
-          {mobileLinks.map((l) => (
+          {mLinks.map((l) => (
             <a
               key={l.label}
               className="link"
@@ -147,6 +133,7 @@ export default function Page() {
           ))}
 
           {/* eslint-disable-next-line @next/next/no-img-element */}
+          <LangSwitch lang={lang} className="m-lang" />
           <img className="m-divider" src="/stub/m-divider.svg" alt="" />
           <p className="m-copy">© Valeriya Kostyuchenko, 2026</p>
         </Stage>
