@@ -1,18 +1,20 @@
 // Макеты нарисованы на фиксированных холстах (десктоп 1440×1024, мобильный 393×852).
-// Масштаб считается чистым CSS (без JS): --s = min(ширина экрана / ширина холста,
-// высота экрана / видимая высота холста). Используем `zoom`, а не transform: scale —
-// тогда текст и векторные картинки пересчитываются по итоговому размеру и остаются
-// чёткими (transform растягивает уже отрисованный слой, особенно на анимированной
-// бегущей строке). Размер не зависит от pinch-zoom: vw/svh привязаны к layout viewport.
+// Все размеры внутри слайда заданы как calc(N * var(--u)), где --u = «1px холста».
+// Масштаб --u задаётся ОДИН раз на обёртке (см. .desktop-stage / .mobile-stage в globals.css):
+//   min(ширина экрана / ширина холста, высота экрана / видимая высота холста).
+// Никакого JS, transform и zoom: браузер вёрстает всё сразу в итоговом размере,
+// поэтому текст чёткий, а pinch-zoom и поворот ничего не ломают.
 import type { CSSProperties } from 'react';
 
 export default function Stage({
+  variant,
   width,
   height,
   cropTop = 0,
   cropBottom = 0,
   children,
 }: {
+  variant: 'desktop' | 'mobile';
   width: number;
   height: number;
   cropTop?: number;
@@ -20,17 +22,11 @@ export default function Stage({
   children: React.ReactNode;
 }) {
   const visibleH = height - cropTop - cropBottom;
-  // tan(atan2(a, b)) = a / b — способ получить безразмерное число из двух длин
-  const scale = `min(tan(atan2(100vw, ${width}px)), tan(atan2(100svh, ${visibleH}px)))`;
-  const wrapStyle = {
-    '--s': scale,
-    width: `calc(${width} * var(--s) * 1px)`,
-    height: `calc(${visibleH} * var(--s) * 1px)`,
-  } as CSSProperties;
-  const stageStyle = { width, height, top: -cropTop } as CSSProperties;
-
+  const u = (n: number) => `calc(${n} * var(--u))`;
+  const wrapStyle = { width: u(width), height: u(visibleH) } as CSSProperties;
+  const stageStyle = { width: u(width), height: u(height), top: u(-cropTop) } as CSSProperties;
   return (
-    <div className="stage-wrap" style={wrapStyle}>
+    <div className={`stage-wrap ${variant}-stage`} style={wrapStyle}>
       <div className="stage" style={stageStyle}>
         {children}
       </div>

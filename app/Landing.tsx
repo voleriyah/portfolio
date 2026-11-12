@@ -2,6 +2,8 @@ import Stage from './Stage';
 import LangLink from './LangLink';
 import { CONSULTING, desktopLinks, dict, mobileLinks, type Lang } from './content';
 
+const u = (n: number) => `calc(${n} * var(--u))`;
+
 function Facts({ facts }: { facts: [string, string, string][] }) {
   return (
     <>
@@ -41,7 +43,7 @@ export default function Landing({ lang }: { lang: Lang }) {
   const mLinks = mobileLinks(lang);
   return (
     <main className={`lang-${lang}`}>
-      <div className="desktop"><Stage width={1440} height={1024} cropTop={60} cropBottom={34}>
+      <div className="desktop"><Stage variant="desktop" width={1440} height={1024} cropTop={60} cropBottom={34}>
         {/* бегущая строка с достижениями */}
         <div className="marquee" aria-label={d.factsLabel}>
           <div className="marquee-track">
@@ -78,7 +80,7 @@ export default function Landing({ lang }: { lang: Lang }) {
             key={l.label}
             className="link"
             href={l.href}
-            style={{ right: 1440 - l.right, top: l.top, gap: 16 }}
+            style={{ right: u(1440 - l.right), top: u(l.top), gap: u(16) }}
             {...(l.href.startsWith('http') && !l.href.startsWith(CONSULTING)
               ? { target: '_blank', rel: 'noopener noreferrer' }
               : {})}
@@ -96,7 +98,7 @@ export default function Landing({ lang }: { lang: Lang }) {
       </Stage></div>
 
       <div className="mobile">
-        <Stage width={393} height={852} cropTop={40} cropBottom={88}>
+        <Stage variant="mobile" width={393} height={852} cropTop={40} cropBottom={88}>
           <div className="m-marquee" aria-hidden="true">
             <div className="marquee-track">
               <div className="marquee-group"><Facts facts={d.facts} /></div>
@@ -123,7 +125,7 @@ export default function Landing({ lang }: { lang: Lang }) {
               key={l.label}
               className="link"
               href={l.href}
-              style={{ left: l.left, top: l.top, gap: 16 }}
+              style={{ left: u(l.left), top: u(l.top), gap: u(16) }}
               {...(l.href.startsWith('http') && !l.href.startsWith(CONSULTING)
                 ? { target: '_blank', rel: 'noopener noreferrer' }
                 : {})}
