@@ -4,16 +4,26 @@ const CONSULTING = 'https://consulting.voleriyah.com/';
 
 const links = [
   { label: 'Кейсы / портфолио', href: CONSULTING + 'cases/', left: 493, top: 452, gap: 16 },
-  { label: 'Консалтинг', href: CONSULTING, left: 565, top: 510, gap: 8, accent: true },
+  { label: 'Консалтинг', href: CONSULTING, left: 565, top: 510, gap: 8 },
   { label: 'E-mail', href: 'mailto:valeriya.kostyuchenko@gmail.com', left: 594, top: 568, gap: 16 },
   { label: 'Telegram', href: 'https://t.me/voleriyah', left: 551, top: 626, gap: 16 },
   { label: 'Linkedin', href: 'https://www.linkedin.com/in/v-kostyuchenko/', left: 541, top: 684, gap: 16 },
   { label: 'CV', href: 'https://drive.google.com/file/d/173F2W6vdlEgdFgIMJs5ZrYasTNb6WTZU/view?usp=sharing', left: 578, top: 737, gap: 16 },
 ];
 
+const mobileLinks = [
+  { label: 'Портфолио', href: CONSULTING + 'cases/', left: 231, top: 241 },
+  { label: 'Консалтинг', href: CONSULTING, left: 215, top: 311 },
+  { label: 'E-mail', href: 'mailto:valeriya.kostyuchenko@gmail.com', left: 199, top: 381 },
+  { label: 'Telegram', href: 'https://t.me/voleriyah', left: 183, top: 451 },
+  { label: 'Linkedin', href: 'https://www.linkedin.com/in/v-kostyuchenko/', left: 167, top: 521 },
+  { label: 'CV', href: 'https://drive.google.com/file/d/173F2W6vdlEgdFgIMJs5ZrYasTNb6WTZU/view?usp=sharing', left: 151, top: 586 },
+];
+
 // [текст до, подчёркнутая часть, текст после]
 const facts: [string, string, string][] = [
   ['', '16', ' лет в IT'],
+  ['', '7', ' лет fullstack разработки'],
   ['', '200+', ' проведенных собеседований'],
   ['команды ', '40+', ' человек'],
   ['ROI дизайн систем ', '200%+', ''],
@@ -34,13 +44,10 @@ function Facts() {
   );
 }
 
-function Chevron({ purple }: { purple?: boolean }) {
+function Chevron() {
   return (
     <span className="chev" aria-hidden="true">
-      <span className="chev-inner">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={purple ? '/stub/chevron-purple.svg' : '/stub/chevron.svg'} alt="" />
-      </span>
+      <span className="chev-inner" />
     </span>
   );
 }
@@ -48,38 +55,7 @@ function Chevron({ purple }: { purple?: boolean }) {
 export default function Page() {
   return (
     <main>
-      <div className="mobile">
-        <div className="m-marquee" aria-hidden="true">
-          <div className="marquee-track">
-            <div className="marquee-group"><Facts /></div>
-            <div className="marquee-group"><Facts /></div>
-          </div>
-        </div>
-        <div className="m-card">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="m-photo" src="/stub/portrait.jpg" alt="Валерия Костюченко" />
-          <h2 className="m-name">Валерия Костюченко</h2>
-          <p className="m-role">AI-native Design &amp; Product Leader</p>
-          <nav className="m-links">
-            {links.map((l) => (
-              <a
-                key={l.label}
-                className={`link${l.accent ? ' accent' : ''}`}
-                href={l.href}
-                {...(l.href.startsWith('http') && !l.href.startsWith(CONSULTING)
-                  ? { target: '_blank', rel: 'noopener noreferrer' }
-                  : {})}
-              >
-                <Chevron purple={l.accent} />
-                {l.label}
-              </a>
-            ))}
-          </nav>
-        </div>
-        <p className="m-copy">© Valeriya Kostyuchenko, 2026</p>
-      </div>
-
-      <div className="desktop"><Stage>
+      <div className="desktop"><Stage width={1440} height={1024} fit="contain">
         {/* бегущая строка с достижениями */}
         <div className="marquee" aria-label="Достижения">
           <div className="marquee-track">
@@ -114,14 +90,14 @@ export default function Page() {
         {links.map((l) => (
           <a
             key={l.label}
-            className={`link${l.accent ? ' accent' : ''}`}
+            className="link"
             href={l.href}
             style={{ left: l.left, top: l.top, gap: l.gap }}
             {...(l.href.startsWith('http') && !l.href.startsWith(CONSULTING)
               ? { target: '_blank', rel: 'noopener noreferrer' }
               : {})}
           >
-            <Chevron purple={l.accent} />
+            <Chevron />
             {l.label}
           </a>
         ))}
@@ -131,6 +107,50 @@ export default function Page() {
         <img className="divider" src="/stub/divider.svg" alt="" />
         <p className="copy">© Valeriya Kostyuchenko, 2026</p>
       </Stage></div>
+
+      <div className="mobile">
+        <Stage width={393} height={852} fit="width">
+          <div className="m-marquee" aria-hidden="true">
+            <div className="marquee-track">
+              <div className="marquee-group"><Facts /></div>
+              <div className="marquee-group"><Facts /></div>
+            </div>
+          </div>
+
+          <div className="m-portrait">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/stub/portrait.jpg" alt="Валерия Костюченко" />
+          </div>
+          <div className="m-frame">
+            <div className="m-frame-rot">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/stub/m-portrait-frame.svg" alt="" />
+            </div>
+          </div>
+
+          <p className="m-name">Валерия Костюченко</p>
+          <p className="m-role">AI-native Design &amp; Product Leader</p>
+
+          {mobileLinks.map((l) => (
+            <a
+              key={l.label}
+              className="link"
+              href={l.href}
+              style={{ left: l.left, top: l.top, gap: 16 }}
+              {...(l.href.startsWith('http') && !l.href.startsWith(CONSULTING)
+                ? { target: '_blank', rel: 'noopener noreferrer' }
+                : {})}
+            >
+              <Chevron />
+              {l.label}
+            </a>
+          ))}
+
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="m-divider" src="/stub/m-divider.svg" alt="" />
+          <p className="m-copy">© Valeriya Kostyuchenko, 2026</p>
+        </Stage>
+      </div>
     </main>
   );
 }

@@ -2,32 +2,41 @@
 
 import { useEffect, useRef } from 'react';
 
-// Макет нарисован на холсте 1440×1024. Масштабируем его под ширину экрана.
-const DESIGN_W = 1440;
-const DESIGN_H = 1024;
-
-export default function Stage({ children }: { children: React.ReactNode }) {
+// Макеты нарисованы на фиксированных холстах (десктоп 1440×1024, мобильный 393×852)
+// и масштабируются под экран.
+export default function Stage({
+  width,
+  height,
+  fit,
+  children,
+}: {
+  width: number;
+  height: number;
+  fit: 'contain' | 'width';
+  children: React.ReactNode;
+}) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const fit = () => {
+    const apply = () => {
       const wrap = wrapRef.current;
       const stage = stageRef.current;
       if (!wrap || !stage) return;
-      const scale = Math.min(window.innerWidth / DESIGN_W, window.innerHeight / DESIGN_H);
+      const byWidth = window.innerWidth / width;
+      const scale = fit === 'width' ? byWidth : Math.min(byWidth, window.innerHeight / height);
       stage.style.transform = `scale(${scale})`;
-      wrap.style.width = `${DESIGN_W * scale}px`;
-      wrap.style.height = `${DESIGN_H * scale}px`;
+      wrap.style.width = `${width * scale}px`;
+      wrap.style.height = `${height * scale}px`;
     };
-    fit();
-    window.addEventListener('resize', fit);
-    return () => window.removeEventListener('resize', fit);
-  }, []);
+    apply();
+    window.addEventListener('resize', apply);
+    return () => window.removeEventListener('resize', apply);
+  }, [width, height, fit]);
 
   return (
     <div className="stage-wrap" ref={wrapRef}>
-      <div className="stage" ref={stageRef}>
+      <div className="stage" ref={stageRef} style={{ width, height }}>
         {children}
       </div>
     </div>
