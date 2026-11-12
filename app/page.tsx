@@ -3,7 +3,7 @@ import Stage from './Stage';
 const CONSULTING = 'https://consulting.voleriyah.com/';
 
 const links = [
-  { label: 'Кейсы / портфолио', href: CONSULTING, left: 493, top: 452, gap: 16 },
+  { label: 'Кейсы / портфолио', href: CONSULTING + 'cases/', left: 493, top: 452, gap: 16 },
   { label: 'Консалтинг', href: CONSULTING, left: 565, top: 510, gap: 8, accent: true },
   { label: 'E-mail', href: 'mailto:valeriya.kostyuchenko@gmail.com', left: 594, top: 568, gap: 16 },
   { label: 'Telegram', href: 'https://t.me/voleriyah', left: 551, top: 626, gap: 16 },
