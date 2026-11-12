@@ -214,11 +214,11 @@ main {
 /* ---------- мобильный холст 393×852 ---------- */
 .mobile { display: none; }
 .m-marquee {
-  left: 0; top: 670px; width: 393px; height: 64px;
+  left: 0; top: 622px; width: 393px; height: 64px;
   overflow: hidden; display: flex; align-items: center;
 }
 .m-portrait {
-  left: -110px; top: 233px; width: 311px; height: 394px; overflow: hidden;
+  left: -110px; top: 209px; width: 311px; height: 394px; overflow: hidden;
   clip-path: polygon(0 0, 302px 0, 214px 384px, 0 384px);
 }
 .m-portrait img {
@@ -226,7 +226,7 @@ main {
   max-width: none; object-fit: fill;
 }
 .m-frame {
-  left: -175px; top: 214px; width: 371.033px; height: 424px;
+  left: -175px; top: 190px; width: 371.033px; height: 424px;
   display: flex; align-items: center; justify-content: center; pointer-events: none;
 }
 .m-frame-rot {
@@ -239,8 +239,8 @@ main {
 }
 .m-name { left: 24px; top: 105px; margin: 0; font-weight: 700; font-size: 32px; line-height: normal; white-space: nowrap; }
 .m-role { left: 24px; top: 146px; margin: 0; font-size: 19px; line-height: normal; white-space: nowrap; }
-.m-divider { left: calc(var(--cx, 196.5px) - 125px); top: 773px; width: 250px; height: 40px; }
-.m-copy { left: calc(var(--cx, 196.5px) - 196.5px); width: 393px; top: 813px; margin: 0; text-align: center; font-size: 12px; line-height: normal; }
+.m-divider { left: calc(var(--cx, 196.5px) - 125px); top: 690px; width: 250px; height: 40px; }
+.m-copy { left: calc(var(--cx, 196.5px) - 196.5px); width: 393px; top: 735px; margin: 0; text-align: center; font-size: 12px; line-height: normal; }
 
 @media (max-width: 760px) {
   .desktop { display: none; }

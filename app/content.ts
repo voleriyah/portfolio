@@ -7,22 +7,25 @@ const TELEGRAM = 'https://t.me/voleriyah';
 const LINKEDIN = 'https://www.linkedin.com/in/v-kostyuchenko/';
 const CV = 'https://drive.google.com/file/d/173F2W6vdlEgdFgIMJs5ZrYasTNb6WTZU/view?usp=sharing';
 
-// Положение ссылок взято из макета (они выложены «лесенкой» вдоль косого края трапеции)
+// Десктоп: в макете ссылки выровнены по правому краю «ступенькой» в 16 px
+// (right — правый край ссылки на холсте шириной 1440), поэтому подходят любые языки.
 const desktopPos = [
-  { left: 493, top: 452, gap: 16 },
-  { left: 565, top: 510, gap: 8 },
-  { left: 594, top: 568, gap: 16 },
-  { left: 551, top: 626, gap: 16 },
-  { left: 541, top: 684, gap: 16 },
-  { left: 578, top: 737, gap: 16 },
+  { right: 713.5, top: 452 },
+  { right: 697.5, top: 510 },
+  { right: 681.5, top: 568 },
+  { right: 665.5, top: 626 },
+  { right: 649.5, top: 684 },
+  { right: 633.5, top: 737 },
 ];
+// Мобильная: ступенька по левому краю, шаг 16 px. По вертикали поджато относительно
+// исходного макета (на 24 px вверх), чтобы весь слайд собирался в экран Safari.
 const mobilePos = [
-  { left: 231, top: 241 },
-  { left: 215, top: 311 },
-  { left: 199, top: 381 },
-  { left: 183, top: 451 },
-  { left: 167, top: 521 },
-  { left: 151, top: 586 },
+  { left: 231, top: 217 },
+  { left: 215, top: 287 },
+  { left: 199, top: 357 },
+  { left: 183, top: 427 },
+  { left: 167, top: 497 },
+  { left: 151, top: 562 },
 ];
 
 type Dict = {

@@ -77,7 +77,7 @@ export default function Landing({ lang }: { lang: Lang }) {
             key={l.label}
             className="link"
             href={l.href}
-            style={{ left: l.left, top: l.top, gap: l.gap }}
+            style={{ right: 1440 - l.right, top: l.top, gap: 16 }}
             {...(l.href.startsWith('http') && !l.href.startsWith(CONSULTING)
               ? { target: '_blank', rel: 'noopener noreferrer' }
               : {})}
@@ -95,7 +95,7 @@ export default function Landing({ lang }: { lang: Lang }) {
       </Stage></div>
 
       <div className="mobile">
-        <Stage width={393} height={852} fit="contain" cropTop={62} cropBottom={4}>
+        <Stage width={393} height={852} fit="contain" cropTop={40} cropBottom={88}>
           <div className="m-marquee" aria-hidden="true">
             <div className="marquee-track">
               <div className="marquee-group"><Facts facts={d.facts} /></div>
