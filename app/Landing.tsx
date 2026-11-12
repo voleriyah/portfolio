@@ -1,4 +1,5 @@
 import Stage from './Stage';
+import LangLink from './LangLink';
 import { CONSULTING, desktopLinks, dict, mobileLinks, type Lang } from './content';
 
 function Facts({ facts }: { facts: [string, string, string][] }) {
@@ -26,11 +27,11 @@ function Chevron() {
 function LangSwitch({ lang, className }: { lang: Lang; className: string }) {
   const sw = dict[lang].switch;
   return (
-    <a className={`lang-switch ${className}`} href={sw.href} hrefLang={sw.lang} lang={sw.lang}>
+    <LangLink className={`lang-switch ${className}`} href={sw.href} lang={sw.lang}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={sw.flag} alt="" width={28} height={20} />
       <span>{sw.label}</span>
-    </a>
+    </LangLink>
   );
 }
 
