@@ -41,7 +41,7 @@ export default function Landing({ lang }: { lang: Lang }) {
   const mLinks = mobileLinks(lang);
   return (
     <main className={`lang-${lang}`}>
-      <div className="desktop"><Stage width={1440} height={1024} fit="contain" cropTop={60} cropBottom={34}>
+      <div className="desktop"><Stage width={1440} height={1024} cropTop={60} cropBottom={34}>
         {/* бегущая строка с достижениями */}
         <div className="marquee" aria-label={d.factsLabel}>
           <div className="marquee-track">
@@ -96,7 +96,7 @@ export default function Landing({ lang }: { lang: Lang }) {
       </Stage></div>
 
       <div className="mobile">
-        <Stage width={393} height={852} fit="contain" cropTop={40} cropBottom={88}>
+        <Stage width={393} height={852} cropTop={40} cropBottom={88}>
           <div className="m-marquee" aria-hidden="true">
             <div className="marquee-track">
               <div className="marquee-group"><Facts facts={d.facts} /></div>

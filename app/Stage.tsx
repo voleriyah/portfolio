@@ -1,48 +1,37 @@
-'use client';
+// Макеты нарисованы на фиксированных холстах (десктоп 1440×1024, мобильный 393×852).
+// Масштаб считается чистым CSS (без JS): --s = min(ширина экрана / ширина холста,
+// высота экрана / видимая высота холста). Используем `zoom`, а не transform: scale —
+// тогда текст и векторные картинки пересчитываются по итоговому размеру и остаются
+// чёткими (transform растягивает уже отрисованный слой, особенно на анимированной
+// бегущей строке). Размер не зависит от pinch-zoom: vw/svh привязаны к layout viewport.
+import type { CSSProperties } from 'react';
 
-import { useEffect, useRef } from 'react';
-
-// Макеты нарисованы на фиксированных холстах (десктоп 1440×1024, мобильный 393×852)
-// и масштабируются под экран.
 export default function Stage({
   width,
   height,
-  fit,
   cropTop = 0,
   cropBottom = 0,
   children,
 }: {
   width: number;
   height: number;
-  fit: 'contain' | 'width';
   cropTop?: number;
   cropBottom?: number;
   children: React.ReactNode;
 }) {
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const apply = () => {
-      const wrap = wrapRef.current;
-      const stage = stageRef.current;
-      if (!wrap || !stage) return;
-      const visibleH = height - cropTop - cropBottom;
-      const byWidth = window.innerWidth / width;
-      const scale = fit === 'width' ? byWidth : Math.min(byWidth, window.innerHeight / visibleH);
-      stage.style.transform = `scale(${scale})`;
-      stage.style.top = `${-cropTop * scale}px`;
-      wrap.style.width = `${width * scale}px`;
-      wrap.style.height = `${visibleH * scale}px`;
-    };
-    apply();
-    window.addEventListener('resize', apply);
-    return () => window.removeEventListener('resize', apply);
-  }, [width, height, fit, cropTop, cropBottom]);
+  const visibleH = height - cropTop - cropBottom;
+  // tan(atan2(a, b)) = a / b — способ получить безразмерное число из двух длин
+  const scale = `min(tan(atan2(100vw, ${width}px)), tan(atan2(100svh, ${visibleH}px)))`;
+  const wrapStyle = {
+    '--s': scale,
+    width: `calc(${width} * var(--s) * 1px)`,
+    height: `calc(${visibleH} * var(--s) * 1px)`,
+  } as CSSProperties;
+  const stageStyle = { width, height, top: -cropTop } as CSSProperties;
 
   return (
-    <div className="stage-wrap" ref={wrapRef}>
-      <div className="stage" ref={stageRef} style={{ width, height }}>
+    <div className="stage-wrap" style={wrapStyle}>
+      <div className="stage" style={stageStyle}>
         {children}
       </div>
     </div>

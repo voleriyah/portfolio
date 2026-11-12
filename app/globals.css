@@ -27,8 +27,11 @@ main {
 .stage {
   position: absolute;
   left: 0;
-  top: 0;
-  transform-origin: 0 0;
+  zoom: var(--s);
+}
+/* запасной вариант для браузеров без zoom (старый Firefox) */
+@supports not (zoom: 1) {
+  .stage { zoom: normal; transform: scale(var(--s)); transform-origin: 0 0; }
 }
 .stage > * { position: absolute; }
 
