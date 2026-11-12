@@ -242,9 +242,10 @@ main {
 .m-divider { left: calc(var(--cx, 196.5px) - 125px); top: 690px; width: 250px; height: 40px; }
 .m-copy { left: calc(var(--cx, 196.5px) - 196.5px); width: 393px; top: 735px; margin: 0; text-align: center; font-size: 12px; line-height: normal; }
 
-@media (max-width: 760px) {
+/* телефоны и любые экраны в вертикальной ориентации (в т.ч. планшеты) — мобильная раскладка */
+@media (max-width: 760px), (orientation: portrait) {
   .desktop { display: none; }
-  .mobile { min-height: 100svh; display: flex !important; align-items: center; justify-content: flex-start; }
+  .mobile { min-height: 100svh; display: flex !important; align-items: center; justify-content: center; }
   .mobile .stage-wrap { overflow: visible; }
   .m-marquee { left: -600px; width: 1600px; }
   .mobile { display: block; }

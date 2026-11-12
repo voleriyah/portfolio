@@ -41,7 +41,7 @@ export default function Landing({ lang }: { lang: Lang }) {
   const mLinks = mobileLinks(lang);
   return (
     <main className={`lang-${lang}`}>
-      <div className="desktop"><Stage width={1440} height={1024} fit="contain">
+      <div className="desktop"><Stage width={1440} height={1024} fit="contain" cropTop={60} cropBottom={34}>
         {/* бегущая строка с достижениями */}
         <div className="marquee" aria-label={d.factsLabel}>
           <div className="marquee-track">
