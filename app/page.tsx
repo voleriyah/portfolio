@@ -109,7 +109,7 @@ export default function Page() {
       </Stage></div>
 
       <div className="mobile">
-        <Stage width={393} height={852} fit="contain" cropTop={80} cropBottom={20}>
+        <Stage width={393} height={852} fit="contain" cropTop={80} cropBottom={4}>
           <div className="m-marquee" aria-hidden="true">
             <div className="marquee-track">
               <div className="marquee-group"><Facts /></div>

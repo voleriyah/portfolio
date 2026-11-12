@@ -32,6 +32,8 @@ export default function Stage({
       const scale = fit === 'width' ? byWidth : Math.min(byWidth, window.innerHeight / visibleH);
       stage.style.transform = `scale(${scale})`;
       stage.style.top = `${-cropTop * scale}px`;
+      // центр экрана в координатах холста — для элементов, которые центрируются по экрану
+      stage.style.setProperty('--cx', `${window.innerWidth / 2 / scale}px`);
       wrap.style.width = `${width * scale}px`;
       wrap.style.height = `${visibleH * scale}px`;
     };

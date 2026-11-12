@@ -239,8 +239,8 @@ main {
 }
 .m-name { left: 24px; top: 105px; margin: 0; font-weight: 700; font-size: 32px; line-height: normal; white-space: nowrap; }
 .m-role { left: 24px; top: 146px; margin: 0; font-size: 19px; line-height: normal; white-space: nowrap; }
-.m-divider { left: 71px; top: 773px; width: 250px; height: 40px; }
-.m-copy { left: 0; width: 393px; top: 813px; margin: 0; text-align: center; font-size: 12px; line-height: normal; }
+.m-divider { left: calc(var(--cx, 196.5px) - 125px); top: 773px; width: 250px; height: 40px; }
+.m-copy { left: calc(var(--cx, 196.5px) - 196.5px); width: 393px; top: 813px; margin: 0; text-align: center; font-size: 12px; line-height: normal; }
 
 @media (max-width: 760px) {
   .desktop { display: none; }
